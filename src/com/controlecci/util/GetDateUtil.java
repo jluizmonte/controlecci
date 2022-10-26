@@ -117,6 +117,5 @@ public class GetDateUtil {
         String novaData = sdf.format(data);
         return novaData;
     }
-    
-    //String
+
 }
