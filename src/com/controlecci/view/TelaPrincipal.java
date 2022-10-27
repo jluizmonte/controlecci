@@ -1,5 +1,6 @@
 package com.controlecci.view;
 
+import com.controlecci.model.SessaoUsuarioModel;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
@@ -21,6 +22,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setarData();
+        setarValores();
     }
 
     /**
@@ -64,6 +66,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SSCI CADASTRO E CONTROLE DE ALUNOS");
+        setAlwaysOnTop(true);
 
         jPanel1.setBackground(new java.awt.Color(28, 89, 124));
 
@@ -103,10 +106,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(253, 253, 253));
 
-        jlUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jlUsuario.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jlUsuario.setText("$usuario");
 
-        jlData.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jlData.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jlData.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlData.setText("$dd/mm/yyyy hh:mm:ss");
 
@@ -319,7 +322,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jmiConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaActionPerformed
         new ConsultaAlunos().setVisible(true);
     }//GEN-LAST:event_jmiConsultaActionPerformed
-    
+
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -332,6 +335,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         };
         clock.start();
+    }
+
+    private void setarValores() {
+        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabe1;
