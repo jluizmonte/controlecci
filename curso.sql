@@ -80,3 +80,5 @@ CREATE TABLE `usuario` (
 #
 
 INSERT INTO `usuario` VALUES (1,'José Luiz','luiz','1994','INSTRUTOR'),(2,'Convidado','cci','cci','RECEPÇÃO');
+
+#consultas
