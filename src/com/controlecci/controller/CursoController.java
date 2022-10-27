@@ -2,6 +2,7 @@ package com.controlecci.controller;
 
 import com.controlecci.model.CursoModel;
 import com.controlecci.model.dao.CursoDao;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,5 +30,9 @@ public class CursoController {
 
     public boolean salvarCurso(CursoModel cursoModel) {
         return cursoDao.salvarCurso(cursoModel);
+    }
+
+    public ArrayList<CursoModel> getListaCursos() {
+        return cursoDao.getListaCursos();
     }
 }

@@ -4,7 +4,9 @@ import com.controlecci.controller.CursoController;
 import com.controlecci.model.CursoModel;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +17,7 @@ public class CadastroCurso extends javax.swing.JFrame {
     CursoController cursoController = new CursoController();
     CursoModel cursoModel = new CursoModel();
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(this, true);
+    ArrayList<CursoModel> listaCursoModels = new ArrayList<>();
 
     /**
      * Creates new form CadastroCurso
@@ -23,6 +26,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         initComponents();
         setarData();
         setLocationRelativeTo(null);
+        carregarRegistro();
     }
 
     /**
@@ -339,6 +343,33 @@ public class CadastroCurso extends javax.swing.JFrame {
             jtfModulos.requestFocus();
         }
     }
+
+    public void chamarJDialog() {
+        mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
+        mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
+        mensagemConfirmação.fechar();
+        mensagemConfirmação.setVisible(true);
+    }
+
+    private void carregarRegistro() {
+        listaCursoModels = cursoController.getListaCursos();
+        DefaultTableModel modeloTabela = (DefaultTableModel) jtCurso.getModel();
+        modeloTabela.setNumRows(0);
+        try {
+            int cont = listaCursoModels.size();
+            for (int i = 0; i < cont; i++) {
+                modeloTabela.addRow(new Object[]{
+                    listaCursoModels.get(i).getNomeCurso(),
+                    listaCursoModels.get(i).getModulos(),
+                    listaCursoModels.get(i).getCargaHoraria()
+                });
+            }
+            chamarJDialog();
+        } catch (Exception e) {
+            e.toString();
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

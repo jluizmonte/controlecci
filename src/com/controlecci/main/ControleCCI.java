@@ -1,8 +1,6 @@
 package com.controlecci.main;
 
 import com.controlecci.view.Login;
-import com.controlecci.view.RegistroAluno;
-import com.controlecci.view.TelaPrincipal;
 
 /**
  *

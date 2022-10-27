@@ -1,8 +1,10 @@
 package com.controlecci.model.dao;
 
 import com.controlecci.connection.ConnectionMySQL;
+import com.controlecci.model.AulaModel;
 import com.controlecci.model.CursoModel;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -113,4 +115,27 @@ public class CursoDao extends ConnectionMySQL {
         }
     }
 
+    /**
+     * @return
+     */
+    public ArrayList<CursoModel> getListaCursos() {
+        ArrayList<CursoModel> listaCursoModels = new ArrayList<>();
+        CursoModel cursoModel = new CursoModel();
+        try {
+            this.conectar();
+            this.executarSQL("select nome_curso, carga_horaria, modulo_curso from curso;");
+            while (this.getResultSet().next()) {
+                cursoModel = new CursoModel();
+                cursoModel.setNomeCurso(this.getResultSet().getString(1));
+                cursoModel.setCargaHoraria(this.getResultSet().getString(2));
+                cursoModel.setModulos(this.getResultSet().getString(3));
+                listaCursoModels.add(cursoModel);
+            }
+        } catch (SQLException e) {
+            e.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return listaCursoModels;
+    }
 }

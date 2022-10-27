@@ -53,7 +53,6 @@ public class AulaDao extends ConnectionMySQL {
     }
 
     /**
-     *
      * @param pAluno
      * @return
      */
