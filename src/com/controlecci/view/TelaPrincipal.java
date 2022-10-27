@@ -6,6 +6,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,21 +52,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jmiRegistro = new javax.swing.JMenuItem();
-        jmiNovoRegistro = new javax.swing.JMenuItem();
+        jmiRegistroAluno = new javax.swing.JMenuItem();
         jmiConsulta = new javax.swing.JMenuItem();
         jmiCadastroCurso = new javax.swing.JMenuItem();
         jmiCadastroAluno = new javax.swing.JMenuItem();
+        jmiEncerrar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jmiGerarRelatorio = new javax.swing.JMenuItem();
+        jmiCertifcadosEntregues = new javax.swing.JMenuItem();
+        jmiGerarCertificado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SSCI CADASTRO E CONTROLE DE ALUNOS");
-	  URL caminhoImagem = this.getClass().getResource("/com/controlecci/image/others/logo.png");
-        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoImagem);
-        setIconImage(iconeTitulo);
+
         jPanel1.setBackground(new java.awt.Color(28, 89, 124));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -124,9 +123,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlData, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jlData, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -226,21 +225,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("FUNÇÕES BÁSICAS");
 
-        jmiRegistro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        jmiRegistro.setText("REGISTRO ALUNO");
-        jmiRegistro.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistroAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        jmiRegistroAluno.setText("REGISTRO ALUNO");
+        jmiRegistroAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiRegistroActionPerformed(evt);
+                jmiRegistroAlunoActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiRegistro);
+        jMenu1.add(jmiRegistroAluno);
 
-        jmiNovoRegistro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        jmiNovoRegistro.setText("CONSULTAR REGISTROS");
-        jMenu1.add(jmiNovoRegistro);
-
-        jmiConsulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
-        jmiConsulta.setText("CADASTRAR CURSO");
+        jmiConsulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jmiConsulta.setText("CONSULTAR REGISTROS");
         jmiConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiConsultaActionPerformed(evt);
@@ -248,29 +243,43 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jmiConsulta);
 
-        jmiCadastroCurso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
-        jmiCadastroCurso.setText("CADASTRAR ALUNO");
+        jmiCadastroCurso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        jmiCadastroCurso.setText("CADASTRAR CURSO");
+        jmiCadastroCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCadastroCursoActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmiCadastroCurso);
 
-        jmiCadastroAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
-        jmiCadastroAluno.setText("ENCERRAR SISTEMA");
+        jmiCadastroAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        jmiCadastroAluno.setText("CADASTRAR ALUNO");
         jMenu1.add(jmiCadastroAluno);
+
+        jmiEncerrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        jmiEncerrar.setText("ENCERRAR SISTEMA");
+        jmiEncerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEncerrarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiEncerrar);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("FUNÇÕES EXTRAS");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
-        jMenuItem1.setText("GERAR RELATÓRIO");
-        jMenu2.add(jMenuItem1);
+        jmiGerarRelatorio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        jmiGerarRelatorio.setText("GERAR RELATÓRIO");
+        jMenu2.add(jmiGerarRelatorio);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
-        jMenuItem2.setText("CERTIFICADOS ENTREGUES");
-        jMenu2.add(jMenuItem2);
+        jmiCertifcadosEntregues.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
+        jmiCertifcadosEntregues.setText("CERTIFICADOS ENTREGUES");
+        jMenu2.add(jmiCertifcadosEntregues);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
-        jMenuItem3.setText("GERAR CERTIFICADO");
-        jMenu2.add(jMenuItem3);
+        jmiGerarCertificado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
+        jmiGerarCertificado.setText("GERAR CERTIFICADO");
+        jMenu2.add(jmiGerarCertificado);
 
         jMenuBar1.add(jMenu2);
 
@@ -290,15 +299,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmiRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistroActionPerformed
+    private void jmiRegistroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistroAlunoActionPerformed
+        //    this.dispose();
+        new RegistroAluno().setVisible(true);
+    }//GEN-LAST:event_jmiRegistroAlunoActionPerformed
 
-    }//GEN-LAST:event_jmiRegistroActionPerformed
+    private void jmiCadastroCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroCursoActionPerformed
+        new CadastroCurso().setVisible(true);
+    }//GEN-LAST:event_jmiCadastroCursoActionPerformed
+
+    private void jmiEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEncerrarActionPerformed
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(this, "O sistema será encerrado!\n Clique em OK para encerrar!", "Atenção", JOptionPane.WARNING_MESSAGE, dialogButton);
+        if (dialogResult == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jmiEncerrarActionPerformed
 
     private void jmiConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaActionPerformed
-        this.dispose();
         new ConsultaAlunos().setVisible(true);
     }//GEN-LAST:event_jmiConsultaActionPerformed
-
+    
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -327,9 +348,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
@@ -339,8 +357,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JMenuItem jmiCadastroAluno;
     private javax.swing.JMenuItem jmiCadastroCurso;
+    private javax.swing.JMenuItem jmiCertifcadosEntregues;
     private javax.swing.JMenuItem jmiConsulta;
-    private javax.swing.JMenuItem jmiNovoRegistro;
-    private javax.swing.JMenuItem jmiRegistro;
+    private javax.swing.JMenuItem jmiEncerrar;
+    private javax.swing.JMenuItem jmiGerarCertificado;
+    private javax.swing.JMenuItem jmiGerarRelatorio;
+    private javax.swing.JMenuItem jmiRegistroAluno;
     // End of variables declaration//GEN-END:variables
 }

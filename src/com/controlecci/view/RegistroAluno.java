@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author joseluiz
  */
-public class FrmAlunos extends javax.swing.JFrame {
+public class RegistroAluno extends javax.swing.JFrame {
 
     private AutoCompleter ac;
     public AlunoModel alunoModel = new AlunoModel();
@@ -29,7 +29,8 @@ public class FrmAlunos extends javax.swing.JFrame {
     /**
      * Creates new form FrmAlunos
      */
-    public FrmAlunos() {
+    public RegistroAluno() {
+
         initComponents();
         setLocationRelativeTo(null);
         carregarAlunosPrevisao();
@@ -56,14 +57,15 @@ public class FrmAlunos extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jtfChegada = new javax.swing.JFormattedTextField();
         jtfSaida = new javax.swing.JFormattedTextField();
-        jbDetalhesAluno = new javax.swing.JButton();
+        jbConsulta = new javax.swing.JButton();
         jbInserirHoras = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jtfData = new com.toedter.calendar.JDateChooser();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jbVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BANCO DE HORAS - ALUNO CCI");
 
         jPanel1.setBackground(new java.awt.Color(0, 89, 124));
@@ -86,13 +88,13 @@ public class FrmAlunos extends javax.swing.JFrame {
             }
         });
 
-        jlNomeAluno.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jlNomeAluno.setForeground(new java.awt.Color(255, 255, 255));
+        jlNomeAluno.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlNomeAluno.setForeground(new java.awt.Color(255, 255, 0));
         jlNomeAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlNomeAluno.setText("NOME DO ALUNO");
 
-        jlCursoAluno.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jlCursoAluno.setForeground(new java.awt.Color(255, 255, 255));
+        jlCursoAluno.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlCursoAluno.setForeground(new java.awt.Color(255, 255, 0));
         jlCursoAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCursoAluno.setText("CURSO DO ALUNO");
 
@@ -137,11 +139,11 @@ public class FrmAlunos extends javax.swing.JFrame {
             }
         });
 
-        jbDetalhesAluno.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jbDetalhesAluno.setText("VER DADOS COMPLETO DO ALUNO");
-        jbDetalhesAluno.addActionListener(new java.awt.event.ActionListener() {
+        jbConsulta.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jbConsulta.setText("VER DADOS COMPLETO DO ALUNO");
+        jbConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbDetalhesAlunoActionPerformed(evt);
+                jbConsultaActionPerformed(evt);
             }
         });
 
@@ -159,6 +161,14 @@ public class FrmAlunos extends javax.swing.JFrame {
 
         jtfData.setDateFormatString("dd / MM / yyyy");
         jtfData.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jbVoltar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jbVoltar.setText("FECHAR ESTA JANELA");
+        jbVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,23 +189,27 @@ public class FrmAlunos extends javax.swing.JFrame {
                         .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(147, 147, 147)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jtfSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jtfChegada)
+                                        .addComponent(jtfData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(84, 84, 84))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(147, 147, 147)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(jtfChegada)
-                                    .addComponent(jtfData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(84, 84, 84))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addGap(339, 339, 339)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jbInserirHoras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbDetalhesAluno))
+                            .addComponent(jbConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(11, 11, 11)))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
@@ -238,8 +252,10 @@ public class FrmAlunos extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(jbInserirHoras)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbDetalhesAluno)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(jbConsulta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbVoltar)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -278,9 +294,13 @@ public class FrmAlunos extends javax.swing.JFrame {
         registrarAulaAluno();
     }//GEN-LAST:event_jbInserirHorasActionPerformed
 
-    private void jbDetalhesAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDetalhesAlunoActionPerformed
+    private void jbConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultaActionPerformed
         new ConsultaAlunos().setVisible(true);
-    }//GEN-LAST:event_jbDetalhesAlunoActionPerformed
+    }//GEN-LAST:event_jbConsultaActionPerformed
+
+    private void jbVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbVoltarActionPerformed
 
     public void carregarAlunosPrevisao() {
         lista = alunoController.retornaAlunos();
@@ -330,9 +350,10 @@ public class FrmAlunos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JButton jbDetalhesAluno;
+    private javax.swing.JButton jbConsulta;
     private javax.swing.JButton jbInserirHoras;
     private javax.swing.JButton jbPesquisar;
+    private javax.swing.JButton jbVoltar;
     public javax.swing.JLabel jlCursoAluno;
     public javax.swing.JLabel jlNomeAluno;
     private javax.swing.JFormattedTextField jtfChegada;

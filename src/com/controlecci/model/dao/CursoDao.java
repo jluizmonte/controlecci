@@ -62,7 +62,7 @@ public class CursoDao extends ConnectionMySQL {
 
         try {
             this.conectar();
-            this.executarSQL("select date_add((select min(data_aula) from aula join aluno on id_aluno_fk = id_aluno where nome ='"+pAluno+"'), interval 90 day);");
+            this.executarSQL("select date_add((select min(data_aula) from aula join aluno on id_aluno_fk = id_aluno where nome ='" + pAluno + "'), interval 90 day);");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
@@ -95,5 +95,22 @@ public class CursoDao extends ConnectionMySQL {
         return pAluno;
     }
 
-   
+    /**
+     * salva um novo curso no banco de dados
+     *
+     * @param cursoModel
+     * @return
+     */
+    public boolean salvarCurso(CursoModel cursoModel) {
+        try {
+            this.conectar();
+            return this.executarInsertUpdateSQL("insert into curso (nome_curso, carga_horaria, modulo_curso) values ('" + cursoModel.getNomeCurso() + "','" + cursoModel.getCargaHoraria() + "','" + cursoModel.getModulos() + "')");
+        } catch (Exception e) {
+            e.toString();
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
+    }
+
 }

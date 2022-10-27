@@ -89,7 +89,7 @@ public class MensagemConfirmação extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public void fechar() {
-        Timer timer = new Timer(5000, (ActionEvent evt) -> {
+        Timer timer = new Timer(1500, (ActionEvent evt) -> {
             this.dispose();
         });
         timer.setRepeats(false);

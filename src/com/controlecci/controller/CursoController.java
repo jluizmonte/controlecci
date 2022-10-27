@@ -26,4 +26,8 @@ public class CursoController {
     public String retornaDataFinalCurso(String pAluno) {
         return cursoDao.retornaDataFinalCurso(pAluno);
     }
+
+    public boolean salvarCurso(CursoModel cursoModel) {
+        return cursoDao.salvarCurso(cursoModel);
+    }
 }

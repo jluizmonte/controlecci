@@ -27,15 +27,14 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     public ArrayList lista = new ArrayList<>();
 
     private AutoCompleter ac;
+    MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(this, true);
 
     /**
      * Creates new form NewJFrame
      */
     public ConsultaAlunos() {
-        //    this.setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
-        // setExtendedState(MAXIMIZED_BOTH);
         autoCompletar();
     }
 
@@ -434,11 +433,11 @@ public class ConsultaAlunos extends javax.swing.JFrame {
 
     private void jlVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVoltarMouseClicked
         this.dispose();
-        new FrmAlunos().limparCampos();
+        //  new RegistroAluno().limparCampos();
     }//GEN-LAST:event_jlVoltarMouseClicked
 
     private void jlVoltarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVoltarMouseEntered
-        jlVoltar.setForeground(Color.red);
+        jlVoltar.setForeground(Color.YELLOW);
     }//GEN-LAST:event_jlVoltarMouseEntered
 
     private void jlVoltarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVoltarMouseExited
@@ -449,10 +448,17 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         carregarRegistro();
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
-    public void autoCompletar() {
+    private void autoCompletar() {
         ac = new TextAutoCompleter(jtfNomeAluno);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
+    }
+
+    public void chamarJDialog() {
+        mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
+        mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
+        mensagemConfirmação.fechar();
+        mensagemConfirmação.setVisible(true);
     }
 
     public void carregarRegistro() {
@@ -468,6 +474,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
                     listaAulaModels.get(i).getSaida(),
                     listaAulaModels.get(i).getTotalHoraAula()});
             }
+            chamarJDialog();
         } catch (Exception e) {
             e.toString();
         }
@@ -500,22 +507,6 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         }
     }
 
-
-    public static void main(String[] args) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultaAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        java.awt.EventQueue.invokeLater(() -> {
-            new ConsultaAlunos().setVisible(true);
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
