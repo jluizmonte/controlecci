@@ -33,22 +33,22 @@ public class DialogoRegistro extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jlRegistro = new javax.swing.JLabel();
-        jlNovoRegistro = new javax.swing.JLabel();
-        jlConsulta = new javax.swing.JLabel();
-        jlCadastroCurso = new javax.swing.JLabel();
-        jlCadastroAluno = new javax.swing.JLabel();
-        jlTelaPrincipal = new javax.swing.JLabel();
-        jlCadastroAluno2 = new javax.swing.JLabel();
+        jLabe1 = new javax.swing.JLabel();
+        jLabe2 = new javax.swing.JLabel();
+        jLabe3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jmiRegistro = new javax.swing.JMenuItem();
+        jmiNovoRegistro = new javax.swing.JMenuItem();
+        jmiConsulta = new javax.swing.JMenuItem();
+        jmiCadastroCurso = new javax.swing.JMenuItem();
+        jmiCadastroAluno = new javax.swing.JMenuItem();
+        jmiTelaPrincipal = new javax.swing.JMenuItem();
+        jmiEncerrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -62,68 +62,33 @@ public class DialogoRegistro extends javax.swing.JDialog {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("O QUE DESEJA FAZER AGORA?");
 
-        jlRegistro.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlRegistro.setForeground(new java.awt.Color(255, 255, 255));
-        jlRegistro.setText("1- INSERIR UM NOVO REGISTRO PARA O MESMO ALUNO (F1)");
-        jlRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlRegistroMouseClicked(evt);
-            }
-        });
+        jLabe1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabe1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabe1.setText("1- INSERIR UM NOVO REGISTRO PARA O MESMO ALUNO (F1)");
 
-        jlNovoRegistro.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlNovoRegistro.setForeground(new java.awt.Color(255, 255, 255));
-        jlNovoRegistro.setText("2 - INSERIR UM NOVO REGISTRO PARA OUTRO ALUNO (F2)");
-        jlNovoRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlNovoRegistroMouseClicked(evt);
-            }
-        });
+        jLabe2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabe2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabe2.setText("2 - INSERIR UM NOVO REGISTRO PARA OUTRO ALUNO (F2)");
 
-        jlConsulta.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        jlConsulta.setText("3 - CONSULTAR O REGISTRO DE UM ALUNO (F3)");
-        jlConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlConsultaMouseClicked(evt);
-            }
-        });
+        jLabe3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabe3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabe3.setText("3 - CONSULTAR O REGISTRO DE UM ALUNO (F3)");
 
-        jlCadastroCurso.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlCadastroCurso.setForeground(new java.awt.Color(255, 255, 255));
-        jlCadastroCurso.setText("4 - CADASTRAR NO SISTEMA UM NOVO CURSO (F4)");
-        jlCadastroCurso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlCadastroCursoMouseClicked(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("4 - CADASTRAR NO SISTEMA UM NOVO CURSO (F4)");
 
-        jlCadastroAluno.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlCadastroAluno.setForeground(new java.awt.Color(255, 255, 255));
-        jlCadastroAluno.setText("5 - CADASTRAR NO SISTEMA UM NOVO ALUNO (F5)");
-        jlCadastroAluno.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlCadastroAlunoMouseClicked(evt);
-            }
-        });
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("5 - CADASTRAR NO SISTEMA UM NOVO ALUNO (F5)");
 
-        jlTelaPrincipal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlTelaPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        jlTelaPrincipal.setText("6 - VOLTAR A TELA PRINCIPAL DO SISTEMA (F6)");
-        jlTelaPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlTelaPrincipalMouseClicked(evt);
-            }
-        });
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("6 - VOLTAR A TELA PRINCIPAL DO SISTEMA (F6)");
 
-        jlCadastroAluno2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlCadastroAluno2.setForeground(new java.awt.Color(255, 255, 255));
-        jlCadastroAluno2.setText("7 - ENCERRAR SISTEMA (F7)");
-        jlCadastroAluno2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlCadastroAluno2MouseClicked(evt);
-            }
-        });
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("7 - ENCERRAR SISTEMA (F7)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,17 +97,17 @@ public class DialogoRegistro extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlRegistro)
+                    .addComponent(jLabe1)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(jLabel2))
-                    .addComponent(jlNovoRegistro)
-                    .addComponent(jlConsulta)
-                    .addComponent(jlCadastroCurso)
-                    .addComponent(jlCadastroAluno)
-                    .addComponent(jlTelaPrincipal)
-                    .addComponent(jlCadastroAluno2))
+                    .addComponent(jLabe2)
+                    .addComponent(jLabe3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -153,56 +118,66 @@ public class DialogoRegistro extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabe1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlNovoRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabe2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabe3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlCadastroCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlCadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlTelaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlCadastroAluno2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenu1.setText("FUNÇÕES");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        jMenuItem1.setText("REGISTRO PARA MESMO ALUNO");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        jMenuItem2.setText("REGISTRO PARA NOVO ALUNO");
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
-        jMenuItem3.setText("CONSULTAR REGISTRO DE ALUNO");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
-        jMenuItem4.setText("CADASTRAR NOVO CURSO");
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
-        jMenuItem5.setText("CADASTRAR NOVO ALUNO");
-        jMenu1.add(jMenuItem5);
-
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
-        jMenuItem6.setText("VOLTAR A TELA PRINCIPAL");
-        jMenu1.add(jMenuItem6);
-
-        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
-        jMenuItem7.setText("ENECERRAR SISTEMA");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        jmiRegistro.setText("REGISTRO PARA MESMO ALUNO");
+        jmiRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jmiRegistroActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem7);
+        jMenu1.add(jmiRegistro);
+
+        jmiNovoRegistro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jmiNovoRegistro.setText("REGISTRO PARA NOVO ALUNO");
+        jMenu1.add(jmiNovoRegistro);
+
+        jmiConsulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        jmiConsulta.setText("CONSULTAR REGISTRO DE ALUNO");
+        jmiConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConsultaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiConsulta);
+
+        jmiCadastroCurso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        jmiCadastroCurso.setText("CADASTRAR NOVO CURSO");
+        jMenu1.add(jmiCadastroCurso);
+
+        jmiCadastroAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        jmiCadastroAluno.setText("CADASTRAR NOVO ALUNO");
+        jMenu1.add(jmiCadastroAluno);
+
+        jmiTelaPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        jmiTelaPrincipal.setText("VOLTAR A TELA PRINCIPAL");
+        jMenu1.add(jmiTelaPrincipal);
+
+        jmiEncerrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
+        jmiEncerrar.setText("ENECERRAR SISTEMA");
+        jmiEncerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEncerrarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiEncerrar);
 
         jMenuBar1.add(jMenu1);
 
@@ -222,102 +197,41 @@ public class DialogoRegistro extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jlRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRegistroMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jlRegistroMouseClicked
+    private void jmiEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEncerrarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jmiEncerrarActionPerformed
 
-    private void jlNovoRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlNovoRegistroMouseClicked
+    private void jmiRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistroActionPerformed
         this.dispose();
-        new FrmAlunos().setVisible(true);
-    }//GEN-LAST:event_jlNovoRegistroMouseClicked
+        new FrmAlunos().limparCampos();
+    }//GEN-LAST:event_jmiRegistroActionPerformed
 
-    private void jlConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlConsultaMouseClicked
+    private void jmiConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaActionPerformed
         this.dispose();
         new ConsultaAlunos().setVisible(true);
+    }//GEN-LAST:event_jmiConsultaActionPerformed
 
-    }//GEN-LAST:event_jlConsultaMouseClicked
-
-    private void jlCadastroCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCadastroCursoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlCadastroCursoMouseClicked
-
-    private void jlCadastroAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCadastroAlunoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlCadastroAlunoMouseClicked
-
-    private void jlTelaPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlTelaPrincipalMouseClicked
-        this.dispose();
-        new TelaPrincipal().setVisible(true);
-    }//GEN-LAST:event_jlTelaPrincipalMouseClicked
-
-    private void jlCadastroAluno2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCadastroAluno2MouseClicked
-        JOptionPane.showMessageDialog(this, "O SISTEMA SERÁ ENCERRADO!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-    }//GEN-LAST:event_jlCadastroAluno2MouseClicked
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogoRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogoRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogoRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogoRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(() -> {
-            DialogoRegistro dialog = new DialogoRegistro(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabe1;
+    private javax.swing.JLabel jLabe2;
+    private javax.swing.JLabel jLabe3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JLabel jlCadastroAluno;
-    private javax.swing.JLabel jlCadastroAluno2;
-    private javax.swing.JLabel jlCadastroCurso;
-    private javax.swing.JLabel jlConsulta;
-    private javax.swing.JLabel jlNovoRegistro;
-    private javax.swing.JLabel jlRegistro;
-    private javax.swing.JLabel jlTelaPrincipal;
+    private javax.swing.JMenuItem jmiCadastroAluno;
+    private javax.swing.JMenuItem jmiCadastroCurso;
+    private javax.swing.JMenuItem jmiConsulta;
+    private javax.swing.JMenuItem jmiEncerrar;
+    private javax.swing.JMenuItem jmiNovoRegistro;
+    private javax.swing.JMenuItem jmiRegistro;
+    private javax.swing.JMenuItem jmiTelaPrincipal;
     // End of variables declaration//GEN-END:variables
 }

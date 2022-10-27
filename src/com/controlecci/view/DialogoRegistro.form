@@ -15,15 +15,18 @@
             <Property name="text" type="java.lang.String" value="FUN&#xc7;&#xd5;ES"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiRegistro">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="REGISTRO PARA MESMO ALUNO"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiRegistroActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiNovoRegistro">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F2"/>
@@ -31,15 +34,18 @@
                 <Property name="text" type="java.lang.String" value="REGISTRO PARA NOVO ALUNO"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiConsulta">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F3"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="CONSULTAR REGISTRO DE ALUNO"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiConsultaActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiCadastroCurso">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F4"/>
@@ -47,7 +53,7 @@
                 <Property name="text" type="java.lang.String" value="CADASTRAR NOVO CURSO"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiCadastroAluno">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F5"/>
@@ -55,7 +61,7 @@
                 <Property name="text" type="java.lang.String" value="CADASTRAR NOVO ALUNO"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiTelaPrincipal">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F6"/>
@@ -63,7 +69,7 @@
                 <Property name="text" type="java.lang.String" value="VOLTAR A TELA PRINCIPAL"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiEncerrar">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F7"/>
@@ -71,7 +77,7 @@
                 <Property name="text" type="java.lang.String" value="ENECERRAR SISTEMA"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiEncerrarActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -125,18 +131,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jlRegistro" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabe1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="82" pref="82" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jlNovoRegistro" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlConsulta" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlCadastroCurso" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlCadastroAluno" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlTelaPrincipal" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlCadastroAluno2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabe2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabe3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="46" max="32767" attributes="0"/>
               </Group>
@@ -150,19 +156,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlRegistro" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jLabe1" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlNovoRegistro" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jLabe2" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlConsulta" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jLabe3" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlCadastroCurso" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlCadastroAluno" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jLabel5" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlTelaPrincipal" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jLabel6" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlCadastroAluno2" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jLabel7" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -191,7 +197,7 @@
             <Property name="text" type="java.lang.String" value="O QUE DESEJA FAZER AGORA?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlRegistro">
+        <Component class="javax.swing.JLabel" name="jLabe1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
@@ -201,11 +207,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="1- INSERIR UM NOVO REGISTRO PARA O MESMO ALUNO (F1)"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlRegistroMouseClicked"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlNovoRegistro">
+        <Component class="javax.swing.JLabel" name="jLabe2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
@@ -215,11 +218,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="2 - INSERIR UM NOVO REGISTRO PARA OUTRO ALUNO (F2)"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlNovoRegistroMouseClicked"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlConsulta">
+        <Component class="javax.swing.JLabel" name="jLabe3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
@@ -229,11 +229,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="3 - CONSULTAR O REGISTRO DE UM ALUNO (F3)"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlConsultaMouseClicked"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlCadastroCurso">
+        <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
@@ -243,11 +240,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="4 - CADASTRAR NO SISTEMA UM NOVO CURSO (F4)"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlCadastroCursoMouseClicked"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlCadastroAluno">
+        <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
@@ -257,11 +251,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="5 - CADASTRAR NO SISTEMA UM NOVO ALUNO (F5)"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlCadastroAlunoMouseClicked"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlTelaPrincipal">
+        <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
@@ -271,11 +262,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="6 - VOLTAR A TELA PRINCIPAL DO SISTEMA (F6)"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlTelaPrincipalMouseClicked"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlCadastroAluno2">
+        <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
@@ -285,9 +273,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="7 - ENCERRAR SISTEMA (F7)"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlCadastroAluno2MouseClicked"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

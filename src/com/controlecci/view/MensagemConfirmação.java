@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package com.controlecci.view;
 
 import java.awt.event.ActionEvent;
@@ -21,9 +17,9 @@ public class MensagemConfirmação extends javax.swing.JDialog {
      */
     public MensagemConfirmação(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
-        fechar();
     }
 
     /**
