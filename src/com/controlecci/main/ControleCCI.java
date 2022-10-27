@@ -1,6 +1,7 @@
 package com.controlecci.main;
 
 import com.controlecci.view.FrmAlunos;
+import com.controlecci.view.TelaPrincipal;
 
 /**
  *
@@ -23,7 +24,8 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(FrmAlunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-            new FrmAlunos().setVisible(true);
+            //   new FrmAlunos().setVisible(true);
+         new TelaPrincipal().setVisible(true);
         });
     }
 

@@ -43,9 +43,9 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jLabel1" alignment="0" pref="474" max="32767" attributes="0"/>
-              <Component id="jlMensagem" alignment="0" max="32767" attributes="0"/>
               <Component id="jlInfo" alignment="0" max="32767" attributes="0"/>
+              <Component id="jLabel1" alignment="0" pref="468" max="32767" attributes="0"/>
+              <Component id="jlMensagem" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -53,9 +53,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel1" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jlMensagem" min="-2" pref="73" max="-2" attributes="0"/>
+                  <Component id="jlMensagem" pref="73" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jlInfo" min="-2" pref="72" max="-2" attributes="0"/>
+                  <Component id="jlInfo" min="-2" pref="52" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

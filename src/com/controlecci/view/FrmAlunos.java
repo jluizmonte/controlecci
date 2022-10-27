@@ -312,8 +312,8 @@ public class FrmAlunos extends javax.swing.JFrame {
             limparCampos();
             mensagemConfirmação.jlInfo.setText("CHEGADA: " + aulaModel.getChegada()
                     + "\n SAÍDA: " + aulaModel.getSaida()
-                    + "\n Total dia: " + aulaController.retornaTotalCursadoDia(alunoModel.getNome()));
-            mensagemConfirmação.jlMensagem.setText("O REGISTRO DE: " + alunoModel.getNome().toUpperCase() + " FOI INSERIDO COM SUCESSO!");
+                    + "\n Total dia: " + aulaController.retornaTotalCursadoDia(alunoModel.getNome()).toUpperCase());
+            mensagemConfirmação.jlMensagem.setText("O REGISTRO DE: " + alunoModel.getNome() + " FOI INSERIDO COM SUCESSO!");
             mensagemConfirmação.fechar();
             mensagemConfirmação.setVisible(true);
         } else {
