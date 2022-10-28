@@ -39,4 +39,8 @@ public class CursoController {
     public ArrayList getCursoApenas() {
         return cursoDao.getCursoApenas();
     }
+
+    public String retornaStatusAluno(String pAluno) {
+        return cursoDao.retornaStatusAluno(pAluno);
+    }
 }

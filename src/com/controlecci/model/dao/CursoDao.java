@@ -22,7 +22,7 @@ public class CursoDao extends ConnectionMySQL {
         CursoModel cursoModel = new CursoModel();
         try {
             this.conectar();
-            this.executarSQL("select nome_curso, modulo_curso, carga_horaria from curso join aluno on id_curso = id_curso_fk where nome = '" + pAluno + "';");
+            this.executarSQL("select nome_curso, modulo_curso, carga_horaria from curso join aluno on id_curso = id_curso_fk where nome = '" + pAluno + "' and status_aluno='ATIVO';");
             while (this.getResultSet().next()) {
                 cursoModel = new CursoModel();
                 cursoModel.setNomeCurso(this.getResultSet().getString(1));
@@ -97,6 +97,21 @@ public class CursoDao extends ConnectionMySQL {
         return pAluno;
     }
 
+    public String retornaStatusAluno(String pAluno) {
+        try {
+            this.conectar();
+            this.executarSQL("select status_aluno from aluno where nome='" + pAluno + "' and status_aluno='ATIVO';");
+            while (this.getResultSet().next()) {
+                pAluno = this.getResultSet().getString(1);
+            }
+        } catch (SQLException e) {
+            e.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return pAluno;
+    }
+
     /**
      * salva um novo curso no banco de dados
      *
@@ -154,4 +169,5 @@ public class CursoDao extends ConnectionMySQL {
         }
         return listaCursoModels;
     }
+
 }

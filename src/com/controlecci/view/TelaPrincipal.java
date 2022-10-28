@@ -316,7 +316,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiEncerrarActionPerformed
 
     private void jmiConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaActionPerformed
-        new ConsultaAlunos().setVisible(true);
+        new ConsultaIndividualAluno().setVisible(true);
     }//GEN-LAST:event_jmiConsultaActionPerformed
 
     private void setarData() {

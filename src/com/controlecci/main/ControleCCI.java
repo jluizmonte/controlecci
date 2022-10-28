@@ -26,8 +26,8 @@ public class ControleCCI {
         }
         java.awt.EventQueue.invokeLater(() -> {
         //    new Login().setVisible(true);
-       // new TelaPrincipal().setVisible(true);
-     new CadastroAluno().setVisible(true);
+        new TelaPrincipal().setVisible(true);
+            // new CadastroAluno().setVisible(true);
         });
     }
 

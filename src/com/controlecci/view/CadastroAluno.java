@@ -243,7 +243,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         alunoModel.setNome(jtfAluno.getText().toUpperCase());
 
         if (alunoController.salvarAluno(alunoModel.getNome(), cursoModel.getNomeCurso())) {
-            mensagemConfirmação.jlMensagem.setText("ALUNO :" + alunoModel.getNome() + " FOI SALVO COM SUCESSO!");
+            mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI SALVO COM SUCESSO!");
             mensagemConfirmação.jlInfo.setText("NO CURSO: " + cursoModel.getNomeCurso());
             mensagemConfirmação.fechar();
             mensagemConfirmação.setVisible(true);

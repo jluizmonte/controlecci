@@ -45,7 +45,7 @@ public class AlunoDao extends ConnectionMySQL {
 
         try {
             this.conectar();
-            this.executarSQL("SELECT nome FROM aluno;");
+            this.executarSQL("SELECT nome FROM aluno where status_aluno='ATIVO';");
             while (this.getResultSet().next()) {
                 lista.add(this.getResultSet().getString(1));
             }
@@ -65,7 +65,7 @@ public class AlunoDao extends ConnectionMySQL {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("SELECT * FROM aluno;");
+            this.executarSQL("SELECT * FROM aluno order by nome asc;");
             while (this.getResultSet().next()) {
 
                 alunoModel = new AlunoModel();

@@ -15,24 +15,24 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author joseluiz
  */
-public class ConsultaAlunos extends javax.swing.JFrame {
-
+public class ConsultaIndividualAluno extends javax.swing.JFrame {
+    
     AlunoModel alunoModel = new AlunoModel();
-
+    
     AlunoController alunoController = new AlunoController();
     AulaController aulaController = new AulaController();
     CursoController cursoController = new CursoController();
-
+    
     ArrayList<AulaModel> listaAulaModels = new ArrayList<>();
     public ArrayList lista = new ArrayList<>();
-
+    
     private AutoCompleter ac;
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(this, true);
 
     /**
      * Creates new form NewJFrame
      */
-    public ConsultaAlunos() {
+    public ConsultaIndividualAluno() {
         initComponents();
         setLocationRelativeTo(null);
         autoCompletar();
@@ -89,7 +89,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("CONSULTA DE DADOS DOS ALUNOS");
+        jLabel3.setText("CONSULTA DE DADOS DOS ALUNOS ALUNOS ATIVOS");
 
         jlNomeAluno.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jlNomeAluno.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,7 +229,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 5, Short.MAX_VALUE)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
@@ -383,8 +383,9 @@ public class ConsultaAlunos extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addComponent(jlNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(424, 424, 424))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -447,20 +448,20 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
         carregarRegistro();
     }//GEN-LAST:event_jbPesquisarActionPerformed
-
+    
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfNomeAluno);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
     }
-
+    
     public void chamarJDialog() {
         mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
         mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
         mensagemConfirmação.fechar();
         mensagemConfirmação.setVisible(true);
     }
-
+    
     public void carregarRegistro() {
         listaAulaModels = aulaController.getRegistroAula(alunoModel.getNome());
         DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
@@ -479,7 +480,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             e.toString();
         }
     }
-
+    
     public void infoCurso() {
         jlCargaHoraria.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getCargaHoraria());
         jlCurso.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getNomeCurso().toUpperCase());
@@ -488,6 +489,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         jlDataEncerramento.setText(cursoController.retornaDataFinalCurso(jtfNomeAluno.getText()));
         jlHorasRealizadas.setText(cursoController.retornaTotalCursado(jtfNomeAluno.getText()));
         jlHorasRestantes.setText(aulaController.retornaTempoRestante(jtfNomeAluno.getText()));
+        jlSituacaoAluno.setText(cursoController.retornaStatusAluno(jtfNomeAluno.getText()));
         /**/
         if (jlDataInicio.getText() == null) {
             jlDataInicio.setForeground(Color.red);
@@ -498,7 +500,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             jlDataEncerramento.setText("NÃO INICIOU O CURSO");
             jlHorasRealizadas.setText("NÃO INICIOU O CURSO");
             jlHorasRestantes.setText("NÃO INICIOU O CURSO");
-
+            
         } else {
             jlDataInicio.setForeground(Color.black);
             jlHorasRealizadas.setForeground(Color.black);

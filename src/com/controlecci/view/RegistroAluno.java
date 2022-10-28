@@ -295,7 +295,7 @@ public class RegistroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jbInserirHorasActionPerformed
 
     private void jbConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultaActionPerformed
-        new ConsultaAlunos().setVisible(true);
+        new ConsultaIndividualAluno().setVisible(true);
     }//GEN-LAST:event_jbConsultaActionPerformed
 
     private void jbVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarActionPerformed
