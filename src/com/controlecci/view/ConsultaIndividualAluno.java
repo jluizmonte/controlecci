@@ -16,16 +16,16 @@ import javax.swing.table.DefaultTableModel;
  * @author joseluiz
  */
 public class ConsultaIndividualAluno extends javax.swing.JFrame {
-    
+
     AlunoModel alunoModel = new AlunoModel();
-    
+
     AlunoController alunoController = new AlunoController();
     AulaController aulaController = new AulaController();
     CursoController cursoController = new CursoController();
-    
+
     ArrayList<AulaModel> listaAulaModels = new ArrayList<>();
     public ArrayList lista = new ArrayList<>();
-    
+
     private AutoCompleter ac;
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(this, true);
 
@@ -448,20 +448,20 @@ public class ConsultaIndividualAluno extends javax.swing.JFrame {
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
         carregarRegistro();
     }//GEN-LAST:event_jbPesquisarActionPerformed
-    
+
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfNomeAluno);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
     }
-    
+
     public void chamarJDialog() {
         mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
         mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
         mensagemConfirmação.fechar();
         mensagemConfirmação.setVisible(true);
     }
-    
+
     public void carregarRegistro() {
         listaAulaModels = aulaController.getRegistroAula(alunoModel.getNome());
         DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
@@ -480,7 +480,7 @@ public class ConsultaIndividualAluno extends javax.swing.JFrame {
             e.toString();
         }
     }
-    
+
     public void infoCurso() {
         jlCargaHoraria.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getCargaHoraria());
         jlCurso.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getNomeCurso().toUpperCase());
@@ -500,7 +500,7 @@ public class ConsultaIndividualAluno extends javax.swing.JFrame {
             jlDataEncerramento.setText("NÃO INICIOU O CURSO");
             jlHorasRealizadas.setText("NÃO INICIOU O CURSO");
             jlHorasRestantes.setText("NÃO INICIOU O CURSO");
-            
+
         } else {
             jlDataInicio.setForeground(Color.black);
             jlHorasRealizadas.setForeground(Color.black);
