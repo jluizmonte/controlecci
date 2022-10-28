@@ -138,4 +138,20 @@ public class CursoDao extends ConnectionMySQL {
         }
         return listaCursoModels;
     }
+
+    public ArrayList getCursoApenas() {
+        ArrayList listaCursoModels = new ArrayList<>();
+        try {
+            this.conectar();
+            this.executarSQL("select nome_curso from curso;");
+            while (this.getResultSet().next()) {
+                listaCursoModels.add(this.getResultSet().getString(1).toUpperCase());
+            }
+        } catch (SQLException e) {
+            e.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return listaCursoModels;
+    }
 }

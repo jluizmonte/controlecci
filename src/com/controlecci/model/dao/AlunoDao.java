@@ -2,6 +2,7 @@ package com.controlecci.model.dao;
 
 import com.controlecci.connection.ConnectionMySQL;
 import com.controlecci.model.AlunoModel;
+import com.controlecci.model.CursoModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -97,5 +98,18 @@ public class AlunoDao extends ConnectionMySQL {
             this.fecharConexao();
         }
         return pAluno;
+    }
+
+    public boolean salvarAluno(String pAluno, String pCurso) {
+        try {
+            this.conectar();
+            return this.executarInsertUpdateSQL("insert into aluno(nome, id_curso_fk) values ('" + pAluno + "',(select id_curso from curso where nome_curso='" + pCurso + "'));");
+        } catch (Exception e) {
+            e.toString();
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
+
     }
 }

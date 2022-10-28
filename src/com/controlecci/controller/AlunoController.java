@@ -28,4 +28,9 @@ public class AlunoController {
     public String retornarCursoPeloAluno(String pAluno) {
         return alunoDao.retornarCursoPeloAluno(pAluno);
     }
+
+    public boolean salvarAluno(String pAluno, String pCurso) {
+        return alunoDao.salvarAluno(pAluno, pCurso);
+    }
+
 }

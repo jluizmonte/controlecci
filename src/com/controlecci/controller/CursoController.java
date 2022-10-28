@@ -35,4 +35,8 @@ public class CursoController {
     public ArrayList<CursoModel> getListaCursos() {
         return cursoDao.getListaCursos();
     }
+
+    public ArrayList getCursoApenas() {
+        return cursoDao.getCursoApenas();
+    }
 }
