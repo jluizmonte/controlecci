@@ -17,16 +17,16 @@ import javax.swing.table.DefaultTableModel;
  * @author joseluiz
  */
 public class ConsultaAlunos extends javax.swing.JFrame {
-    
+
     AlunoModel alunoModel = new AlunoModel();
-    
+
     AlunoController alunoController = new AlunoController();
     AulaController aulaController = new AulaController();
     CursoController cursoController = new CursoController();
-    
+
     ArrayList<AulaModel> listaAulaModels = new ArrayList<>();
     public ArrayList lista = new ArrayList<>();
-    
+
     private AutoCompleter ac;
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(this, true);
 
@@ -82,8 +82,12 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtConsulta = new javax.swing.JTable();
         jlVoltar = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jlUsuario = new javax.swing.JLabel();
+        jlData = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(0, 84, 124));
 
@@ -369,6 +373,41 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(253, 253, 253));
+
+        jlUsuario.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlUsuario.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jlUsuario.setText("$usuario");
+
+        jlData.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlData.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlData.setText("$dd/mm/yyyy hh:mm:ss");
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(28, 89, 124));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("CCI CENTRAL DE CURSOS");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlData, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jlUsuario)
+                .addComponent(jlData)
+                .addComponent(jLabel17))
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -392,6 +431,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,7 +449,8 @@ public class ConsultaAlunos extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -449,20 +490,20 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
         carregarRegistro();
     }//GEN-LAST:event_jbPesquisarActionPerformed
-    
+
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfNomeAluno);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
     }
-    
+
     public void chamarJDialog() {
         mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
         mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
         mensagemConfirmação.fechar();
         mensagemConfirmação.setVisible(true);
     }
-    
+
     public void carregarRegistro() {
         listaAulaModels = aulaController.getRegistroAula(alunoModel.getNome());
         DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
@@ -481,7 +522,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             e.toString();
         }
     }
-    
+
     public void infoCurso() {
         jlCargaHoraria.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getCargaHoraria());
         jlCurso.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getNomeCurso().toUpperCase());
@@ -505,7 +546,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             jlHorasRestantes.setText("NÃO INICIOU O CURSO");
             jlSituacaoAluno.setText("NÃO INICIOU O CURSO");
             jlSituacaoHoras.setText("NÃO INICIOU O CURSO");
-            
+
         } else {
             jlDataInicio.setForeground(Color.black);
             jlHorasRealizadas.setForeground(Color.black);
@@ -516,10 +557,10 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         }
         colorirLinha();
     }
-    
+
     private void colorirLinha() {
         if (jlSituacaoAluno.getText().equals("ATIVO")) {
-            jlSituacaoAluno.setForeground(Color.green);
+            jlSituacaoAluno.setForeground(new java.awt.Color(0, 79, 7));
         } else {
             jlSituacaoAluno.setForeground(Color.red);
         }
@@ -532,6 +573,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -539,6 +581,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -548,6 +591,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     private javax.swing.JToggleButton jbSuspender;
     private javax.swing.JLabel jlCargaHoraria;
     public javax.swing.JLabel jlCurso;
+    private javax.swing.JLabel jlData;
     private javax.swing.JLabel jlDataEncerramento;
     private javax.swing.JLabel jlDataInicio;
     private javax.swing.JLabel jlHorasRealizadas;
@@ -556,6 +600,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     private javax.swing.JLabel jlNomeAluno;
     private javax.swing.JLabel jlSituacaoAluno;
     private javax.swing.JLabel jlSituacaoHoras;
+    private javax.swing.JLabel jlUsuario;
     private javax.swing.JLabel jlVoltar;
     private javax.swing.JTable jtConsulta;
     private javax.swing.JTextField jtfNomeAluno;

@@ -1,6 +1,7 @@
 package com.controlecci.main;
 
 import com.controlecci.view.CadastroAluno;
+import com.controlecci.view.ConsultaAlunos;
 import com.controlecci.view.Login;
 import com.controlecci.view.RegistroAluno;
 import com.controlecci.view.TelaPrincipal;
@@ -26,10 +27,11 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-            //    new Login().setVisible(true);
-            //      new TelaPrincipal().setVisible(true);
+              new Login().setVisible(true);
+     //     new TelaPrincipal().setVisible(true);
             //    new CadastroAluno().setVisible(true);
-        new RegistroAluno().setVisible(true);
+       // new RegistroAluno().setVisible(true);
+  //     new ConsultaAlunos().setVisible(true);
         });
     }
 

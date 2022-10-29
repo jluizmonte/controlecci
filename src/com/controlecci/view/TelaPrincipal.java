@@ -313,8 +313,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiCadastroCursoActionPerformed
 
     private void jmiEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEncerrarActionPerformed
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog(this, "O sistema será encerrado!\n Clique em OK para encerrar!", "Atenção", JOptionPane.WARNING_MESSAGE, dialogButton);
+        int dialogResult = JOptionPane.showConfirmDialog(this, "O sistema será encerrado!\n Clique em Yes para encerrar!", "Atenção", JOptionPane.YES_NO_OPTION);
         if (dialogResult == 0) {
             System.exit(0);
         }

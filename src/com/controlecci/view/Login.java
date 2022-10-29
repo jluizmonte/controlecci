@@ -1,13 +1,16 @@
 package com.controlecci.view;
 
 import com.controlecci.controller.UsuarioController;
+import com.controlecci.model.AlunoModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.model.UsuarioModel;
+import com.controlecci.util.TemplateAlerts;
+import com.controlecci.util.alerts.ErrorAlert;
+import com.controlecci.util.alerts.SuccessAlert;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.MouseInfo;
 import java.awt.Point;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +19,9 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
+    ErrorAlert ea = new ErrorAlert(this, true);
+    SuccessAlert successAlert = new SuccessAlert(this, true);
+    TemplateAlerts templateAlerts = new TemplateAlerts();
     UsuarioModel usuarioModel = new UsuarioModel();
     UsuarioController usuarioController = new UsuarioController();
     int x, y;
@@ -24,6 +30,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form frmLogin
      */
     public Login() {
+ dispose();
         setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
@@ -266,14 +273,21 @@ public class Login extends javax.swing.JFrame {
                 if (usuarioController.getValidarUsuarioDAO(usuarioModel)) {
                     usuarioModel = usuarioController.getUsuarioDAO(jtfLogin.getText());
                     setSessionUser();
-                    JOptionPane.showMessageDialog(this, "Bem-vindo de volta " + usuarioModel.getNomeUsuario() + "!",
-                            "Sucesso!", JOptionPane.WARNING_MESSAGE);
+                     successAlert = new SuccessAlert(this, true);
+                    SuccessAlert.titulo.setText("Sucesso!");
+                    SuccessAlert.msj.setText("Bem vindo de volta");
+                    SuccessAlert.msj1.setText(usuarioModel.getNomeUsuario());
+                    successAlert.setVisible(true);
                     new TelaPrincipal().setVisible(true);
                     this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(this,
-                            "Usuário ou senha inválidos!\nRevise as credenciais e tente novamente",
-                            "Erro ao fazer login", JOptionPane.ERROR_MESSAGE);
+
+                    
+                 ea = new ErrorAlert(this, true);
+                    ErrorAlert.titulo.setText("ERRO");
+                    ErrorAlert.msj.setText(templateAlerts.erroLogin());
+                    ErrorAlert.msj1.setText("Revise e tente novamente");
+                    ea.setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Nenhum dos campos podem ficar em branco", "Revise os dados",
