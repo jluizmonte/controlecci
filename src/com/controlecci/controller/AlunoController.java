@@ -2,7 +2,6 @@ package com.controlecci.controller;
 
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.dao.AlunoDao;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +20,10 @@ public class AlunoController {
         return alunoDao.getListaAlunoDao();
     }
 
+    public ArrayList<AlunoModel> getListaAlunoCursoDao() {
+        return alunoDao.getListaAlunoCursoDao();
+    }
+
     public ArrayList retornaAlunos() {
         return alunoDao.retornaAlunos();
     }
@@ -29,8 +32,8 @@ public class AlunoController {
         return alunoDao.retornarCursoPeloAluno(pAluno);
     }
 
-    public boolean salvarAluno(String pAluno, String pCurso) {
-        return alunoDao.salvarAluno(pAluno, pCurso);
+    public boolean salvarAluno(String pAluno, String pCurso, String pStatus) {
+        return alunoDao.salvarAluno(pAluno, pCurso, pStatus);
     }
 
 }

@@ -2,7 +2,6 @@ package com.controlecci.model.dao;
 
 import com.controlecci.connection.ConnectionMySQL;
 import com.controlecci.model.AlunoModel;
-import com.controlecci.model.CursoModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -67,17 +66,38 @@ public class AlunoDao extends ConnectionMySQL {
             this.conectar();
             this.executarSQL("SELECT * FROM aluno order by nome asc;");
             while (this.getResultSet().next()) {
-
                 alunoModel = new AlunoModel();
                 alunoModel.setIdAluno(this.getResultSet().getInt(1));
                 alunoModel.setNome(this.getResultSet().getString(2));
                 listaAlunoModel.add(alunoModel);
             }
         } catch (SQLException e) {
+            e.toString();
         } finally {
             this.fecharConexao();
         }
         return listaAlunoModel;
+    }
+
+    public ArrayList<AlunoModel> getListaAlunoCursoDao() {
+        ArrayList<AlunoModel> listaModel = new ArrayList<>();
+        AlunoModel alunoModel = new AlunoModel();
+        try {
+            this.conectar();
+            this.executarSQL("SELECT nome,nome_curso,status_aluno from aluno join curso on id_curso_fk=id_curso order by nome asc;");
+            while (this.getResultSet().next()) {
+                alunoModel = new AlunoModel();
+                alunoModel.setNome(this.getResultSet().getString(1));
+                alunoModel.setCurso(this.getResultSet().getString(2));
+                alunoModel.setStatus(this.getResultSet().getString(3));
+                listaModel.add(alunoModel);
+            }
+        } catch (NumberFormatException | SQLException e) {
+            e.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return listaModel;
     }
 
     /**
@@ -100,10 +120,10 @@ public class AlunoDao extends ConnectionMySQL {
         return pAluno;
     }
 
-    public boolean salvarAluno(String pAluno, String pCurso) {
+    public boolean salvarAluno(String pAluno, String pCurso, String pStatus) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("insert into aluno(nome, id_curso_fk) values ('" + pAluno + "',(select id_curso from curso where nome_curso='" + pCurso + "'));");
+            return this.executarInsertUpdateSQL("insert into aluno(nome, id_curso_fk,status_aluno) values ('" + pAluno + "',(select id_curso from curso where nome_curso='" + pCurso + "'),'" + pStatus + "');");
         } catch (Exception e) {
             e.toString();
             return false;

@@ -9,7 +9,8 @@ public class AlunoModel {
     private int idAluno;
     private String nome;
     private int idCursoFk;
-    public static String sessaoAluno;
+    private String curso;
+    private String status;
 
     public int getIdAluno() {
         return idAluno;
@@ -34,4 +35,21 @@ public class AlunoModel {
     public void setIdCursoFk(int idCursoFk) {
         this.idCursoFk = idCursoFk;
     }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }
