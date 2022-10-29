@@ -7,6 +7,7 @@ import com.controlecci.model.AulaModel;
 import com.controlecci.util.GetDateUtil;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
+import java.text.ParseException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -319,27 +320,50 @@ public class RegistroAluno extends javax.swing.JFrame {
         jtfChegada.setText("");
         jtfSaida.setText("");
         jtfNome.setText("");
+        jlCursoAluno.setText("NOME DO ALUNO");
+        jlNomeAluno.setText("CURSO DO ALUNO");
         jtfData.setDate(getDateUtil.retornaDiaAnterior());
         jtfNome.requestFocus();
     }
 
     public void registrarAulaAluno() {
         alunoModel.setNome(jtfNome.getText());
-        aulaModel.setDataAula(getDateUtil.recuperaDataChooser(jtfData.getDate())); // resolver a data do JDate!
+        aulaModel.setDataAula(getDateUtil.recuperaDataChooser(jtfData.getDate()));
         aulaModel.setChegada(jtfChegada.getText());
         aulaModel.setSaida(jtfSaida.getText());
         if (aulaController.registrarHoraAula(alunoModel, aulaModel)) {
-            limparCampos();
             mensagemConfirmação.jlInfo.setText("CHEGADA: " + aulaModel.getChegada()
                     + "\n SAÍDA: " + aulaModel.getSaida()
                     + "\n Total dia: " + aulaController.retornaTotalCursadoDia(alunoModel.getNome()).toUpperCase());
             mensagemConfirmação.jlMensagem.setText("O REGISTRO DE: " + alunoModel.getNome() + " FOI INSERIDO COM SUCESSO!");
             mensagemConfirmação.fechar();
             mensagemConfirmação.setVisible(true);
+            repetirAcao();
         } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao registrar horário do aluno: " + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
         }
 
+    }
+
+    private void repetirAcao() {
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Deseja registrar mais um horário deste aluno?\n Clique em Yes caso queira ou em No se deseja registrar outro", "Atenção", JOptionPane.YES_NO_OPTION);
+        try {
+            if (dialogResult == 0) {
+                alunoModel = new AlunoModel();
+                jtfChegada.setText("");
+                jtfSaida.setText("");
+                jtfChegada.requestFocus();
+
+            } else {
+                jtfChegada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+                jtfSaida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+                jtfNome.setText("");
+                jtfNome.requestFocus();
+                limparCampos();
+            }
+        } catch (ParseException e) {
+            e.toString();
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

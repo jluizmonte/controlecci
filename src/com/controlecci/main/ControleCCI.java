@@ -2,6 +2,7 @@ package com.controlecci.main;
 
 import com.controlecci.view.CadastroAluno;
 import com.controlecci.view.Login;
+import com.controlecci.view.RegistroAluno;
 import com.controlecci.view.TelaPrincipal;
 
 /**
@@ -26,8 +27,9 @@ public class ControleCCI {
         }
         java.awt.EventQueue.invokeLater(() -> {
             //    new Login().setVisible(true);
-              new TelaPrincipal().setVisible(true);
-       //     new CadastroAluno().setVisible(true);
+            //      new TelaPrincipal().setVisible(true);
+            //    new CadastroAluno().setVisible(true);
+        new RegistroAluno().setVisible(true);
         });
     }
 

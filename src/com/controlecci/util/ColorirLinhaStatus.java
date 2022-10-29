@@ -34,14 +34,21 @@ public class ColorirLinhaStatus extends DefaultTableCellRenderer {
 
             case "ATIVO":
                 setForeground(Color.white);
-                setBackground(new java.awt.Color(0,102,51));
+                setBackground(new java.awt.Color(0, 102, 51));
+                setFont(font);
+                setHorizontalAlignment(CENTER);
+                break;
+
+            case "SUSPENSO":
+                setForeground(Color.white);
+                setBackground(Color.red);
                 setFont(font);
                 setHorizontalAlignment(CENTER);
                 break;
 
             default:
                 setForeground(Color.white);
-                setBackground(Color.red);
+                setBackground(new java.awt.Color(0, 47, 79));
                 setHorizontalAlignment(CENTER);
                 break;
         }

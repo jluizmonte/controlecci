@@ -5,6 +5,7 @@ import com.controlecci.controller.AulaController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.AulaModel;
+import com.controlecci.util.ColorirLinhaStatus;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Color;
@@ -16,16 +17,16 @@ import javax.swing.table.DefaultTableModel;
  * @author joseluiz
  */
 public class ConsultaAlunos extends javax.swing.JFrame {
-
+    
     AlunoModel alunoModel = new AlunoModel();
-
+    
     AlunoController alunoController = new AlunoController();
     AulaController aulaController = new AulaController();
     CursoController cursoController = new CursoController();
-
+    
     ArrayList<AulaModel> listaAulaModels = new ArrayList<>();
     public ArrayList lista = new ArrayList<>();
-
+    
     private AutoCompleter ac;
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(this, true);
 
@@ -448,20 +449,20 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
         carregarRegistro();
     }//GEN-LAST:event_jbPesquisarActionPerformed
-
+    
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfNomeAluno);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
     }
-
+    
     public void chamarJDialog() {
         mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
         mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
         mensagemConfirmação.fechar();
         mensagemConfirmação.setVisible(true);
     }
-
+    
     public void carregarRegistro() {
         listaAulaModels = aulaController.getRegistroAula(alunoModel.getNome());
         DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
@@ -480,7 +481,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             e.toString();
         }
     }
-
+    
     public void infoCurso() {
         jlCargaHoraria.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getCargaHoraria());
         jlCurso.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getNomeCurso().toUpperCase());
@@ -496,19 +497,33 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             jlHorasRealizadas.setForeground(Color.red);
             jlHorasRestantes.setForeground(Color.red);
             jlDataEncerramento.setForeground(Color.red);
+            jlSituacaoAluno.setForeground(Color.red);
+            jlSituacaoHoras.setForeground(Color.red);
             jlDataInicio.setText("NÃO INICIOU O CURSO");
             jlDataEncerramento.setText("NÃO INICIOU O CURSO");
             jlHorasRealizadas.setText("NÃO INICIOU O CURSO");
             jlHorasRestantes.setText("NÃO INICIOU O CURSO");
-
+            jlSituacaoAluno.setText("NÃO INICIOU O CURSO");
+            jlSituacaoHoras.setText("NÃO INICIOU O CURSO");
+            
         } else {
             jlDataInicio.setForeground(Color.black);
             jlHorasRealizadas.setForeground(Color.black);
             jlHorasRestantes.setForeground(Color.black);
             jlDataEncerramento.setForeground(Color.black);
+            jlSituacaoAluno.setForeground(Color.black);
+            jlSituacaoHoras.setForeground(Color.black);
+        }
+        colorirLinha();
+    }
+    
+    private void colorirLinha() {
+        if (jlSituacaoAluno.getText().equals("ATIVO")) {
+            jlSituacaoAluno.setForeground(Color.green);
+        } else {
+            jlSituacaoAluno.setForeground(Color.red);
         }
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
