@@ -12,26 +12,55 @@ public class AlunoController {
 
     AlunoDao alunoDao = new AlunoDao();
 
+    /**
+     *
+     * @param pNome
+     * @return
+     */
     public AlunoModel getAlunoDao(String pNome) {
         return alunoDao.getAluno(pNome);
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<AlunoModel> getListaAlunoDao() {
         return alunoDao.getListaAlunoDao();
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<AlunoModel> getListaAlunoCursoDao() {
         return alunoDao.getListaAlunoCursoDao();
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList retornaAlunos() {
         return alunoDao.retornaAlunos();
     }
 
+    /**
+     *
+     * @param pAluno
+     * @return
+     */
     public String retornarCursoPeloAluno(String pAluno) {
         return alunoDao.retornarCursoPeloAluno(pAluno);
     }
 
+    /**
+     *
+     * @param pAluno
+     * @param pCurso
+     * @param pStatus
+     * @return
+     */
     public boolean salvarAluno(String pAluno, String pCurso, String pStatus) {
         return alunoDao.salvarAluno(pAluno, pCurso, pStatus);
     }

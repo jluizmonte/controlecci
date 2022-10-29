@@ -3,8 +3,8 @@ package com.controlecci.view;
 import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
-import com.controlecci.model.AulaModel;
 import com.controlecci.model.CursoModel;
+import com.controlecci.util.ColorirLinhaStatus;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.util.ArrayList;
@@ -34,6 +34,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         autoCompletar();
         carregarRegistro();
+        colorirLinha();
     }
 
     /**
@@ -232,6 +233,11 @@ public class CadastroAluno extends javax.swing.JFrame {
         ac = new TextAutoCompleter(jtfCurso);
         lista = cursoController.getCursoApenas();
         ac.setItems(lista);
+    }
+
+    private void colorirLinha() {
+        ColorirLinhaStatus colorirLinhaStatus = new ColorirLinhaStatus(2);
+        jtAluno.getColumnModel().getColumn(2).setCellRenderer(colorirLinhaStatus);
     }
 
     private void carregarRegistro() {

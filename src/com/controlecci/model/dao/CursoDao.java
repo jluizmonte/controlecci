@@ -60,8 +60,12 @@ public class CursoDao extends ConnectionMySQL {
         return pAluno;
     }
 
+    /**
+     *
+     * @param pAluno
+     * @return
+     */
     public String retornaDataFinalCurso(String pAluno) {
-
         try {
             this.conectar();
             this.executarSQL("select date_add((select min(data_aula) from aula join aluno on id_aluno_fk = id_aluno where nome ='" + pAluno + "'), interval 90 day);");
@@ -97,6 +101,11 @@ public class CursoDao extends ConnectionMySQL {
         return pAluno;
     }
 
+    /**
+     *
+     * @param pAluno
+     * @return
+     */
     public String retornaStatusAluno(String pAluno) {
         try {
             this.conectar();
@@ -131,6 +140,7 @@ public class CursoDao extends ConnectionMySQL {
     }
 
     /**
+     *
      * @return
      */
     public ArrayList<CursoModel> getListaCursos() {
@@ -154,6 +164,10 @@ public class CursoDao extends ConnectionMySQL {
         return listaCursoModels;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList getCursoApenas() {
         ArrayList listaCursoModels = new ArrayList<>();
         try {

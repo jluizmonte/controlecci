@@ -253,6 +253,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jmiCadastroAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         jmiCadastroAluno.setText("CADASTRAR ALUNO");
+        jmiCadastroAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCadastroAlunoActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmiCadastroAluno);
 
         jmiEncerrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
@@ -316,9 +321,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiEncerrarActionPerformed
 
     private void jmiConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaActionPerformed
-        new ConsultaIndividualAluno().setVisible(true);
+        new ConsultaAlunos().setVisible(true);
     }//GEN-LAST:event_jmiConsultaActionPerformed
 
+    private void jmiCadastroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroAlunoActionPerformed
+        new CadastroAluno().setVisible(true);
+    }//GEN-LAST:event_jmiCadastroAlunoActionPerformed
+    
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -332,9 +341,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         };
         clock.start();
     }
-
+    
     private void setarValores() {
-     //   jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
+        //   jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabe1;

@@ -20,7 +20,7 @@ public class AlunoDao extends ConnectionMySQL {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("SELECT * FROM" + " aluno" + " WHERE" + " nome = '" + pNome + "'" + ";");
+            this.executarSQL("SELECT * FROM aluno WHERE nome = '" + pNome + "'" + ";");
 
             while (this.getResultSet().next()) {
                 alunoModel.setIdAluno(this.getResultSet().getInt(1));
@@ -79,6 +79,10 @@ public class AlunoDao extends ConnectionMySQL {
         return listaAlunoModel;
     }
 
+    /**
+     * retorna nome curso e status
+     * @return 
+     */
     public ArrayList<AlunoModel> getListaAlunoCursoDao() {
         ArrayList<AlunoModel> listaModel = new ArrayList<>();
         AlunoModel alunoModel = new AlunoModel();
@@ -120,6 +124,13 @@ public class AlunoDao extends ConnectionMySQL {
         return pAluno;
     }
 
+    /**
+     * 
+     * @param pAluno
+     * @param pCurso
+     * @param pStatus
+     * @return 
+     */
     public boolean salvarAluno(String pAluno, String pCurso, String pStatus) {
         try {
             this.conectar();

@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author joseluiz
  */
-public class ConsultaIndividualAluno extends javax.swing.JFrame {
+public class ConsultaAlunos extends javax.swing.JFrame {
 
     AlunoModel alunoModel = new AlunoModel();
 
@@ -32,7 +32,7 @@ public class ConsultaIndividualAluno extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public ConsultaIndividualAluno() {
+    public ConsultaAlunos() {
         initComponents();
         setLocationRelativeTo(null);
         autoCompletar();

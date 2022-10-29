@@ -98,7 +98,6 @@ public class AulaDao extends ConnectionMySQL {
             this.fecharConexao();
         }
         return pAluno;
-
     }
 
 }
