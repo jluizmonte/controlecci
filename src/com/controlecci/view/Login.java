@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class Login extends javax.swing.JFrame {
-
+    
     ErrorAlert ea = new ErrorAlert(this, true);
     SuccessAlert successAlert = new SuccessAlert(this, true);
     TemplateAlerts templateAlerts = new TemplateAlerts();
@@ -264,7 +264,7 @@ public class Login extends javax.swing.JFrame {
     private void jpSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpSenhaActionPerformed
         realizarLogin();
     }//GEN-LAST:event_jpSenhaActionPerformed
-
+    
     public void realizarLogin() {
         usuarioModel.setLoginUsuario(jtfLogin.getText());
         usuarioModel.setSenhaUsuario(String.valueOf(jpSenha.getPassword()));
@@ -281,7 +281,7 @@ public class Login extends javax.swing.JFrame {
                     new TelaPrincipal().setVisible(true);
                     this.dispose();
                 } else {
-
+                    
                     ea = new ErrorAlert(this, true);
                     ErrorAlert.titulo.setText("ERRO");
                     ErrorAlert.msj.setText(templateAlerts.erroLogin());
@@ -299,13 +299,13 @@ public class Login extends javax.swing.JFrame {
         } finally {
         }
     }
-
+    
     public void limparCampos() {
         jtfLogin.setText("");
         jpSenha.setText("");
         jtfLogin.requestFocus();
     }
-
+    
     private void setSessionUser() {
         SessaoUsuarioModel.codigoUsuario = usuarioModel.getIdUsuario();
         SessaoUsuarioModel.nomeUsuario = usuarioModel.getNomeUsuario();
