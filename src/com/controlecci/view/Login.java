@@ -30,7 +30,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form frmLogin
      */
     public Login() {
- dispose();
+        dispose();
         setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
@@ -273,7 +273,7 @@ public class Login extends javax.swing.JFrame {
                 if (usuarioController.getValidarUsuarioDAO(usuarioModel)) {
                     usuarioModel = usuarioController.getUsuarioDAO(jtfLogin.getText());
                     setSessionUser();
-                     successAlert = new SuccessAlert(this, true);
+                    successAlert = new SuccessAlert(this, true);
                     SuccessAlert.titulo.setText("Sucesso!");
                     SuccessAlert.msj.setText("Bem vindo de volta");
                     SuccessAlert.msj1.setText(usuarioModel.getNomeUsuario());
@@ -282,16 +282,17 @@ public class Login extends javax.swing.JFrame {
                     this.dispose();
                 } else {
 
-                    
-                 ea = new ErrorAlert(this, true);
+                    ea = new ErrorAlert(this, true);
                     ErrorAlert.titulo.setText("ERRO");
                     ErrorAlert.msj.setText(templateAlerts.erroLogin());
-                    ErrorAlert.msj1.setText("Revise e tente novamente");
+                    ErrorAlert.msj1.setText(templateAlerts.mensagemPadraoErro());
                     ea.setVisible(true);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Nenhum dos campos podem ficar em branco", "Revise os dados",
-                        JOptionPane.WARNING_MESSAGE);
+                ErrorAlert.titulo.setText("ALERTA");
+                ErrorAlert.msj.setText(templateAlerts.erroCamposEmBranco());
+                ErrorAlert.msj1.setText(templateAlerts.mensagemPadraoErro());
+                ea.setVisible(true);
                 limparCampos();
             }
         } catch (HeadlessException e) {
