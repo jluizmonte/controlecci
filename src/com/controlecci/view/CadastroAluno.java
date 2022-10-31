@@ -301,9 +301,17 @@ public class CadastroAluno extends javax.swing.JFrame {
                     listaAlunoModels.get(i).getStatus()
                 });
             }
+            chamarJDialog();
         } catch (Exception e) {
             e.toString();
         }
+    }
+
+    public void chamarJDialog() {
+        mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
+        mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
+        mensagemConfirmação.fechar();
+        mensagemConfirmação.setVisible(true);
     }
 
     public void salvarAluno() {
