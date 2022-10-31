@@ -1,12 +1,8 @@
 package com.controlecci.view;
 
 import com.controlecci.controller.UsuarioController;
-import com.controlecci.model.AlunoModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.model.UsuarioModel;
-import com.controlecci.util.TemplateAlerts;
-import com.controlecci.util.alerts.ErrorAlert;
-import com.controlecci.util.alerts.SuccessAlert;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.MouseInfo;
@@ -18,10 +14,7 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class Login extends javax.swing.JFrame {
-    
-    ErrorAlert ea = new ErrorAlert(this, true);
-    SuccessAlert successAlert = new SuccessAlert(this, true);
-    TemplateAlerts templateAlerts = new TemplateAlerts();
+
     UsuarioModel usuarioModel = new UsuarioModel();
     UsuarioController usuarioController = new UsuarioController();
     int x, y;
@@ -264,7 +257,7 @@ public class Login extends javax.swing.JFrame {
     private void jpSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpSenhaActionPerformed
         realizarLogin();
     }//GEN-LAST:event_jpSenhaActionPerformed
-    
+
     public void realizarLogin() {
         usuarioModel.setLoginUsuario(jtfLogin.getText());
         usuarioModel.setSenhaUsuario(String.valueOf(jpSenha.getPassword()));
@@ -273,39 +266,28 @@ public class Login extends javax.swing.JFrame {
                 if (usuarioController.getValidarUsuarioDAO(usuarioModel)) {
                     usuarioModel = usuarioController.getUsuarioDAO(jtfLogin.getText());
                     setSessionUser();
-                    successAlert = new SuccessAlert(this, true);
-                    SuccessAlert.titulo.setText("Sucesso!");
-                    SuccessAlert.msj.setText("Bem vindo de volta");
-                    SuccessAlert.msj1.setText(usuarioModel.getNomeUsuario());
-                    successAlert.setVisible(true);
+                    JOptionPane.showMessageDialog(this, "Acesso permitido");
                     new TelaPrincipal().setVisible(true);
                     this.dispose();
                 } else {
-                    
-                    ea = new ErrorAlert(this, true);
-                    ErrorAlert.titulo.setText("ERRO");
-                    ErrorAlert.msj.setText(templateAlerts.erroLogin());
-                    ErrorAlert.msj1.setText(templateAlerts.mensagemPadraoErro());
-                    ea.setVisible(true);
+
+                    JOptionPane.showMessageDialog(this, "Erro ao efetuar o login!");
                 }
             } else {
-                ErrorAlert.titulo.setText("ALERTA");
-                ErrorAlert.msj.setText(templateAlerts.erroCamposEmBranco());
-                ErrorAlert.msj1.setText(templateAlerts.mensagemPadraoErro());
-                ea.setVisible(true);
+                JOptionPane.showMessageDialog(this, "Nenhum campo pode permanecer em branco!");
                 limparCampos();
             }
         } catch (HeadlessException e) {
-        } finally {
+            e.toString();
         }
     }
-    
+
     public void limparCampos() {
         jtfLogin.setText("");
         jpSenha.setText("");
         jtfLogin.requestFocus();
     }
-    
+
     private void setSessionUser() {
         SessaoUsuarioModel.codigoUsuario = usuarioModel.getIdUsuario();
         SessaoUsuarioModel.nomeUsuario = usuarioModel.getNomeUsuario();

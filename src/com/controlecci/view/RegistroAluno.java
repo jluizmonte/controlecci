@@ -303,7 +303,7 @@ public class RegistroAluno extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jbVoltarActionPerformed
 
-    public void carregarAlunosPrevisao() {
+    private void carregarAlunosPrevisao() {
         lista = alunoController.retornaAlunos();
         ac = new TextAutoCompleter(jtfNome);
         ac.setItems(lista);
@@ -316,7 +316,7 @@ public class RegistroAluno extends javax.swing.JFrame {
         jtfChegada.requestFocus();
     }
 
-    public void limparCampos() {
+    private void limparCampos() {
         jtfChegada.setText("");
         jtfSaida.setText("");
         jtfNome.setText("");

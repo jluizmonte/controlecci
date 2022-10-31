@@ -1,6 +1,5 @@
 package com.controlecci.view;
 
-import com.controlecci.model.SessaoUsuarioModel;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -32,11 +31,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabe1 = new javax.swing.JLabel();
-        jLabe3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jlRegistrar = new javax.swing.JLabel();
+        jlConsultar = new javax.swing.JLabel();
+        jlNovoCurso = new javax.swing.JLabel();
+        jlNovoAluno = new javax.swing.JLabel();
+        jlEncerrarSistema = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jlUsuario = new javax.swing.JLabel();
@@ -45,9 +44,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jlRelatorio = new javax.swing.JLabel();
+        jlCertificadosEntregue = new javax.swing.JLabel();
+        jlGerarCertificado = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiRegistroAluno = new javax.swing.JMenuItem();
@@ -70,35 +69,60 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("FUNÇÕES BÁSICAS DISPONÍVEIS:");
 
-        jLabe1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabe1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabe1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabe1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/adicionar.png"))); // NOI18N
-        jLabe1.setText("1- INSERIR UM NOVO REGISTRO (F1)");
+        jlRegistrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        jlRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/adicionar.png"))); // NOI18N
+        jlRegistrar.setText("1- INSERIR UM NOVO REGISTRO (F1)");
+        jlRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlRegistrarMouseClicked(evt);
+            }
+        });
 
-        jLabe3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabe3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabe3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabe3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/pesquisar.png"))); // NOI18N
-        jLabe3.setText("2 - CONSULTAR REGISTROS (F2)");
+        jlConsultar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlConsultar.setForeground(new java.awt.Color(255, 255, 255));
+        jlConsultar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/pesquisar.png"))); // NOI18N
+        jlConsultar.setText("2 - CONSULTAR REGISTROS (F2)");
+        jlConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlConsultarMouseClicked(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/livro.png"))); // NOI18N
-        jLabel4.setText("3 - CADASTRAR CURSO (F3)");
+        jlNovoCurso.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlNovoCurso.setForeground(new java.awt.Color(255, 255, 255));
+        jlNovoCurso.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlNovoCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/livro.png"))); // NOI18N
+        jlNovoCurso.setText("3 - CADASTRAR CURSO (F3)");
+        jlNovoCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlNovoCursoMouseClicked(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/locador.png"))); // NOI18N
-        jLabel5.setText("4 - CADASTRAR ALUNO (F4)");
+        jlNovoAluno.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlNovoAluno.setForeground(new java.awt.Color(255, 255, 255));
+        jlNovoAluno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlNovoAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/locador.png"))); // NOI18N
+        jlNovoAluno.setText("4 - CADASTRAR ALUNO (F4)");
+        jlNovoAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlNovoAlunoMouseClicked(evt);
+            }
+        });
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/exit.png"))); // NOI18N
-        jLabel7.setText("5 - ENCERRAR SISTEMA (F5)");
+        jlEncerrarSistema.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlEncerrarSistema.setForeground(new java.awt.Color(255, 255, 255));
+        jlEncerrarSistema.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlEncerrarSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/exit.png"))); // NOI18N
+        jlEncerrarSistema.setText("5 - ENCERRAR SISTEMA (F5)");
+        jlEncerrarSistema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEncerrarSistemaMouseClicked(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(253, 253, 253));
 
@@ -139,23 +163,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("FUNÇÕES EXTRAS:");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/changelog.png"))); // NOI18N
-        jLabel3.setText("GERAR RELATÓRIO");
+        jlRelatorio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlRelatorio.setForeground(new java.awt.Color(255, 255, 255));
+        jlRelatorio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/changelog.png"))); // NOI18N
+        jlRelatorio.setText("GERAR RELATÓRIO");
+        jlRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlRelatorioMouseClicked(evt);
+            }
+        });
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/devolver.png"))); // NOI18N
-        jLabel6.setText("VER LISTA DE CERTIFICADOS ENTREGUES");
+        jlCertificadosEntregue.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlCertificadosEntregue.setForeground(new java.awt.Color(255, 255, 255));
+        jlCertificadosEntregue.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlCertificadosEntregue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/devolver.png"))); // NOI18N
+        jlCertificadosEntregue.setText("VER LISTA DE CERTIFICADOS ENTREGUES");
+        jlCertificadosEntregue.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlCertificadosEntregueMouseClicked(evt);
+            }
+        });
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/emprestar.png"))); // NOI18N
-        jLabel8.setText("GERAR CERTIFICADO");
+        jlGerarCertificado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlGerarCertificado.setForeground(new java.awt.Color(255, 255, 255));
+        jlGerarCertificado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlGerarCertificado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/emprestar.png"))); // NOI18N
+        jlGerarCertificado.setText("GERAR CERTIFICADO");
+        jlGerarCertificado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlGerarCertificadoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -171,20 +210,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlCertificadosEntregue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlGerarCertificado, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
-                            .addComponent(jLabe3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jlConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jlEncerrarSistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlNovoCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlNovoAluno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(71, 71, 71))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -197,15 +236,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabe1)
+                        .addComponent(jlRegistrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabe3))
+                        .addComponent(jlConsultar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(jlNovoCurso)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)))
+                        .addComponent(jlNovoAluno)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(jlEncerrarSistema)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -214,10 +253,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel8))
+                    .addComponent(jlRelatorio)
+                    .addComponent(jlGerarCertificado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(jlCertificadosEntregue)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -326,7 +365,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jmiCadastroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroAlunoActionPerformed
         new CadastroAluno().setVisible(true);
     }//GEN-LAST:event_jmiCadastroAlunoActionPerformed
-    
+
+    private void jlRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRegistrarMouseClicked
+        new RegistroAluno().setVisible(true);
+    }//GEN-LAST:event_jlRegistrarMouseClicked
+
+    private void jlConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlConsultarMouseClicked
+        new ConsultaAlunos().setVisible(true);
+    }//GEN-LAST:event_jlConsultarMouseClicked
+
+    private void jlNovoCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlNovoCursoMouseClicked
+        new CadastroCurso().setVisible(true);
+    }//GEN-LAST:event_jlNovoCursoMouseClicked
+
+    private void jlNovoAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlNovoAlunoMouseClicked
+        new CadastroAluno().setVisible(true);
+    }//GEN-LAST:event_jlNovoAlunoMouseClicked
+
+    private void jlEncerrarSistemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEncerrarSistemaMouseClicked
+        int dialogResult = JOptionPane.showConfirmDialog(this, "O sistema será encerrado!\n Clique em Yes para encerrar!", "Atenção", JOptionPane.YES_NO_OPTION);
+        if (dialogResult == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jlEncerrarSistemaMouseClicked
+
+    private void jlRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRelatorioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlRelatorioMouseClicked
+
+    private void jlGerarCertificadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlGerarCertificadoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlGerarCertificadoMouseClicked
+
+    private void jlCertificadosEntregueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCertificadosEntregueMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlCertificadosEntregueMouseClicked
+
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -340,21 +414,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         };
         clock.start();
     }
-    
+
     private void setarValores() {
         //   jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabe1;
-    private javax.swing.JLabel jLabe3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -364,7 +430,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel jlCertificadosEntregue;
+    private javax.swing.JLabel jlConsultar;
     private javax.swing.JLabel jlData;
+    private javax.swing.JLabel jlEncerrarSistema;
+    private javax.swing.JLabel jlGerarCertificado;
+    private javax.swing.JLabel jlNovoAluno;
+    private javax.swing.JLabel jlNovoCurso;
+    private javax.swing.JLabel jlRegistrar;
+    private javax.swing.JLabel jlRelatorio;
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JMenuItem jmiCadastroAluno;
     private javax.swing.JMenuItem jmiCadastroCurso;

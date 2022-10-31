@@ -43,7 +43,7 @@ public class AulaDao extends ConnectionMySQL {
     public boolean registrarHoraAula(AlunoModel alunoModel, AulaModel aulaModel) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("insert into aula (id_aluno_fk,data_aula,hora_chegada,hora_saida,hora_de_aula) values((select id_aluno from aluno where nome ='" + alunoModel.getNome() + "'),STR_TO_DATE('" + aulaModel.getDataAula() + "','%d-%m-%Y'),'" + aulaModel.getChegada() + "','" + aulaModel.getSaida() + "',timediff(hora_saida,hora_chegada));");
+            return this.executarInsertUpdateSQL("insert into aula (id_aluno_fk,data_aula,hora_chegada,hora_saida,hora_de_aula) values((select id_aluno from aluno where nome ='" + alunoModel.getNome() + "' and status_aluno='ATIVO'),STR_TO_DATE('" + aulaModel.getDataAula() + "','%d-%m-%Y'),'" + aulaModel.getChegada() + "','" + aulaModel.getSaida() + "',timediff(hora_saida,hora_chegada));");
         } catch (Exception e) {
             e.toString();
             return false;

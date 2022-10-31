@@ -27,12 +27,11 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-              new Login().setVisible(true);
-     //     new TelaPrincipal().setVisible(true);
+            //        new Login().setVisible(true);
+                 new TelaPrincipal().setVisible(true);
             //    new CadastroAluno().setVisible(true);
-       // new RegistroAluno().setVisible(true);
-  //     new ConsultaAlunos().setVisible(true);
+            // new RegistroAluno().setVisible(true);
+//            new ConsultaAlunos().setVisible(true);
         });
     }
-
 }
