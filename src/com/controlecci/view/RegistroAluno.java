@@ -68,6 +68,7 @@ public class RegistroAluno extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BANCO DE HORAS - ALUNO CCI");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 89, 124));
 
