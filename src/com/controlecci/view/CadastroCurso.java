@@ -2,6 +2,7 @@ package com.controlecci.view;
 
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.CursoModel;
+import com.controlecci.model.SessaoUsuarioModel;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.time.LocalDateTime;
@@ -381,7 +382,7 @@ public class CadastroCurso extends javax.swing.JFrame {
     }
 
     private void setarValores() {
-//        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
+        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

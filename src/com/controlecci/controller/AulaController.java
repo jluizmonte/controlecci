@@ -25,6 +25,10 @@ public class AulaController {
         return aulaDao.getRegistroAula(pAluno);
     }
 
+    public ArrayList getRegistroAulaId(int pId) {
+        return aulaDao.getRegistroAulaId(pId);
+    }
+
     public String retornaTempoRestante(String pAluno) {
         return aulaDao.retornaTempoRestante(pAluno);
     }

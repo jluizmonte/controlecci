@@ -5,6 +5,7 @@ import com.controlecci.controller.AulaController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.AulaModel;
+import com.controlecci.model.SessaoUsuarioModel;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Color;
@@ -28,7 +29,6 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     public ArrayList lista = new ArrayList<>();
 
     private AutoCompleter ac;
-    MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(this, true);
 
     /**
      * Creates new form NewJFrame
@@ -37,6 +37,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         autoCompletar();
+        setarValores();
     }
 
     /**
@@ -502,6 +503,30 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         telaCarregamento.setVisible(true);
     }
 
+    /**
+     * apenas exibe quando o id do aluno é passado pela tela de alunos
+     * cadastrados
+     * @param pId
+     */
+    public void exibirDadosAluno(int pId) {
+        listaAulaModels = aulaController.getRegistroAulaId(pId);
+        DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
+        modeloTabela.setNumRows(0);
+        try {
+            int cont = listaAulaModels.size();
+            for (int i = 0; i < cont; i++) {
+                modeloTabela.addRow(new Object[]{
+                    listaAulaModels.get(i).getDataAula(),
+                    listaAulaModels.get(i).getChegada(),
+                    listaAulaModels.get(i).getSaida(),
+                    listaAulaModels.get(i).getTotalHoraAula()});
+            }
+            chamarJDialog();
+        } catch (Exception e) {
+            e.toString();
+        }
+    }
+
     public void carregarRegistro() {
         listaAulaModels = aulaController.getRegistroAula(alunoModel.getNome());
         DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
@@ -562,6 +587,10 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         } else {
             jlSituacaoAluno.setForeground(Color.red);
         }
+    }
+
+    private void setarValores() {
+        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;

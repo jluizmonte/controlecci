@@ -4,9 +4,12 @@ import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.CursoModel;
+import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.ColorirLinhaStatus;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -37,6 +40,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         carregarRegistro();
         colorirLinha();
         setarValores();
+        setarData();
     }
 
     /**
@@ -173,8 +177,8 @@ public class CadastroAluno extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jlData, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -283,6 +287,20 @@ public class CadastroAluno extends javax.swing.JFrame {
         ac.setItems(lista);
     }
 
+    private void setarData() {
+        Thread clock = new Thread() {
+            @Override
+            public void run() {
+                for (;;) {
+                    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                    LocalDateTime timepoint = LocalDateTime.now();
+                    jlData.setText(timepoint.format(fmt));
+                }
+            }
+        };
+        clock.start();
+    }
+
     private void colorirLinha() {
         ColorirLinhaStatus colorirLinhaStatus = new ColorirLinhaStatus(2);
         jtAluno.getColumnModel().getColumn(2).setCellRenderer(colorirLinhaStatus);
@@ -330,7 +348,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
 
     private void setarValores() {
-//        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
+        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

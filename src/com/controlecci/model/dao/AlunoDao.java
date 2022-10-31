@@ -81,7 +81,8 @@ public class AlunoDao extends ConnectionMySQL {
 
     /**
      * retorna nome curso e status
-     * @return 
+     *
+     * @return
      */
     public ArrayList<AlunoModel> getListaAlunoCursoDao() {
         ArrayList<AlunoModel> listaModel = new ArrayList<>();
@@ -125,11 +126,11 @@ public class AlunoDao extends ConnectionMySQL {
     }
 
     /**
-     * 
+     *
      * @param pAluno
      * @param pCurso
      * @param pStatus
-     * @return 
+     * @return
      */
     public boolean salvarAluno(String pAluno, String pCurso, String pStatus) {
         try {
@@ -142,5 +143,19 @@ public class AlunoDao extends ConnectionMySQL {
             this.fecharConexao();
         }
 
+    }
+
+    public boolean inserirAluno(String pAluno, String pCurso, String pStatus) {
+        try {
+            this.conectar();
+            return this.executarInsertUpdateSQL("insert into aluno_cadastro(nome,endereco,cidade,cep,uf,bairro,celular,email,rg,cpf,data_nascimento,curso_fk_cadastro)\n" +
+"values(\"Túlio Eduardo Barreto Tenório da Silva\",\"Rua arthur Xavier (área nobre)\",\"Jaboatão dos guararapes\",\"54150190\",\"PE\",\"Socorro\",\n" +
+"\"(81)986905688\",\"tulioeduu@Outlook.com\",\"5451090\",\"71484011430\",\"2003-08-27\",3);");
+        } catch (Exception e) {
+            e.toString();
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
     }
 }
