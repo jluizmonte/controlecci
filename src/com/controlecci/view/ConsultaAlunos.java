@@ -5,7 +5,6 @@ import com.controlecci.controller.AulaController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.AulaModel;
-import com.controlecci.util.ColorirLinhaStatus;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Color;
@@ -19,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class ConsultaAlunos extends javax.swing.JFrame {
 
     AlunoModel alunoModel = new AlunoModel();
+    TelaCarregamento telaCarregamento = new TelaCarregamento(this, true);
 
     AlunoController alunoController = new AlunoController();
     AulaController aulaController = new AulaController();
@@ -476,7 +476,6 @@ public class ConsultaAlunos extends javax.swing.JFrame {
 
     private void jlVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVoltarMouseClicked
         this.dispose();
-        //  new RegistroAluno().limparCampos();
     }//GEN-LAST:event_jlVoltarMouseClicked
 
     private void jlVoltarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVoltarMouseEntered
@@ -498,10 +497,8 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     }
 
     public void chamarJDialog() {
-        mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
-        mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
-        mensagemConfirmação.fechar();
-        mensagemConfirmação.setVisible(true);
+        telaCarregamento.fechar();
+        telaCarregamento.setVisible(true);
     }
 
     public void carregarRegistro() {

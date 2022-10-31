@@ -20,6 +20,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     private AutoCompleter ac;
     public ArrayList lista = new ArrayList<>();
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(this, true);
+    TelaCarregamento telaCarregamento = new TelaCarregamento(this, true);
     AlunoModel alunoModel = new AlunoModel();
     AlunoController alunoController = new AlunoController();
     CursoModel cursoModel = new CursoModel();
@@ -308,10 +309,8 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
 
     public void chamarJDialog() {
-        mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
-        mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
-        mensagemConfirmação.fechar();
-        mensagemConfirmação.setVisible(true);
+        telaCarregamento.fechar();
+        telaCarregamento.setVisible(true);
     }
 
     public void salvarAluno() {

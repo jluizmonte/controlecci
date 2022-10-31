@@ -2,7 +2,6 @@ package com.controlecci.view;
 
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.CursoModel;
-import com.controlecci.model.SessaoUsuarioModel;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.time.LocalDateTime;
@@ -20,6 +19,7 @@ public class CadastroCurso extends javax.swing.JFrame {
     CursoController cursoController = new CursoController();
     CursoModel cursoModel = new CursoModel();
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(this, true);
+    TelaCarregamento telaCarregamento = new TelaCarregamento(this, true);
     ArrayList<CursoModel> listaCursoModels = new ArrayList<>();
     private AutoCompleter ac;
     public ArrayList lista = new ArrayList<>();
@@ -35,7 +35,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         setarData();
         setarValores();
         autoCompletar();
-
+        inserePadraoModulo();
     }
 
     /**
@@ -332,6 +332,8 @@ public class CadastroCurso extends javax.swing.JFrame {
             mensagemConfirmação.jlInfo.setText("MÓDULOS: " + cursoModel.getModulos().toUpperCase());
             mensagemConfirmação.fechar();
             mensagemConfirmação.setVisible(true);
+            carregarRegistro();
+            limparCampos();
         } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o curso: " + cursoModel.getNomeCurso().toUpperCase(), "Atenção", JOptionPane.WARNING_MESSAGE);
         }
@@ -354,10 +356,8 @@ public class CadastroCurso extends javax.swing.JFrame {
     }
 
     public void chamarJDialog() {
-        mensagemConfirmação.jlMensagem.setText("FINALIZANDO O CARREGAMENTO DE DADOS");
-        mensagemConfirmação.jlInfo.setText("POR FAVOR AGUARDE");
-        mensagemConfirmação.fechar();
-        mensagemConfirmação.setVisible(true);
+        telaCarregamento.fechar();
+        telaCarregamento.setVisible(true);
     }
 
     private void carregarRegistro() {
