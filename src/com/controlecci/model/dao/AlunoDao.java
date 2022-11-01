@@ -38,9 +38,9 @@ public class AlunoDao extends ConnectionMySQL {
                 alunoModel.setRg(this.getResultSet().getString(14));
                 alunoModel.setCpf(this.getResultSet().getString(15));
                 alunoModel.setDataNascimento(this.getResultSet().getString(16));
-                alunoModel.setCurso(this.getResultSet().getString(17));
+                alunoModel.setCurso(this.getResultSet().getString(21));
                 alunoModel.setSituacao(this.getResultSet().getString(18));
-                alunoModel.setPendencia(this.getResultSet().getString(21));
+                alunoModel.setPendencia(this.getResultSet().getString(19));
 
             }
         } catch (SQLException e) {

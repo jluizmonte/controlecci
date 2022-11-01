@@ -1,7 +1,6 @@
 package com.controlecci.view;
 
 import com.controlecci.model.SessaoUsuarioModel;
-import java.lang.System.Logger.Level;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+    
     FichaAluno aluno = new FichaAluno();
 
     /**
@@ -23,6 +22,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setarData();
         setarValores();
+        setarNivel();
     }
 
     /**
@@ -61,7 +61,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmiCadastroAluno = new javax.swing.JMenuItem();
         jmiTodosAlunos = new javax.swing.JMenuItem();
         jmiEncerrar = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmiExtra = new javax.swing.JMenu();
         jmiGerarRelatorio = new javax.swing.JMenuItem();
         jmiCertifcadosEntregues = new javax.swing.JMenuItem();
         jmiGerarCertificado = new javax.swing.JMenuItem();
@@ -347,21 +347,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("FUNÇÕES EXTRAS");
+        jmiExtra.setText("FUNÇÕES EXTRAS");
 
         jmiGerarRelatorio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         jmiGerarRelatorio.setText("GERAR RELATÓRIO");
-        jMenu2.add(jmiGerarRelatorio);
+        jmiExtra.add(jmiGerarRelatorio);
 
         jmiCertifcadosEntregues.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
         jmiCertifcadosEntregues.setText("CERTIFICADOS ENTREGUES");
-        jMenu2.add(jmiCertifcadosEntregues);
+        jmiExtra.add(jmiCertifcadosEntregues);
 
         jmiGerarCertificado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
         jmiGerarCertificado.setText("GERAR CERTIFICADO");
-        jMenu2.add(jmiGerarCertificado);
+        jmiExtra.add(jmiGerarCertificado);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jmiExtra);
 
         setJMenuBar(jMenuBar1);
 
@@ -454,13 +454,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jlCertificadosEntregueMouseClicked
 
     private void jlTodosAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlTodosAlunosMouseClicked
-        new TodosAlunos().setVisible(true);
+        //new TodosAlunos().setVisible(true);
+        new VerAlunosFicha().setVisible(true);
     }//GEN-LAST:event_jlTodosAlunosMouseClicked
 
     private void jmiTodosAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiTodosAlunosActionPerformed
         new VerAlunosFicha().setVisible(true);
     }//GEN-LAST:event_jmiTodosAlunosActionPerformed
-
+    private void setarNivel() {
+        if (SessaoUsuarioModel.nivelAcesso.equals("COORDENAÇÃO")) {
+            jmiExtra.setEnabled(false);
+            jmiCertifcadosEntregues.setEnabled(false);
+            jmiExtra.setEnabled(false);
+            jmiGerarCertificado.setEnabled(false);
+            jmiRegistroAluno.setEnabled(false);
+            jmiConsulta.setEnabled(false);
+            jlCertificadosEntregue.setEnabled(false);
+            jlRegistrar.setEnabled(false);
+            jlConsultar.setEnabled(false);
+            jlGerarCertificado.setEnabled(false);
+            jlRelatorio.setEnabled(false);
+        }
+    }
+    
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -474,7 +490,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         };
         clock.start();
     }
-
+    
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
@@ -483,7 +499,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -506,6 +521,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiCertifcadosEntregues;
     private javax.swing.JMenuItem jmiConsulta;
     private javax.swing.JMenuItem jmiEncerrar;
+    private javax.swing.JMenu jmiExtra;
     private javax.swing.JMenuItem jmiGerarCertificado;
     private javax.swing.JMenuItem jmiGerarRelatorio;
     private javax.swing.JMenuItem jmiRegistroAluno;

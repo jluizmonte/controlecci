@@ -3,9 +3,13 @@ package com.controlecci.view;
 import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.AulaController;
 import com.controlecci.model.AlunoModel;
+import com.controlecci.model.SessaoUsuarioModel;
+import com.controlecci.util.GetDateUtil;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.event.ActionEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -13,15 +17,15 @@ import java.util.ArrayList;
  * @author Instrutores
  */
 public class VerAlunosFicha extends javax.swing.JFrame {
-    
+
     AlunoModel alunoModel = new AlunoModel();
     TelaCarregamento telaCarregamento = new TelaCarregamento(this, true);
-    
+
     AlunoController alunoController = new AlunoController();
     AulaController aulaController = new AulaController();
     ArrayList<AlunoModel> listaAlunoModels = new ArrayList<>();
     public ArrayList lista = new ArrayList<>();
-    
+    GetDateUtil getDateUtil = new GetDateUtil();
     private AutoCompleter ac;
 
     /**
@@ -31,6 +35,9 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         initComponents();
         autoCompletar();
         setLocationRelativeTo(null);
+        limparCampos();
+        setarData();
+        setarValores();
     }
 
     /**
@@ -44,7 +51,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jtfAluno = new javax.swing.JTextField();
+        jtfPesqiusa = new javax.swing.JTextField();
         jbPesquisar = new javax.swing.JButton();
         jtfCelular = new javax.swing.JFormattedTextField();
         jtfCurso = new javax.swing.JTextField();
@@ -90,6 +97,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jlUsuario = new javax.swing.JLabel();
         jlData = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jbLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,10 +107,10 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ALUNO");
 
-        jtfAluno.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jtfAluno.addActionListener(new java.awt.event.ActionListener() {
+        jtfPesqiusa.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jtfPesqiusa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfAlunoActionPerformed(evt);
+                jtfPesqiusaActionPerformed(evt);
             }
         });
 
@@ -114,6 +122,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
             }
         });
 
+        jtfCelular.setEditable(false);
         try {
             jtfCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(81) 9 ####-####")));
         } catch (java.text.ParseException ex) {
@@ -121,12 +130,14 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         }
         jtfCelular.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
+        jtfCurso.setEditable(false);
         jtfCurso.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("EMAIL:");
 
+        jtfCep.setEditable(false);
         try {
             jtfCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###-###")));
         } catch (java.text.ParseException ex) {
@@ -134,6 +145,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         }
         jtfCep.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
+        jtfEmail.setEditable(false);
         jtfEmail.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -144,8 +156,10 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("N°");
 
+        jtfNumero.setEditable(false);
         jtfNumero.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
+        jtfRg.setEditable(false);
         jtfRg.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -156,8 +170,10 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("CURSO:");
 
+        jtfComplemento.setEditable(false);
         jtfComplemento.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
+        jtfNome.setEditable(false);
         jtfNome.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jtfData.setDateFormatString("dd / MM / yyyy");
@@ -207,13 +223,16 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jcbPendencia.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jcbPendencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SIM", "NÃO" }));
 
+        jtfEndereco.setEditable(false);
         jtfEndereco.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
+        jtfPendencia.setEditable(false);
         jtfPendencia.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jtfPendencia.setEnabled(false);
 
+        jtfBairro.setEditable(false);
         jtfBairro.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
+        jtfCidade.setEditable(false);
         jtfCidade.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -221,7 +240,6 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jLabel19.setText("SITUAÇÃO:");
 
         jcbSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "SUSPENSO", "CONCLUIDO" }));
-        jcbSituacao.setEnabled(false);
 
         jcbUf.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jcbUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PE" }));
@@ -234,13 +252,10 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jlCliente.setForeground(new java.awt.Color(255, 255, 255));
         jlCliente.setText("$CNPJ:");
 
+        jtfMatricula.setEditable(false);
         jtfMatricula.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
-        try {
-            jtfCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jtfCpf.setEditable(false);
         jtfCpf.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -251,6 +266,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("CELULAR:");
 
+        jtfTelefone.setEditable(false);
         try {
             jtfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
         } catch (java.text.ParseException ex) {
@@ -295,17 +311,28 @@ public class VerAlunosFicha extends javax.swing.JFrame {
                     .addComponent(jLabel9)))
         );
 
+        jbLimpar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jbLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/restart.png"))); // NOI18N
+        jbLimpar.setText("LIMPAR CAMPOS");
+        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimparActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfAluno)
+                        .addComponent(jtfPesqiusa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbPesquisar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -357,7 +384,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcbPendencia, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jtfPendencia, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,12 +423,13 @@ public class VerAlunosFicha extends javax.swing.JFrame {
                                 .addComponent(jtfComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbLimpar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jcbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addComponent(jSeparator1)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,7 +437,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jtfAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfPesqiusa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbPesquisar))
                 .addGap(2, 2, 2)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -479,7 +507,9 @@ public class VerAlunosFicha extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbLimpar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -491,7 +521,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -501,29 +531,88 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         consultarAluno();
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
-    private void jtfAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfAlunoActionPerformed
+    private void jtfPesqiusaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPesqiusaActionPerformed
         consultarAluno();
-    }//GEN-LAST:event_jtfAlunoActionPerformed
-    
+    }//GEN-LAST:event_jtfPesqiusaActionPerformed
+
+    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
+        jtfData.setDate(getDateUtil.retornaDataAtual());
+        limparCampos();
+        jtfPesqiusa.requestFocus();
+    }//GEN-LAST:event_jbLimparActionPerformed
+
     public void chamarJDialog() {
         telaCarregamento.fechar();
         telaCarregamento.setVisible(true);
     }
-    
+
     private void autoCompletar() {
-        ac = new TextAutoCompleter(jtfAluno);
+        ac = new TextAutoCompleter(jtfPesqiusa);
         lista = alunoController.retornaAlunoCadastro();
         ac.setItems(lista);
     }
-    
+
+    private void limparCampos() {
+        jtfData.setDate(getDateUtil.retornaDataAtual());
+        jtfMatricula.setText("");
+        jtfNome.setText("");
+        jtfCpf.setText("");
+        jtfRg.setText("");
+        jtfEndereco.setText("");
+        jtfBairro.setText("");
+        jtfCep.setText("");
+        jtfCidade.setText("");
+        jcbUf.setSelectedItem("PE");
+        jtfTelefone.setText("");
+        jtfCelular.setText("");
+        jtfEmail.setText("");
+        jtfCurso.setText("");
+        jcbSituacao.setSelectedItem("ATIVO");
+        jtfPendencia.setText("");
+        jcbPendencia.setSelectedItem("NÃO");
+        jtfNumero.setText("");
+        jtfComplemento.setText("");
+        jtfPesqiusa.requestFocus();
+        jtfPesqiusa.setText("");
+    }
+
     public void consultarAluno() {
         alunoModel = new AlunoModel();
-        alunoModel = alunoController.getAlunoDao(jtfAluno.getText());
+        chamarJDialog();
+        alunoModel = alunoController.getAlunoDao(jtfPesqiusa.getText());
+
         jtfNome.setText(alunoModel.getNome());
         jtfBairro.setText(alunoModel.getBairro());
         jtfCelular.setText(alunoModel.getCelular());
+        jtfCep.setText(alunoModel.getCep());
+        jtfCidade.setText(alunoModel.getCidade());
+        jtfComplemento.setText(alunoModel.getComplemento());
+        jtfCpf.setText(alunoModel.getCpf());
+        jtfCurso.setText(alunoModel.getCurso());
+        jtfData.setDateFormatString(alunoModel.getDataNascimento());
+        jtfEmail.setText(alunoModel.getEmail());
+        jtfEndereco.setText(alunoModel.getEndereco());
+        jtfMatricula.setText(String.valueOf(alunoModel.getMatricula()));
+        jtfNumero.setText(String.valueOf(alunoModel.getNumero()));
+        jtfPendencia.setText(alunoModel.getPendencia());
+        jtfRg.setText(alunoModel.getRg());
+        jtfTelefone.setText(alunoModel.getTelefone());
+
     }
 
+    private void setarData() {
+        Thread clock = new Thread() {
+            @Override
+            public void run() {
+                for (;;) {
+                    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                    LocalDateTime timepoint = LocalDateTime.now();
+                    jlData.setText(timepoint.format(fmt));
+                }
+            }
+        };
+        clock.start();
+    }
 //    private void carregarRegistro() {
 //        listaAlunoModels = alunoController.getListaAlunoCadastro();
 //        DefaultTableModel modeloTabela = (DefaultTableModel) jtAluno.getModel();
@@ -557,6 +646,11 @@ public class VerAlunosFicha extends javax.swing.JFrame {
 //            e.toString();
 //        }
 //    }
+
+    private void setarValores() {
+        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -581,6 +675,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jbLimpar;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JComboBox<String> jcbPendencia;
     private javax.swing.JComboBox<String> jcbSituacao;
@@ -589,7 +684,6 @@ public class VerAlunosFicha extends javax.swing.JFrame {
     private javax.swing.JLabel jlCliente;
     private javax.swing.JLabel jlData;
     private javax.swing.JLabel jlUsuario;
-    private javax.swing.JTextField jtfAluno;
     private javax.swing.JTextField jtfBairro;
     private javax.swing.JFormattedTextField jtfCelular;
     private javax.swing.JFormattedTextField jtfCep;
@@ -604,6 +698,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
     private javax.swing.JTextField jtfNome;
     private javax.swing.JTextField jtfNumero;
     private javax.swing.JTextField jtfPendencia;
+    private javax.swing.JTextField jtfPesqiusa;
     private javax.swing.JTextField jtfRg;
     private javax.swing.JFormattedTextField jtfTelefone;
     // End of variables declaration//GEN-END:variables

@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.controlecci.view;
 
 import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
-import com.controlecci.model.CursoModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.GetDateUtil;
 import com.mxrck.autocompleter.AutoCompleter;
@@ -25,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class FichaAluno extends javax.swing.JFrame {
-    
+
     AlunoModel alunoModel = new AlunoModel();
     AlunoController alunoController = new AlunoController();
     GetDateUtil getDateUtil = new GetDateUtil();
@@ -681,7 +676,7 @@ public class FichaAluno extends javax.swing.JFrame {
         jlCargaHoraria.setText(cursoController.retornaCargaHoraria(jtfCurso.getText()));
         ac.setItems(lista);
     }
-    
+
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -695,7 +690,7 @@ public class FichaAluno extends javax.swing.JFrame {
         };
         clock.start();
     }
-    
+
     private void limparCampos() {
         jtfMatricula.setText("");
         jtfNome.setText("");
@@ -717,11 +712,11 @@ public class FichaAluno extends javax.swing.JFrame {
         jtfComplemento.setText("");
         jtfMatricula.requestFocus();
         jtfData.setDate(getDateUtil.retornaDataAtual());
-        
+
     }
-    
+
     private void salvarAluno() throws ParseException {
-        
+
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatricula.getText()));
         alunoModel.setBairro(jtfBairro.getText().toUpperCase());
         alunoModel.setCelular(jtfCelular.getText());
@@ -738,19 +733,19 @@ public class FichaAluno extends javax.swing.JFrame {
         alunoModel.setUf(jcbUf.getSelectedItem().toString());
         alunoModel.setTelefone(jtfTelefone.getText());
         alunoModel.setNumero(Integer.valueOf(jtfNumero.getText()));
-        
+
         if (jtfComplemento.getText().equals("")) {
             alunoModel.setComplemento("SEM COMPLEMENTO");
         } else {
             alunoModel.setComplemento(jtfComplemento.getText());
         }
-        
+
         if (jtfPendencia.getText().equals("")) {
             alunoModel.setPendencia("SEM PENDÊNCIAS");
         } else {
             alunoModel.setPendencia(jtfPendencia.getText().toUpperCase());
         }
-        
+
         if (alunoController.inserirAluno(alunoModel)) {
             mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI SALVO COM SUCESSO!");
             mensagemConfirmação.jlInfo.setText("NO CURSO: " + alunoModel.getCurso());
@@ -761,9 +756,9 @@ public class FichaAluno extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o aluno: " + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }
-    
+
     public void selecionarTipoCliente() throws ParseException {
         String tipo = JOptionPane.showInputDialog(this, "Selecione o tipo de usuário:\n 1. Pessoa Física\n 2. Pessoa Júridica", "1");
         if (tipo.equals("1")) {
@@ -777,7 +772,7 @@ public class FichaAluno extends javax.swing.JFrame {
             this.dispose();
         }
     }
-    
+
     public void menuOpcoes() throws ParseException {
         String opcao = JOptionPane.showInputDialog(this, "Deseja cadastrar outro aluno?\n 1. Sim\n 2. Não", "1");
         if (opcao.equals("1")) {
@@ -788,11 +783,11 @@ public class FichaAluno extends javax.swing.JFrame {
             this.dispose();
         }
     }
-    
+
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
-    
+
     private void setarEstado() {
         jcbUf.setModel(new javax.swing.DefaultComboBoxModel<>(
                 new String[]{"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",

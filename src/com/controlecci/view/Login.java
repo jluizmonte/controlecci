@@ -288,6 +288,8 @@ public class Login extends javax.swing.JFrame {
         jtfLogin.requestFocus();
     }
 
+    
+
     private void setSessionUser() {
         SessaoUsuarioModel.codigoUsuario = usuarioModel.getIdUsuario();
         SessaoUsuarioModel.nomeUsuario = usuarioModel.getNomeUsuario();
