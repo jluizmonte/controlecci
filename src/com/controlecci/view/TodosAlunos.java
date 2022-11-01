@@ -34,7 +34,7 @@ public class TodosAlunos extends javax.swing.JFrame {
         autoCompletar();
         colorirLinha();
         carregarRegistro();
-       // pegarValorSelecionado();
+        // pegarValorSelecionado();
     }
 
     /**
@@ -219,10 +219,9 @@ public class TodosAlunos extends javax.swing.JFrame {
     }
 
     private void pegarValorSelecionado() {
-       int linha = jtAluno.getSelectedRow();
+        int linha = jtAluno.getSelectedRow();
         int codigoLivro = (int) jtAluno.getValueAt(linha, 0);
-        
-        
+
     }
 
     private void colorirLinha() {
@@ -240,7 +239,7 @@ public class TodosAlunos extends javax.swing.JFrame {
                 modeloTabela.addRow(new Object[]{
                     listaAlunoModels.get(i).getNome(),
                     listaAlunoModels.get(i).getCurso(),
-                    listaAlunoModels.get(i).getStatus()
+                    listaAlunoModels.get(i).getSituacao()
                 });
             }
             chamarJDialog();

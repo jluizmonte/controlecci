@@ -20,12 +20,27 @@ public class AlunoDao extends ConnectionMySQL {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("SELECT * FROM aluno WHERE nome = '" + pNome + "'" + ";");
+            this.executarSQL("select * from aluno_cadastro join curso on id_curso = curso_fk_cadastro where nome = '" + pNome + "';");
 
             while (this.getResultSet().next()) {
-                alunoModel.setIdAluno(this.getResultSet().getInt(1));
-                alunoModel.setNome(this.getResultSet().getString(2));
-                alunoModel.setIdCursoFk(this.getResultSet().getInt(3));
+                alunoModel.setMatricula(this.getResultSet().getInt(2));
+                alunoModel.setNome(this.getResultSet().getString(3));
+                alunoModel.setEndereco(this.getResultSet().getString(4));
+                alunoModel.setNumero(this.getResultSet().getInt(5));
+                alunoModel.setComplemento(this.getResultSet().getString(6));
+                alunoModel.setCidade(this.getResultSet().getString(7));
+                alunoModel.setCep(this.getResultSet().getString(8));
+                alunoModel.setUf(this.getResultSet().getString(9));
+                alunoModel.setBairro(this.getResultSet().getString(10));
+                alunoModel.setCelular(this.getResultSet().getString(11));
+                alunoModel.setTelefone(this.getResultSet().getString(12));
+                alunoModel.setEmail(this.getResultSet().getString(13));
+                alunoModel.setRg(this.getResultSet().getString(14));
+                alunoModel.setCpf(this.getResultSet().getString(15));
+                alunoModel.setDataNascimento(this.getResultSet().getString(16));
+                alunoModel.setCurso(this.getResultSet().getString(17));
+                alunoModel.setSituacao(this.getResultSet().getString(18));
+                alunoModel.setPendencia(this.getResultSet().getString(21));
 
             }
         } catch (SQLException e) {
@@ -45,6 +60,26 @@ public class AlunoDao extends ConnectionMySQL {
         try {
             this.conectar();
             this.executarSQL("SELECT nome FROM aluno where status_aluno='ATIVO';");
+            while (this.getResultSet().next()) {
+                lista.add(this.getResultSet().getString(1));
+            }
+        } catch (SQLException e) {
+        } finally {
+            this.fecharConexao();
+        }
+        return lista;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public ArrayList retornaAlunoCadastro() {
+        ArrayList lista = new ArrayList();
+
+        try {
+            this.conectar();
+            this.executarSQL("SELECT nome FROM aluno_cadastro;");
             while (this.getResultSet().next()) {
                 lista.add(this.getResultSet().getString(1));
             }
@@ -94,7 +129,7 @@ public class AlunoDao extends ConnectionMySQL {
                 alunoModel = new AlunoModel();
                 alunoModel.setNome(this.getResultSet().getString(1));
                 alunoModel.setCurso(this.getResultSet().getString(2));
-                alunoModel.setStatus(this.getResultSet().getString(3));
+                alunoModel.setSituacao(this.getResultSet().getString(3));
                 listaModel.add(alunoModel);
             }
         } catch (NumberFormatException | SQLException e) {
@@ -153,8 +188,6 @@ public class AlunoDao extends ConnectionMySQL {
     public boolean inserirAluno(AlunoModel alunoModel) {
         try {
             this.conectar();
-            //  return this.executarInsertUpdateSQL("insert into aluno_cadastro(matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso_fk_cadastro,situacao,pendencia) values();");
-            //"matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso,situacao,pendencia"
             return this.executarInsertUpdateSQL("insert into aluno_cadastro(matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso_fk_cadastro,situacao,pendencia) values(" + alunoModel.getMatricula() + ",'" + alunoModel.getNome() + "','" + alunoModel.getEndereco() + "','" + alunoModel.getNumero() + "','" + alunoModel.getComplemento() + "','" + alunoModel.getCidade() + "','" + alunoModel.getCep() + "','" + alunoModel.getUf() + "','" + alunoModel.getBairro() + "','" + alunoModel.getCelular() + "','" + alunoModel.getTelefone() + "','" + alunoModel.getEmail() + "','" + alunoModel.getRg() + "','" + alunoModel.getCpf() + "','" + alunoModel.getDataNascimento() + "',(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "'),'" + alunoModel.getSituacao() + "','" + alunoModel.getPendencia() + "');");
         } catch (Exception e) {
             e.toString();
@@ -176,30 +209,25 @@ public class AlunoDao extends ConnectionMySQL {
             this.executarSQL("select matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,nome_curso,situacao,pendencia from aluno_cadastro join curso on curso_fk_cadastro=id_curso where id_curso=34 order by nome asc;");
             while (this.getResultSet().next()) {
                 alunoModel = new AlunoModel();
-                
+
                 alunoModel.setMatricula(this.getResultSet().getInt(1));
                 alunoModel.setNome(this.getResultSet().getString(2));
-                
-                
-                alunoModel.setMatricula(this.getResultSet().getInt(2));
-                alunoModel.setBairro(this.getResultSet().getString(10));
-                alunoModel.setCelular(this.getResultSet().getString(11));
-                alunoModel.setCep(this.getResultSet().getString(8));
-                alunoModel.setCidade(this.getResultSet().getString(7));
-                alunoModel.setCpf(this.getResultSet().getString(15));
-                alunoModel.setCurso(this.getResultSet().getString(17));
-                alunoModel.setDataNascimento(this.getResultSet().getString(16));
-                alunoModel.setEmail(this.getResultSet().getString(13));
-                alunoModel.setEndereco(this.getResultSet().getString(4));
-                alunoModel.setNome(this.getResultSet().getString(3));
-                alunoModel.setRg(this.getResultSet().getString(14));
-                alunoModel.setStatus(this.getResultSet().getString(18));
-                alunoModel.setUf(this.getResultSet().getString(9));
-                alunoModel.setTelefone(this.getResultSet().getString(12));
-                alunoModel.setNumero(this.getResultSet().getInt(5));
-                alunoModel.setComplemento(this.getResultSet().getString(6));
-                alunoModel.setPendencia(this.getResultSet().getString(19));
-
+                alunoModel.setEndereco(this.getResultSet().getString(3));
+                alunoModel.setNumero(this.getResultSet().getInt(4));
+                alunoModel.setComplemento(this.getResultSet().getString(5));
+                alunoModel.setCidade(this.getResultSet().getString(6));
+                alunoModel.setCep(this.getResultSet().getString(7));
+                alunoModel.setUf(this.getResultSet().getString(8));
+                alunoModel.setBairro(this.getResultSet().getString(9));
+                alunoModel.setCelular(this.getResultSet().getString(10));
+                alunoModel.setTelefone(this.getResultSet().getString(11));
+                alunoModel.setEmail(this.getResultSet().getString(12));
+                alunoModel.setRg(this.getResultSet().getString(13));
+                alunoModel.setCpf(this.getResultSet().getString(14));
+                alunoModel.setDataNascimento(this.getResultSet().getString(15));
+                alunoModel.setCurso(this.getResultSet().getString(16));
+                alunoModel.setSituacao(this.getResultSet().getString(17));
+                alunoModel.setPendencia(this.getResultSet().getString(18));
                 listaModel.add(alunoModel);
             }
         } catch (NumberFormatException | SQLException e) {

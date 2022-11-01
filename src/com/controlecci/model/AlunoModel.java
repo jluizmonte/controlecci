@@ -11,7 +11,6 @@ public class AlunoModel {
     private String nome;
     private String responsavel;
     private String curso;
-    private String status;
     private int matricula;
     private String endereco;
     private int numero;
@@ -67,14 +66,6 @@ public class AlunoModel {
 
     public void setCurso(String curso) {
         this.curso = curso;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public int getMatricula() {

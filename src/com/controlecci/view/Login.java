@@ -266,7 +266,7 @@ public class Login extends javax.swing.JFrame {
                 if (usuarioController.getValidarUsuarioDAO(usuarioModel)) {
                     usuarioModel = usuarioController.getUsuarioDAO(jtfLogin.getText());
                     setSessionUser();
-                    JOptionPane.showMessageDialog(this, "Acesso permitido");
+                    JOptionPane.showMessageDialog(this, "Acesso permitido a:\n" + usuarioModel.getNomeUsuario(), "Sucesso", JOptionPane.WARNING_MESSAGE);
                     new TelaPrincipal().setVisible(true);
                     this.dispose();
                 } else {

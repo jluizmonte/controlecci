@@ -1,6 +1,8 @@
 package com.controlecci.view;
 
 import com.controlecci.model.SessaoUsuarioModel;
+import java.lang.System.Logger.Level;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -10,6 +12,8 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+
+    FichaAluno aluno = new FichaAluno();
 
     /**
      * Creates new form NewJFrame
@@ -378,6 +382,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jmiRegistroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistroAlunoActionPerformed
         //    this.dispose();
         new RegistroAluno().setVisible(true);
+
     }//GEN-LAST:event_jmiRegistroAlunoActionPerformed
 
     private void jmiCadastroCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroCursoActionPerformed
@@ -396,7 +401,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiConsultaActionPerformed
 
     private void jmiCadastroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroAlunoActionPerformed
-        new CadastroAluno().setVisible(true);
+        //  new CadastroAluno().setVisible(true);
+        try {
+            aluno.selecionarTipoCliente();
+        } catch (ParseException ex) {
+            ex.toString();
+            JOptionPane.showMessageDialog(this, ex);
+        }
+        aluno.setVisible(true);
     }//GEN-LAST:event_jmiCadastroAlunoActionPerformed
 
     private void jlRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRegistrarMouseClicked
@@ -412,7 +424,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jlNovoCursoMouseClicked
 
     private void jlNovoAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlNovoAlunoMouseClicked
-        new CadastroAluno().setVisible(true);
+        //    new CadastroAluno().setVisible(true);
+        try {
+            aluno.selecionarTipoCliente();
+        } catch (ParseException ex) {
+            ex.toString();
+            JOptionPane.showMessageDialog(this, ex);
+        }
+        aluno.setVisible(true);
     }//GEN-LAST:event_jlNovoAlunoMouseClicked
 
     private void jlEncerrarSistemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEncerrarSistemaMouseClicked
@@ -439,7 +458,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jlTodosAlunosMouseClicked
 
     private void jmiTodosAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiTodosAlunosActionPerformed
-        new TodosAlunos().setVisible(true);
+        new VerAlunosFicha().setVisible(true);
     }//GEN-LAST:event_jmiTodosAlunosActionPerformed
 
     private void setarData() {

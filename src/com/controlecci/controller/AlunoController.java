@@ -41,8 +41,24 @@ public class AlunoController {
      *
      * @return
      */
+    public ArrayList<AlunoModel> getListaAlunoCadastro() {
+        return alunoDao.getListaAlunoCadastro();
+    }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList retornaAlunos() {
         return alunoDao.retornaAlunos();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public ArrayList retornaAlunoCadastro() {
+        return alunoDao.retornaAlunoCadastro();
     }
 
     /**
@@ -74,4 +90,5 @@ public class AlunoController {
     public boolean inserirAluno(AlunoModel alunoModel) {
         return alunoDao.inserirAluno(alunoModel);
     }
+
 }

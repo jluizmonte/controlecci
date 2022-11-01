@@ -316,7 +316,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                 modeloTabela.addRow(new Object[]{
                     listaAlunoModels.get(i).getNome(),
                     listaAlunoModels.get(i).getCurso(),
-                    listaAlunoModels.get(i).getStatus()
+                    listaAlunoModels.get(i).getSituacao()
                 });
             }
             chamarJDialog();
@@ -333,9 +333,9 @@ public class CadastroAluno extends javax.swing.JFrame {
     public void salvarAluno() {
         cursoModel.setNomeCurso(jtfCurso.getText().toUpperCase());
         alunoModel.setNome(jtfAluno.getText().toUpperCase());
-        alunoModel.setStatus(jcbStatus.getSelectedItem().toString());
+        alunoModel.setSituacao(jcbStatus.getSelectedItem().toString());
 
-        if (alunoController.salvarAluno(alunoModel.getNome(), cursoModel.getNomeCurso(), alunoModel.getStatus())) {
+        if (alunoController.salvarAluno(alunoModel.getNome(), cursoModel.getNomeCurso(), alunoModel.getSituacao())) {
             mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI SALVO COM SUCESSO!");
             mensagemConfirmação.jlInfo.setText("NO CURSO: " + cursoModel.getNomeCurso());
             mensagemConfirmação.fechar();

@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class FichaAluno extends javax.swing.JFrame {
-
+    
     AlunoModel alunoModel = new AlunoModel();
     AlunoController alunoController = new AlunoController();
     GetDateUtil getDateUtil = new GetDateUtil();
@@ -105,7 +105,7 @@ public class FichaAluno extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jlCargaHoraria = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FICHA CADASTRAL DO ALUNO");
         setResizable(false);
 
@@ -539,17 +539,15 @@ public class FichaAluno extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jcbUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)))
+                    .addComponent(jcbUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel10)
                         .addComponent(jtfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11)))
+                    .addComponent(jtfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -558,11 +556,12 @@ public class FichaAluno extends javax.swing.JFrame {
                     .addComponent(jtfData, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jtfCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlCargaHoraria)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14)
+                        .addComponent(jtfCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlCargaHoraria)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
@@ -682,7 +681,7 @@ public class FichaAluno extends javax.swing.JFrame {
         jlCargaHoraria.setText(cursoController.retornaCargaHoraria(jtfCurso.getText()));
         ac.setItems(lista);
     }
-
+    
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -696,7 +695,7 @@ public class FichaAluno extends javax.swing.JFrame {
         };
         clock.start();
     }
-
+    
     private void limparCampos() {
         jtfMatricula.setText("");
         jtfNome.setText("");
@@ -718,11 +717,11 @@ public class FichaAluno extends javax.swing.JFrame {
         jtfComplemento.setText("");
         jtfMatricula.requestFocus();
         jtfData.setDate(getDateUtil.retornaDataAtual());
-
+        
     }
-
+    
     private void salvarAluno() throws ParseException {
-
+        
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatricula.getText()));
         alunoModel.setBairro(jtfBairro.getText().toUpperCase());
         alunoModel.setCelular(jtfCelular.getText());
@@ -735,23 +734,23 @@ public class FichaAluno extends javax.swing.JFrame {
         alunoModel.setEndereco(jtfEndereco.getText().toUpperCase());
         alunoModel.setNome(jtfNome.getText().toUpperCase());
         alunoModel.setRg(jtfRg.getText());
-        alunoModel.setStatus("ATIVO");
+        alunoModel.setSituacao("ATIVO");
         alunoModel.setUf(jcbUf.getSelectedItem().toString());
         alunoModel.setTelefone(jtfTelefone.getText());
         alunoModel.setNumero(Integer.valueOf(jtfNumero.getText()));
-
+        
         if (jtfComplemento.getText().equals("")) {
             alunoModel.setComplemento("SEM COMPLEMENTO");
         } else {
             alunoModel.setComplemento(jtfComplemento.getText());
         }
-
+        
         if (jtfPendencia.getText().equals("")) {
             alunoModel.setPendencia("SEM PENDÊNCIAS");
         } else {
             alunoModel.setPendencia(jtfPendencia.getText().toUpperCase());
         }
-
+        
         if (alunoController.inserirAluno(alunoModel)) {
             mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI SALVO COM SUCESSO!");
             mensagemConfirmação.jlInfo.setText("NO CURSO: " + alunoModel.getCurso());
@@ -762,9 +761,9 @@ public class FichaAluno extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o aluno: " + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
         }
-
+        
     }
-
+    
     public void selecionarTipoCliente() throws ParseException {
         String tipo = JOptionPane.showInputDialog(this, "Selecione o tipo de usuário:\n 1. Pessoa Física\n 2. Pessoa Júridica", "1");
         if (tipo.equals("1")) {
@@ -778,7 +777,7 @@ public class FichaAluno extends javax.swing.JFrame {
             this.dispose();
         }
     }
-
+    
     public void menuOpcoes() throws ParseException {
         String opcao = JOptionPane.showInputDialog(this, "Deseja cadastrar outro aluno?\n 1. Sim\n 2. Não", "1");
         if (opcao.equals("1")) {
@@ -789,11 +788,11 @@ public class FichaAluno extends javax.swing.JFrame {
             this.dispose();
         }
     }
-
+    
     private void setarValores() {
-        //   jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
+        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
-
+    
     private void setarEstado() {
         jcbUf.setModel(new javax.swing.DefaultComboBoxModel<>(
                 new String[]{"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
