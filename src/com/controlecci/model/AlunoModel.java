@@ -7,10 +7,27 @@ package com.controlecci.model;
 public class AlunoModel {
 
     private int idAluno;
-    private String nome;
     private int idCursoFk;
+    private String nome;
+    private String responsavel;
     private String curso;
     private String status;
+    private int matricula;
+    private String endereco;
+    private int numero;
+    private String complemento;
+    private String cidade;
+    private String bairro;
+    private String cep;
+    private String uf;
+    private String telefone;
+    private String celular;
+    private String email;
+    private String cpf;
+    private String rg;
+    private String dataNascimento;
+    private String situacao;
+    private String pendencia;
 
     public int getIdAluno() {
         return idAluno;
@@ -18,6 +35,14 @@ public class AlunoModel {
 
     public void setIdAluno(int idAluno) {
         this.idAluno = idAluno;
+    }
+
+    public int getIdCursoFk() {
+        return idCursoFk;
+    }
+
+    public void setIdCursoFk(int idCursoFk) {
+        this.idCursoFk = idCursoFk;
     }
 
     public String getNome() {
@@ -28,12 +53,12 @@ public class AlunoModel {
         this.nome = nome;
     }
 
-    public int getIdCursoFk() {
-        return idCursoFk;
+    public String getResponsavel() {
+        return responsavel;
     }
 
-    public void setIdCursoFk(int idCursoFk) {
-        this.idCursoFk = idCursoFk;
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
     }
 
     public String getCurso() {
@@ -50,6 +75,134 @@ public class AlunoModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    public String getPendencia() {
+        return pendencia;
+    }
+
+    public void setPendencia(String pendencia) {
+        this.pendencia = pendencia;
     }
 
 }

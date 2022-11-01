@@ -122,6 +122,26 @@ public class CursoDao extends ConnectionMySQL {
     }
 
     /**
+     * retorna apenas a CH pelo curso inserido
+     * @param pCurso
+     * @return 
+     */
+    public String retornaCargaHoraria(String pCurso) {
+        try {
+            this.conectar();
+            this.executarSQL("select carga_horaria from curso where nome_curso='" + pCurso + "';");
+            while (this.getResultSet().next()) {
+                pCurso = this.getResultSet().getString(1);
+            }
+        } catch (SQLException e) {
+            e.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return pCurso;
+    }
+
+    /**
      * salva um novo curso no banco de dados
      *
      * @param cursoModel

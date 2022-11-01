@@ -145,12 +145,17 @@ public class AlunoDao extends ConnectionMySQL {
 
     }
 
-    public boolean inserirAluno(String pAluno, String pCurso, String pStatus) {
+    /**
+     *
+     * @param alunoModel
+     * @return
+     */
+    public boolean inserirAluno(AlunoModel alunoModel) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("insert into aluno_cadastro(nome,endereco,cidade,cep,uf,bairro,celular,email,rg,cpf,data_nascimento,curso_fk_cadastro)\n" +
-"values(\"Túlio Eduardo Barreto Tenório da Silva\",\"Rua arthur Xavier (área nobre)\",\"Jaboatão dos guararapes\",\"54150190\",\"PE\",\"Socorro\",\n" +
-"\"(81)986905688\",\"tulioeduu@Outlook.com\",\"5451090\",\"71484011430\",\"2003-08-27\",3);");
+            //  return this.executarInsertUpdateSQL("insert into aluno_cadastro(matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso_fk_cadastro,situacao,pendencia) values();");
+            //"matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso,situacao,pendencia"
+            return this.executarInsertUpdateSQL("insert into aluno_cadastro(matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso_fk_cadastro,situacao,pendencia) values(" + alunoModel.getMatricula() + ",'" + alunoModel.getNome() + "','" + alunoModel.getEndereco() + "','" + alunoModel.getNumero() + "','" + alunoModel.getComplemento() + "','" + alunoModel.getCidade() + "','" + alunoModel.getCep() + "','" + alunoModel.getUf() + "','" + alunoModel.getBairro() + "','" + alunoModel.getCelular() + "','" + alunoModel.getTelefone() + "','" + alunoModel.getEmail() + "','" + alunoModel.getRg() + "','" + alunoModel.getCpf() + "','" + alunoModel.getDataNascimento() + "',(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "'),'" + alunoModel.getSituacao() + "','" + alunoModel.getPendencia() + "');");
         } catch (Exception e) {
             e.toString();
             return false;
@@ -158,4 +163,51 @@ public class AlunoDao extends ConnectionMySQL {
             this.fecharConexao();
         }
     }
+
+    /**
+     *
+     * @return
+     */
+    public ArrayList<AlunoModel> getListaAlunoCadastro() {
+        ArrayList<AlunoModel> listaModel = new ArrayList<>();
+        AlunoModel alunoModel = new AlunoModel();
+        try {
+            this.conectar();
+            this.executarSQL("select matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,nome_curso,situacao,pendencia from aluno_cadastro join curso on curso_fk_cadastro=id_curso where id_curso=34 order by nome asc;");
+            while (this.getResultSet().next()) {
+                alunoModel = new AlunoModel();
+                
+                alunoModel.setMatricula(this.getResultSet().getInt(1));
+                alunoModel.setNome(this.getResultSet().getString(2));
+                
+                
+                alunoModel.setMatricula(this.getResultSet().getInt(2));
+                alunoModel.setBairro(this.getResultSet().getString(10));
+                alunoModel.setCelular(this.getResultSet().getString(11));
+                alunoModel.setCep(this.getResultSet().getString(8));
+                alunoModel.setCidade(this.getResultSet().getString(7));
+                alunoModel.setCpf(this.getResultSet().getString(15));
+                alunoModel.setCurso(this.getResultSet().getString(17));
+                alunoModel.setDataNascimento(this.getResultSet().getString(16));
+                alunoModel.setEmail(this.getResultSet().getString(13));
+                alunoModel.setEndereco(this.getResultSet().getString(4));
+                alunoModel.setNome(this.getResultSet().getString(3));
+                alunoModel.setRg(this.getResultSet().getString(14));
+                alunoModel.setStatus(this.getResultSet().getString(18));
+                alunoModel.setUf(this.getResultSet().getString(9));
+                alunoModel.setTelefone(this.getResultSet().getString(12));
+                alunoModel.setNumero(this.getResultSet().getInt(5));
+                alunoModel.setComplemento(this.getResultSet().getString(6));
+                alunoModel.setPendencia(this.getResultSet().getString(19));
+
+                listaModel.add(alunoModel);
+            }
+        } catch (NumberFormatException | SQLException e) {
+            e.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return listaModel;
+    }
+
 }

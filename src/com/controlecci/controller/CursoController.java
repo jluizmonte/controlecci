@@ -40,6 +40,10 @@ public class CursoController {
         return cursoDao.getCursoApenas();
     }
 
+    public String retornaCargaHoraria(String pCurso) {
+        return cursoDao.retornaCargaHoraria(pCurso);
+    }
+
     public String retornaStatusAluno(String pAluno) {
         return cursoDao.retornaStatusAluno(pAluno);
     }

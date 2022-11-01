@@ -210,7 +210,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jScrollPane1)
             .addComponent(jSeparator1)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -347,7 +347,7 @@ public class CadastroCurso extends javax.swing.JFrame {
         ac.setItems(lista);
     }
 
-    public void inserePadraoModulo() {
+    private void inserePadraoModulo() {
         if (jcbPadrao.isSelected()) {
             jtfModulos.setText("BÁSICO + INTERMEDIÁRIO");
             jtfModulos.setEnabled(false);

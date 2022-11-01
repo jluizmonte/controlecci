@@ -105,6 +105,17 @@ public class GetDateUtil {
         return diaAnterior;
     }
 
+    /**
+     * retorna a data atual para o JDateChooser
+     *
+     * @return
+     */
+    public Date retornaDataAtual() {
+        Date data = new Date();
+        Date diaAnterior = new Date(data.getYear(), data.getMonth(), data.getDate());
+        return diaAnterior;
+    }
+
     public Date converterDataBr(String data) {
         SimpleDateFormat formatoDesejado = new SimpleDateFormat("dd/MM/yyyy");
         Date datas = null;

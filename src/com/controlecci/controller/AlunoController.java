@@ -65,4 +65,13 @@ public class AlunoController {
         return alunoDao.salvarAluno(pAluno, pCurso, pStatus);
     }
 
+    /**
+     * insere aluno com dados iguais a ficha
+     *
+     * @param alunoModel
+     * @return
+     */
+    public boolean inserirAluno(AlunoModel alunoModel) {
+        return alunoDao.inserirAluno(alunoModel);
+    }
 }

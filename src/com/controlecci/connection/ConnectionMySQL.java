@@ -85,9 +85,39 @@ public class ConnectionMySQL {
             getStatement().executeUpdate(pSQL);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir/atualizar registro!\n" + e.toString(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.toString();
             return false;
         }
         return true;
+    }
+
+         /**
+          * 
+          * @param pSQL
+          * @return 
+          */
+    public int insertSQL(String pSQL) {
+        int status = 0;
+        try {
+            // createStatement de con para criar o Statement
+            this.setStatement(getCon().createStatement());
+
+            // Definido o Statement, executamos a query no banco de dados
+            this.getStatement().executeUpdate(pSQL);
+
+            // consulta o ultimo id inserido
+            this.setResultSet(this.getStatement().executeQuery("SELECT last_insert_id();"));
+
+            // recupera o ultimo id inserido
+            while (this.resultSet.next()) {
+                status = this.resultSet.getInt(1);
+            }
+            // retorna o ultimo id inserido
+            return status;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return status;
+        }
     }
 
     /**
