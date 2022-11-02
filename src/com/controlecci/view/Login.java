@@ -63,7 +63,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jtfLogin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jtfLogin.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jtfLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfLogin.setBorder(null);
         jtfLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,7 +77,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jpSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jpSenha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jpSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jpSenha.setBorder(null);
         jpSenha.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -102,7 +102,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/others/login2.png"))); // NOI18N
 
-        jlSair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlSair.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jlSair.setForeground(new java.awt.Color(255, 255, 255));
         jlSair.setText("X");
         jlSair.addMouseListener(new java.awt.event.MouseAdapter() {
