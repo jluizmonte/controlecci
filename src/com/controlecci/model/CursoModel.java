@@ -10,6 +10,7 @@ public class CursoModel {
     private String nomeCurso;
     private String modulos;
     private String cargaHoraria;
+    private Double valor;
 
     public int getIdCurso() {
         return idCurso;
@@ -41,6 +42,14 @@ public class CursoModel {
 
     public void setCargaHoraria(String cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
 }

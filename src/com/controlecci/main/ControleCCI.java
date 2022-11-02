@@ -1,8 +1,11 @@
 package com.controlecci.main;
 
-import com.controlecci.view.CadastroAluno;
+import com.controlecci.view.CadastroCurso;
 import com.controlecci.view.FichaAluno;
 import com.controlecci.view.Login;
+import com.controlecci.view.RegistroAluno;
+import com.controlecci.view.SCCI.ScciPrincipal;
+import com.controlecci.view.TelaPrincipal;
 import com.controlecci.view.VerAlunosFicha;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -39,8 +42,11 @@ public class ControleCCI {
 ////            }
 //            //  aluno.setVisible(true);
 
-           new VerAlunosFicha().setVisible(true);
-
+            //      new VerAlunosFicha().setVisible(true);
+//new RegistroAluno().setVisible(true);
+//            new TelaPrincipal().setVisible(true);
+            //         new CadastroCurso().setVisible(true);
+            new ScciPrincipal().setVisible(true);
         });
     }
 }

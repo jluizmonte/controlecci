@@ -1,7 +1,6 @@
 package com.controlecci.model.dao;
 
 import com.controlecci.connection.ConnectionMySQL;
-import com.controlecci.model.AulaModel;
 import com.controlecci.model.CursoModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class CursoDao extends ConnectionMySQL {
         CursoModel cursoModel = new CursoModel();
         try {
             this.conectar();
-            this.executarSQL("select nome_curso, modulo_curso, carga_horaria from curso join aluno on id_curso = id_curso_fk where nome = '" + pAluno + "' and status_aluno='ATIVO';");
+            this.executarSQL("select nome_curso, modulo_curso, carga_horaria from curso join aluno_cadastro on id_curso = curso_fk_cadastro where nome = '" + pAluno + "' and situacao='ATIVO';");
             while (this.getResultSet().next()) {
                 cursoModel = new CursoModel();
                 cursoModel.setNomeCurso(this.getResultSet().getString(1));
@@ -48,7 +47,7 @@ public class CursoDao extends ConnectionMySQL {
 
         try {
             this.conectar();
-            this.executarSQL("select min(DATE_FORMAT(data_aula, '%d/%m/%Y')) from aula join aluno on id_aluno_fk = id_aluno where nome ='" + pAluno + "';");
+            this.executarSQL("select min(DATE_FORMAT(data_aula, '%d/%m/%Y')) from aula join aluno_cadastro on id_aluno_fk = id_cadastro where nome ='" + pAluno + "';");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
@@ -68,7 +67,7 @@ public class CursoDao extends ConnectionMySQL {
     public String retornaDataFinalCurso(String pAluno) {
         try {
             this.conectar();
-            this.executarSQL("select date_add((select min(data_aula) from aula join aluno on id_aluno_fk = id_aluno where nome ='" + pAluno + "'), interval 90 day);");
+            this.executarSQL("select date_add((select min(data_aula) from aula join aluno_cadastro on id_aluno_fk = id_cadastro where nome ='" + pAluno + "'), interval 90 day);");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
@@ -89,7 +88,7 @@ public class CursoDao extends ConnectionMySQL {
     public String retornaTotalCursado(String pAluno) {
         try {
             this.conectar();
-            this.executarSQL("SELECT  SEC_TO_TIME( SUM( TIME_TO_SEC( hora_de_aula ) ) ) AS timeSum  FROM aula join aluno on id_aluno_fk=id_aluno where nome='" + pAluno + "';");
+            this.executarSQL("SELECT  SEC_TO_TIME( SUM( TIME_TO_SEC( hora_de_aula ) ) ) AS timeSum  FROM aula join aluno_cadastro on id_aluno_fk=id_cadastro where nome='" + pAluno + "';");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
@@ -109,7 +108,7 @@ public class CursoDao extends ConnectionMySQL {
     public String retornaStatusAluno(String pAluno) {
         try {
             this.conectar();
-            this.executarSQL("select status_aluno from aluno where nome='" + pAluno + "' and status_aluno='ATIVO';");
+            this.executarSQL("select situacao from aluno_cadastro where nome='" + pAluno + "' and situacao='ATIVO';");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
@@ -150,7 +149,7 @@ public class CursoDao extends ConnectionMySQL {
     public boolean salvarCurso(CursoModel cursoModel) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("insert into curso (nome_curso, carga_horaria, modulo_curso) values ('" + cursoModel.getNomeCurso() + "','" + cursoModel.getCargaHoraria() + "','" + cursoModel.getModulos() + "')");
+            return this.executarInsertUpdateSQL("insert into curso (nome_curso, carga_horaria, modulo_curso, valor) values ('" + cursoModel.getNomeCurso() + "','" + cursoModel.getCargaHoraria() + "','" + cursoModel.getModulos() + "'"+cursoModel.getValor()+"')");
         } catch (Exception e) {
             e.toString();
             return false;
@@ -168,12 +167,13 @@ public class CursoDao extends ConnectionMySQL {
         CursoModel cursoModel = new CursoModel();
         try {
             this.conectar();
-            this.executarSQL("select nome_curso, carga_horaria, modulo_curso from curso;");
+            this.executarSQL("select nome_curso, carga_horaria, modulo_curso, valor from curso;");
             while (this.getResultSet().next()) {
                 cursoModel = new CursoModel();
                 cursoModel.setNomeCurso(this.getResultSet().getString(1));
                 cursoModel.setCargaHoraria(this.getResultSet().getString(2));
                 cursoModel.setModulos(this.getResultSet().getString(3));
+                cursoModel.setValor(this.getResultSet().getDouble(4));
                 listaCursoModels.add(cursoModel);
             }
         } catch (SQLException e) {

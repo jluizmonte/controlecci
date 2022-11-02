@@ -61,7 +61,7 @@ public class AlunoDao extends ConnectionMySQL {
 
         try {
             this.conectar();
-            this.executarSQL("SELECT nome FROM aluno where status_aluno='ATIVO';");
+            this.executarSQL("SELECT nome FROM aluno_cadastro where situacao='ATIVO';");
             while (this.getResultSet().next()) {
                 lista.add(this.getResultSet().getString(1));
             }
@@ -101,7 +101,7 @@ public class AlunoDao extends ConnectionMySQL {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("SELECT * FROM aluno order by nome asc;");
+            this.executarSQL("SELECT * FROM aluno_cadastro order by nome asc;");
             while (this.getResultSet().next()) {
                 alunoModel = new AlunoModel();
                 alunoModel.setIdAluno(this.getResultSet().getInt(1));
@@ -126,7 +126,7 @@ public class AlunoDao extends ConnectionMySQL {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("SELECT nome,nome_curso,status_aluno from aluno join curso on id_curso_fk=id_curso order by nome asc;");
+            this.executarSQL("SELECT nome,nome_curso,situacao from aluno_cadastro join curso on curso_fk_cadastro=id_curso order by nome asc;");
             while (this.getResultSet().next()) {
                 alunoModel = new AlunoModel();
                 alunoModel.setNome(this.getResultSet().getString(1));
@@ -150,7 +150,7 @@ public class AlunoDao extends ConnectionMySQL {
     public String retornarCursoPeloAluno(String pAluno) {
         try {
             this.conectar();
-            this.executarSQL("select nome_curso from curso join aluno on id_curso_fk = id_curso where nome= '" + pAluno + "'" + ";");
+            this.executarSQL("select nome_curso from curso join aluno_cadastro on curso_fk_cadastro = id_curso where nome= '" + pAluno + "'" + ";");
 
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
@@ -172,7 +172,7 @@ public class AlunoDao extends ConnectionMySQL {
     public boolean salvarAluno(String pAluno, String pCurso, String pStatus) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("insert into aluno(nome, id_curso_fk,status_aluno) values ('" + pAluno + "',(select id_curso from curso where nome_curso='" + pCurso + "'),'" + pStatus + "');");
+            return this.executarInsertUpdateSQL("insert into aluno_cadastro(nome, curso_fk_cadastro,situacao) values ('" + pAluno + "',(select id_curso from curso where nome_curso='" + pCurso + "'),'" + pStatus + "');");
         } catch (Exception e) {
             e.toString();
             return false;

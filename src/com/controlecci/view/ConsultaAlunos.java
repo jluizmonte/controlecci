@@ -78,8 +78,6 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jbSuspender = new javax.swing.JToggleButton();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jlSituacaoHoras = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtConsulta = new javax.swing.JTable();
         jlVoltar = new javax.swing.JLabel();
@@ -223,13 +221,6 @@ public class ConsultaAlunos extends javax.swing.JFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("A CONTAGEM SERÁ INTERROMPIDA, AO FINAL DO PRAZO DO ALUNO REMOVA A SUSPENSÃO");
 
-        jLabel16.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel16.setText("SITUAÇÃO HORAS:");
-
-        jlSituacaoHoras.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jlSituacaoHoras.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlSituacaoHoras.setText("$SITUACAO HORAS");
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -259,19 +250,15 @@ public class ConsultaAlunos extends javax.swing.JFrame {
                             .addComponent(jlHorasRestantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlSituacaoHoras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jlSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbSuspender)
-                        .addGap(120, 120, 120))
+                        .addComponent(jbSuspender, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(99, 99, 99))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -319,11 +306,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jlSituacaoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(jlSituacaoHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel14)
                     .addComponent(jbSuspender))
@@ -506,6 +489,7 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     /**
      * apenas exibe quando o id do aluno é passado pela tela de alunos
      * cadastrados
+     *
      * @param pId
      */
     public void exibirDadosAluno(int pId) {
@@ -562,13 +546,11 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             jlHorasRestantes.setForeground(Color.red);
             jlDataEncerramento.setForeground(Color.red);
             jlSituacaoAluno.setForeground(Color.red);
-            jlSituacaoHoras.setForeground(Color.red);
             jlDataInicio.setText("NÃO INICIOU O CURSO");
             jlDataEncerramento.setText("NÃO INICIOU O CURSO");
             jlHorasRealizadas.setText("NÃO INICIOU O CURSO");
             jlHorasRestantes.setText("NÃO INICIOU O CURSO");
             jlSituacaoAluno.setText("NÃO INICIOU O CURSO");
-            jlSituacaoHoras.setText("NÃO INICIOU O CURSO");
 
         } else {
             jlDataInicio.setForeground(Color.black);
@@ -576,7 +558,6 @@ public class ConsultaAlunos extends javax.swing.JFrame {
             jlHorasRestantes.setForeground(Color.black);
             jlDataEncerramento.setForeground(Color.black);
             jlSituacaoAluno.setForeground(Color.black);
-            jlSituacaoHoras.setForeground(Color.black);
         }
         colorirLinha();
     }
@@ -599,7 +580,6 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -626,7 +606,6 @@ public class ConsultaAlunos extends javax.swing.JFrame {
     private javax.swing.JLabel jlModulos;
     private javax.swing.JLabel jlNomeAluno;
     private javax.swing.JLabel jlSituacaoAluno;
-    private javax.swing.JLabel jlSituacaoHoras;
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JLabel jlVoltar;
     private javax.swing.JTable jtConsulta;
