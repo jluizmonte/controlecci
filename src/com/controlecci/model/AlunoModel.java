@@ -27,6 +27,7 @@ public class AlunoModel {
     private String dataNascimento;
     private String situacao;
     private String pendencia;
+    private String cargaHoraria;
 
     public int getIdAluno() {
         return idAluno;
@@ -194,6 +195,14 @@ public class AlunoModel {
 
     public void setPendencia(String pendencia) {
         this.pendencia = pendencia;
+    }
+
+    public String getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public void setCargaHoraria(String cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
     }
 
 }

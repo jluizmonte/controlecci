@@ -29,17 +29,17 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
-//            FichaAluno aluno = new FichaAluno();
-//
-//            try {
-//                aluno.selecionarTipoCliente();
-//            } catch (ParseException ex) {
-//                Logger.getLogger(ControleCCI.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-            //  aluno.setVisible(true);
+//            new Login().setVisible(true);
+////            FichaAluno aluno = new FichaAluno();
+////
+////            try {
+////                aluno.selecionarTipoCliente();
+////            } catch (ParseException ex) {
+////                Logger.getLogger(ControleCCI.class.getName()).log(Level.SEVERE, null, ex);
+////            }
+//            //  aluno.setVisible(true);
 
-           // new VerAlunosFicha().setVisible(true);
+           new VerAlunosFicha().setVisible(true);
 
         });
     }

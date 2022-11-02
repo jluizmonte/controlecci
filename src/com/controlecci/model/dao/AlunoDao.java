@@ -12,15 +12,16 @@ import java.util.ArrayList;
 public class AlunoDao extends ConnectionMySQL {
 
     /**
+     * retorna os dados do aluno da tabela aluno_cadastro
      *
-     * @param pNome
+     * @param pAluno
      * @return
      */
-    public AlunoModel getAluno(String pNome) {
+    public AlunoModel getAluno(String pAluno) {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("select * from aluno_cadastro join curso on id_curso = curso_fk_cadastro where nome = '" + pNome + "';");
+            this.executarSQL("SELECT id_cadastro,matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,DATE_FORMAT(data_nascimento, '%d/%m/%Y'),(select nome_curso where id_curso=curso_fk_cadastro),(select carga_horaria  where id_curso=curso_fk_cadastro),situacao,pendencia from aluno_cadastro join curso on id_curso = curso_fk_cadastro where nome ='" + pAluno + "';");
 
             while (this.getResultSet().next()) {
                 alunoModel.setMatricula(this.getResultSet().getInt(2));
@@ -38,12 +39,13 @@ public class AlunoDao extends ConnectionMySQL {
                 alunoModel.setRg(this.getResultSet().getString(14));
                 alunoModel.setCpf(this.getResultSet().getString(15));
                 alunoModel.setDataNascimento(this.getResultSet().getString(16));
-                alunoModel.setCurso(this.getResultSet().getString(21));
-                alunoModel.setSituacao(this.getResultSet().getString(18));
-                alunoModel.setPendencia(this.getResultSet().getString(19));
-
+                alunoModel.setCurso(this.getResultSet().getString(17));
+                alunoModel.setCargaHoraria(this.getResultSet().getString(18));
+                alunoModel.setSituacao(this.getResultSet().getString(19));
+                alunoModel.setPendencia(this.getResultSet().getString(20));
             }
         } catch (SQLException e) {
+            System.out.print(e.toString());
         } finally {
             this.fecharConexao();
         }
@@ -188,7 +190,7 @@ public class AlunoDao extends ConnectionMySQL {
     public boolean inserirAluno(AlunoModel alunoModel) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("insert into aluno_cadastro(matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso_fk_cadastro,situacao,pendencia) values(" + alunoModel.getMatricula() + ",'" + alunoModel.getNome() + "','" + alunoModel.getEndereco() + "','" + alunoModel.getNumero() + "','" + alunoModel.getComplemento() + "','" + alunoModel.getCidade() + "','" + alunoModel.getCep() + "','" + alunoModel.getUf() + "','" + alunoModel.getBairro() + "','" + alunoModel.getCelular() + "','" + alunoModel.getTelefone() + "','" + alunoModel.getEmail() + "','" + alunoModel.getRg() + "','" + alunoModel.getCpf() + "','" + alunoModel.getDataNascimento() + "',(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "'),'" + alunoModel.getSituacao() + "','" + alunoModel.getPendencia() + "');");
+            return this.executarInsertUpdateSQL("insert into aluno_cadastro(matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso_fk_cadastro,situacao,pendencia) values(" + alunoModel.getMatricula() + ",'" + alunoModel.getNome() + "','" + alunoModel.getEndereco() + "','" + alunoModel.getNumero() + "','" + alunoModel.getComplemento() + "','" + alunoModel.getCidade() + "','" + alunoModel.getCep() + "','" + alunoModel.getUf() + "','" + alunoModel.getBairro() + "','" + alunoModel.getCelular() + "','" + alunoModel.getTelefone() + "','" + alunoModel.getEmail() + "','" + alunoModel.getRg() + "','" + alunoModel.getCpf() + "',STR_TO_DATE('" + alunoModel.getDataNascimento() + "','%d-%m-%Y'),(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "'),'" + alunoModel.getSituacao() + "','" + alunoModel.getPendencia() + "');");
         } catch (Exception e) {
             e.toString();
             return false;
@@ -206,7 +208,7 @@ public class AlunoDao extends ConnectionMySQL {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("select matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,nome_curso,situacao,pendencia from aluno_cadastro join curso on curso_fk_cadastro=id_curso where id_curso=34 order by nome asc;");
+            this.executarSQL("select matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,nome_curso,situacao,pendencia from aluno_cadastro join curso on curso_fk_cadastro=id_curso order by nome asc;");
             while (this.getResultSet().next()) {
                 alunoModel = new AlunoModel();
 

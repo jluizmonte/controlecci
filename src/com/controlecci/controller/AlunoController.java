@@ -13,12 +13,13 @@ public class AlunoController {
     AlunoDao alunoDao = new AlunoDao();
 
     /**
+     * retorna lista com dados da aula do aluno pelo nome dele
      *
      * @param pNome
      * @return
      */
-    public AlunoModel getAlunoDao(String pNome) {
-        return alunoDao.getAluno(pNome);
+    public AlunoModel getAlunoDao(String pAluno) {
+        return alunoDao.getAluno(pAluno);
     }
 
     /**

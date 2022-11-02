@@ -17,13 +17,11 @@ import java.util.ArrayList;
  * @author Instrutores
  */
 public class VerAlunosFicha extends javax.swing.JFrame {
-
+    
     AlunoModel alunoModel = new AlunoModel();
     TelaCarregamento telaCarregamento = new TelaCarregamento(this, true);
-
+    
     AlunoController alunoController = new AlunoController();
-    AulaController aulaController = new AulaController();
-    ArrayList<AlunoModel> listaAlunoModels = new ArrayList<>();
     public ArrayList lista = new ArrayList<>();
     GetDateUtil getDateUtil = new GetDateUtil();
     private AutoCompleter ac;
@@ -538,22 +536,21 @@ public class VerAlunosFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfPesqiusaActionPerformed
 
     private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
-        jtfData.setDate(getDateUtil.retornaDataAtual());
         limparCampos();
         jtfPesqiusa.requestFocus();
     }//GEN-LAST:event_jbLimparActionPerformed
-
+    
     public void chamarJDialog() {
         telaCarregamento.fechar();
         telaCarregamento.setVisible(true);
     }
-
+    
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfPesqiusa);
         lista = alunoController.retornaAlunoCadastro();
         ac.setItems(lista);
     }
-
+    
     private void limparCampos() {
         jtfData.setDate(getDateUtil.retornaDataAtual());
         jtfMatricula.setText("");
@@ -577,12 +574,12 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jtfPesqiusa.requestFocus();
         jtfPesqiusa.setText("");
     }
-
+    
     public void consultarAluno() {
         alunoModel = new AlunoModel();
         chamarJDialog();
         alunoModel = alunoController.getAlunoDao(jtfPesqiusa.getText());
-
+        System.out.println(alunoModel.getNome());
         jtfNome.setText(alunoModel.getNome());
         jtfBairro.setText(alunoModel.getBairro());
         jtfCelular.setText(alunoModel.getCelular());
@@ -591,6 +588,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jtfComplemento.setText(alunoModel.getComplemento());
         jtfCpf.setText(alunoModel.getCpf());
         jtfCurso.setText(alunoModel.getCurso());
+        jlCargaHoraria.setText(alunoModel.getCargaHoraria());
         jtfData.setDateFormatString(alunoModel.getDataNascimento());
         jtfEmail.setText(alunoModel.getEmail());
         jtfEndereco.setText(alunoModel.getEndereco());
@@ -599,9 +597,9 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jtfPendencia.setText(alunoModel.getPendencia());
         jtfRg.setText(alunoModel.getRg());
         jtfTelefone.setText(alunoModel.getTelefone());
-
+        
     }
-
+    
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -650,7 +648,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
 //    }
 
     private void setarValores() {
-        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
+        // jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
