@@ -28,6 +28,7 @@ public class AlunoModel {
     private String situacao;
     private String pendencia;
     private String cargaHoraria;
+    private String dataMatricula;
 
     public int getIdAluno() {
         return idAluno;
@@ -203,6 +204,14 @@ public class AlunoModel {
 
     public void setCargaHoraria(String cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
+    }
+
+    public String getDataMatricula() {
+        return dataMatricula;
+    }
+
+    public void setDataMatricula(String dataMatricula) {
+        this.dataMatricula = dataMatricula;
     }
 
 }

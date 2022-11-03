@@ -553,7 +553,7 @@ public class CursoView extends javax.swing.JInternalFrame {
 
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
         habilitaDesabilitaCamposAlteracao(true);
-       alterarCurso();
+        alterarCurso();
     }//GEN-LAST:event_jbAlterarActionPerformed
 
     private void jbSalvarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarCursoActionPerformed
@@ -638,7 +638,7 @@ public class CursoView extends javax.swing.JInternalFrame {
     }
 
     private void alterarCurso() {
-        cursoModel=new CursoModel();
+        cursoModel = new CursoModel();
         cursoModel.setNomeCurso(jtfCurso.getText().toUpperCase());
         cursoModel.setModulos(jtfModulos.getText().toUpperCase());
         cursoModel.setCargaHoraria(jtfCargaHoraria.getText());

@@ -190,7 +190,19 @@ public class AlunoDao extends ConnectionMySQL {
     public boolean inserirAluno(AlunoModel alunoModel) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("insert into aluno_cadastro(matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso_fk_cadastro,situacao,pendencia) values(" + alunoModel.getMatricula() + ",'" + alunoModel.getNome() + "','" + alunoModel.getEndereco() + "','" + alunoModel.getNumero() + "','" + alunoModel.getComplemento() + "','" + alunoModel.getCidade() + "','" + alunoModel.getCep() + "','" + alunoModel.getUf() + "','" + alunoModel.getBairro() + "','" + alunoModel.getCelular() + "','" + alunoModel.getTelefone() + "','" + alunoModel.getEmail() + "','" + alunoModel.getRg() + "','" + alunoModel.getCpf() + "',STR_TO_DATE('" + alunoModel.getDataNascimento() + "','%d-%m-%Y'),(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "'),'" + alunoModel.getSituacao() + "','" + alunoModel.getPendencia() + "');");
+            return this.executarInsertUpdateSQL("insert into aluno_cadastro(matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso_fk_cadastro,situacao,pendencia,data_matricula) values(" + alunoModel.getMatricula() + ",'" + alunoModel.getNome() + "','" + alunoModel.getEndereco() + "','" + alunoModel.getNumero() + "','" + alunoModel.getComplemento() + "','" + alunoModel.getCidade() + "','" + alunoModel.getCep() + "','" + alunoModel.getUf() + "','" + alunoModel.getBairro() + "','" + alunoModel.getCelular() + "','" + alunoModel.getTelefone() + "','" + alunoModel.getEmail() + "','" + alunoModel.getRg() + "','" + alunoModel.getCpf() + "',STR_TO_DATE('" + alunoModel.getDataNascimento() + "','%d-%m-%Y'),(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "'),'" + alunoModel.getSituacao() + "','" + alunoModel.getPendencia() + "','" + alunoModel.getDataMatricula() + "';");
+        } catch (Exception e) {
+            e.toString();
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
+    }
+
+    public boolean atualizarAluno(AlunoModel alunoModel) {
+        try {
+            this.conectar();
+            return this.executarInsertUpdateSQL("update aluno_cadastro set matricula=" + alunoModel.getMatricula() + ",nome='" + alunoModel.getNome() + "',endereco='" + alunoModel.getEndereco() + "',numero=" + alunoModel.getNumero() + ",complemento='" + alunoModel.getComplemento() + "',cidade='" + alunoModel.getCidade() + "',cep='" + alunoModel.getCep() + "',uf='" + alunoModel.getUf() + "',bairro='" + alunoModel.getBairro() + "',celular='" + alunoModel.getCelular() + "',telefone='" + alunoModel.getTelefone() + "',email='" + alunoModel.getEmail() + "',rg='" + alunoModel.getRg() + "',cpf='" + alunoModel.getCpf() + "',data_nascimento=STR_TO_DATE('" + alunoModel.getDataNascimento() + "','%d-%m-%Y'),curso_fk_cadastro=(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "'),situacao='" + alunoModel.getSituacao() + "',pendencia='" + alunoModel.getPendencia() + "',data_matricula='" + alunoModel.getDataMatricula() + "' where nome='" + alunoModel.getNome() + "';");
         } catch (Exception e) {
             e.toString();
             return false;

@@ -47,6 +47,7 @@ public class ControleCCI {
 //            new TelaPrincipal().setVisible(true);
             //         new CadastroCurso().setVisible(true);
             new SCCI().setVisible(true);
+            //          new VerAlunosFicha().setVisible(true);
         });
     }
 }

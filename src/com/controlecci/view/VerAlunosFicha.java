@@ -1,13 +1,10 @@
 package com.controlecci.view;
 
 import com.controlecci.controller.AlunoController;
-import com.controlecci.controller.AulaController;
 import com.controlecci.model.AlunoModel;
-import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.GetDateUtil;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
-import java.awt.event.ActionEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -593,7 +590,6 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         alunoModel = new AlunoModel();
         chamarJDialog();
         alunoModel = alunoController.getAlunoDao(jtfPesqiusa.getText());
-        System.out.println(alunoModel.getNome());
         jtfNome.setText(alunoModel.getNome());
         jtfBairro.setText(alunoModel.getBairro());
         jtfCelular.setText(alunoModel.getCelular());

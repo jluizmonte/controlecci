@@ -15,7 +15,7 @@ public class AlunoController {
     /**
      * retorna lista com dados da aula do aluno pelo nome dele
      *
-     * @param pNome
+     * @param pAluno
      * @return
      */
     public AlunoModel getAlunoDao(String pAluno) {
@@ -92,4 +92,13 @@ public class AlunoController {
         return alunoDao.inserirAluno(alunoModel);
     }
 
+    /**
+     * atualiza os dados de um aluno selecionado
+     *
+     * @param alunoModel
+     * @return
+     */
+    public boolean atualizarAluno(AlunoModel alunoModel) {
+        return alunoDao.atualizarAluno(alunoModel);
+    }
 }
