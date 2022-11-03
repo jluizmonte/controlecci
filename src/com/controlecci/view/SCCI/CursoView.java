@@ -651,6 +651,7 @@ public class CursoView extends javax.swing.JInternalFrame {
             mensagemConfirmação.setVisible(true);
             carregarRegistro();
             limparAlteracao();
+            habilitaDesabilitaCamposAlteracao(false);
         } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o curso: " + cursoModel.getNomeCurso().toUpperCase(), "Atenção", JOptionPane.WARNING_MESSAGE);
         }

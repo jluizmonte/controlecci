@@ -1,15 +1,7 @@
 package com.controlecci.main;
 
-import com.controlecci.view.CadastroCurso;
-import com.controlecci.view.FichaAluno;
 import com.controlecci.view.Login;
-import com.controlecci.view.RegistroAluno;
 import com.controlecci.view.SCCI.SCCI;
-import com.controlecci.view.TelaPrincipal;
-import com.controlecci.view.VerAlunosFicha;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +15,7 @@ public class ControleCCI {
     public static void main(String[] args) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -32,22 +24,8 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-//            new Login().setVisible(true);
-////            FichaAluno aluno = new FichaAluno();
-////
-////            try {
-////                aluno.selecionarTipoCliente();
-////            } catch (ParseException ex) {
-////                Logger.getLogger(ControleCCI.class.getName()).log(Level.SEVERE, null, ex);
-////            }
-//            //  aluno.setVisible(true);
 
-            //      new VerAlunosFicha().setVisible(true);
-//new RegistroAluno().setVisible(true);
-//            new TelaPrincipal().setVisible(true);
-            //         new CadastroCurso().setVisible(true);
             new SCCI().setVisible(true);
-            //          new VerAlunosFicha().setVisible(true);
         });
     }
 }

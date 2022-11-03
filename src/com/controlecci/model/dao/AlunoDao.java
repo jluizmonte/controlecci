@@ -220,7 +220,7 @@ public class AlunoDao extends ConnectionMySQL {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("select matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,nome_curso,situacao,pendencia from aluno_cadastro join curso on curso_fk_cadastro=id_curso order by nome asc;");
+            this.executarSQL("select matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,nome_curso,situacao,pendencia,data_matricula from aluno_cadastro join curso on curso_fk_cadastro=id_curso order by nome asc;");
             while (this.getResultSet().next()) {
                 alunoModel = new AlunoModel();
 
@@ -242,6 +242,7 @@ public class AlunoDao extends ConnectionMySQL {
                 alunoModel.setCurso(this.getResultSet().getString(16));
                 alunoModel.setSituacao(this.getResultSet().getString(17));
                 alunoModel.setPendencia(this.getResultSet().getString(18));
+                alunoModel.setDataMatricula(this.getResultSet().getString(19));
                 listaModel.add(alunoModel);
             }
         } catch (NumberFormatException | SQLException e) {

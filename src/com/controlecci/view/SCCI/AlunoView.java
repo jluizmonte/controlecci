@@ -19,20 +19,22 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author joseluiz
  */
 public class AlunoView extends javax.swing.JInternalFrame {
-    
+
     AlunoModel alunoModel = new AlunoModel();
     AlunoController alunoController = new AlunoController();
     GetDateUtil getDateUtil = new GetDateUtil();
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(null, true);
     TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
-    private AutoCompleter ac;
+    private AutoCompleter ac, ac2;
     public ArrayList lista = new ArrayList<>();
+    public ArrayList<AlunoModel> listaAlunoModels = new ArrayList<>();
     CursoController cursoController = new CursoController();
     String dataMatricula;
 
@@ -48,6 +50,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         autoCompletarAluno();
         habilitaDesabilitaCamposSalvar(false);
         habilitarCamposAlterar(false);
+        carregarRegistro();
     }
 
     /**
@@ -147,6 +150,10 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtAlunos = new javax.swing.JTable();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -909,15 +916,60 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
         jPanel6.setBackground(new java.awt.Color(28, 89, 124));
 
+        jtAlunos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Matricula", "Nome", "Curso", "Data Matricula"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jtAlunos);
+
+        jLabel36.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("ALUNOS  CADASTRADOS  NO SISTEMA ");
+
+        jLabel37.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("Clique duas vezes no nome do aluno para visualizar os dados dele na tela de alteração.");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 603, Short.MAX_VALUE)
+            .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -968,7 +1020,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfCursoActionPerformed
 
     private void jtfCursoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCursoAlterarActionPerformed
-        // TODO add your handling code here:
+        jlCargaHorariaAlterar.setText(cursoController.retornaCargaHoraria(jtfCursoAlterar.getText()) + " HORAS");
     }//GEN-LAST:event_jtfCursoAlterarActionPerformed
 
     private void jbCancelarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarAlterarActionPerformed
@@ -990,7 +1042,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         habilitarCamposAlterar(true);
         preencherCamposAlteracao();
     }//GEN-LAST:event_jbPesquisaActionPerformed
-    
+
     private void perguntaObservacoes() {
         String opcao = JOptionPane.showInputDialog(this, "O aluno possui alguma pendência?\n 1. Sim\n 2. Não", "2");
         if (opcao.equals("1")) {
@@ -998,24 +1050,27 @@ public class AlunoView extends javax.swing.JInternalFrame {
             alunoModel.setPendencia(pendencia);
             salvarAluno();
         } else {
-            
+
         }
     }
-    
+
     private void autoCompletarCurso() {
         ac = new TextAutoCompleter(jtfCurso);
+        ac2 = new TextAutoCompleter(jtfCursoAlterar);
         lista = cursoController.getCursoApenas();
         ac.setItems(lista);
+        ac2.setItems(lista);
         jlCargaHoraria.setText(cursoController.retornaCargaHoraria(jtfCurso.getText()));
+        jlCargaHorariaAlterar.setText(cursoController.retornaCargaHoraria(jtfCursoAlterar.getText()));
     }
-    
+
     private void autoCompletarAluno() {
         ac = new TextAutoCompleter(jtfPesquisa);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
-        
+
     }
-    
+
     private void habilitaDesabilitaCamposSalvar(boolean condicao) {
         jtfBairro.setEnabled(condicao);
         jtfCep.setEnabled(condicao);
@@ -1033,7 +1088,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfTelefone.setEnabled(condicao);
         jtfNumero.setEnabled(condicao);
     }
-    
+
     private void habilitarCamposAlterar(boolean condicao) {
         jtfBairroAlterar.setEnabled(condicao);
         jtfCepAlterar.setEnabled(condicao);
@@ -1066,7 +1121,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfTelefoneAlterar.setEditable(condicao);
         jtfNumeroAlterar.setEditable(condicao);
     }
-    
+
     private void limparCamposSalvar() {
         jtfBairro.setText("");
         jtfCep.setText("");
@@ -1083,7 +1138,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfRg.setText("");
         jtfTelefone.setText("");
     }
-    
+
     private void limparCamposAlterar() {
         jtfBairroAlterar.setText("");
         jtfCepAlterar.setText("");
@@ -1102,16 +1157,16 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfPesquisa.setText("");
         jtfNumeroAlterar.setText("");
     }
-    
+
     public void chamarJDialog() {
         telaCarregamento.fechar();
         telaCarregamento.setVisible(true);
     }
-    
+
     private void preencherCamposAlteracao() {
         alunoModel = alunoController.getAlunoDao(jtfPesquisa.getText().toUpperCase());
         chamarJDialog();
-        
+
         jtfBairroAlterar.setText(alunoModel.getBairro());
         jtfCepAlterar.setText(alunoModel.getCep());
         jtfCelularAlterar.setText(alunoModel.getCelular());
@@ -1127,8 +1182,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfRgAlterar.setText(alunoModel.getRg());
         jtfTelefoneAlterar.setText(alunoModel.getTelefone());
         jtfNumeroAlterar.setText(String.valueOf(alunoModel.getNumero()));
+        jlCargaHorariaAlterar.setText(cursoController.retornaCargaHoraria(jtfCursoAlterar.getText()) + " HORAS");
     }
-    
+
     private void salvarAluno() {
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatricula.getText()));
         alunoModel.setBairro(jtfBairro.getText().toUpperCase());
@@ -1146,7 +1202,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         alunoModel.setUf(jcbUf.getSelectedItem().toString());
         alunoModel.setTelefone(jtfTelefone.getText());
         alunoModel.setNumero(Integer.valueOf(jtfNumero.getText()));
-        
+
         if (jtfComplemento.getText().equals("")) {
             alunoModel.setComplemento("SEM COMPLEMENTO");
         } else {
@@ -1154,7 +1210,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         }
         dataMatricula = JOptionPane.showInputDialog(this, "insira a data da matricula do aluno\n no formato dd-mm-aaaa", "12-08-2022");
         alunoModel.setDataMatricula(dataMatricula);
-        
+
         try {
             if (alunoController.inserirAluno(alunoModel)) {
                 mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI SALVO COM SUCESSO!");
@@ -1169,9 +1225,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
         } catch (HeadlessException | ParseException e) {
             e.toString();
         }
-        
+
     }
-    
+
     private void alterarAluno() {
         alunoModel = new AlunoModel();
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatriculaAlterar.getText()));
@@ -1190,12 +1246,13 @@ public class AlunoView extends javax.swing.JInternalFrame {
         alunoModel.setUf(jcbUfAlterar.getSelectedItem().toString());
         alunoModel.setTelefone(jtfTelefoneAlterar.getText());
         alunoModel.setNumero(Integer.valueOf(jtfNumeroAlterar.getText()));
-        
+
         if (jtfComplementoAlterar.getText().equals("")) {
             alunoModel.setComplemento("SEM COMPLEMENTO");
         } else {
             alunoModel.setComplemento(jtfComplementoAlterar.getText());
         }
+        
         try {
             if (alunoController.atualizarAluno(alunoModel)) {
                 mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI ATUALIZADO COM SUCESSO!");
@@ -1217,7 +1274,26 @@ public class AlunoView extends javax.swing.JInternalFrame {
             e.toString();
         }
     }
-    
+       
+    private void carregarRegistro() {
+        listaAlunoModels=alunoController.getListaAlunoCadastro();
+        DefaultTableModel modeloTabela = (DefaultTableModel) jtAlunos.getModel();
+        modeloTabela.setNumRows(0);
+        try {
+            int cont = listaAlunoModels.size();
+            for (int i = 0; i < cont; i++) {
+                modeloTabela.addRow(new Object[]{
+                    listaAlunoModels.get(i).getMatricula(),
+                    listaAlunoModels.get(i).getNome(),
+                    listaAlunoModels.get(i).getCurso(),
+                    listaAlunoModels.get(i).getDataMatricula()
+                });
+            }
+            chamarJDialog();
+        } catch (Exception e) {
+            e.toString();
+        }
+    }
     public void selecionarTipoCliente() throws ParseException {
         String tipo = JOptionPane.showInputDialog(this, "Selecione o tipo de usuário:\n 1. Pessoa Física\n 2. Pessoa Júridica", "1");
         if (tipo.equals("1")) {
@@ -1231,7 +1307,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }
-    
+
     public void menuOpcoes() throws ParseException {
         String opcao = JOptionPane.showInputDialog(this, "Deseja cadastrar outro aluno?\n 1. Sim\n 2. Não", "1");
         if (opcao.equals("1")) {
@@ -1242,7 +1318,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }
-    
+
     private void setarEstado() {
         jcbUf.setModel(new javax.swing.DefaultComboBoxModel<>(
                 new String[]{"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
@@ -1280,6 +1356,8 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1292,6 +1370,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jbAlterar;
@@ -1308,6 +1387,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCliente1;
     private javax.swing.JLabel jlIdade;
     private javax.swing.JLabel jlIdadeAlterar;
+    private javax.swing.JTable jtAlunos;
     private javax.swing.JTextField jtfBairro;
     private javax.swing.JTextField jtfBairroAlterar;
     private javax.swing.JFormattedTextField jtfCelular;

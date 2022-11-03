@@ -18,11 +18,10 @@ public class ConnectionMySQL {
     private String usuario = "root";
     private String senha = "Jos3@Luiz";
     private String servidor = "localhost";
-    
+
 //    private String servidor = "192.168.0.253"; //OU localhost
 //    private String usuario = "cci";
 //    private String senha = "@3325cci3333";
-
     /**
      *
      * @return getCon() retorna a conexão com sucesso ou não
@@ -92,11 +91,26 @@ public class ConnectionMySQL {
         return true;
     }
 
-         /**
-          * 
-          * @param pSQL
-          * @return 
-          */
+    public boolean executarUpdateDeleteSQL(String pSQL) {
+        try {
+
+            // createStatement de con para criar o Statement
+            this.setStatement(getCon().createStatement());
+
+            // Definido o Statement, executamos a query no banco de dados
+            getStatement().executeUpdate(pSQL);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir/atualizar registro!\n" + ex.toString(), "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     *
+     * @param pSQL
+     * @return
+     */
     public int insertSQL(String pSQL) {
         int status = 0;
         try {
