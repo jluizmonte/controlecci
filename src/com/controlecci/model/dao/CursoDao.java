@@ -21,12 +21,39 @@ public class CursoDao extends ConnectionMySQL {
         CursoModel cursoModel = new CursoModel();
         try {
             this.conectar();
-            this.executarSQL("select nome_curso, modulo_curso, carga_horaria from curso join aluno_cadastro on id_curso = curso_fk_cadastro where nome = '" + pAluno + "' and situacao='ATIVO';");
+            this.executarSQL("select nome_curso, modulo_curso, carga_horaria, valor from curso join aluno_cadastro on id_curso = curso_fk_cadastro where nome = '" + pAluno + "' and situacao='ATIVO';");
             while (this.getResultSet().next()) {
                 cursoModel = new CursoModel();
                 cursoModel.setNomeCurso(this.getResultSet().getString(1));
                 cursoModel.setModulos(this.getResultSet().getString(2));
                 cursoModel.setCargaHoraria(this.getResultSet().getString(3));
+                cursoModel.setValor(this.getResultSet().getDouble(4));
+            }
+        } catch (SQLException ex) {
+            ex.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return cursoModel;
+    }
+
+    /**
+     * retorna as informações do curso
+     *
+     * @param pCurso
+     * @return
+     */
+    public CursoModel getInformacoesCurso(String pCurso) {
+        CursoModel cursoModel = new CursoModel();
+        try {
+            this.conectar();
+            this.executarSQL("select nome_curso, modulo_curso, carga_horaria, valor from curso where nome_curso='" + pCurso + "';");
+            while (this.getResultSet().next()) {
+                cursoModel = new CursoModel();
+                cursoModel.setNomeCurso(this.getResultSet().getString(1));
+                cursoModel.setModulos(this.getResultSet().getString(2));
+                cursoModel.setCargaHoraria(this.getResultSet().getString(3));
+                cursoModel.setValor(this.getResultSet().getDouble(4));
             }
         } catch (SQLException ex) {
             ex.toString();
@@ -122,8 +149,9 @@ public class CursoDao extends ConnectionMySQL {
 
     /**
      * retorna apenas a CH pelo curso inserido
+     *
      * @param pCurso
-     * @return 
+     * @return
      */
     public String retornaCargaHoraria(String pCurso) {
         try {
@@ -149,7 +177,25 @@ public class CursoDao extends ConnectionMySQL {
     public boolean salvarCurso(CursoModel cursoModel) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("insert into curso (nome_curso, carga_horaria, modulo_curso, valor) values ('" + cursoModel.getNomeCurso() + "','" + cursoModel.getCargaHoraria() + "','" + cursoModel.getModulos() + "'"+cursoModel.getValor()+"')");
+            return this.executarInsertUpdateSQL("insert into curso (nome_curso, carga_horaria, modulo_curso, valor) values ('" + cursoModel.getNomeCurso() + "','" + cursoModel.getCargaHoraria() + "','" + cursoModel.getModulos() + "','" + cursoModel.getValor() + "')");
+        } catch (Exception e) {
+            e.toString();
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
+    }
+
+    /**
+     * altera um curso existente pelo nome dele
+     *
+     * @param cursoModel
+     * @return
+     */
+    public boolean alterarCurso(CursoModel cursoModel) {
+        try {
+            this.conectar();
+            return this.executarInsertUpdateSQL("update curso set nome_curso='" + cursoModel.getNomeCurso() + "',carga_horaria='" + cursoModel.getCargaHoraria() + "',modulo_curso='" + cursoModel.getModulos() + "',valor='" + cursoModel.getValor() + "' where nome_curso='" + cursoModel.getNomeCurso() + "';");
         } catch (Exception e) {
             e.toString();
             return false;
@@ -167,7 +213,7 @@ public class CursoDao extends ConnectionMySQL {
         CursoModel cursoModel = new CursoModel();
         try {
             this.conectar();
-            this.executarSQL("select nome_curso, carga_horaria, modulo_curso, valor from curso;");
+            this.executarSQL("select nome_curso, carga_horaria, modulo_curso, valor from curso order by nome_curso;");
             while (this.getResultSet().next()) {
                 cursoModel = new CursoModel();
                 cursoModel.setNomeCurso(this.getResultSet().getString(1));

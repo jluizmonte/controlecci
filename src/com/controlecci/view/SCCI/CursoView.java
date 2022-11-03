@@ -2,6 +2,7 @@ package com.controlecci.view.SCCI;
 
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.CursoModel;
+import com.controlecci.util.MascarasUtil;
 import com.controlecci.view.MensagemConfirmação;
 import com.controlecci.view.TelaCarregamento;
 import com.mxrck.autocompleter.AutoCompleter;
@@ -14,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author joseluiz
  */
-public class Curso extends javax.swing.JInternalFrame {
+public class CursoView extends javax.swing.JInternalFrame {
 
     CursoController cursoController = new CursoController();
     CursoModel cursoModel = new CursoModel();
@@ -23,11 +24,12 @@ public class Curso extends javax.swing.JInternalFrame {
     ArrayList<CursoModel> listaCursoModels = new ArrayList<>();
     private AutoCompleter ac;
     public ArrayList lista = new ArrayList<>();
+    MascarasUtil mascarasUtil = new MascarasUtil();
 
     /**
      * Creates new form Curso
      */
-    public Curso() {
+    public CursoView() {
         initComponents();
         carregarRegistro();
         autoCompletar();
@@ -54,11 +56,11 @@ public class Curso extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jtfCadastroCurso = new javax.swing.JTextField();
         jtfCadastroModulos = new javax.swing.JTextField();
-        jtfCadastroCargaHoraria = new javax.swing.JTextField();
         jtfCadastroValor = new javax.swing.JTextField();
         jbCancelarCadastro = new javax.swing.JButton();
         jbSalvarCurso = new javax.swing.JButton();
         jbNovoCadastro = new javax.swing.JButton();
+        jtfCadastroCargaHoraria = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -70,12 +72,12 @@ public class Curso extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jtfCurso = new javax.swing.JTextField();
         jtfModulos = new javax.swing.JTextField();
-        jtfCargaHoraria = new javax.swing.JTextField();
         jtfValor = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jbAlterar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        jtfCargaHoraria = new javax.swing.JFormattedTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -119,12 +121,26 @@ public class Curso extends javax.swing.JInternalFrame {
         jLabel4.setText("VALOR:");
 
         jtfCadastroCurso.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfCadastroCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCadastroCursoActionPerformed(evt);
+            }
+        });
 
         jtfCadastroModulos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jtfCadastroCargaHoraria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfCadastroModulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCadastroModulosActionPerformed(evt);
+            }
+        });
 
         jtfCadastroValor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfCadastroValor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfCadastroValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCadastroValorActionPerformed(evt);
+            }
+        });
 
         jbCancelarCadastro.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jbCancelarCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cancelar.png"))); // NOI18N
@@ -138,6 +154,11 @@ public class Curso extends javax.swing.JInternalFrame {
         jbSalvarCurso.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jbSalvarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/salvar.png"))); // NOI18N
         jbSalvarCurso.setText("SALVAR");
+        jbSalvarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarCursoActionPerformed(evt);
+            }
+        });
 
         jbNovoCadastro.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jbNovoCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/add.png"))); // NOI18N
@@ -145,6 +166,19 @@ public class Curso extends javax.swing.JInternalFrame {
         jbNovoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNovoCadastroActionPerformed(evt);
+            }
+        });
+
+        try {
+            jtfCadastroCargaHoraria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jtfCadastroCargaHoraria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfCadastroCargaHoraria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfCadastroCargaHoraria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCadastroCargaHorariaActionPerformed(evt);
             }
         });
 
@@ -157,23 +191,22 @@ public class Curso extends javax.swing.JInternalFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jbCancelarCadastro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jbCancelarCadastro))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfCadastroCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfCadastroValor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(89, 89, 89)
                                 .addComponent(jbNovoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbSalvarCurso))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                                .addComponent(jbSalvarCurso))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jtfCadastroCargaHoraria))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfCadastroValor))))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
@@ -198,7 +231,7 @@ public class Curso extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jtfCadastroModulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jtfCadastroCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -217,7 +250,7 @@ public class Curso extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,9 +302,6 @@ public class Curso extends javax.swing.JInternalFrame {
         jtfModulos.setEditable(false);
         jtfModulos.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jtfCargaHoraria.setEditable(false);
-        jtfCargaHoraria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
         jtfValor.setEditable(false);
         jtfValor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -293,6 +323,15 @@ public class Curso extends javax.swing.JInternalFrame {
             }
         });
 
+        jtfCargaHoraria.setEditable(false);
+        try {
+            jtfCargaHoraria.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jtfCargaHoraria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfCargaHoraria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -301,32 +340,34 @@ public class Curso extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfModulos)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfPequisa, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbPesquisar))
-                    .addComponent(jtfCurso)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jtfCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(76, 76, 76)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jbCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbAlterar)))
-                .addContainerGap())
+                        .addComponent(jbAlterar)
+                        .addGap(30, 30, 30))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfPequisa, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbPesquisar)
+                        .addGap(33, 33, 33))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jtfCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(95, 95, 95)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jtfValor)))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jtfCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfModulos, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(31, Short.MAX_VALUE))))
             .addComponent(jSeparator2)
         );
         jPanel5Layout.setVerticalGroup(
@@ -350,14 +391,13 @@ public class Curso extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel8))
+                .addGap(20, 20, 20)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -440,9 +480,9 @@ public class Curso extends javax.swing.JInternalFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -504,6 +544,7 @@ public class Curso extends javax.swing.JInternalFrame {
 
     private void jtfPequisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPequisaActionPerformed
         habilitaDesabilitaCamposAlteracao(true);
+        preencherDadosAlteracao();
     }//GEN-LAST:event_jtfPequisaActionPerformed
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
@@ -512,8 +553,28 @@ public class Curso extends javax.swing.JInternalFrame {
 
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
         habilitaDesabilitaCamposAlteracao(true);
-        jtfCurso.requestFocus();
+       alterarCurso();
     }//GEN-LAST:event_jbAlterarActionPerformed
+
+    private void jbSalvarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarCursoActionPerformed
+        salvarCurso();
+    }//GEN-LAST:event_jbSalvarCursoActionPerformed
+
+    private void jtfCadastroCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastroCursoActionPerformed
+        jtfCadastroModulos.requestFocus();
+    }//GEN-LAST:event_jtfCadastroCursoActionPerformed
+
+    private void jtfCadastroModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastroModulosActionPerformed
+        jtfCadastroCargaHoraria.requestFocus();
+    }//GEN-LAST:event_jtfCadastroModulosActionPerformed
+
+    private void jtfCadastroCargaHorariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastroCargaHorariaActionPerformed
+        jtfCadastroValor.requestFocus();
+    }//GEN-LAST:event_jtfCadastroCargaHorariaActionPerformed
+
+    private void jtfCadastroValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastroValorActionPerformed
+        salvarCurso();
+    }//GEN-LAST:event_jtfCadastroValorActionPerformed
 
     private void limparCadastro() {
         jtfCadastroCargaHoraria.setText("");
@@ -550,10 +611,19 @@ public class Curso extends javax.swing.JInternalFrame {
         jtfPequisa.requestFocus();
     }
 
+    private void preencherDadosAlteracao() {
+        cursoModel = cursoController.getInfoCurso(jtfPequisa.getText().toUpperCase());
+        jtfCurso.setText(cursoModel.getNomeCurso());
+        jtfModulos.setText(cursoModel.getModulos());
+        jtfValor.setText(String.valueOf(cursoModel.getValor()));
+        jtfCargaHoraria.setText(cursoModel.getCargaHoraria());
+    }
+
     private void salvarCurso() {
-        cursoModel.setNomeCurso(jtfCurso.getText().toUpperCase());
-        cursoModel.setModulos(jtfModulos.getText().toUpperCase());
-        cursoModel.setCargaHoraria(jtfCargaHoraria.getText());
+        cursoModel.setNomeCurso(jtfCadastroCurso.getText().toUpperCase());
+        cursoModel.setModulos(jtfCadastroModulos.getText().toUpperCase());
+        cursoModel.setCargaHoraria(jtfCadastroCargaHoraria.getText());
+        cursoModel.setValor(Double.parseDouble(mascarasUtil.converterVirgulaParaPonto(jtfCadastroValor.getText())));
 
         if (cursoController.salvarCurso(cursoModel)) {
             mensagemConfirmação.jlMensagem.setText("O CURSO: " + cursoModel.getNomeCurso().toUpperCase() + " FOI SALVO COM SUCESSO!");
@@ -567,8 +637,27 @@ public class Curso extends javax.swing.JInternalFrame {
         }
     }
 
+    private void alterarCurso() {
+        cursoModel=new CursoModel();
+        cursoModel.setNomeCurso(jtfCurso.getText().toUpperCase());
+        cursoModel.setModulos(jtfModulos.getText().toUpperCase());
+        cursoModel.setCargaHoraria(jtfCargaHoraria.getText());
+        cursoModel.setValor(Double.parseDouble(mascarasUtil.converterVirgulaParaPonto(jtfValor.getText())));
+
+        if (cursoController.alterarCurso(cursoModel)) {
+            mensagemConfirmação.jlMensagem.setText("O CURSO: " + cursoModel.getNomeCurso().toUpperCase() + " FOI ALTERADO COM SUCESSO!");
+            mensagemConfirmação.jlInfo.setText("MÓDULOS: " + cursoModel.getModulos().toUpperCase());
+            mensagemConfirmação.fechar();
+            mensagemConfirmação.setVisible(true);
+            carregarRegistro();
+            limparAlteracao();
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o curso: " + cursoModel.getNomeCurso().toUpperCase(), "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
     private void autoCompletar() {
-        ac = new TextAutoCompleter(jtfCurso);
+        ac = new TextAutoCompleter(jtfPequisa);
         lista = cursoController.getCursoApenas();
         ac.setItems(lista);
     }
@@ -627,11 +716,11 @@ public class Curso extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbSalvarCurso;
     private javax.swing.JTable jtCurso;
-    private javax.swing.JTextField jtfCadastroCargaHoraria;
+    private javax.swing.JFormattedTextField jtfCadastroCargaHoraria;
     private javax.swing.JTextField jtfCadastroCurso;
     private javax.swing.JTextField jtfCadastroModulos;
     private javax.swing.JTextField jtfCadastroValor;
-    private javax.swing.JTextField jtfCargaHoraria;
+    private javax.swing.JFormattedTextField jtfCargaHoraria;
     private javax.swing.JTextField jtfCurso;
     private javax.swing.JTextField jtfModulos;
     private javax.swing.JTextField jtfPequisa;

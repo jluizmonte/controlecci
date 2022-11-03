@@ -16,6 +16,10 @@ public class CursoController {
         return cursoDao.retornaDadosCurso(pAluno);
     }
 
+    public CursoModel getInfoCurso(String pCurso) {
+        return cursoDao.getInformacoesCurso(pCurso);
+    }
+
     public String retornaPrimeiraData(String pAluno) {
         return cursoDao.retornaPrimeiraData(pAluno);
     }
@@ -30,6 +34,16 @@ public class CursoController {
 
     public boolean salvarCurso(CursoModel cursoModel) {
         return cursoDao.salvarCurso(cursoModel);
+    }
+
+    /**
+     * altera um curso pelo nome
+     *
+     * @param cursoModel
+     * @return
+     */
+    public boolean alterarCurso(CursoModel cursoModel) {
+        return cursoDao.alterarCurso(cursoModel);
     }
 
     public ArrayList<CursoModel> getListaCursos() {
