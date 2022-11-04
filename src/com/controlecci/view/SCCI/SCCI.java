@@ -44,12 +44,26 @@ public class SCCI extends javax.swing.JFrame {
         jmiCurso = new javax.swing.JMenuItem();
         jmiAluno = new javax.swing.JMenuItem();
         jmiUsuario = new javax.swing.JMenuItem();
+        jmiRegistrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE CADASTRO E CONTROLE CCI CENTRAL DE CURSOS");
 
         rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/others/nova_logo.png"))); // NOI18N
         rSPanelImage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        desktopPane.setLayer(rSPanelImage1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
+        desktopPane.setLayout(desktopPaneLayout);
+        desktopPaneLayout.setHorizontalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rSPanelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
+        );
+        desktopPaneLayout.setVerticalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rSPanelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+        );
 
         jlUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jlUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -70,44 +84,27 @@ public class SCCI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(jlData, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+            .addComponent(jlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jlData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        desktopPane.setLayer(rSPanelImage1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        desktopPane.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
-        desktopPane.setLayout(desktopPaneLayout);
-        desktopPaneLayout.setHorizontalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSPanelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        desktopPaneLayout.setVerticalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(desktopPaneLayout.createSequentialGroup()
-                .addComponent(rSPanelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
+        fileMenu.setText("ARQUIVO");
+        fileMenu.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
+        exitMenuItem.setText("Sair");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitMenuItemActionPerformed(evt);
@@ -118,6 +115,7 @@ public class SCCI extends javax.swing.JFrame {
         menuBar.add(fileMenu);
 
         jMenu1.setText("FUNÇÕES BÁSICAS");
+        jMenu1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jmiCurso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         jmiCurso.setText("Curso");
@@ -141,6 +139,15 @@ public class SCCI extends javax.swing.JFrame {
         jmiUsuario.setText("Usuario");
         jMenu1.add(jmiUsuario);
 
+        jmiRegistrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        jmiRegistrar.setText("Registrar Hora Aluno");
+        jmiRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiRegistrarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiRegistrar);
+
         menuBar.add(jMenu1);
 
         setJMenuBar(menuBar);
@@ -150,10 +157,14 @@ public class SCCI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(desktopPane)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -167,13 +178,22 @@ public class SCCI extends javax.swing.JFrame {
         CursoView cursoView = new CursoView();
         desktopPane.add(cursoView);
         cursoView.setVisible(true);
+        cursoView.setPosicao();
     }//GEN-LAST:event_jmiCursoActionPerformed
 
     private void jmiAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlunoActionPerformed
         AlunoView alunoView = new AlunoView();
         desktopPane.add(alunoView);
         alunoView.setVisible(true);
+        alunoView.setPosicao();
     }//GEN-LAST:event_jmiAlunoActionPerformed
+
+    private void jmiRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarActionPerformed
+        RegistroAluno registroAluno = new RegistroAluno();
+        desktopPane.add(registroAluno);
+        registroAluno.setVisible(true);
+        registroAluno.setPosicao();
+    }//GEN-LAST:event_jmiRegistrarActionPerformed
 
     private void setarNivel() {
         if (SessaoUsuarioModel.nivelAcesso.equals("COORDENAÇÃO")) {
@@ -219,6 +239,7 @@ public class SCCI extends javax.swing.JFrame {
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JMenuItem jmiAluno;
     private javax.swing.JMenuItem jmiCurso;
+    private javax.swing.JMenuItem jmiRegistrar;
     private javax.swing.JMenuItem jmiUsuario;
     private javax.swing.JMenuBar menuBar;
     private rojerusan.RSPanelImage rSPanelImage1;

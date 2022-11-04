@@ -7,6 +7,7 @@ import com.controlecci.view.MensagemConfirmação;
 import com.controlecci.view.TelaCarregamento;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -666,6 +667,11 @@ public class CursoView extends javax.swing.JInternalFrame {
     public void chamarJDialog() {
         telaCarregamento.fechar();
         telaCarregamento.setVisible(true);
+    }
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     private void carregarRegistro() {
