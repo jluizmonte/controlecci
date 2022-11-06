@@ -87,7 +87,7 @@ public class CursoView extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("CURSOS - CADASTRO E CONSULTA");
+        setTitle("CURSOS");
         setToolTipText("");
 
         jPanel1.setBackground(new java.awt.Color(28, 89, 124));

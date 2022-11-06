@@ -14,7 +14,7 @@ public class ConnectionMySQL {
     private ResultSet resultSet;
     private boolean status = false;
     private String banco = "controle";
-
+//
     private String usuario = "root";
     private String senha = "Jos3@Luiz";
     private String servidor = "localhost";

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Instrutores
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JDialog {
 
     UsuarioModel usuarioModel = new UsuarioModel();
     UsuarioController usuarioController = new UsuarioController();
@@ -21,8 +21,11 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form frmLogin
+     * @param parent
+     * @param modal
      */
-    public Login() {
+    public Login(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         dispose();
         setUndecorated(true);
         initComponents();
@@ -49,7 +52,7 @@ public class Login extends javax.swing.JFrame {
         jbCancelar = new javax.swing.JButton();
         jbAcessar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 55, 110));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -266,7 +269,7 @@ public class Login extends javax.swing.JFrame {
                 if (usuarioController.getValidarUsuarioDAO(usuarioModel)) {
                     usuarioModel = usuarioController.getUsuarioDAO(jtfLogin.getText());
                     setSessionUser();
-                    JOptionPane.showMessageDialog(this, "Acesso permitido a:\n" + usuarioModel.getNomeUsuario(), "Sucesso", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Acesso concedido ao usuário:\n" + usuarioModel.getNomeUsuario(), "Sucesso", JOptionPane.WARNING_MESSAGE);
                     new TelaPrincipal().setVisible(true);
                     this.dispose();
                 } else {
@@ -287,8 +290,6 @@ public class Login extends javax.swing.JFrame {
         jpSenha.setText("");
         jtfLogin.requestFocus();
     }
-
-    
 
     private void setSessionUser() {
         SessaoUsuarioModel.codigoUsuario = usuarioModel.getIdUsuario();
