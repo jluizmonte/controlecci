@@ -89,8 +89,9 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
         jlData = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("CONSULTA DE REGISTRO INDIVIDUAL");
 
         jPanel3.setBackground(new java.awt.Color(0, 84, 124));
 

@@ -22,7 +22,7 @@ public class SCCI extends javax.swing.JFrame {
     public SCCI() {
         initComponents();
         setLocationRelativeTo(null);
-//        setExtendedState(MAXIMIZED_BOTH); // seta o tamanho da janela (maximizado) ao iniciar
+        setExtendedState(MAXIMIZED_BOTH); // seta o tamanho da janela (maximizado) ao iniciar
         setarData();
         setarValores();
         setarNivel();
