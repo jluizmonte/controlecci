@@ -14,10 +14,10 @@ import java.util.ArrayList;
  * @author Instrutores
  */
 public class VerAlunosFicha extends javax.swing.JFrame {
-    
+
     AlunoModel alunoModel = new AlunoModel();
     TelaCarregamento telaCarregamento = new TelaCarregamento(this, true);
-    
+
     AlunoController alunoController = new AlunoController();
     public ArrayList lista = new ArrayList<>();
     GetDateUtil getDateUtil = new GetDateUtil();
@@ -550,18 +550,18 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         limparCampos();
         jtfPesqiusa.requestFocus();
     }//GEN-LAST:event_jbLimparActionPerformed
-    
+
     public void chamarJDialog() {
         telaCarregamento.fechar();
         telaCarregamento.setVisible(true);
     }
-    
+
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfPesqiusa);
         lista = alunoController.retornaAlunoCadastro();
         ac.setItems(lista);
     }
-    
+
     private void limparCampos() {
         jtfData.setDate(getDateUtil.retornaDataAtual());
         jtfMatricula.setText("");
@@ -585,7 +585,7 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jtfPesqiusa.requestFocus();
         jtfPesqiusa.setText("");
     }
-    
+
     public void consultarAluno() {
         alunoModel = new AlunoModel();
         chamarJDialog();
@@ -607,9 +607,9 @@ public class VerAlunosFicha extends javax.swing.JFrame {
         jtfPendencia.setText(alunoModel.getPendencia());
         jtfRg.setText(alunoModel.getRg());
         jtfTelefone.setText(alunoModel.getTelefone());
-        
+
     }
-    
+
     private void setarData() {
         Thread clock = new Thread() {
             @Override

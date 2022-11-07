@@ -396,19 +396,28 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void habilitarCamposSalvar(boolean condicao){
-}
-private void habilitarCamposAlterar(boolean condicao){
-    
-}private void limparCamposSalvar(){
-    
-}private void limparCamposAlterar(){
-    
-}private void salvar(){
-    
-}private void alterar(){
-    
-}
+    private void habilitarCamposSalvar(boolean condicao) {
+    }
+
+    private void habilitarCamposAlterar(boolean condicao) {
+
+    }
+
+    private void limparCamposSalvar() {
+
+    }
+
+    private void limparCamposAlterar() {
+
+    }
+
+    private void salvar() {
+
+    }
+
+    private void alterar() {
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

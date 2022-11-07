@@ -24,6 +24,7 @@ import net.sf.jasperreports.swing.JRViewer;
  *
  */
 public class RelatorioUtil extends ConnectionMySQL {
+
     private String tipoLevantamento;
     /**
      * criação de um JFrame

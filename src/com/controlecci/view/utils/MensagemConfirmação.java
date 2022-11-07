@@ -97,7 +97,6 @@ public class MensagemConfirmação extends javax.swing.JDialog {
         timer.start();
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

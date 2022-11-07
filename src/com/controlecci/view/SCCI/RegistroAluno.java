@@ -300,8 +300,8 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInserirHorasActionPerformed
 
     private void jbConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultaActionPerformed
-      ConsultaHorarioInidividual consultaHorarioInidividual = new ConsultaHorarioInidividual();
-      consultaHorarioInidividual.setVisible(true);       
+        ConsultaHorarioInidividual consultaHorarioInidividual = new ConsultaHorarioInidividual();
+        consultaHorarioInidividual.setVisible(true);
     }//GEN-LAST:event_jbConsultaActionPerformed
 
     private void jbVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarActionPerformed

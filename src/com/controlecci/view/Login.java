@@ -3,6 +3,7 @@ package com.controlecci.view;
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.model.UsuarioModel;
+import com.controlecci.view.SCCI.SCCI;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.MouseInfo;
@@ -14,13 +15,14 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class Login extends javax.swing.JDialog {
-
+    
     UsuarioModel usuarioModel = new UsuarioModel();
     UsuarioController usuarioController = new UsuarioController();
     int x, y;
 
     /**
      * Creates new form frmLogin
+     *
      * @param parent
      * @param modal
      */
@@ -260,7 +262,7 @@ public class Login extends javax.swing.JDialog {
     private void jpSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpSenhaActionPerformed
         realizarLogin();
     }//GEN-LAST:event_jpSenhaActionPerformed
-
+    
     public void realizarLogin() {
         usuarioModel.setLoginUsuario(jtfLogin.getText());
         usuarioModel.setSenhaUsuario(String.valueOf(jpSenha.getPassword()));
@@ -270,10 +272,11 @@ public class Login extends javax.swing.JDialog {
                     usuarioModel = usuarioController.getUsuarioDAO(jtfLogin.getText());
                     setSessionUser();
                     JOptionPane.showMessageDialog(this, "Acesso concedido ao usuário:\n" + usuarioModel.getNomeUsuario(), "Sucesso", JOptionPane.WARNING_MESSAGE);
-                    new TelaPrincipal().setVisible(true);
+                    //     new TelaPrincipal().setVisible(true);
+                    new SCCI().setVisible(true);
                     this.dispose();
                 } else {
-
+                    
                     JOptionPane.showMessageDialog(this, "Erro ao efetuar o login!");
                 }
             } else {
@@ -284,13 +287,13 @@ public class Login extends javax.swing.JDialog {
             e.toString();
         }
     }
-
+    
     public void limparCampos() {
         jtfLogin.setText("");
         jpSenha.setText("");
         jtfLogin.requestFocus();
     }
-
+    
     private void setSessionUser() {
         SessaoUsuarioModel.codigoUsuario = usuarioModel.getIdUsuario();
         SessaoUsuarioModel.nomeUsuario = usuarioModel.getNomeUsuario();

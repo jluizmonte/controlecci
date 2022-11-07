@@ -7,12 +7,14 @@ import com.controlecci.view.TelaCarregamento;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author joseluiz
  */
 public class SCCI extends javax.swing.JFrame {
+
     TelaCarregamento tc = new TelaCarregamento(this, true);
     RelatorioUtil relatorio = new RelatorioUtil();
 
@@ -256,7 +258,10 @@ public class SCCI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
+        int dialogResult = JOptionPane.showConfirmDialog(this, "O sistema será encerrado!\n Clique em Yes para encerrar!", "Atenção", JOptionPane.YES_NO_OPTION);
+        if (dialogResult == 0) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void jmiCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCursoActionPerformed
@@ -309,7 +314,7 @@ public class SCCI extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.toString();
         } finally {
-          //  this.dispose();
+            //  this.dispose();
         }
     }
 

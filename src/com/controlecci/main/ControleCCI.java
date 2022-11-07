@@ -8,6 +8,7 @@ import com.controlecci.view.SCCI.SCCI;
  * @author Instrutores
  */
 public class ControleCCI {
+
     /**
      * @param args the command line arguments
      */
@@ -23,7 +24,8 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-            new SCCI().setVisible(true);
+            //  new SCCI().setVisible(true);
+            new Login(null, true).setVisible(true);
         });
     }
 }

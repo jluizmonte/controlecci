@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-    
+
     FichaAluno aluno = new FichaAluno();
 
     /**
@@ -435,7 +435,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jlNovoAlunoMouseClicked
 
     private void jlEncerrarSistemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEncerrarSistemaMouseClicked
-        int dialogResult = JOptionPane.showConfirmDialog(this, "O sistema será encerrado!\n Clique em Yes para encerrar!", "Atenção", JOptionPane.YES_NO_OPTION);
+        int dialogResult = JOptionPane.showConfirmDialog(this, "O sistema será encerrado!\n Clique em Yes para encerrar!", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (dialogResult == 0) {
             System.exit(0);
         }
@@ -476,7 +476,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jlRelatorio.setEnabled(false);
         }
     }
-    
+
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -490,7 +490,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         };
         clock.start();
     }
-    
+
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
     }
