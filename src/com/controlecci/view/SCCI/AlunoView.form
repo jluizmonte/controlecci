@@ -180,7 +180,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
                                   <Component id="jbNovo" min="-2" pref="122" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jbSalvar" min="-2" pref="122" max="-2" attributes="0"/>
@@ -303,13 +303,13 @@
                               <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                               <Component id="jtfDataMatricula" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jbSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbNovo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbNovo" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="31" max="32767" attributes="0"/>
+                          <EmptySpace pref="25" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1428,8 +1428,12 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel36" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel37" alignment="0" pref="603" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="0" pref="627" max="32767" attributes="0"/>
+                      <Component id="jLabel37" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jbAtualizarTabela" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1439,7 +1443,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel37" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="448" max="32767" attributes="0"/>
+                          <Component id="jbAtualizarTabela" min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="414" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1489,6 +1495,17 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Clique duas vezes no nome do aluno para visualizar os dados dele na tela de altera&#xe7;&#xe3;o."/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jbAtualizarTabela">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/controlecci/image/actions/atualizar.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="ATUALIZAR TABELA"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAtualizarTabelaActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -52,7 +52,7 @@ public class MensagemConfirmação extends javax.swing.JDialog {
         jlMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlMensagem.setText("$MENSAGEM ");
 
-        jlInfo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlInfo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jlInfo.setForeground(new java.awt.Color(255, 255, 255));
         jlInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlInfo.setText("$INFO");

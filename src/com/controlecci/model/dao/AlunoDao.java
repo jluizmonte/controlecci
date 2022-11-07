@@ -3,6 +3,7 @@ package com.controlecci.model.dao;
 import com.controlecci.connection.ConnectionMySQL;
 import com.controlecci.model.AlunoModel;
 import java.sql.SQLException;
+import java.time.Clock;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,6 @@ public class AlunoDao extends ConnectionMySQL {
 
     /**
      * retorna os dados do aluno da tabela aluno_cadastro
-     *
      * @param pAluno
      * @return
      */
@@ -192,7 +192,7 @@ public class AlunoDao extends ConnectionMySQL {
             this.conectar();
             return this.executarInsertUpdateSQL("insert into aluno_cadastro(matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,curso_fk_cadastro,situacao,pendencia,data_matricula) values(" + alunoModel.getMatricula() + ",'" + alunoModel.getNome() + "','" + alunoModel.getEndereco() + "','" + alunoModel.getNumero() + "','" + alunoModel.getComplemento() + "','" + alunoModel.getCidade() + "','" + alunoModel.getCep() + "','" + alunoModel.getUf() + "','" + alunoModel.getBairro() + "','" + alunoModel.getCelular() + "','" + alunoModel.getTelefone() + "','" + alunoModel.getEmail() + "','" + alunoModel.getRg() + "','" + alunoModel.getCpf() + "',STR_TO_DATE('" + alunoModel.getDataNascimento() + "','%d-%m-%Y'),(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "'),'" + alunoModel.getSituacao() + "','" + alunoModel.getPendencia() + "','" + alunoModel.getDataMatricula() + "';");
         } catch (Exception e) {
-            e.toString();
+            System.out.print(e.toString());
             return false;
         } finally {
             this.fecharConexao();

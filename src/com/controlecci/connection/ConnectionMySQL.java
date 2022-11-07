@@ -22,6 +22,7 @@ public class ConnectionMySQL {
 //    private String servidor = "192.168.0.253"; //OU localhost
 //    private String usuario = "cci";
 //    private String senha = "@3325cci3333";
+    
     /**
      *
      * @return getCon() retorna a conexão com sucesso ou não
