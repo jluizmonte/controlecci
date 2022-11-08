@@ -541,7 +541,7 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
 
     public void infoCurso() {
         jlCargaHoraria.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getCargaHoraria());
-        jlCurso.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getNomeCurso().toUpperCase());
+        jlCurso.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getNomeCurso());
         jlModulos.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getModulos());
         jlDataInicio.setText(cursoController.retornaPrimeiraData(jtfNomeAluno.getText()));
         jlDataEncerramento.setText(cursoController.retornaDataFinalCurso(jtfNomeAluno.getText()));
