@@ -3,6 +3,7 @@ package com.controlecci.view.SCCI;
 import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
+import com.controlecci.util.ColorirLinhaStatus;
 import com.controlecci.util.GetDateUtil;
 import com.controlecci.view.MensagemConfirmação;
 import com.controlecci.view.TelaCarregamento;
@@ -20,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author joseluiz
  */
 public class AlunoView extends javax.swing.JInternalFrame {
-
+    
     AlunoModel alunoModel = new AlunoModel();
     AlunoController alunoController = new AlunoController();
     GetDateUtil getDateUtil = new GetDateUtil();
@@ -138,6 +139,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfPesquisa = new javax.swing.JTextField();
         jbPesquisa = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jcbStatus = new javax.swing.JComboBox<>();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -502,7 +506,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jbSalvar)
                         .addComponent(jbCancelar)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -688,6 +692,17 @@ public class AlunoView extends javax.swing.JInternalFrame {
             }
         });
 
+        jcbStatus.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jcbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "SUSPENSO", "CONCLUÍDO" }));
+
+        jLabel26.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("STATUS ALUNO");
+
+        jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setText("CARGA HORÁRIA");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -740,25 +755,34 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jbPesquisa))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel30)
-                                    .addComponent(jtfTelefoneAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel31)
-                                    .addComponent(jtfCelularAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(13, 13, 13)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel32)
-                                    .addComponent(jtfEmailAlterar)))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jtfMatriculaAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtfNomeAlterar))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jtfCursoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel5Layout.createSequentialGroup()
+                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel30)
+                                                .addComponent(jtfTelefoneAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel31)
+                                                .addComponent(jtfCelularAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel5Layout.createSequentialGroup()
+                                            .addComponent(jtfCursoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jlCargaHorariaAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jlCargaHorariaAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfEmailAlterar)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jLabel32)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jcbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -774,8 +798,13 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel20))
                             .addComponent(jLabel27))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel21)
-                        .addGap(81, 81, 81))))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(81, 81, 81))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addContainerGap())))))
             .addComponent(jSeparator1)
         );
         jPanel5Layout.setVerticalGroup(
@@ -845,11 +874,16 @@ public class AlunoView extends javax.swing.JInternalFrame {
                     .addComponent(jtfCelularAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfEmailAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfCursoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlCargaHorariaAlterar))
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlCargaHorariaAlterar)
+                        .addComponent(jcbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfCursoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCancelarAlterar)
@@ -874,20 +908,20 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
         jtAlunos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Matricula", "Nome", "Curso", "Data Matricula"
+                "Matricula", "Nome", "Curso", "Data Matricula", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -938,7 +972,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbAtualizarTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -1015,7 +1049,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private void jbAtualizarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarTabelaActionPerformed
         carregarRegistro();
     }//GEN-LAST:event_jbAtualizarTabelaActionPerformed
-
+    
     private void perguntaObservacoes() {
         String opcao = JOptionPane.showInputDialog(this, "O aluno possui alguma pendência?\n 1. Sim\n 2. Não", "2");
         if (opcao.equals("1")) {
@@ -1024,7 +1058,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
             salvarAluno();
         }
     }
-
+    
     private void autoCompletarCurso() {
         ac = new TextAutoCompleter(jtfCurso);
         ac2 = new TextAutoCompleter(jtfCursoAlterar);
@@ -1034,14 +1068,14 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jlCargaHoraria.setText(cursoController.retornaCargaHoraria(jtfCurso.getText()));
         jlCargaHorariaAlterar.setText(cursoController.retornaCargaHoraria(jtfCursoAlterar.getText()));
     }
-
+    
     private void autoCompletarAluno() {
         ac = new TextAutoCompleter(jtfPesquisa);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
-
+        
     }
-
+    
     private void habilitaDesabilitaCamposSalvar(boolean condicao) {
         jtfBairro.setEnabled(condicao);
         jtfCep.setEnabled(condicao);
@@ -1060,7 +1094,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfNumero.setEnabled(condicao);
         jtfDataMatricula.setEnabled(condicao);
     }
-
+    
     private void habilitarCamposAlterar(boolean condicao) {
         jtfBairroAlterar.setEnabled(condicao);
         jtfCepAlterar.setEnabled(condicao);
@@ -1093,7 +1127,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfTelefoneAlterar.setEditable(condicao);
         jtfNumeroAlterar.setEditable(condicao);
     }
-
+    
     private void limparCamposSalvar() {
         jtfBairro.setText("");
         jtfCep.setText("");
@@ -1112,7 +1146,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfTelefone.setText("");
         jlCargaHoraria.setText("");
     }
-
+    
     private void limparCamposAlterar() {
         jtfBairroAlterar.setText("");
         jtfCepAlterar.setText("");
@@ -1131,16 +1165,16 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfPesquisa.setText("");
         jtfNumeroAlterar.setText("");
     }
-
+    
     public void chamarJDialog() {
         telaCarregamento.fechar();
         telaCarregamento.setVisible(true);
     }
-
+    
     private void preencherCamposAlteracao() {
         alunoModel = alunoController.getAlunoDao(jtfPesquisa.getText().toUpperCase());
         chamarJDialog();
-
+        
         jtfBairroAlterar.setText(alunoModel.getBairro());
         jtfCepAlterar.setText(alunoModel.getCep());
         jtfCelularAlterar.setText(alunoModel.getCelular());
@@ -1157,8 +1191,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfTelefoneAlterar.setText(alunoModel.getTelefone());
         jtfNumeroAlterar.setText(String.valueOf(alunoModel.getNumero()));
         jlCargaHorariaAlterar.setText(cursoController.retornaCargaHoraria(jtfCursoAlterar.getText()) + " HORAS");
+        jcbStatus.setSelectedItem(alunoModel.getSituacao());
     }
-
+    
     private void salvarAluno() {
         alunoModel = new AlunoModel();
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatricula.getText()));
@@ -1199,7 +1234,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
             e.toString();
         }
     }
-
+    
     private void alterarAluno() {
         alunoModel = new AlunoModel();
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatriculaAlterar.getText()));
@@ -1218,13 +1253,14 @@ public class AlunoView extends javax.swing.JInternalFrame {
         alunoModel.setUf(jcbUfAlterar.getSelectedItem().toString());
         alunoModel.setTelefone(jtfTelefoneAlterar.getText());
         alunoModel.setNumero(Integer.valueOf(jtfNumeroAlterar.getText()));
+        alunoModel.setSituacao(jcbStatus.getSelectedItem().toString());
         //   alunoModel.setDataMatricula(dataMatricula);
         if (jtfComplementoAlterar.getText().equals("")) {
             alunoModel.setComplemento("SEM COMPLEMENTO");
         } else {
             alunoModel.setComplemento(jtfComplementoAlterar.getText());
         }
-
+        
         try {
             if (alunoController.atualizarAluno(alunoModel)) {
                 mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI ATUALIZADO COM SUCESSO!");
@@ -1246,8 +1282,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
             e.toString();
         }
     }
-
+    
     private void carregarRegistro() {
+        colorirLinhas();
         listaAlunoModels = alunoController.getListaAlunoCadastro();
         DefaultTableModel modeloTabela = (DefaultTableModel) jtAlunos.getModel();
         modeloTabela.setNumRows(0);
@@ -1258,7 +1295,8 @@ public class AlunoView extends javax.swing.JInternalFrame {
                     listaAlunoModels.get(i).getMatricula(),
                     listaAlunoModels.get(i).getNome(),
                     listaAlunoModels.get(i).getCurso(),
-                    listaAlunoModels.get(i).getDataMatricula()
+                    listaAlunoModels.get(i).getDataMatricula(),
+                    listaAlunoModels.get(i).getSituacao()
                 });
             }
             chamarJDialog();
@@ -1266,12 +1304,12 @@ public class AlunoView extends javax.swing.JInternalFrame {
             e.toString();
         }
     }
-
+    
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
-
+    
     public void selecionarTipoCliente() throws ParseException {
         String tipo = JOptionPane.showInputDialog(this, "Selecione o tipo de usuário:\n 1. Pessoa Física\n 2. Pessoa Júridica", "1");
         if (tipo.equals("1")) {
@@ -1285,7 +1323,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }
-
+    
     public void menuOpcoes() throws ParseException {
         String opcao = JOptionPane.showInputDialog(this, "Deseja cadastrar outro aluno?\n 1. Sim\n 2. Não", "1");
         if (opcao.equals("1")) {
@@ -1293,16 +1331,20 @@ public class AlunoView extends javax.swing.JInternalFrame {
             selecionarTipoCliente();
         } else {
             limparCamposSalvar();
-            this.dispose();
+          //  this.dispose();
         }
     }
-
+    
+    private void colorirLinhas() {
+        ColorirLinhaStatus colorirLinhas = new ColorirLinhaStatus(4);
+        jtAlunos.getColumnModel().getColumn(4).setCellRenderer(colorirLinhas);
+    }
+    
     private void setarEstado() {
         jcbUf.setModel(new javax.swing.DefaultComboBoxModel<>(
                 new String[]{"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
                     "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}));
         jcbUf.setSelectedItem("PE");
-        //jcbPendencia.setSelectedItem("NÃO");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -1323,6 +1365,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -1331,6 +1374,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -1356,6 +1400,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbPesquisa;
     private javax.swing.JButton jbSalvar;
+    private javax.swing.JComboBox<String> jcbStatus;
     private javax.swing.JComboBox<String> jcbUf;
     private javax.swing.JComboBox<String> jcbUfAlterar;
     private javax.swing.JLabel jlCargaHoraria;

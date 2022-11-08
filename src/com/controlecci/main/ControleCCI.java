@@ -24,8 +24,8 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-            //  new SCCI().setVisible(true);
-            new Login(null, true).setVisible(true);
+            new SCCI().setVisible(true);
+            //   new Login(null, true).setVisible(true);
         });
     }
 }
