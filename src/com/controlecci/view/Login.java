@@ -5,6 +5,7 @@ import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.model.UsuarioModel;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
+import com.controlecci.util.TemplateAlerts;
 import com.controlecci.view.SCCI.SCCI;
 import java.awt.Color;
 import java.awt.HeadlessException;
@@ -21,6 +22,7 @@ public class Login extends javax.swing.JDialog {
     UsuarioModel usuarioModel = new UsuarioModel();
     UsuarioController usuarioController = new UsuarioController();
     int x, y;
+    TemplateAlerts templateAlerts = new TemplateAlerts();
 
     /**
      * Creates new form frmLogin
@@ -275,28 +277,27 @@ public class Login extends javax.swing.JDialog {
                     setSessionUser();
                     String sucesso = "Acesso concedido ao usuário: " + usuarioModel.getNomeUsuario();
                     JOptionPane.showMessageDialog(this, sucesso, "Sucesso", JOptionPane.WARNING_MESSAGE);
-                   
+
                     LocalUtil.logClass = this.getClass().getName();
-                    LocalUtil.logType = "REGISTRO DE SUCESSO";
+                    LocalUtil.logType = templateAlerts.mensagemRegistroComum();
                     new LogCatUtil().writeFile(String.valueOf(sucesso));
-                    
+
                     new SCCI().setVisible(true);
                     this.dispose();
                 } else {
-                    String erro = "ERRO AO EFETURAR O LOGIN, USUÁRIO OU SENHA INCORRETA!";
-                    JOptionPane.showMessageDialog(this, erro);
-                    
+                    JOptionPane.showMessageDialog(this, templateAlerts.erroLogar());
+
                     LocalUtil.logClass = this.getClass().getName();
-                    LocalUtil.logType = "REGISTRO DE ERRO";
-                    new LogCatUtil().writeFile(String.valueOf(erro));
+                    LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+                    new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroLogar()));
                     jtfLogin.requestFocus();
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Nenhum campo pode permanecer em branco!");
+                JOptionPane.showMessageDialog(this, templateAlerts.erroCamposEmBranco());
                 LocalUtil.logClass = this.getClass().getName();
                 LocalUtil.logType = "REGISTRO DE ERRO";
 
-                new LogCatUtil().writeFile(String.valueOf("UM OU MAIS CAMPOS ESTÃO EM BRANCO, ACESSO NÃO PERMITDO"));
+                new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroCamposEmBranco()));
                 limparCampos();
             }
         } catch (HeadlessException e) {

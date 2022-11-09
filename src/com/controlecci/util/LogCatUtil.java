@@ -18,6 +18,7 @@ public class LogCatUtil {
 
     File logCat;
     ObterInfoSistemaUtil obterInfoSistema = new ObterInfoSistemaUtil();
+    TemplateAlerts templateAlerts = new TemplateAlerts();
 
     /**
      * criação do aquivo
@@ -43,13 +44,13 @@ public class LogCatUtil {
     public void writeFile(String log) {
         logCat = new File(LocalUtil.logFile);
         try {
-            if ((log == "") || (log == null)) {
+            if (("".equals(log)) || (log == null)) {
                 log = "Sem mais registros!";
                 LocalUtil.logClass = getClass().toString();
             }
 
             if (SessaoUsuarioModel.nomeUsuario == null) {
-                SessaoUsuarioModel.nomeUsuario = "Usuári@ não logad@";
+                SessaoUsuarioModel.nomeUsuario = templateAlerts.erroUsuarioLogado();
             }
             FileWriter fileWriter = new FileWriter(logCat, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);

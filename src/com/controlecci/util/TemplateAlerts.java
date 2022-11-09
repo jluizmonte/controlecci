@@ -1,11 +1,7 @@
 package com.controlecci.util;
 
 public class TemplateAlerts {
-/***
- * REVER
- * @param nometela
- * @return 
- */
+
     public String mensagemExclusao(String nometela) {
         return nometela + " excluído(a) com sucesso!";
     }
@@ -38,6 +34,23 @@ public class TemplateAlerts {
         return "Erro ao alterar o(a) " + nomeTela;
     }
 
+    public String erroLogar() {
+        return "ERRO AO EFETURAR O LOGIN, USUÁRIO OU SENHA INCORRETA!";
+    }
+
+    public String erroCamposEmBranco() {
+        return "UM OU MAIS CAMPOS ESTÃO EM BRANCO, REVISE E TENTE NOVAMENTE";
+    }
+
+    /**
+     * mensagem para o log quando o usuário não estiver logado no sistema
+     *
+     * @return
+     */
+    public String erroUsuarioLogado() {
+        return "USUÁRIO NÃO LOGADO";
+    }
+
     public String mensagemAlterar(String nomeTela) {
         return nomeTela + " alterado(a) com sucesso!";
     }
@@ -68,5 +81,13 @@ public class TemplateAlerts {
 
     public String perguntaSair() {
         return "Deseja sair?";
+    }
+
+    public String mensagemRegistroComum() {
+        return "REGISTRO COMUM";
+    }
+
+    public String mensagemRegsitroErro() {
+        return "REGISTRO DE ERRO";
     }
 }
