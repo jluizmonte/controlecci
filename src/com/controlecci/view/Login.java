@@ -3,6 +3,8 @@ package com.controlecci.view;
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.model.UsuarioModel;
+import com.controlecci.util.LocalUtil;
+import com.controlecci.util.LogCatUtil;
 import com.controlecci.view.SCCI.SCCI;
 import java.awt.Color;
 import java.awt.HeadlessException;
@@ -15,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class Login extends javax.swing.JDialog {
-    
+
     UsuarioModel usuarioModel = new UsuarioModel();
     UsuarioController usuarioController = new UsuarioController();
     int x, y;
@@ -262,7 +264,7 @@ public class Login extends javax.swing.JDialog {
     private void jpSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpSenhaActionPerformed
         realizarLogin();
     }//GEN-LAST:event_jpSenhaActionPerformed
-    
+
     public void realizarLogin() {
         usuarioModel.setLoginUsuario(jtfLogin.getText());
         usuarioModel.setSenhaUsuario(String.valueOf(jpSenha.getPassword()));
@@ -271,29 +273,45 @@ public class Login extends javax.swing.JDialog {
                 if (usuarioController.getValidarUsuarioDAO(usuarioModel)) {
                     usuarioModel = usuarioController.getUsuarioDAO(jtfLogin.getText());
                     setSessionUser();
-                    JOptionPane.showMessageDialog(this, "Acesso concedido ao usuário:\n" + usuarioModel.getNomeUsuario(), "Sucesso", JOptionPane.WARNING_MESSAGE);
-                    //     new TelaPrincipal().setVisible(true);
+                    String sucesso = "Acesso concedido ao usuário: " + usuarioModel.getNomeUsuario();
+                    JOptionPane.showMessageDialog(this, sucesso, "Sucesso", JOptionPane.WARNING_MESSAGE);
+                   
+                    LocalUtil.logClass = this.getClass().getName();
+                    LocalUtil.logType = "REGISTRO DE SUCESSO";
+                    new LogCatUtil().writeFile(String.valueOf(sucesso));
+                    
                     new SCCI().setVisible(true);
                     this.dispose();
                 } else {
+                    String erro = "ERRO AO EFETURAR O LOGIN, USUÁRIO OU SENHA INCORRETA!";
+                    JOptionPane.showMessageDialog(this, erro);
                     
-                    JOptionPane.showMessageDialog(this, "Erro ao efetuar o login!");
+                    LocalUtil.logClass = this.getClass().getName();
+                    LocalUtil.logType = "REGISTRO DE ERRO";
+                    new LogCatUtil().writeFile(String.valueOf(erro));
+                    jtfLogin.requestFocus();
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Nenhum campo pode permanecer em branco!");
+                LocalUtil.logClass = this.getClass().getName();
+                LocalUtil.logType = "REGISTRO DE ERRO";
+
+                new LogCatUtil().writeFile(String.valueOf("UM OU MAIS CAMPOS ESTÃO EM BRANCO, ACESSO NÃO PERMITDO"));
                 limparCampos();
             }
         } catch (HeadlessException e) {
-            e.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = "REGISTRO DE ERRO";
+            new LogCatUtil().writeFile(String.valueOf(e.toString()));
         }
     }
-    
+
     public void limparCampos() {
         jtfLogin.setText("");
         jpSenha.setText("");
         jtfLogin.requestFocus();
     }
-    
+
     private void setSessionUser() {
         SessaoUsuarioModel.codigoUsuario = usuarioModel.getIdUsuario();
         SessaoUsuarioModel.nomeUsuario = usuarioModel.getNomeUsuario();

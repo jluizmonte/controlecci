@@ -2,6 +2,8 @@ package com.controlecci.model.dao;
 
 import com.controlecci.connection.ConnectionMySQL;
 import com.controlecci.model.UsuarioModel;
+import com.controlecci.util.LocalUtil;
+import com.controlecci.util.LogCatUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -139,7 +141,9 @@ public class UsuarioDao extends ConnectionMySQL {
             } else {
                 return false;
             }
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+               LocalUtil.logClass = this.getClass().getName();
+            new LogCatUtil().writeFile(String.valueOf(ex));
             return false;
         } finally {
             this.fecharConexao();
