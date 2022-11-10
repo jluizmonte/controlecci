@@ -5,6 +5,9 @@ import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.util.ColorirLinhaStatus;
 import com.controlecci.util.GetDateUtil;
+import com.controlecci.util.LocalUtil;
+import com.controlecci.util.LogCatUtil;
+import com.controlecci.util.TemplateAlerts;
 import com.controlecci.view.MensagemConfirmação;
 import com.controlecci.view.TelaCarregamento;
 import com.mxrck.autocompleter.AutoCompleter;
@@ -21,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  * @author joseluiz
  */
 public class AlunoView extends javax.swing.JInternalFrame {
-    
+
     AlunoModel alunoModel = new AlunoModel();
     AlunoController alunoController = new AlunoController();
     GetDateUtil getDateUtil = new GetDateUtil();
@@ -31,6 +34,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     public ArrayList lista = new ArrayList<>();
     public ArrayList<AlunoModel> listaAlunoModels = new ArrayList<>();
     CursoController cursoController = new CursoController();
+    TemplateAlerts templateAlerts = new TemplateAlerts();
 
     /**
      * Creates new form AlunoView
@@ -44,7 +48,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
         autoCompletarAluno();
         habilitaDesabilitaCamposSalvar(false);
         habilitarCamposAlterar(false);
-        //    carregarRegistro();
     }
 
     /**
@@ -1049,7 +1052,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private void jbAtualizarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarTabelaActionPerformed
         carregarRegistro();
     }//GEN-LAST:event_jbAtualizarTabelaActionPerformed
-    
+
     private void perguntaObservacoes() {
         String opcao = JOptionPane.showInputDialog(this, "O aluno possui alguma pendência?\n 1. Sim\n 2. Não", "2");
         if (opcao.equals("1")) {
@@ -1058,7 +1061,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
             salvarAluno();
         }
     }
-    
+
     private void autoCompletarCurso() {
         ac = new TextAutoCompleter(jtfCurso);
         ac2 = new TextAutoCompleter(jtfCursoAlterar);
@@ -1068,14 +1071,14 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jlCargaHoraria.setText(cursoController.retornaCargaHoraria(jtfCurso.getText()));
         jlCargaHorariaAlterar.setText(cursoController.retornaCargaHoraria(jtfCursoAlterar.getText()));
     }
-    
+
     private void autoCompletarAluno() {
         ac = new TextAutoCompleter(jtfPesquisa);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
-        
+
     }
-    
+
     private void habilitaDesabilitaCamposSalvar(boolean condicao) {
         jtfBairro.setEnabled(condicao);
         jtfCep.setEnabled(condicao);
@@ -1094,7 +1097,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfNumero.setEnabled(condicao);
         jtfDataMatricula.setEnabled(condicao);
     }
-    
+
     private void habilitarCamposAlterar(boolean condicao) {
         jtfBairroAlterar.setEnabled(condicao);
         jtfCepAlterar.setEnabled(condicao);
@@ -1127,7 +1130,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfTelefoneAlterar.setEditable(condicao);
         jtfNumeroAlterar.setEditable(condicao);
     }
-    
+
     private void limparCamposSalvar() {
         jtfBairro.setText("");
         jtfCep.setText("");
@@ -1146,7 +1149,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfTelefone.setText("");
         jlCargaHoraria.setText("");
     }
-    
+
     private void limparCamposAlterar() {
         jtfBairroAlterar.setText("");
         jtfCepAlterar.setText("");
@@ -1165,16 +1168,16 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfPesquisa.setText("");
         jtfNumeroAlterar.setText("");
     }
-    
+
     public void chamarJDialog() {
         telaCarregamento.fechar();
         telaCarregamento.setVisible(true);
     }
-    
+
     private void preencherCamposAlteracao() {
         alunoModel = alunoController.getAlunoDao(jtfPesquisa.getText().toUpperCase());
         chamarJDialog();
-        
+
         jtfBairroAlterar.setText(alunoModel.getBairro());
         jtfCepAlterar.setText(alunoModel.getCep());
         jtfCelularAlterar.setText(alunoModel.getCelular());
@@ -1193,7 +1196,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jlCargaHorariaAlterar.setText(cursoController.retornaCargaHoraria(jtfCursoAlterar.getText()) + " HORAS");
         jcbStatus.setSelectedItem(alunoModel.getSituacao());
     }
-    
+
     private void salvarAluno() {
         alunoModel = new AlunoModel();
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatricula.getText()));
@@ -1225,16 +1228,24 @@ public class AlunoView extends javax.swing.JInternalFrame {
                 mensagemConfirmação.jlInfo.setText("NO CURSO: " + alunoModel.getCurso());
                 mensagemConfirmação.fechar();
                 mensagemConfirmação.setVisible(true);
+                LocalUtil.logClass = this.getClass().getName();
+                LocalUtil.logType = templateAlerts.mensagemRegistroComum();
+                new LogCatUtil().writeFile(String.valueOf(templateAlerts.mensagemSalvar("Aluno")));
                 limparCamposSalvar();
                 menuOpcoes();
             } else {
                 JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o aluno: " + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
+                LocalUtil.logClass = this.getClass().getName();
+                LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+                new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroCadastro("Aluno " + alunoModel.getNome())));
             }
         } catch (HeadlessException | ParseException e) {
-            e.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(e));
         }
     }
-    
+
     private void alterarAluno() {
         alunoModel = new AlunoModel();
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatriculaAlterar.getText()));
@@ -1260,13 +1271,18 @@ public class AlunoView extends javax.swing.JInternalFrame {
         } else {
             alunoModel.setComplemento(jtfComplementoAlterar.getText());
         }
-        
+
         try {
             if (alunoController.atualizarAluno(alunoModel)) {
                 mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI ATUALIZADO COM SUCESSO!");
                 mensagemConfirmação.jlInfo.setText("NO CURSO: " + alunoModel.getCurso());
                 mensagemConfirmação.fechar();
                 mensagemConfirmação.setVisible(true);
+
+                LocalUtil.logClass = this.getClass().getName();
+                LocalUtil.logType = templateAlerts.mensagemRegistroComum();
+                new LogCatUtil().writeFile(String.valueOf(templateAlerts.mensagemAlterar("Aluno " + alunoModel.getNome())));
+
                 String opcao = JOptionPane.showInputDialog(this, "Deseja cadastrar outro aluno?\n 1. Sim\n 2. Não", "1");
                 if (opcao.equals("1")) {
                     limparCamposAlterar();
@@ -1277,12 +1293,17 @@ public class AlunoView extends javax.swing.JInternalFrame {
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o aluno:\n" + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
+                LocalUtil.logClass = this.getClass().getName();
+                LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+                new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroAlterar("Aluno")));
             }
         } catch (HeadlessException e) {
-            e.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(e.toString()));
         }
     }
-    
+
     private void carregarRegistro() {
         colorirLinhas();
         listaAlunoModels = alunoController.getListaAlunoCadastro();
@@ -1302,14 +1323,17 @@ public class AlunoView extends javax.swing.JInternalFrame {
             chamarJDialog();
         } catch (Exception e) {
             e.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("Aluno")));
         }
     }
-    
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
-    
+
     public void selecionarTipoCliente() throws ParseException {
         String tipo = JOptionPane.showInputDialog(this, "Selecione o tipo de usuário:\n 1. Pessoa Física\n 2. Pessoa Júridica", "1");
         if (tipo.equals("1")) {
@@ -1320,10 +1344,13 @@ public class AlunoView extends javax.swing.JInternalFrame {
             jtfCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
         } else {
             JOptionPane.showMessageDialog(this, "Tipo de usuário inválido!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroCodigoInvalido()));
             this.dispose();
         }
     }
-    
+
     public void menuOpcoes() throws ParseException {
         String opcao = JOptionPane.showInputDialog(this, "Deseja cadastrar outro aluno?\n 1. Sim\n 2. Não", "1");
         if (opcao.equals("1")) {
@@ -1331,15 +1358,15 @@ public class AlunoView extends javax.swing.JInternalFrame {
             selecionarTipoCliente();
         } else {
             limparCamposSalvar();
-          //  this.dispose();
+            //  this.dispose();
         }
     }
-    
+
     private void colorirLinhas() {
         ColorirLinhaStatus colorirLinhas = new ColorirLinhaStatus(4);
         jtAlunos.getColumnModel().getColumn(4).setCellRenderer(colorirLinhas);
     }
-    
+
     private void setarEstado() {
         jcbUf.setModel(new javax.swing.DefaultComboBoxModel<>(
                 new String[]{"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",

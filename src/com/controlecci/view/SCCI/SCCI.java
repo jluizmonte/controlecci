@@ -2,8 +2,10 @@ package com.controlecci.view.SCCI;
 
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.relatorio.RelatorioUtil;
+import com.controlecci.util.LocalUtil;
+import com.controlecci.util.LogCatUtil;
+import com.controlecci.util.TemplateAlerts;
 import com.controlecci.view.Login;
-import com.controlecci.view.TelaCarregamento;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class SCCI extends javax.swing.JFrame {
 
-    TelaCarregamento tc = new TelaCarregamento(this, true);
+    TemplateAlerts templateAlerts = new TemplateAlerts();
     RelatorioUtil relatorio = new RelatorioUtil();
 
     /**
@@ -316,6 +318,9 @@ public class SCCI extends javax.swing.JFrame {
             relatorio.gerarLevantamento();
         } catch (SQLException e) {
             e.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(e));
         } finally {
             //  this.dispose();
         }

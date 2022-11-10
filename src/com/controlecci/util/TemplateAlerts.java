@@ -11,7 +11,7 @@ public class TemplateAlerts {
     }
 
     public String erroCadastro(String nomeTela) {
-        return "Erro ao cadastrar o(a) " + nomeTela;
+        return "Erro ao cadastrar o " + nomeTela;
     }
 
     public String perguntaExclusao(String nomeTela) {
@@ -51,11 +51,14 @@ public class TemplateAlerts {
         return "USUÁRIO NÃO LOGADO";
     }
 
+    public String mensagemSalvar(String nomeTela){
+        return nomeTela+" salvo com sucesso! ";
+    }
     public String mensagemAlterar(String nomeTela) {
-        return nomeTela + " alterado(a) com sucesso!";
+        return nomeTela + " alterado com sucesso! ";
     }
 
-    public String mensagemGeral() {
+    public String mensagemErroGeral() {
         return "Informe o ocorrido ao desenvolvedor";
     }
 
@@ -72,7 +75,7 @@ public class TemplateAlerts {
     }
 
     public String perguntaSalvar(String nomeTela) {
-        return "Deseja salvar outro(a) " + nomeTela;
+        return "Deseja salvar outro " + nomeTela;
     }
 
     public String mensagemSair() {

@@ -295,14 +295,14 @@ public class Login extends javax.swing.JDialog {
             } else {
                 JOptionPane.showMessageDialog(this, templateAlerts.erroCamposEmBranco());
                 LocalUtil.logClass = this.getClass().getName();
-                LocalUtil.logType = "REGISTRO DE ERRO";
+                LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
 
                 new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroCamposEmBranco()));
                 limparCampos();
             }
         } catch (HeadlessException e) {
             LocalUtil.logClass = this.getClass().getName();
-            LocalUtil.logType = "REGISTRO DE ERRO";
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
             new LogCatUtil().writeFile(String.valueOf(e.toString()));
         }
     }
