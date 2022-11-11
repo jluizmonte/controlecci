@@ -82,6 +82,19 @@ public class GetDateUtil {
     }
 
     /**
+     * retorna a data atual no formato dd-mm-yyyy
+     *
+     * @return
+     */
+    public String getDateTimeUS() {
+        String date = "";
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-mm-yyyy");
+        LocalDateTime timepoint = LocalDateTime.now();
+        date = (timepoint.format(fmt));
+        return date;
+    }
+
+    /**
      * retorna a data atualizada de 1 mês
      *
      * @return data

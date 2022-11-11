@@ -20,7 +20,7 @@ public class ConnectionMySQL {
     private boolean status = false;
     private String banco = "controle";
 
-    private String usuario = "luiz";
+    private String usuario = "root";
     private String senha = "Jos3@Luiz";
     private String servidor = "localhost";
 //

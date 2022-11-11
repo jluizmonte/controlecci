@@ -76,7 +76,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jtfData = new com.toedter.calendar.JDateChooser();
         jtfComplemento = new javax.swing.JTextField();
         jtfNumero = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -100,7 +99,8 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jbSalvar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jtfDataMatricula = new com.toedter.calendar.JDateChooser();
+        jtfData = new javax.swing.JFormattedTextField();
+        jtfDataMatricula = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jtfTelefoneAlterar = new javax.swing.JFormattedTextField();
@@ -214,9 +214,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("BAIRRO");
 
-        jtfData.setDateFormatString("dd/MM/yyyy");
-        jtfData.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
         jtfComplemento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jtfNumero.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -327,7 +324,20 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("DATA DA MATRICULA");
 
-        jtfDataMatricula.setDateFormatString("dd/MM/yyyy");
+        try {
+            jtfData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jtfData.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfData.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        try {
+            jtfDataMatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jtfDataMatricula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfDataMatricula.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -373,8 +383,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                 .addComponent(jtfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtfRg)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfData, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(159, 159, 159))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jtfCep, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -406,33 +415,40 @@ public class AlunoView extends javax.swing.JInternalFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfDataMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jtfCurso, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jtfCurso, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jtfDataMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jlCargaHoraria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                         .addContainerGap())
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(97, 97, 97)
                                 .addComponent(jLabel2))
+                            .addComponent(jLabel12))
+                        .addGap(92, 389, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jtfData, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jlCliente)
                                 .addGap(157, 157, 157)
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(92, 92, 92))))
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5)))
+                        .addGap(23, 23, 23))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,11 +468,10 @@ public class AlunoView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtfData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtfRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -502,7 +517,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                     .addComponent(jtfCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCargaHoraria))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(jtfDataMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -511,7 +526,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jbSalvar)
                         .addComponent(jbCancelar)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -1054,6 +1069,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbCancelarAlterarActionPerformed
 
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        perguntaObservacoes();
         alterarAluno();
     }//GEN-LAST:event_jbAlterarActionPerformed
 
@@ -1159,8 +1175,8 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfComplemento.setText("");
         jtfCpf.setText("");
         jtfCurso.setText("");
-        jtfData.setDate(getDateUtil.retornaDataAtual());
-        jtfDataMatricula.setDate(getDateUtil.retornaDiaAnterior());
+        jtfData.setText("");
+        jtfDataMatricula.setText(getDateUtil.getDateTimeUS());
         jtfEmail.setText("");
         jtfEndereco.setText("");
         jtfMatricula.setText("");
@@ -1178,7 +1194,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfComplementoAlterar.setText("");
         jtfCpfAlterar.setText("");
         jtfCursoAlterar.setText("");
-        jtfDataAlterar.setText(getDateUtil.retornaDataAtual().toString());
+        jtfDataAlterar.setText("");
         jtfEmailAlterar.setText("");
         jtfEnderecoAlterar.setText("");
         jtfMatriculaAlterar.setText("");
@@ -1221,15 +1237,15 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     private void salvarAluno() {
         alunoModel = new AlunoModel();
-        alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatricula.getText()));
+        alunoModel.setMatricula(Integer.valueOf(jtfMatricula.getText()));
         alunoModel.setBairro(jtfBairro.getText().toUpperCase());
         alunoModel.setCelular(jtfCelular.getText());
         alunoModel.setCep(jtfCep.getText());
         alunoModel.setCidade(jtfCidade.getText().toUpperCase());
         alunoModel.setCpf(jtfCpf.getText());
         alunoModel.setCurso(jtfCurso.getText().toUpperCase());
-        alunoModel.setDataNascimento(getDateUtil.recuperaDataChooser(jtfData.getDate()));
-        alunoModel.setDataMatricula(getDateUtil.recuperaDataChooser(jtfDataMatricula.getDate()));
+        alunoModel.setDataNascimento(jtfData.getText());
+        alunoModel.setDataMatricula(getDateUtil.getDateTimeUS());
         alunoModel.setEmail(jtfEmail.getText().toUpperCase());
         alunoModel.setEndereco(jtfEndereco.getText().toUpperCase());
         alunoModel.setNome(jtfNome.getText().toUpperCase());
@@ -1269,7 +1285,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     private void alterarAluno() {
         alunoModel = new AlunoModel();
-        alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatriculaAlterar.getText()));
+        alunoModel.setMatricula(Integer.valueOf(jtfMatriculaAlterar.getText()));
         alunoModel.setBairro(jtfBairroAlterar.getText().toUpperCase());
         alunoModel.setCelular(jtfCelularAlterar.getText());
         alunoModel.setCep(jtfCepAlterar.getText());
@@ -1464,9 +1480,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField jtfCpfAlterar;
     private javax.swing.JTextField jtfCurso;
     private javax.swing.JTextField jtfCursoAlterar;
-    private com.toedter.calendar.JDateChooser jtfData;
+    private javax.swing.JFormattedTextField jtfData;
     private javax.swing.JTextField jtfDataAlterar;
-    private com.toedter.calendar.JDateChooser jtfDataMatricula;
+    private javax.swing.JFormattedTextField jtfDataMatricula;
     private javax.swing.JFormattedTextField jtfDataMatriculaAlterar;
     private javax.swing.JTextField jtfEmail;
     private javax.swing.JTextField jtfEmailAlterar;
