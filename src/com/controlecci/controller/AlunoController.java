@@ -71,16 +71,16 @@ public class AlunoController {
         return alunoDao.retornarCursoPeloAluno(pAluno);
     }
 
-    /**
-     *
-     * @param pAluno
-     * @param pCurso
-     * @param pStatus
-     * @return
-     */
-    public boolean salvarAluno(String pAluno, String pCurso, String pStatus) {
-        return alunoDao.salvarAluno(pAluno, pCurso, pStatus);
-    }
+//    /**
+//     *
+//     * @param pAluno
+//     * @param pCurso
+//     * @param pStatus
+//     * @return
+//     */
+//    public boolean salvarAluno(String pAluno, String pCurso, String pStatus) {
+//        return alunoDao.salvarAluno(pAluno, pCurso, pStatus);
+//    }
 
     /**
      * insere aluno com dados iguais a ficha

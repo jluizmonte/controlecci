@@ -19,11 +19,11 @@ public class ConnectionMySQL {
     private boolean status = false;
     private String banco = "controle";
 
-    private String usuario = "root";
+    private String usuario = "luiz";
     private String senha = "Jos3@Luiz";
     private String servidor = "localhost";
 
-//    private String servidor = "192.168.0.253"; //OU localhost
+//    private String servidor = "192.168.0.253"; 
 //    private String usuario = "cci";
 //    private String senha = "@3325cci3333";
     /**
@@ -92,12 +92,12 @@ public class ConnectionMySQL {
     public boolean executarInsertUpdateSQL(String pSQL) {
         try {
             this.setStatement(getCon().createStatement());
-            getStatement().executeUpdate(pSQL);
+            this.getStatement().executeUpdate(pSQL);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir/atualizar registro!\n" + e.toString(), "Erro", JOptionPane.ERROR_MESSAGE);
             LocalUtil.logClass = this.getClass().getName();
             LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao executar insert/update"));
+            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao executar insert/update\n"+e.toString()));
             return false;
         }
         return true;
@@ -114,35 +114,6 @@ public class ConnectionMySQL {
             return false;
         }
         return true;
-    }
-
-    /**
-     *
-     * @param pSQL
-     * @return
-     */
-    public int insertSQL(String pSQL) {
-        int status = 0;
-        try {
-            // createStatement de con para criar o Statement
-            this.setStatement(getCon().createStatement());
-
-            // Definido o Statement, executamos a query no banco de dados
-            this.getStatement().executeUpdate(pSQL);
-
-            // consulta o ultimo id inserido
-            this.setResultSet(this.getStatement().executeQuery("SELECT last_insert_id();"));
-
-            // recupera o ultimo id inserido
-            while (this.resultSet.next()) {
-                status = this.resultSet.getInt(1);
-            }
-            // retorna o ultimo id inserido
-            return status;
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-            return status;
-        }
     }
 
     /**

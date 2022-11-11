@@ -6,8 +6,8 @@ package com.controlecci.model;
  */
 public class SessaoUsuarioModel {
 
-    public static int codigoUsuario;
-    public static String nomeUsuario;
-    public static String loginUsuario;
-    public static String nivelAcesso;
+    public static int codigoUsuario=1;
+    public static String nomeUsuario="José Luiz";
+    public static String loginUsuario="luiz";
+    public static String nivelAcesso="INSTRUTOR";
 }

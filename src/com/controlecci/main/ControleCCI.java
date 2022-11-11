@@ -1,6 +1,7 @@
 package com.controlecci.main;
 
 import com.controlecci.view.Login;
+import com.controlecci.view.SCCI.SCCI;
 
 /**
  *
@@ -23,7 +24,8 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-            new Login(null, true).setVisible(true);
+         //   new Login(null, true).setVisible(true);
+         new SCCI().setVisible(true);
         });
     }
 }

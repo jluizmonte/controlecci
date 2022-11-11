@@ -126,7 +126,10 @@ public class LogCatUtil {
             FileWriter fileWriter = new FileWriter(logCat);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            bufferedWriter.write("");
+            bufferedWriter.write(""
+                    + "CRIAÇÃO DAS JAENLAS DE ALUNO, CURSO CONSULTA E REGISTRO DE ALUNO\n"
+                    + "REPARO DO ERRO AO SALVAR UM ALUNO NOVO\n"
+                    + "");
             bufferedWriter.close();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null,

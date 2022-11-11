@@ -126,7 +126,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jtfDataAlterar = new com.toedter.calendar.JDateChooser();
         jLabel33 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -145,6 +144,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jcbStatus = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
+        jtfDataMatriculaAlterar = new javax.swing.JFormattedTextField();
+        jLabel38 = new javax.swing.JLabel();
+        jtfDataAlterar = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -616,9 +618,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("RG");
 
-        jtfDataAlterar.setDateFormatString("dd/MM/yyyy");
-        jtfDataAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
         jLabel33.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("CURSO");
@@ -706,6 +705,21 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("CARGA HORÁRIA");
 
+        jtfDataMatriculaAlterar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfDataMatriculaAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel38.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel38.setText("MATRÍCULA");
+
+        try {
+            jtfDataAlterar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jtfDataAlterar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfDataAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -722,9 +736,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                         .addComponent(jtfCpfAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfRgAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtfDataAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addGap(248, 248, 248))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
@@ -745,7 +757,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                     .addComponent(jcbUfAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jtfCepAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jtfBairroAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jbCancelarAlterar)
@@ -762,58 +774,61 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtfNomeAlterar))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel30)
-                                                .addComponent(jtfTelefoneAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel31)
-                                                .addComponent(jtfCelularAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                            .addComponent(jtfCursoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jlCargaHorariaAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel30)
+                                            .addComponent(jtfTelefoneAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel31)
+                                            .addComponent(jtfCelularAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtfCursoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel33))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jlCargaHorariaAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel22)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(97, 97, 97)
+                                        .addComponent(jLabel10))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jlCliente1)
+                                        .addGap(157, 157, 157)
+                                        .addComponent(jLabel20))
+                                    .addComponent(jLabel27))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtfEmailAlterar)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel32)
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel32)
+                                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                                                    .addComponent(jtfDataMatriculaAlterar))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jcbStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING))))
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jcbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap())
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel22)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(97, 97, 97)
-                                .addComponent(jLabel10))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jlCliente1)
-                                .addGap(157, 157, 157)
-                                .addComponent(jLabel20))
-                            .addComponent(jLabel27))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(81, 81, 81))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addContainerGap())))))
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jtfDataAlterar)
+                                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(69, 69, 69)))))
+                        .addContainerGap())))
             .addComponent(jSeparator1)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -835,11 +850,10 @@ public class AlunoView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel20)
                         .addComponent(jLabel21)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtfDataAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfCpfAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtfRgAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfCpfAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfRgAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDataAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -877,16 +891,25 @@ public class AlunoView extends javax.swing.JInternalFrame {
                     .addComponent(jtfCelularAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfEmailAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel34))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jlCargaHorariaAlterar)
-                        .addComponent(jcbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jtfCursoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel33)
+                                .addComponent(jLabel26))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jcbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfCursoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabel34)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jlCargaHorariaAlterar)
+                            .addGap(2, 2, 2)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfDataMatriculaAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCancelarAlterar)
@@ -898,7 +921,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 627, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -963,8 +986,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
             .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jbAtualizarTabela))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbAtualizarTabela)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1114,6 +1138,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfRgAlterar.setEnabled(condicao);
         jtfTelefoneAlterar.setEnabled(condicao);
         jtfNumeroAlterar.setEnabled(condicao);
+        jtfDataMatriculaAlterar.setEnabled(condicao);
         /**/
         jtfBairroAlterar.setEditable(condicao);
         jtfCepAlterar.setEditable(condicao);
@@ -1129,6 +1154,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfRgAlterar.setEditable(condicao);
         jtfTelefoneAlterar.setEditable(condicao);
         jtfNumeroAlterar.setEditable(condicao);
+        jtfDataMatriculaAlterar.setEditable(condicao);
     }
 
     private void limparCamposSalvar() {
@@ -1158,7 +1184,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfComplementoAlterar.setText("");
         jtfCpfAlterar.setText("");
         jtfCursoAlterar.setText("");
-        jtfDataAlterar.setDate(getDateUtil.retornaDataAtual());
+        jtfDataAlterar.setText(getDateUtil.retornaDataAtual().toString());
         jtfEmailAlterar.setText("");
         jtfEnderecoAlterar.setText("");
         jtfMatriculaAlterar.setText("");
@@ -1167,6 +1193,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfTelefoneAlterar.setText("");
         jtfPesquisa.setText("");
         jtfNumeroAlterar.setText("");
+        jtfDataMatriculaAlterar.setText("");
     }
 
     public void chamarJDialog() {
@@ -1175,7 +1202,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }
 
     private void preencherCamposAlteracao() {
-        alunoModel = alunoController.getAlunoDao(jtfPesquisa.getText().toUpperCase());
+        alunoModel = alunoController.getAlunoDao(jtfPesquisa.getText());
         chamarJDialog();
 
         jtfBairroAlterar.setText(alunoModel.getBairro());
@@ -1185,7 +1212,8 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfComplementoAlterar.setText(alunoModel.getComplemento());
         jtfCpfAlterar.setText(alunoModel.getCpf());
         jtfCursoAlterar.setText(alunoModel.getCurso());
-        jtfDataAlterar.setDateFormatString(alunoModel.getDataNascimento());
+        jtfDataAlterar.setText(alunoModel.getDataNascimento());
+        jtfDataMatriculaAlterar.setText(alunoModel.getDataMatricula());
         jtfEmailAlterar.setText(alunoModel.getEmail());
         jtfEnderecoAlterar.setText(alunoModel.getEndereco());
         jtfMatriculaAlterar.setText(String.valueOf(alunoModel.getMatricula()));
@@ -1221,7 +1249,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
         } else {
             alunoModel.setComplemento(jtfComplemento.getText());
         }
-        System.out.print(alunoModel.getDataMatricula());
         try {
             if (alunoController.inserirAluno(alunoModel)) {
                 mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI SALVO COM SUCESSO!");
@@ -1247,7 +1274,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }
 
     private void alterarAluno() {
-        alunoModel = new AlunoModel();
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatriculaAlterar.getText()));
         alunoModel.setBairro(jtfBairroAlterar.getText().toUpperCase());
         alunoModel.setCelular(jtfCelularAlterar.getText());
@@ -1255,52 +1281,45 @@ public class AlunoView extends javax.swing.JInternalFrame {
         alunoModel.setCidade(jtfCidadeAlterar.getText().toUpperCase());
         alunoModel.setCpf(jtfCpfAlterar.getText());
         alunoModel.setCurso(jtfCursoAlterar.getText().toUpperCase());
-        alunoModel.setDataNascimento(getDateUtil.recuperaDataChooser(jtfDataAlterar.getDate()));
+        alunoModel.setDataNascimento(jtfDataAlterar.getText());
+        alunoModel.setDataMatricula(jtfDataMatriculaAlterar.getText());
         alunoModel.setEmail(jtfEmailAlterar.getText().toUpperCase());
         alunoModel.setEndereco(jtfEnderecoAlterar.getText().toUpperCase());
         alunoModel.setNome(jtfNomeAlterar.getText().toUpperCase());
         alunoModel.setRg(jtfRgAlterar.getText());
-        alunoModel.setSituacao("ATIVO");
         alunoModel.setUf(jcbUfAlterar.getSelectedItem().toString());
         alunoModel.setTelefone(jtfTelefoneAlterar.getText());
         alunoModel.setNumero(Integer.valueOf(jtfNumeroAlterar.getText()));
         alunoModel.setSituacao(jcbStatus.getSelectedItem().toString());
-        //   alunoModel.setDataMatricula(dataMatricula);
         if (jtfComplementoAlterar.getText().equals("")) {
             alunoModel.setComplemento("SEM COMPLEMENTO");
         } else {
             alunoModel.setComplemento(jtfComplementoAlterar.getText());
         }
 
-        try {
-            if (alunoController.atualizarAluno(alunoModel)) {
-                mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI ATUALIZADO COM SUCESSO!");
-                mensagemConfirmação.jlInfo.setText("NO CURSO: " + alunoModel.getCurso());
-                mensagemConfirmação.fechar();
-                mensagemConfirmação.setVisible(true);
+        if (alunoController.atualizarAluno(alunoModel)) {
+            mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI ATUALIZADO COM SUCESSO!");
+            mensagemConfirmação.jlInfo.setText("NO CURSO: " + alunoModel.getCurso());
+            mensagemConfirmação.fechar();
+            mensagemConfirmação.setVisible(true);
 
-                LocalUtil.logClass = this.getClass().getName();
-                LocalUtil.logType = templateAlerts.mensagemRegistroComum();
-                new LogCatUtil().writeFile(String.valueOf(templateAlerts.mensagemAlterar("Aluno " + alunoModel.getNome())));
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegistroComum();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.mensagemAlterar("Aluno " + alunoModel.getNome())));
 
-                String opcao = JOptionPane.showInputDialog(this, "Deseja cadastrar outro aluno?\n 1. Sim\n 2. Não", "1");
-                if (opcao.equals("1")) {
-                    limparCamposAlterar();
-                    jtfPesquisa.requestFocus();
-                } else {
-                    limparCamposAlterar();
-                    habilitarCamposAlterar(false);
-                }
+            String opcao = JOptionPane.showInputDialog(this, "Deseja atualizar outro aluno?\n 1. Sim\n 2. Não", "1");
+            if (opcao.equals("1")) {
+                limparCamposAlterar();
+                jtfPesquisa.requestFocus();
             } else {
-                JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o aluno:\n" + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
-                LocalUtil.logClass = this.getClass().getName();
-                LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-                new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroAlterar("Aluno")));
+                limparCamposAlterar();
+                habilitarCamposAlterar(false);
             }
-        } catch (HeadlessException e) {
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar o aluno:\n" + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
             LocalUtil.logClass = this.getClass().getName();
             LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf(e.toString()));
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroAlterar("Aluno")));
         }
     }
 
@@ -1405,6 +1424,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1450,8 +1470,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfCurso;
     private javax.swing.JTextField jtfCursoAlterar;
     private com.toedter.calendar.JDateChooser jtfData;
-    private com.toedter.calendar.JDateChooser jtfDataAlterar;
+    private javax.swing.JFormattedTextField jtfDataAlterar;
     private com.toedter.calendar.JDateChooser jtfDataMatricula;
+    private javax.swing.JFormattedTextField jtfDataMatriculaAlterar;
     private javax.swing.JTextField jtfEmail;
     private javax.swing.JTextField jtfEmailAlterar;
     private javax.swing.JTextField jtfEndereco;
