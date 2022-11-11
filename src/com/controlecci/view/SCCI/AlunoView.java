@@ -146,7 +146,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         jtfDataMatriculaAlterar = new javax.swing.JFormattedTextField();
         jLabel38 = new javax.swing.JLabel();
-        jtfDataAlterar = new javax.swing.JFormattedTextField();
+        jtfDataAlterar = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -712,13 +712,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("MATRÍCULA");
 
-        try {
-            jtfDataAlterar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jtfDataAlterar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfDataAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfDataAlterar.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1274,6 +1268,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }
 
     private void alterarAluno() {
+        alunoModel = new AlunoModel();
         alunoModel.setMatricula(Integer.parseUnsignedInt(jtfMatriculaAlterar.getText()));
         alunoModel.setBairro(jtfBairroAlterar.getText().toUpperCase());
         alunoModel.setCelular(jtfCelularAlterar.getText());
@@ -1470,7 +1465,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfCurso;
     private javax.swing.JTextField jtfCursoAlterar;
     private com.toedter.calendar.JDateChooser jtfData;
-    private javax.swing.JFormattedTextField jtfDataAlterar;
+    private javax.swing.JTextField jtfDataAlterar;
     private com.toedter.calendar.JDateChooser jtfDataMatricula;
     private javax.swing.JFormattedTextField jtfDataMatriculaAlterar;
     private javax.swing.JTextField jtfEmail;

@@ -7,6 +7,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
+ * classe que realiza a conexão com o MySQL
  *
  * @author Aluno
  */
@@ -22,10 +23,11 @@ public class ConnectionMySQL {
     private String usuario = "luiz";
     private String senha = "Jos3@Luiz";
     private String servidor = "localhost";
-
+//
 //    private String servidor = "192.168.0.253"; 
 //    private String usuario = "cci";
 //    private String senha = "@3325cci3333";
+
     /**
      *
      * @return getCon() retorna a conexão com sucesso ou não
@@ -65,6 +67,12 @@ public class ConnectionMySQL {
         return true;
     }
 
+    /**
+     * retorna o utlimo ID inserido
+     *
+     * @param pSQL
+     * @return
+     */
     public int retornarUltimoID(String pSQL) {
         int ultimoID = 0;
         try {
@@ -97,12 +105,17 @@ public class ConnectionMySQL {
             JOptionPane.showMessageDialog(null, "Erro ao excluir/atualizar registro!\n" + e.toString(), "Erro", JOptionPane.ERROR_MESSAGE);
             LocalUtil.logClass = this.getClass().getName();
             LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao executar insert/update\n"+e.toString()));
+            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao executar insert/update\n" + e.toString()));
             return false;
         }
         return true;
     }
 
+    /**
+     *
+     * @param pSQL
+     * @return
+     */
     public boolean executarUpdateDeleteSQL(String pSQL) {
         try {
             // createStatement de con para criar o Statement

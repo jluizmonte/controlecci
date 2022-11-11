@@ -22,7 +22,7 @@ public class AlunoDao extends ConnectionMySQL {
         try {
             this.conectar();
             this.executarSQL("SELECT id_cadastro,matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,DATE_FORMAT(data_nascimento, '%d/%m/%Y'),(select nome_curso where id_curso=curso_fk_cadastro),(select carga_horaria  where id_curso=curso_fk_cadastro),situacao,pendencia,data_matricula from aluno_cadastro join curso on id_curso = curso_fk_cadastro where nome ='" + pAluno + "';");
-            
+
             while (this.getResultSet().next()) {
                 alunoModel.setIdAluno(this.getResultSet().getInt(1));
                 alunoModel.setMatricula(this.getResultSet().getInt(2));
@@ -60,7 +60,7 @@ public class AlunoDao extends ConnectionMySQL {
      */
     public ArrayList retornaAlunos() {
         ArrayList lista = new ArrayList();
-        
+
         try {
             this.conectar();
             this.executarSQL("SELECT nome FROM aluno_cadastro;");
@@ -80,7 +80,7 @@ public class AlunoDao extends ConnectionMySQL {
      */
     public ArrayList retornaAlunoCadastro() {
         ArrayList lista = new ArrayList();
-        
+
         try {
             this.conectar();
             this.executarSQL("SELECT nome FROM aluno_cadastro;");
@@ -153,7 +153,7 @@ public class AlunoDao extends ConnectionMySQL {
         try {
             this.conectar();
             this.executarSQL("select nome_curso from curso join aluno_cadastro on curso_fk_cadastro = id_curso where nome= '" + pAluno + "'" + ";");
-            
+
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
@@ -164,25 +164,6 @@ public class AlunoDao extends ConnectionMySQL {
         return pAluno;
     }
 
-//    /**
-//     *
-//     * @param pAluno
-//     * @param pCurso
-//     * @param pStatus
-//     * @return
-//     */
-//    public boolean salvarAluno(String pAluno, String pCurso, String pStatus) {
-//        try {
-//            this.conectar();
-//            return this.executarInsertUpdateSQL("insert into aluno_cadastro(nome, curso_fk_cadastro,situacao) values ('" + pAluno + "',(select id_curso from curso where nome_curso='" + pCurso + "'),'" + pStatus + "');");
-//        } catch (Exception e) {
-//            e.toString();
-//            return false;
-//        } finally {
-//            this.fecharConexao();
-//        }
-//
-//    }
     /**
      *
      * @param alunoModel
@@ -198,7 +179,12 @@ public class AlunoDao extends ConnectionMySQL {
             this.fecharConexao();
         }
     }
-    
+
+    /**
+     * 
+     * @param alunoModel
+     * @return 
+     */
     public boolean atualizarAluno(AlunoModel alunoModel) {
         try {
             this.conectar();
@@ -223,7 +209,7 @@ public class AlunoDao extends ConnectionMySQL {
             this.executarSQL("select matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,nome_curso,situacao,pendencia,data_matricula from aluno_cadastro join curso on curso_fk_cadastro=id_curso order by nome asc;");
             while (this.getResultSet().next()) {
                 alunoModel = new AlunoModel();
-                
+
                 alunoModel.setMatricula(this.getResultSet().getInt(1));
                 alunoModel.setNome(this.getResultSet().getString(2));
                 alunoModel.setEndereco(this.getResultSet().getString(3));
@@ -252,5 +238,5 @@ public class AlunoDao extends ConnectionMySQL {
         }
         return listaModel;
     }
-    
+
 }
