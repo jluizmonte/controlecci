@@ -682,6 +682,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfCelularAlterar.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtfCelularAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        jtfCursoAlterar.setEditable(false);
         jtfCursoAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jtfCursoAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -720,6 +721,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("CARGA HORÁRIA");
 
+        jtfDataMatriculaAlterar.setEditable(false);
         jtfDataMatriculaAlterar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfDataMatriculaAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -727,7 +729,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("MATRÍCULA");
 
-        jtfDataAlterar.setText("jTextField1");
+        jtfDataAlterar.setEditable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

@@ -209,7 +209,6 @@ public class AlunoDao extends ConnectionMySQL {
             this.executarSQL("select matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,data_nascimento,nome_curso,situacao,pendencia,data_matricula from aluno_cadastro join curso on curso_fk_cadastro=id_curso order by nome asc;");
             while (this.getResultSet().next()) {
                 alunoModel = new AlunoModel();
-
                 alunoModel.setMatricula(this.getResultSet().getInt(1));
                 alunoModel.setNome(this.getResultSet().getString(2));
                 alunoModel.setEndereco(this.getResultSet().getString(3));
