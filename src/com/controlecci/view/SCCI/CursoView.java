@@ -545,6 +545,7 @@ public class CursoView extends javax.swing.JInternalFrame {
 
     private void jtfPequisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPequisaActionPerformed
         habilitaDesabilitaCamposAlteracao(true);
+        jtfCurso.requestFocus();
         preencherDadosAlteracao();
     }//GEN-LAST:event_jtfPequisaActionPerformed
 
