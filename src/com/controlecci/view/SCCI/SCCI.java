@@ -1,5 +1,6 @@
 package com.controlecci.view.SCCI;
 
+import com.controlecci.model.AlunoModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.relatorio.RelatorioUtil;
 import com.controlecci.util.LocalUtil;
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author joseluiz
  */
 public class SCCI extends javax.swing.JFrame {
-
+    
     TemplateAlerts templateAlerts = new TemplateAlerts();
     RelatorioUtil relatorio = new RelatorioUtil();
 
@@ -291,7 +292,7 @@ public class SCCI extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiRegistrarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        ConsultaHorarioInidividual consultaHorarioInidividual = new ConsultaHorarioInidividual();
+        ConsultarRegistro consultaHorarioInidividual = new ConsultarRegistro();
         desktopPane.add(consultaHorarioInidividual);
         consultaHorarioInidividual.setVisible(true);
         consultaHorarioInidividual.setPosicao();
@@ -326,6 +327,13 @@ public class SCCI extends javax.swing.JFrame {
         }
     }
 
+    public void chamarConsulta(){
+        ConsultarRegistro consultarRegistro = new ConsultarRegistro();
+        desktopPane.add(consultarRegistro);
+        consultarRegistro.exibirDadosAluno(AlunoModel.nomeAluno);
+        consultarRegistro.setVisible(true);
+    }
+    
     private void setarNivel() {
         if (SessaoUsuarioModel.nivelAcesso.equals("COORDENAÇÃO")) {
 //            jmiExtra.setEnabled(false);
@@ -341,7 +349,7 @@ public class SCCI extends javax.swing.JFrame {
 //            jlRelatorio.setEnabled(false);
         }
     }
-
+    
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -355,12 +363,12 @@ public class SCCI extends javax.swing.JFrame {
         };
         clock.start();
     }
-
+    
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane desktopPane;
+    public javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JLabel jLabel2;

@@ -29,6 +29,7 @@ public class AlunoModel {
     private String pendencia;
     private String cargaHoraria;
     private String dataMatricula;
+    public static String nomeAluno;
 
     public int getIdAluno() {
         return idAluno;

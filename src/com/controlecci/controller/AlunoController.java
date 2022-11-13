@@ -72,6 +72,14 @@ public class AlunoController {
     }
 
     /**
+     * 
+     * @return 
+     */
+    public String retornaQtdeAluno() {
+        return alunoDao.retornaQtdeAluno();
+    }
+
+    /**
      * insere aluno com dados iguais a ficha
      *
      * @param alunoModel
@@ -87,7 +95,7 @@ public class AlunoController {
      * @param alunoModel
      * @return
      */
-    public boolean atualizarAluno(AlunoModel alunoModel) {
-        return alunoDao.atualizarAluno(alunoModel);
+    public boolean atualizarAluno(AlunoModel alunoModel, String pAlunoPesquisa) {
+        return alunoDao.atualizarAluno(alunoModel,pAlunoPesquisa);
     }
 }

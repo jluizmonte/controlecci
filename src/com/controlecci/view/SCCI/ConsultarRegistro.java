@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author joseluiz
  */
-public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
+public class ConsultarRegistro extends javax.swing.JInternalFrame {
 
     AlunoModel alunoModel = new AlunoModel();
     TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
@@ -35,12 +35,13 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
     /**
      * Creates new form NewJFrame
      */
-    public ConsultaHorarioInidividual() {
+    public ConsultarRegistro() {
         initComponents();
         autoCompletar();
         setarValores();
         this.setClosable(true);
         this.setIconifiable(true);
+        limparCampos();
     }
 
     /**
@@ -59,6 +60,7 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jbPesquisar = new javax.swing.JButton();
         jtfNomeAluno = new javax.swing.JTextField();
+        jbCancelar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -113,7 +115,7 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
         jLabel4.setText("ALUNO:");
 
         jbPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/pesquisar.png"))); // NOI18N
-        jbPesquisar.setText("PESQUISAR");
+        jbPesquisar.setText("Pesquisar");
         jbPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbPesquisarActionPerformed(evt);
@@ -127,6 +129,14 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
             }
         });
 
+        jbCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cancelar.png"))); // NOI18N
+        jbCancelar.setText("Limpar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -136,6 +146,8 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfNomeAluno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbCancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbPesquisar)
                 .addContainerGap())
         );
@@ -143,12 +155,15 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtfNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jtfNomeAluno))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbPesquisar)
+                        .addComponent(jbCancelar))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -479,6 +494,10 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
         carregarRegistro();
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfNomeAluno);
         lista = alunoController.retornaAlunos();
@@ -490,34 +509,34 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
         telaCarregamento.setVisible(true);
     }
 
+    private void limparCampos() {
+        jlCargaHoraria.setText("SELECIONE UM ALUNO");
+        jlCurso.setText("SELECIONE UM ALUNO");
+        jlModulos.setText("SELECIONE UM ALUNO");
+        jlDataInicio.setText("SELECIONE UM ALUNO");
+        jlDataEncerramento.setText("SELECIONE UM ALUNO");
+        jlHorasRealizadas.setText("SELECIONE UM ALUNO");
+        jlHorasRestantes.setText("SELECIONE UM ALUNO");
+        jlSituacaoAluno.setText("SELECIONE UM ALUNO");
+        jtfNomeAluno.setText("");
+        jtfNomeAluno.requestFocus();
+    }
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
-     * apenas exibe quando o id do aluno é passado pela tela de alunos
-     * cadastrados
+     * exibe os dados do aluno que foi selecionado na tela de aluno
      *
-     * @param pId
+     * @param aluno
      */
-    public void exibirDadosAluno(int pId) {
-        listaAulaModels = aulaController.getRegistroAulaId(pId);
-        DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
-        modeloTabela.setNumRows(0);
-        try {
-            int cont = listaAulaModels.size();
-            for (int i = 0; i < cont; i++) {
-                modeloTabela.addRow(new Object[]{
-                    listaAulaModels.get(i).getDataAula(),
-                    listaAulaModels.get(i).getChegada(),
-                    listaAulaModels.get(i).getSaida(),
-                    listaAulaModels.get(i).getTotalHoraAula()});
-            }
-            chamarJDialog();
-        } catch (Exception e) {
-            e.toString();
-        }
+    public void exibirDadosAluno(String aluno) {
+        jlNomeAluno.setText(aluno);
+        alunoModel.setNome(aluno);
+        carregarRegistro();
+        infoCurso();
     }
 
     public void carregarRegistro() {
@@ -549,7 +568,7 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
         jlHorasRestantes.setText(aulaController.retornaTempoRestante(jtfNomeAluno.getText()));
         jlSituacaoAluno.setText(cursoController.retornaStatusAluno(jtfNomeAluno.getText()));
         /**/
-        if (jlDataInicio.getText() == null) {
+        if (jlDataInicio.getText() == null || jlDataInicio.getText().equals("")) {
             jlDataInicio.setForeground(Color.red);
             jlHorasRealizadas.setForeground(Color.red);
             jlHorasRestantes.setForeground(Color.red);
@@ -580,7 +599,7 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
     }
 
     private void setarValores() {
-        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " " + SessaoUsuarioModel.nivelAcesso);
+        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
@@ -603,6 +622,7 @@ public class ConsultaHorarioInidividual extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JToggleButton jbSuspender;
     private javax.swing.JLabel jlCargaHoraria;

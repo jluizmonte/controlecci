@@ -2,6 +2,9 @@ package com.controlecci.model.dao;
 
 import com.controlecci.connection.ConnectionMySQL;
 import com.controlecci.model.CursoModel;
+import com.controlecci.util.LocalUtil;
+import com.controlecci.util.LogCatUtil;
+import com.controlecci.util.TemplateAlerts;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -10,6 +13,8 @@ import java.util.ArrayList;
  * @author Instrutores
  */
 public class CursoDao extends ConnectionMySQL {
+
+    TemplateAlerts templateAlerts = new TemplateAlerts();
 
     /**
      * retorna os dados do curso do aluno
@@ -30,7 +35,9 @@ public class CursoDao extends ConnectionMySQL {
                 cursoModel.setValor(this.getResultSet().getDouble(4));
             }
         } catch (SQLException ex) {
-            ex.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("dados do curso\n") + ex.toString()));
         } finally {
             this.fecharConexao();
         }
@@ -56,7 +63,9 @@ public class CursoDao extends ConnectionMySQL {
                 cursoModel.setValor(this.getResultSet().getDouble(4));
             }
         } catch (SQLException ex) {
-            ex.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("informações do curso\n") + ex.toString()));
         } finally {
             this.fecharConexao();
         }
@@ -79,7 +88,9 @@ public class CursoDao extends ConnectionMySQL {
                 pAluno = this.getResultSet().getString(1);
             }
         } catch (SQLException ex) {
-            ex.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("primeira data do aluno\n") + ex.toString()));
         } finally {
             this.fecharConexao();
         }
@@ -99,11 +110,36 @@ public class CursoDao extends ConnectionMySQL {
                 pAluno = this.getResultSet().getString(1);
             }
         } catch (SQLException ex) {
-            ex.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("data final do aluno\n") + ex.toString()));
         } finally {
             this.fecharConexao();
         }
         return pAluno;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String retornaQtdeCurso() {
+        String pQuantidade = "";
+        try {
+            this.conectar();
+            this.executarSQL("select count(nome_curso) from curso;");
+
+            while (this.getResultSet().next()) {
+                pQuantidade = this.getResultSet().getString(1);
+            }
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("quantidade total dos cursos\n") + ex.toString()));
+        } finally {
+            this.fecharConexao();
+        }
+        return pQuantidade;
     }
 
     /**
@@ -120,7 +156,9 @@ public class CursoDao extends ConnectionMySQL {
                 pAluno = this.getResultSet().getString(1);
             }
         } catch (SQLException ex) {
-            ex.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("total do curso do aluno\n") + ex.toString()));
         } finally {
             this.fecharConexao();
         }
@@ -135,12 +173,14 @@ public class CursoDao extends ConnectionMySQL {
     public String retornaStatusAluno(String pAluno) {
         try {
             this.conectar();
-            this.executarSQL("select situacao from aluno_cadastro where nome='" + pAluno + "' and situacao='ATIVO';");
+            this.executarSQL("select situacao from aluno_cadastro where nome='" + pAluno + "';");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
-        } catch (SQLException e) {
-            e.toString();
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("situação do aluno\n") + ex.toString()));
         } finally {
             this.fecharConexao();
         }
@@ -160,8 +200,10 @@ public class CursoDao extends ConnectionMySQL {
             while (this.getResultSet().next()) {
                 pCurso = this.getResultSet().getString(1);
             }
-        } catch (SQLException e) {
-            e.toString();
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("carga horaria do curso\n") + ex.toString()));
         } finally {
             this.fecharConexao();
         }
@@ -178,8 +220,10 @@ public class CursoDao extends ConnectionMySQL {
         try {
             this.conectar();
             return this.executarInsertUpdateSQL("insert into curso (nome_curso, carga_horaria, modulo_curso, valor) values ('" + cursoModel.getNomeCurso() + "','" + cursoModel.getCargaHoraria() + "','" + cursoModel.getModulos() + "','" + cursoModel.getValor() + "')");
-        } catch (Exception e) {
-            e.toString();
+        } catch (Exception ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroCadastro("curso\n") + ex.toString()));
             return false;
         } finally {
             this.fecharConexao();
@@ -192,12 +236,33 @@ public class CursoDao extends ConnectionMySQL {
      * @param cursoModel
      * @return
      */
-    public boolean alterarCurso(CursoModel cursoModel) {
+    public boolean alterarCurso(CursoModel cursoModel, String pCursoPesquisa) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("update curso set nome_curso='" + cursoModel.getNomeCurso() + "',carga_horaria='" + cursoModel.getCargaHoraria() + "',modulo_curso='" + cursoModel.getModulos() + "',valor='" + cursoModel.getValor() + "' where nome_curso='" + cursoModel.getNomeCurso() + "';");
-        } catch (Exception e) {
-            e.toString();
+            return this.executarInsertUpdateSQL("UPDATE curso SET nome_curso='" + cursoModel.getNomeCurso() + "',carga_horaria='" + cursoModel.getCargaHoraria() + "',modulo_curso='" + cursoModel.getModulos() + "',valor='" + cursoModel.getValor() + "' WHERE nome_curso='" + pCursoPesquisa + "';");
+        } catch (Exception ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroAlterar("curso\n") + ex.toString()));
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
+    }
+
+    /**
+     *
+     * @param pCurso
+     * @return
+     */
+    public boolean excluirLivro(String pCurso) {
+        try {
+            this.conectar();
+            return this.executarInsertUpdateSQL("DELETE FROM curso WHERE nome_curso='" + pCurso + "';");
+        } catch (Exception ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroExclusao("curso\n") + ex.toString()));
             return false;
         } finally {
             this.fecharConexao();
@@ -222,8 +287,10 @@ public class CursoDao extends ConnectionMySQL {
                 cursoModel.setValor(this.getResultSet().getDouble(4));
                 listaCursoModels.add(cursoModel);
             }
-        } catch (SQLException e) {
-            e.toString();
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("informações dos cursos\n") + ex.toString()));
         } finally {
             this.fecharConexao();
         }
@@ -242,8 +309,10 @@ public class CursoDao extends ConnectionMySQL {
             while (this.getResultSet().next()) {
                 listaCursoModels.add(this.getResultSet().getString(1).toUpperCase());
             }
-        } catch (SQLException e) {
-            e.toString();
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("curso especifico\n") + ex.toString()));
         } finally {
             this.fecharConexao();
         }

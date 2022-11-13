@@ -2,12 +2,18 @@ package com.controlecci.util;
 
 public class TemplateAlerts {
 
+    /**
+     * mensagem de sucesso para exclusão de algo
+     *
+     * @param nometela
+     * @return
+     */
     public String mensagemExclusao(String nometela) {
-        return nometela + " excluído(a) com sucesso!";
+        return nometela + " excluído com sucesso!";
     }
 
     public String mensagemCadastro(String nomeTela) {
-        return nomeTela + " cadastrado(a) com sucesso!";
+        return nomeTela + " cadastrado com sucesso!";
     }
 
     public String erroCadastro(String nomeTela) {
@@ -15,15 +21,15 @@ public class TemplateAlerts {
     }
 
     public String perguntaExclusao(String nomeTela) {
-        return "Deseja excluir o(a) " + nomeTela + " ?";
+        return "Deseja excluir o " + nomeTela + " ?";
     }
 
     public String erroExclusao(String nomeTela) {
-        return "O(A) " + nomeTela + " não foi excluído(a)";
+        return "O(A) " + nomeTela + " não foi excluído";
     }
 
     public String erroGeralExclusao(String nomeTela) {
-        return "Erro ao excluir o(a) " + nomeTela;
+        return "Erro ao excluir o " + nomeTela;
     }
 
     public String erroBuscarDados(String nomeTela) {
@@ -31,7 +37,7 @@ public class TemplateAlerts {
     }
 
     public String erroAlterar(String nomeTela) {
-        return "Erro ao alterar o(a) " + nomeTela;
+        return "Erro ao alterar o " + nomeTela;
     }
 
     public String erroLogar() {
@@ -51,9 +57,10 @@ public class TemplateAlerts {
         return "USUÁRIO NÃO LOGADO";
     }
 
-    public String mensagemSalvar(String nomeTela){
-        return nomeTela+" salvo com sucesso! ";
+    public String mensagemSalvar(String nomeTela) {
+        return nomeTela + " salvo com sucesso! ";
     }
+
     public String mensagemAlterar(String nomeTela) {
         return nomeTela + " alterado com sucesso! ";
     }

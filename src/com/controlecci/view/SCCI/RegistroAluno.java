@@ -300,7 +300,7 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInserirHorasActionPerformed
 
     private void jbConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultaActionPerformed
-        ConsultaHorarioInidividual consultaHorarioInidividual = new ConsultaHorarioInidividual();
+        ConsultarRegistro consultaHorarioInidividual = new ConsultarRegistro();
         consultaHorarioInidividual.setVisible(true);
     }//GEN-LAST:event_jbConsultaActionPerformed
 
@@ -332,7 +332,7 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
     }
 
     public void registrarAulaAluno() {
-        alunoModel.setNome(jtfNome.getText());
+        alunoModel.setNome(jlNomeAluno.getText());
         aulaModel.setDataAula(getDateUtil.recuperaDataChooser(jtfData.getDate()));
         aulaModel.setChegada(jtfChegada.getText());
         aulaModel.setSaida(jtfSaida.getText());
