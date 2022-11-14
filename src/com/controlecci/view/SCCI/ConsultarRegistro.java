@@ -498,6 +498,17 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         limparCampos();
     }//GEN-LAST:event_jbCancelarActionPerformed
 
+    public void setarAluno() {
+        if (!"".equals(AlunoModel.nomeAluno)) {
+            jtfNomeAluno.setText("");
+        } else {
+            jlNomeAluno.setText(AlunoModel.nomeAluno);
+            alunoModel.setNome(AlunoModel.nomeAluno);
+            carregarRegistro();
+            infoCurso();
+        }
+    }
+
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfNomeAluno);
         lista = alunoController.retornaAlunos();

@@ -20,13 +20,13 @@ public class ConnectionMySQL {
     private boolean status = false;
     private String banco = "controle";
 
-    private String usuario = "root";
-    private String senha = "Jos3@Luiz";
-    private String servidor = "localhost";
-//
-//    private String servidor = "192.168.0.253"; 
-//    private String usuario = "cci";
-//    private String senha = "@3325cci3333";
+//    private String usuario = "root";
+//    private String senha = "Jos3@Luiz";
+//    private String servidor = "localhost";
+
+    private String servidor = "192.168.0.253"; 
+    private String usuario = "cci";
+    private String senha = "@3325cci3333";
 
     /**
      *

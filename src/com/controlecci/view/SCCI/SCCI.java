@@ -1,6 +1,5 @@
 package com.controlecci.view.SCCI;
 
-import com.controlecci.model.AlunoModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.relatorio.RelatorioUtil;
 import com.controlecci.util.LocalUtil;
@@ -17,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author joseluiz
  */
 public class SCCI extends javax.swing.JFrame {
-
+    
     TemplateAlerts templateAlerts = new TemplateAlerts();
     RelatorioUtil relatorio = new RelatorioUtil();
 
@@ -350,14 +349,14 @@ public class SCCI extends javax.swing.JFrame {
             //  this.dispose();
         }
     }
-
-    public void chamarConsulta() {
-        ConsultarRegistro consultarRegistro = new ConsultarRegistro();
-        desktopPane.add(consultarRegistro);
-        consultarRegistro.exibirDadosAluno(AlunoModel.nomeAluno);
-        consultarRegistro.setVisible(true);
+    
+    public void chamarAluno() {
+        ConsultarRegistro c = new ConsultarRegistro();
+        desktopPane.add(c);
+        c.setarAluno();
+        c.setVisible(true);
     }
-
+    
     private void setarNivel() {
         if (SessaoUsuarioModel.nivelAcesso.equals("COORDENAÇÃO")) {
 //            jmiExtra.setEnabled(false);
@@ -396,9 +395,9 @@ public class SCCI extends javax.swing.JFrame {
 //            jlGerarCertificado.setEnabled(false);
 //            jlRelatorio.setEnabled(false);
         }
-
+        
     }
-
+    
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -412,7 +411,7 @@ public class SCCI extends javax.swing.JFrame {
         };
         clock.start();
     }
-
+    
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
     }

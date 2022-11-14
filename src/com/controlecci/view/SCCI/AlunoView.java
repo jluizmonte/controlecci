@@ -1088,7 +1088,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-        perguntaObservacoes();
         salvarAluno();
     }//GEN-LAST:event_jbSalvarActionPerformed
 
@@ -1143,8 +1142,13 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
         int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + aluno + "?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
         if (dialogResult == 0) {
+            //           JOptionPane.showMessageDialog(null, AlunoModel.nomeAluno);
             AlunoModel.nomeAluno = aluno;
-            scci.chamarConsulta();
+            //           JOptionPane.showMessageDialog(null, AlunoModel.nomeAluno);
+            scci.desktopPane.add(consultarRegistro);
+            consultarRegistro.setarAluno();
+            consultarRegistro.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_jtAlunosMouseClicked
 
@@ -1154,6 +1158,8 @@ public class AlunoView extends javax.swing.JInternalFrame {
             String pendencia = JOptionPane.showInputDialog(this, "Insira a pendência do aluno!");
             alunoModel.setPendencia(pendencia);
             salvarAluno();
+        } else {
+            alunoModel.setPendencia("SEM PENDÊNCIAS");
         }
     }
 
@@ -1239,7 +1245,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfCpf.setText("");
         jtfCurso.setText("");
         jtfData.setText("");
-        jtfDataMatricula.setText(getDateUtil.getDateTimeUS());
+        jtfDataMatricula.setText("");
         jtfEmail.setText("");
         jtfEndereco.setText("");
         jtfMatricula.setText("");
@@ -1301,6 +1307,15 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     private void salvarAluno() {
         alunoModel = new AlunoModel();
+
+        String opcao = JOptionPane.showInputDialog(this, "O aluno possui alguma pendência?\n 1. Sim\n 2. Não", "2");
+        if (opcao.equals("1")) {
+            String pendencia = JOptionPane.showInputDialog(this, "Insira a pendência do aluno!");
+            alunoModel.setPendencia(pendencia);
+            salvarAluno();
+        } else {
+            alunoModel.setPendencia("SEM PENDÊNCIAS");
+        }
         alunoModel.setMatricula(Integer.valueOf(jtfMatricula.getText()));
         alunoModel.setBairro(jtfBairro.getText().toUpperCase());
         alunoModel.setCelular(jtfCelular.getText());
@@ -1318,6 +1333,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         alunoModel.setUf(jcbUf.getSelectedItem().toString());
         alunoModel.setTelefone(jtfTelefone.getText());
         alunoModel.setNumero(Integer.valueOf(jtfNumero.getText()));
+
         if (jtfComplemento.getText().equals("")) {
             alunoModel.setComplemento("SEM COMPLEMENTO");
         } else {
@@ -1403,11 +1419,11 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jlQtde.setText(alunoController.retornaQtdeAluno());
         listaAlunoModels = alunoController.getListaAlunoCadastro();
         DefaultTableModel modeloTabela = (DefaultTableModel) jtAlunos.getModel();
-        TableColumnModel tcm= jtAlunos.getColumnModel();
+        TableColumnModel tcm = jtAlunos.getColumnModel();
         tcm.getColumn(0).setPreferredWidth(2);
-         tcm.getColumn(3).setPreferredWidth(2);
-         tcm.getColumn(4).setPreferredWidth(5);
-        
+        tcm.getColumn(3).setPreferredWidth(2);
+        tcm.getColumn(4).setPreferredWidth(5);
+
         modeloTabela.setNumRows(0);
         try {
             int cont = listaAlunoModels.size();
