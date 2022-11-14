@@ -243,6 +243,11 @@ public class SCCI extends javax.swing.JFrame {
 
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/log.png"))); // NOI18N
         jMenuItem6.setText("Log(Registro)");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem6);
 
         jMenu3.add(jMenu4);
@@ -325,6 +330,13 @@ public class SCCI extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         gerarRelatorio("fichaCadastro");
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        VisualizarLog visualizarLog = new VisualizarLog();
+        desktopPane.add(visualizarLog);
+        visualizarLog.setVisible(true);
+        visualizarLog.setPosicao();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
     public void gerarRelatorio(String titulo) {
         try {
             relatorio.setTipoLevantamento(titulo);
