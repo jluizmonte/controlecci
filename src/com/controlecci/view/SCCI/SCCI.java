@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author joseluiz
  */
 public class SCCI extends javax.swing.JFrame {
-    
+
     TemplateAlerts templateAlerts = new TemplateAlerts();
     RelatorioUtil relatorio = new RelatorioUtil();
 
@@ -136,6 +136,7 @@ public class SCCI extends javax.swing.JFrame {
         fileMenu.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/atualizar.png"))); // NOI18N
         jMenuItem7.setText("Reiniciar");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +146,7 @@ public class SCCI extends javax.swing.JFrame {
         fileMenu.add(jMenuItem7);
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/exit.png"))); // NOI18N
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Sair");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +162,7 @@ public class SCCI extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jmiCurso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        jmiCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/livro.png"))); // NOI18N
         jmiCurso.setText("Curso");
         jmiCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +172,7 @@ public class SCCI extends javax.swing.JFrame {
         jMenu1.add(jmiCurso);
 
         jmiAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        jmiAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/locador.png"))); // NOI18N
         jmiAluno.setText("Aluno");
         jmiAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +182,7 @@ public class SCCI extends javax.swing.JFrame {
         jMenu1.add(jmiAluno);
 
         jmiRegistrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        jmiRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/changelog.png"))); // NOI18N
         jmiRegistrar.setText("Registrar Hora Aluno");
         jmiRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +192,7 @@ public class SCCI extends javax.swing.JFrame {
         jMenu1.add(jmiRegistrar);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cliente.png"))); // NOI18N
         jMenuItem1.setText("Consultar Registro de Hora");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +206,7 @@ public class SCCI extends javax.swing.JFrame {
         jMenu2.setText("Funções Avançadas");
         jMenu2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/emprestar.png"))); // NOI18N
         jMenuItem2.setText("Gerar Relatório");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,9 +215,11 @@ public class SCCI extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/emprestar.png"))); // NOI18N
         jMenuItem3.setText("Gerar Certificado");
         jMenu2.add(jMenuItem3);
 
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/locatario.png"))); // NOI18N
         jMenuItem4.setText("Ver Certificado Entregue");
         jMenu2.add(jMenuItem4);
 
@@ -219,9 +228,11 @@ public class SCCI extends javax.swing.JFrame {
         jMenu3.setText("Configurações");
         jMenu3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/configuracao.png"))); // NOI18N
         jMenu4.setText("Gerenciar");
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/usuario.png"))); // NOI18N
         jMenuItem5.setText("Usuario");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,6 +241,7 @@ public class SCCI extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem5);
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/log.png"))); // NOI18N
         jMenuItem6.setText("Log(Registro)");
         jMenu4.add(jMenuItem6);
 
@@ -302,7 +314,7 @@ public class SCCI extends javax.swing.JFrame {
         UsuarioView usuarioView = new UsuarioView();
         desktopPane.add(usuarioView);
         usuarioView.setVisible(true);
-
+        usuarioView.setPosicao();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -327,13 +339,13 @@ public class SCCI extends javax.swing.JFrame {
         }
     }
 
-    public void chamarConsulta(){
+    public void chamarConsulta() {
         ConsultarRegistro consultarRegistro = new ConsultarRegistro();
         desktopPane.add(consultarRegistro);
         consultarRegistro.exibirDadosAluno(AlunoModel.nomeAluno);
         consultarRegistro.setVisible(true);
     }
-    
+
     private void setarNivel() {
         if (SessaoUsuarioModel.nivelAcesso.equals("COORDENAÇÃO")) {
 //            jmiExtra.setEnabled(false);
@@ -347,9 +359,34 @@ public class SCCI extends javax.swing.JFrame {
 //            jlConsultar.setEnabled(false);
 //            jlGerarCertificado.setEnabled(false);
 //            jlRelatorio.setEnabled(false);
+        } else if (SessaoUsuarioModel.nivelAcesso.equals("INSTRUTOR")) {
+            //            jmiExtra.setEnabled(false);
+//            jmiCertifcadosEntregues.setEnabled(false);
+//            jmiExtra.setEnabled(false);
+//            jmiGerarCertificado.setEnabled(false);
+//            jmiRegistroAluno.setEnabled(false);
+//            jmiConsulta.setEnabled(false);
+//            jlCertificadosEntregue.setEnabled(false);
+//            jlRegistrar.setEnabled(false);
+//            jlConsultar.setEnabled(false);
+//            jlGerarCertificado.setEnabled(false);
+//            jlRelatorio.setEnabled(false);
+        } else {
+//                        jmiExtra.setEnabled(false);
+//            jmiCertifcadosEntregues.setEnabled(false);
+//            jmiExtra.setEnabled(false);
+//            jmiGerarCertificado.setEnabled(false);
+//            jmiRegistroAluno.setEnabled(false);
+//            jmiConsulta.setEnabled(false);
+//            jlCertificadosEntregue.setEnabled(false);
+//            jlRegistrar.setEnabled(false);
+//            jlConsultar.setEnabled(false);
+//            jlGerarCertificado.setEnabled(false);
+//            jlRelatorio.setEnabled(false);
         }
+
     }
-    
+
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -363,7 +400,7 @@ public class SCCI extends javax.swing.JFrame {
         };
         clock.start();
     }
-    
+
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
     }

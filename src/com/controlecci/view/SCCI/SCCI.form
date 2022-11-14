@@ -18,6 +18,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+F2"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/atualizar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Reiniciar"/>
               </Properties>
               <Events>
@@ -28,6 +31,9 @@
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F2"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/exit.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="120"/>
                 <Property name="text" type="java.lang.String" value="Sair"/>
@@ -51,6 +57,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F3"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/livro.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Curso"/>
               </Properties>
               <Events>
@@ -61,6 +70,9 @@
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F4"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/locador.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Aluno"/>
               </Properties>
@@ -73,6 +85,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F6"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/changelog.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Registrar Hora Aluno"/>
               </Properties>
               <Events>
@@ -83,6 +98,9 @@
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F7"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/cliente.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar Registro de Hora"/>
               </Properties>
@@ -102,6 +120,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/emprestar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gerar Relat&#xf3;rio"/>
               </Properties>
               <Events>
@@ -110,11 +131,17 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/emprestar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gerar Certificado"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/locatario.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ver Certificado Entregue"/>
               </Properties>
             </MenuItem>
@@ -130,6 +157,9 @@
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu4">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/controlecci/image/actions/configuracao.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gerenciar"/>
               </Properties>
               <SubComponents>
@@ -137,6 +167,9 @@
                   <Properties>
                     <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                       <KeyStroke key="F5"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/controlecci/image/actions/usuario.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Usuario"/>
                   </Properties>
@@ -146,6 +179,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/controlecci/image/actions/log.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Log(Registro)"/>
                   </Properties>
                 </MenuItem>

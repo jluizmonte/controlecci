@@ -66,7 +66,7 @@
             <Container class="javax.swing.JPanel" name="jPanel4">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7c" green="59" red="1c" type="rgb"/>
+                  <Color blue="7c" green="54" red="0" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -230,11 +230,10 @@
                       <Font name="Dialog" size="14" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="DESENVOLVEDOR"/>
-                        <StringItem index="1" value="INSTRUTOR"/>
-                        <StringItem index="2" value="COORDENA&#xc7;&#xc3;O"/>
-                        <StringItem index="3" value="CONVIDADO"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="INSTRUTOR"/>
+                        <StringItem index="1" value="COORDENA&#xc7;&#xc3;O"/>
+                        <StringItem index="2" value="CONVIDADO"/>
                       </StringArray>
                     </Property>
                     <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -310,7 +309,7 @@
             <Container class="javax.swing.JPanel" name="jPanel5">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7c" green="59" red="1c" type="rgb"/>
+                  <Color blue="7c" green="54" red="0" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -328,14 +327,17 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel7" min="-2" pref="621" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel7" alignment="1" min="-2" pref="621" max="-2" attributes="0"/>
+                                      <Component id="jComboBox2" alignment="1" min="-2" pref="480" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -354,14 +356,10 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel10" min="-2" pref="129" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jComboBox2" min="-2" pref="480" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jLabel10" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="490" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -382,7 +380,9 @@
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="148" max="32767" attributes="0"/>
+                          <EmptySpace pref="79" max="32767" attributes="0"/>
+                          <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -402,10 +402,7 @@
                                   <Component id="jPasswordField2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel10" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel10" min="-2" pref="29" max="-2" attributes="0"/>
                               <EmptySpace pref="108" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -430,11 +427,10 @@
                       <Font name="Dialog" size="14" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="DESENVOLVEDOR"/>
-                        <StringItem index="1" value="INSTRUTOR"/>
-                        <StringItem index="2" value="COORDENA&#xc7;&#xc3;O"/>
-                        <StringItem index="3" value="CONVIDADO"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="INSTRUTOR"/>
+                        <StringItem index="1" value="COORDENA&#xc7;&#xc3;O"/>
+                        <StringItem index="2" value="CONVIDADO"/>
                       </StringArray>
                     </Property>
                     <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -576,7 +572,7 @@
             <Container class="javax.swing.JPanel" name="jPanel6">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7c" green="59" red="1c" type="rgb"/>
+                  <Color blue="7c" green="54" red="0" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -613,6 +609,28 @@
                             <Column editable="false" title="Login" type="java.lang.String"/>
                             <Column editable="false" title="N&#xed;vel" type="java.lang.String"/>
                           </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="20" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="20" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                         </Property>
                       </Properties>
                     </Component>

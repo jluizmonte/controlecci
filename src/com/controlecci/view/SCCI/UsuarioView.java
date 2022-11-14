@@ -1,5 +1,7 @@
 package com.controlecci.view.SCCI;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author joseluiz
@@ -64,7 +66,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
-        jPanel4.setBackground(new java.awt.Color(28, 89, 124));
+        jPanel4.setBackground(new java.awt.Color(0, 84, 124));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,7 +96,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         jPasswordField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DESENVOLVEDOR", "INSTRUTOR", "COORDENAÇÃO", "CONVIDADO" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INSTRUTOR", "COORDENAÇÃO", "CONVIDADO" }));
         jComboBox1.setSelectedItem("INSTRUTOR");
 
         jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -183,14 +185,14 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
         jTabbedPane1.addTab("NOVO USUÁRIO", jPanel1);
 
-        jPanel5.setBackground(new java.awt.Color(28, 89, 124));
+        jPanel5.setBackground(new java.awt.Color(0, 84, 124));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("NOME DO USUÁRIO");
 
         jComboBox2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DESENVOLVEDOR", "INSTRUTOR", "COORDENAÇÃO", "CONVIDADO" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INSTRUTOR", "COORDENAÇÃO", "CONVIDADO" }));
         jComboBox2.setSelectedItem("INSTRUTOR");
 
         jPasswordField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -242,13 +244,15 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                         .addComponent(jTextField5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)))
+                        .addComponent(jButton6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
@@ -262,12 +266,9 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8))
-                            .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGap(0, 490, Short.MAX_VALUE)))
                     .addContainerGap()))
         );
         jPanel5Layout.setVerticalGroup(
@@ -282,7 +283,9 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton6))
@@ -298,9 +301,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(108, Short.MAX_VALUE)))
         );
 
@@ -319,7 +320,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
         jTabbedPane1.addTab("ALTERAR USUÁRIO", jPanel2);
 
-        jPanel6.setBackground(new java.awt.Color(28, 89, 124));
+        jPanel6.setBackground(new java.awt.Color(0, 84, 124));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -347,7 +348,15 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(20);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(20);
+        }
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -417,6 +426,11 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
     private void alterar() {
 
+    }
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
