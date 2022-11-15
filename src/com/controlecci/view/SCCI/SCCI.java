@@ -1,6 +1,5 @@
 package com.controlecci.view.SCCI;
 
-import com.controlecci.view.Login;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.relatorio.RelatorioUtil;
 import com.controlecci.util.LocalUtil;
@@ -16,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author joseluiz
  */
 public class SCCI extends javax.swing.JFrame {
-    
+
     TemplateAlerts templateAlerts = new TemplateAlerts();
     RelatorioUtil relatorio = new RelatorioUtil();
 
@@ -49,21 +48,21 @@ public class SCCI extends javax.swing.JFrame {
         rSPanelImage1 = new rojerusan.RSPanelImage();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
+        jmiReiniciar = new javax.swing.JMenuItem();
+        jmiSair = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jmiCurso = new javax.swing.JMenuItem();
         jmiAluno = new javax.swing.JMenuItem();
-        jmiRegistrar = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiRegistroHora = new javax.swing.JMenuItem();
+        jmiConsultaRegistro = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jmiRelatorio = new javax.swing.JMenuItem();
+        jmiCertificado = new javax.swing.JMenuItem();
+        jmiCertificadosEntregues = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jmiUsuario = new javax.swing.JMenuItem();
+        jmiLog = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,26 +133,26 @@ public class SCCI extends javax.swing.JFrame {
         fileMenu.setText("Arquivo");
         fileMenu.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
-        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/atualizar.png"))); // NOI18N
-        jMenuItem7.setText("Reiniciar");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jmiReiniciar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiReiniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/atualizar.png"))); // NOI18N
+        jmiReiniciar.setText("Reiniciar");
+        jmiReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jmiReiniciarActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem7);
+        fileMenu.add(jmiReiniciar);
 
-        exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/exit.png"))); // NOI18N
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Sair");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jmiSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/exit.png"))); // NOI18N
+        jmiSair.setMnemonic('x');
+        jmiSair.setText("Sair");
+        jmiSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                jmiSairActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        fileMenu.add(jmiSair);
 
         menuBar.add(fileMenu);
 
@@ -180,47 +179,47 @@ public class SCCI extends javax.swing.JFrame {
         });
         jMenu1.add(jmiAluno);
 
-        jmiRegistrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
-        jmiRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/changelog.png"))); // NOI18N
-        jmiRegistrar.setText("Registrar Hora Aluno");
-        jmiRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        jmiRegistroHora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        jmiRegistroHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/changelog.png"))); // NOI18N
+        jmiRegistroHora.setText("Registrar Hora Aluno");
+        jmiRegistroHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiRegistrarActionPerformed(evt);
+                jmiRegistroHoraActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiRegistrar);
+        jMenu1.add(jmiRegistroHora);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cliente.png"))); // NOI18N
-        jMenuItem1.setText("Consultar Registro de Hora");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmiConsultaRegistro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
+        jmiConsultaRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cliente.png"))); // NOI18N
+        jmiConsultaRegistro.setText("Consultar Registro de Hora");
+        jmiConsultaRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmiConsultaRegistroActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jmiConsultaRegistro);
 
         menuBar.add(jMenu1);
 
         jMenu2.setText("Funções Avançadas");
         jMenu2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/emprestar.png"))); // NOI18N
-        jMenuItem2.setText("Gerar Relatório");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmiRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/emprestar.png"))); // NOI18N
+        jmiRelatorio.setText("Gerar Relatório");
+        jmiRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmiRelatorioActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenu2.add(jmiRelatorio);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/emprestar.png"))); // NOI18N
-        jMenuItem3.setText("Gerar Certificado");
-        jMenu2.add(jMenuItem3);
+        jmiCertificado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/emprestar.png"))); // NOI18N
+        jmiCertificado.setText("Gerar Certificado");
+        jMenu2.add(jmiCertificado);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/locatario.png"))); // NOI18N
-        jMenuItem4.setText("Ver Certificado Entregue");
-        jMenu2.add(jMenuItem4);
+        jmiCertificadosEntregues.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/locatario.png"))); // NOI18N
+        jmiCertificadosEntregues.setText("Ver Certificado Entregue");
+        jMenu2.add(jmiCertificadosEntregues);
 
         menuBar.add(jMenu2);
 
@@ -230,24 +229,24 @@ public class SCCI extends javax.swing.JFrame {
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/configuracao.png"))); // NOI18N
         jMenu4.setText("Gerenciar");
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/usuario.png"))); // NOI18N
-        jMenuItem5.setText("Usuario");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jmiUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        jmiUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/usuario.png"))); // NOI18N
+        jmiUsuario.setText("Usuario");
+        jmiUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jmiUsuarioActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem5);
+        jMenu4.add(jmiUsuario);
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/log.png"))); // NOI18N
-        jMenuItem6.setText("Log(Registro)");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jmiLog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/log.png"))); // NOI18N
+        jmiLog.setText("Log(Registro)");
+        jmiLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jmiLogActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem6);
+        jMenu4.add(jmiLog);
 
         jMenu3.add(jMenu4);
 
@@ -279,12 +278,12 @@ public class SCCI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+    private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
         int dialogResult = JOptionPane.showConfirmDialog(this, "O sistema será encerrado!\n Clique em Yes para encerrar!", "Atenção", JOptionPane.YES_NO_OPTION);
         if (dialogResult == 0) {
             System.exit(0);
         }
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    }//GEN-LAST:event_jmiSairActionPerformed
 
     private void jmiCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCursoActionPerformed
         CursoView cursoView = new CursoView();
@@ -300,42 +299,42 @@ public class SCCI extends javax.swing.JFrame {
         alunoView.setPosicao();
     }//GEN-LAST:event_jmiAlunoActionPerformed
 
-    private void jmiRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarActionPerformed
+    private void jmiRegistroHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistroHoraActionPerformed
         RegistroAluno registroAluno = new RegistroAluno();
         desktopPane.add(registroAluno);
         registroAluno.setVisible(true);
         registroAluno.setPosicao();
-    }//GEN-LAST:event_jmiRegistrarActionPerformed
+    }//GEN-LAST:event_jmiRegistroHoraActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmiConsultaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultaRegistroActionPerformed
         ConsultarRegistro consultaHorarioInidividual = new ConsultarRegistro();
         desktopPane.add(consultaHorarioInidividual);
         consultaHorarioInidividual.setVisible(true);
         consultaHorarioInidividual.setPosicao();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmiConsultaRegistroActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jmiUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiUsuarioActionPerformed
         UsuarioView usuarioView = new UsuarioView();
         desktopPane.add(usuarioView);
         usuarioView.setVisible(true);
         usuarioView.setPosicao();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jmiUsuarioActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void jmiReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReiniciarActionPerformed
         this.dispose();
-        new Login(this, true).setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+        new LoginView(this, true).setVisible(true);
+    }//GEN-LAST:event_jmiReiniciarActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jmiRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRelatorioActionPerformed
         gerarRelatorio("fichaCadastro");
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jmiRelatorioActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void jmiLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiLogActionPerformed
         VisualizarLog visualizarLog = new VisualizarLog();
         desktopPane.add(visualizarLog);
         visualizarLog.setVisible(true);
         visualizarLog.setPosicao();
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_jmiLogActionPerformed
     public void gerarRelatorio(String titulo) {
         try {
             relatorio.setTipoLevantamento(titulo);
@@ -349,48 +348,52 @@ public class SCCI extends javax.swing.JFrame {
             //  this.dispose();
         }
     }
-    
+
     private void setarNivel() {
-        if (SessaoUsuarioModel.nivelAcesso.equals("COORDENAÇÃO")) {
-//            jmiExtra.setEnabled(false);
-//            jmiCertifcadosEntregues.setEnabled(false);
-//            jmiExtra.setEnabled(false);
-//            jmiGerarCertificado.setEnabled(false);
-//            jmiRegistroAluno.setEnabled(false);
-//            jmiConsulta.setEnabled(false);
-//            jlCertificadosEntregue.setEnabled(false);
-//            jlRegistrar.setEnabled(false);
-//            jlConsultar.setEnabled(false);
-//            jlGerarCertificado.setEnabled(false);
-//            jlRelatorio.setEnabled(false);
-        } else if (SessaoUsuarioModel.nivelAcesso.equals("INSTRUTOR")) {
-            //            jmiExtra.setEnabled(false);
-//            jmiCertifcadosEntregues.setEnabled(false);
-//            jmiExtra.setEnabled(false);
-//            jmiGerarCertificado.setEnabled(false);
-//            jmiRegistroAluno.setEnabled(false);
-//            jmiConsulta.setEnabled(false);
-//            jlCertificadosEntregue.setEnabled(false);
-//            jlRegistrar.setEnabled(false);
-//            jlConsultar.setEnabled(false);
-//            jlGerarCertificado.setEnabled(false);
-//            jlRelatorio.setEnabled(false);
-        } else {
-//                        jmiExtra.setEnabled(false);
-//            jmiCertifcadosEntregues.setEnabled(false);
-//            jmiExtra.setEnabled(false);
-//            jmiGerarCertificado.setEnabled(false);
-//            jmiRegistroAluno.setEnabled(false);
-//            jmiConsulta.setEnabled(false);
-//            jlCertificadosEntregue.setEnabled(false);
-//            jlRegistrar.setEnabled(false);
-//            jlConsultar.setEnabled(false);
-//            jlGerarCertificado.setEnabled(false);
-//            jlRelatorio.setEnabled(false);
+        switch (SessaoUsuarioModel.nivelAcesso) {
+            case "DESENVOLVEDOR" -> {
+                jmiAluno.setEnabled(true);
+                jmiCertificado.setEnabled(true);
+                jmiCertificadosEntregues.setEnabled(true);
+                jmiConsultaRegistro.setEnabled(true);
+                jmiCurso.setEnabled(true);
+                jmiLog.setEnabled(true);
+                jmiRegistroHora.setEnabled(true);
+                jmiReiniciar.setEnabled(true);
+                jmiRelatorio.setEnabled(true);
+                jmiSair.setEnabled(true);
+                jmiUsuario.setEnabled(true);
+            }
+            case "INSTRUTOR" -> {
+                jmiAluno.setEnabled(true);
+                jmiCertificado.setEnabled(true);
+                jmiCertificadosEntregues.setEnabled(true);
+                jmiConsultaRegistro.setEnabled(true);
+                jmiCurso.setEnabled(true);
+                jmiLog.setEnabled(false);
+                jmiRegistroHora.setEnabled(true);
+                jmiReiniciar.setEnabled(true);
+                jmiRelatorio.setEnabled(true);
+                jmiSair.setEnabled(true);
+                jmiUsuario.setEnabled(false);
+            }
+            default -> {
+                jmiAluno.setEnabled(true);
+                jmiCertificado.setEnabled(true);
+                jmiCertificadosEntregues.setEnabled(true);
+                jmiConsultaRegistro.setEnabled(true);
+                jmiCurso.setEnabled(true);
+                jmiLog.setEnabled(false);
+                jmiRegistroHora.setEnabled(false);
+                jmiReiniciar.setEnabled(true);
+                jmiRelatorio.setEnabled(true);
+                jmiSair.setEnabled(true);
+                jmiUsuario.setEnabled(false);
+            }
         }
-        
+
     }
-    
+
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -404,13 +407,12 @@ public class SCCI extends javax.swing.JFrame {
         };
         clock.start();
     }
-    
+
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
@@ -418,19 +420,20 @@ public class SCCI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlData;
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JMenuItem jmiAluno;
+    private javax.swing.JMenuItem jmiCertificado;
+    private javax.swing.JMenuItem jmiCertificadosEntregues;
+    private javax.swing.JMenuItem jmiConsultaRegistro;
     private javax.swing.JMenuItem jmiCurso;
-    private javax.swing.JMenuItem jmiRegistrar;
+    private javax.swing.JMenuItem jmiLog;
+    private javax.swing.JMenuItem jmiRegistroHora;
+    private javax.swing.JMenuItem jmiReiniciar;
+    private javax.swing.JMenuItem jmiRelatorio;
+    private javax.swing.JMenuItem jmiSair;
+    private javax.swing.JMenuItem jmiUsuario;
     private javax.swing.JMenuBar menuBar;
     private rojerusan.RSPanelImage rSPanelImage1;
     // End of variables declaration//GEN-END:variables

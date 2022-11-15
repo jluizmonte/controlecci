@@ -1,19 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package com.controlecci.view.SCCI;
 
 import com.controlecci.controller.AlunoController;
-import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
-import com.controlecci.util.GetDateUtil;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
-import com.controlecci.view.MensagemConfirmação;
-import com.controlecci.view.TelaCarregamento;
-import com.mxrck.autocompleter.AutoCompleter;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;

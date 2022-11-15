@@ -1,11 +1,11 @@
 package com.controlecci.view.SCCI;
 
-import com.controlecci.view.*;
 import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.AulaController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.AulaModel;
 import com.controlecci.util.GetDateUtil;
+import com.controlecci.view.utils.MensagemConfirmação;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Dimension;

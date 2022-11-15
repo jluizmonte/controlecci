@@ -1,6 +1,5 @@
 package com.controlecci.view.utils;
 
-import com.controlecci.view.*;
 import java.awt.event.ActionEvent;
 import javax.swing.Timer;
 
