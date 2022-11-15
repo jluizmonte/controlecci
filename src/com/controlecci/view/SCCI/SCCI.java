@@ -339,6 +339,7 @@ public class SCCI extends javax.swing.JFrame {
         visualizarLog.setVisible(true);
         visualizarLog.setPosicao();
     }//GEN-LAST:event_jmiLogActionPerformed
+   
     public void gerarRelatorio(String titulo) {
         try {
             relatorio.setTipoLevantamento(titulo);
