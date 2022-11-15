@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author joseluiz
  */
 public class SCCI extends javax.swing.JFrame {
-
+    
     TemplateAlerts templateAlerts = new TemplateAlerts();
     RelatorioUtil relatorio = new RelatorioUtil();
 
@@ -387,9 +387,9 @@ public class SCCI extends javax.swing.JFrame {
 //            jlGerarCertificado.setEnabled(false);
 //            jlRelatorio.setEnabled(false);
         }
-
+        
     }
-
+    
     private void setarData() {
         Thread clock = new Thread() {
             @Override
@@ -403,7 +403,7 @@ public class SCCI extends javax.swing.JFrame {
         };
         clock.start();
     }
-
+    
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
     }
