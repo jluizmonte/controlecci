@@ -8,8 +8,11 @@ import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.Toolkit;
+import java.net.URL;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author Instrutores
  */
 public class LoginView extends javax.swing.JDialog {
-    
+
     UsuarioModel usuarioModel = new UsuarioModel();
     UsuarioController usuarioController = new UsuarioController();
     int x, y;
@@ -31,6 +34,7 @@ public class LoginView extends javax.swing.JDialog {
      */
     public LoginView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setarImagem();
         dispose();
         setUndecorated(true);
         initComponents();
@@ -265,7 +269,7 @@ public class LoginView extends javax.swing.JDialog {
     private void jpSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpSenhaActionPerformed
         realizarLogin();
     }//GEN-LAST:event_jpSenhaActionPerformed
-    
+
     public void realizarLogin() {
         usuarioModel.setLoginUsuario(jtfLogin.getText());
         usuarioModel.setSenhaUsuario(String.valueOf(jpSenha.getPassword()));
@@ -276,16 +280,16 @@ public class LoginView extends javax.swing.JDialog {
                     setSessionUser();
                     String sucesso = "Acesso concedido a: " + usuarioModel.getNomeUsuario();
                     JOptionPane.showMessageDialog(this, sucesso, "Sucesso", JOptionPane.WARNING_MESSAGE);
-                    
+
                     LocalUtil.logClass = this.getClass().getName();
                     LocalUtil.logType = templateAlerts.mensagemRegistroComum();
                     new LogCatUtil().writeFile(String.valueOf(sucesso));
-                    
+
                     new SCCI().setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, templateAlerts.erroLogar());
-                    
+
                     LocalUtil.logClass = this.getClass().getName();
                     LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
                     new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroLogar()));
@@ -295,7 +299,7 @@ public class LoginView extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, templateAlerts.erroCamposEmBranco());
                 LocalUtil.logClass = this.getClass().getName();
                 LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-                
+
                 new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroCamposEmBranco()));
                 limparCampos();
             }
@@ -305,18 +309,24 @@ public class LoginView extends javax.swing.JDialog {
             new LogCatUtil().writeFile(String.valueOf(e.toString()));
         }
     }
-    
+
     public void limparCampos() {
         jtfLogin.setText("");
         jpSenha.setText("");
         jtfLogin.requestFocus();
     }
-    
+
     private void setSessionUser() {
         SessaoUsuarioModel.codigoUsuario = usuarioModel.getIdUsuario();
         SessaoUsuarioModel.nomeUsuario = usuarioModel.getNomeUsuario();
         SessaoUsuarioModel.loginUsuario = usuarioModel.getLoginUsuario();
         SessaoUsuarioModel.nivelAcesso = usuarioModel.getNivelAcessoUsuario();
+    }
+
+    private void setarImagem() {
+        URL caminhoImagem = this.getClass().getResource("/com/controlecci/image/others/nova_logo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoImagem);
+        setIconImage(iconeTitulo);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -5,6 +5,9 @@ import com.controlecci.relatorio.RelatorioUtil;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -24,6 +27,7 @@ public class SCCI extends javax.swing.JFrame {
      */
     public SCCI() {
         setUndecorated(true);
+        setarImagem();
         initComponents();
         setExtendedState(MAXIMIZED_BOTH); // seta o tamanho da janela (maximizado) ao iniciar
         setarData();
@@ -410,6 +414,12 @@ public class SCCI extends javax.swing.JFrame {
 
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
+    }
+
+    private void setarImagem() {
+        URL caminhoImagem = this.getClass().getResource("/com/controlecci/image/others/logo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoImagem);
+        setIconImage(iconeTitulo);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDesktopPane desktopPane;
