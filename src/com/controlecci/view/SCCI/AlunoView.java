@@ -1139,7 +1139,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         int linha = jtAlunos.getSelectedRow();
         String aluno = (String) jtAlunos.getValueAt(linha, 1);
         // menu de opções para o usuario confirmar a exclusão
-            AlunoModel.nomeAluno = aluno;
+        AlunoModel.nomeAluno = aluno;
 
         int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + aluno + " ?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
         if (dialogResult == 0) {
@@ -1330,7 +1330,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                 mensagemConfirmação.setVisible(true);
                 LocalUtil.logClass = this.getClass().getName();
                 LocalUtil.logType = templateAlerts.mensagemRegistroComum();
-                new LogCatUtil().writeFile(String.valueOf(templateAlerts.mensagemSalvar("Aluno")));
+                new LogCatUtil().writeFile(String.valueOf(templateAlerts.mensagemSalvar("Aluno " + alunoModel.getNome())));
                 limparCamposSalvar();
                 menuOpcoes();
             } else {

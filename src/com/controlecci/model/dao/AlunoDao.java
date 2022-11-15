@@ -202,6 +202,7 @@ public class AlunoDao extends ConnectionMySQL {
     /**
      *
      * @param alunoModel
+     * @param pAlunoPesquisa
      * @return
      */
     public boolean atualizarAluno(AlunoModel alunoModel, String pAlunoPesquisa) {

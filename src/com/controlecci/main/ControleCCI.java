@@ -1,6 +1,6 @@
 package com.controlecci.main;
 
-import com.controlecci.view.Login;
+import com.controlecci.view.SCCI.Login;
 import com.controlecci.view.SCCI.SCCI;
 
 /**

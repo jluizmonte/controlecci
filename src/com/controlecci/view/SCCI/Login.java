@@ -1,4 +1,4 @@
-package com.controlecci.view;
+package com.controlecci.view.SCCI;
 
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;

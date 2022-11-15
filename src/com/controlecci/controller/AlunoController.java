@@ -93,6 +93,7 @@ public class AlunoController {
      * atualiza os dados de um aluno selecionado
      *
      * @param alunoModel
+     * @param pAlunoPesquisa
      * @return
      */
     public boolean atualizarAluno(AlunoModel alunoModel, String pAlunoPesquisa) {
