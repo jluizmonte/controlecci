@@ -532,9 +532,10 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
      *
      * @param aluno
      */
-    public void exibirDadosAluno(String aluno) {
-        jlNomeAluno.setText(aluno);
-        alunoModel.setNome(aluno);
+    public void exibirDadosAluno() {
+        jlNomeAluno.setText(AlunoModel.nomeAluno);
+        jtfNomeAluno.setText(AlunoModel.nomeAluno);
+        alunoModel.setNome(AlunoModel.nomeAluno);
         carregarRegistro();
         infoCurso();
     }

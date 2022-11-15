@@ -16,6 +16,7 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -34,8 +35,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(null, true);
     TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
-    ConsultarRegistro consultarRegistro = new ConsultarRegistro();
-    SCCI scci = new SCCI();
 
     GetDateUtil getDateUtil = new GetDateUtil();
     TemplateAlerts templateAlerts = new TemplateAlerts();
@@ -1140,11 +1139,11 @@ public class AlunoView extends javax.swing.JInternalFrame {
         int linha = jtAlunos.getSelectedRow();
         String aluno = (String) jtAlunos.getValueAt(linha, 1);
         // menu de opções para o usuario confirmar a exclusão
-
-        int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + aluno + "?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
-        if (dialogResult == 0) {
             AlunoModel.nomeAluno = aluno;
-            scci.chamarConsulta();
+
+        int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + aluno + " ?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
+        if (dialogResult == 0) {
+            exibirDadosAluno();
         }
     }//GEN-LAST:event_jtAlunosMouseClicked
 
@@ -1403,11 +1402,11 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jlQtde.setText(alunoController.retornaQtdeAluno());
         listaAlunoModels = alunoController.getListaAlunoCadastro();
         DefaultTableModel modeloTabela = (DefaultTableModel) jtAlunos.getModel();
-        TableColumnModel tcm= jtAlunos.getColumnModel();
+        TableColumnModel tcm = jtAlunos.getColumnModel();
         tcm.getColumn(0).setPreferredWidth(2);
-         tcm.getColumn(3).setPreferredWidth(2);
-         tcm.getColumn(4).setPreferredWidth(5);
-        
+        tcm.getColumn(3).setPreferredWidth(2);
+        tcm.getColumn(4).setPreferredWidth(5);
+
         modeloTabela.setNumRows(0);
         try {
             int cont = listaAlunoModels.size();
@@ -1472,6 +1471,14 @@ public class AlunoView extends javax.swing.JInternalFrame {
                 new String[]{"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
                     "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}));
         jcbUf.setSelectedItem("PE");
+    }
+
+    private void exibirDadosAluno() {
+        ConsultarRegistro consultarRegistro = new ConsultarRegistro();
+        JDesktopPane desktopPane = getDesktopPane();
+        desktopPane.add(consultarRegistro);
+        consultarRegistro.exibirDadosAluno();
+        consultarRegistro.setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

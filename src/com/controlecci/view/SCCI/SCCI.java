@@ -1,6 +1,5 @@
 package com.controlecci.view.SCCI;
 
-import com.controlecci.model.AlunoModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.relatorio.RelatorioUtil;
 import com.controlecci.util.LocalUtil;
@@ -349,13 +348,6 @@ public class SCCI extends javax.swing.JFrame {
         } finally {
             //  this.dispose();
         }
-    }
-
-    public void chamarConsulta() {
-        ConsultarRegistro consultarRegistro = new ConsultarRegistro();
-        desktopPane.add(consultarRegistro);
-        consultarRegistro.exibirDadosAluno(AlunoModel.nomeAluno);
-        consultarRegistro.setVisible(true);
     }
 
     private void setarNivel() {
