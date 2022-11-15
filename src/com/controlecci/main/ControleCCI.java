@@ -1,7 +1,6 @@
 package com.controlecci.main;
 
-import com.controlecci.view.SCCI.Login;
-import com.controlecci.view.SCCI.SCCI;
+import com.controlecci.view.SCCI.LoginView;
 
 /**
  *
@@ -21,11 +20,10 @@ public class ControleCCI {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-         //   new Login(null, true).setVisible(true);
-         new SCCI().setVisible(true);
+            new LoginView(null, true).setVisible(true);
         });
     }
 }

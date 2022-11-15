@@ -1,4 +1,4 @@
-package com.controlecci.view.SCCI;
+package com.controlecci.view;
 
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;
@@ -6,6 +6,7 @@ import com.controlecci.model.UsuarioModel;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
+import com.controlecci.view.SCCI.SCCI;
 import com.controlecci.view.SCCI.SCCI;
 import java.awt.Color;
 import java.awt.HeadlessException;

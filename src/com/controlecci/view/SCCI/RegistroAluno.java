@@ -33,7 +33,6 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
      * Creates new form FrmAlunos
      */
     public RegistroAluno() {
-
         initComponents();
         carregarAlunosPrevisao();
         limparCampos();
@@ -69,6 +68,7 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jbVoltar = new javax.swing.JButton();
 
+        setIconifiable(true);
         setTitle("BANCO DE HORAS - ALUNO CCI");
 
         jPanel1.setBackground(new java.awt.Color(0, 89, 124));

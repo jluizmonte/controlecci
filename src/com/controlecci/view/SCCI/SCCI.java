@@ -1,5 +1,6 @@
 package com.controlecci.view.SCCI;
 
+import com.controlecci.view.Login;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.relatorio.RelatorioUtil;
 import com.controlecci.util.LocalUtil;
@@ -23,8 +24,8 @@ public class SCCI extends javax.swing.JFrame {
      * Creates new form ScciPrincipal
      */
     public SCCI() {
+        setUndecorated(true);
         initComponents();
-        setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH); // seta o tamanho da janela (maximizado) ao iniciar
         setarData();
         setarValores();
@@ -348,7 +349,7 @@ public class SCCI extends javax.swing.JFrame {
             //  this.dispose();
         }
     }
-
+    
     private void setarNivel() {
         if (SessaoUsuarioModel.nivelAcesso.equals("COORDENAÇÃO")) {
 //            jmiExtra.setEnabled(false);

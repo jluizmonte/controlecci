@@ -1143,8 +1143,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
         int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + aluno + " ?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
         if (dialogResult == 0) {
             exibirDadosAluno();
-            AlunoModel.nomeAluno = aluno;
-            exibirDadosAluno();
         }
     }//GEN-LAST:event_jtAlunosMouseClicked
 
@@ -1173,7 +1171,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
         ac = new TextAutoCompleter(jtfPesquisa);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
-
     }
 
     private void habilitaDesabilitaCamposSalvar(boolean condicao) {
@@ -1488,7 +1485,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     private void exibirDadosAluno() {
         ConsultarRegistro consultarRegistro = new ConsultarRegistro();
-        JDesktopPane desktopPane = getDesktopPane();
+        JDesktopPane desktopPane = this.getDesktopPane();
         desktopPane.add(consultarRegistro);
         consultarRegistro.exibirDadosAluno();
         consultarRegistro.setVisible(true);
