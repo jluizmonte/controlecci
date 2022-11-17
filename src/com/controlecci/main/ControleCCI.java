@@ -3,7 +3,6 @@ package com.controlecci.main;
 import com.controlecci.util.FolderCreatorUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.view.SCCI.LoginView;
-import javax.swing.JOptionPane;
 
 /**
  *

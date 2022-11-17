@@ -5,10 +5,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -59,23 +55,23 @@ public class LogCatUtil {
                 SessaoUsuarioModel.nomeUsuario = templateAlerts.erroUsuarioLogado();
             }
             FileWriter fileWriter = new FileWriter(logCat, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.newLine();
-            bufferedWriter.write("--------");
-            bufferedWriter.newLine();
-            bufferedWriter.write("USUÁRIO: " + SessaoUsuarioModel.nomeUsuario);
-            bufferedWriter.newLine();
-            bufferedWriter.write("TIPO DE LOG: " + LocalUtil.logType);
-            bufferedWriter.newLine();
-            bufferedWriter.write("CLASSE ONDE OCORREU A EXCEÇÃO: " + LocalUtil.logClass);
-            bufferedWriter.newLine();
-            bufferedWriter.write("DATA E HORA: " + new LocalUtil().logDateNow);
-            bufferedWriter.newLine();
-            bufferedWriter.write("DESCRIÇÃO: " + log);
-            bufferedWriter.newLine();
-            bufferedWriter.close();
+            try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+                bufferedWriter.newLine();
+                bufferedWriter.write("--------");
+                bufferedWriter.newLine();
+                bufferedWriter.write("USUÁRIO: " + SessaoUsuarioModel.nomeUsuario);
+                bufferedWriter.newLine();
+                bufferedWriter.write("TIPO DE LOG: " + LocalUtil.logType);
+                bufferedWriter.newLine();
+                bufferedWriter.write("CLASSE ONDE OCORREU A EXCEÇÃO: " + LocalUtil.logClass);
+                bufferedWriter.newLine();
+                bufferedWriter.write("DATA E HORA: " + new LocalUtil().logDateNow);
+                bufferedWriter.newLine();
+                bufferedWriter.write("DESCRIÇÃO: " + log);
+                bufferedWriter.newLine();
+            }
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao criar arquivo de LOG\n" + " Informe ao desenvolvedor o ocorrido", "Erro Critico",
+            JOptionPane.showMessageDialog(null, "Erro ao criar arquivo de LOG\n Informe ao desenvolvedor o ocorrido", "Erro",
                     JOptionPane.ERROR_MESSAGE);
             LocalUtil.logClass = this.getClass().getName();
             new LogCatUtil().writeFile(String.valueOf(ex));
@@ -130,7 +126,7 @@ public class LogCatUtil {
             FileWriter fileWriter = new FileWriter(logCat);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            bufferedWriter.write(""
+            bufferedWriter.write("<<>>"
                     + "CRIAÇÃO DAS JAENLAS DE ALUNO, CURSO CONSULTA E REGISTRO DE ALUNO\n"
                     + "REPARO DO ERRO AO SALVAR UM ALUNO NOVO\n"
                     + "");
