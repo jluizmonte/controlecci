@@ -616,10 +616,6 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         }
     }
 
-    private void alterar() {
-
-    }
-
     private void carregarDados() {
         listaUsuarioModels = usuarioController.getListaUsuarioDAO();
         DefaultTableModel modeloTabela = (DefaultTableModel) jtUsuario.getModel();
