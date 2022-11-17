@@ -72,8 +72,8 @@ public class AlunoController {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public String retornaQtdeAluno() {
         return alunoDao.retornaQtdeAluno();
@@ -97,6 +97,6 @@ public class AlunoController {
      * @return
      */
     public boolean atualizarAluno(AlunoModel alunoModel, String pAlunoPesquisa) {
-        return alunoDao.atualizarAluno(alunoModel,pAlunoPesquisa);
+        return alunoDao.atualizarAluno(alunoModel, pAlunoPesquisa);
     }
 }

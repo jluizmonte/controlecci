@@ -690,7 +690,6 @@ public class CursoView extends javax.swing.JInternalFrame {
             LocalUtil.logClass = this.getClass().getName();
             LocalUtil.logType = templateAlerts.mensagemRegistroComum();
             new LogCatUtil().writeFile(String.valueOf("O curso " + cursoModel.getNomeCurso() + " foi salvo com sucesso!"));
-
             limparCadastro();
         } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o curso " + cursoModel.getNomeCurso().toUpperCase(), "Atenção", JOptionPane.WARNING_MESSAGE);

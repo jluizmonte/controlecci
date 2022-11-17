@@ -1,15 +1,19 @@
 package com.controlecci.view.SCCI;
 
 import com.controlecci.controller.UsuarioController;
+import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.model.UsuarioModel;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
+import com.controlecci.view.utils.MensagemConfirmação;
 import com.controlecci.view.utils.TelaCarregamento;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +28,8 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
     TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
     TemplateAlerts templateAlerts = new TemplateAlerts();
+    MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(null, true);
+
     private AutoCompleter ac;
     public ArrayList lista = new ArrayList<>();
 
@@ -471,6 +477,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
         habilitarDesabilitarCamposSalvar(true);
+        jtfNome.requestFocus();
     }//GEN-LAST:event_jbNovoActionPerformed
 
     private void jbCancelarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarAlterarActionPerformed
@@ -483,7 +490,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAlterarActionPerformed
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-        // TODO add your handling code here:
+        salvar();
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jtfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPesquisaActionPerformed
@@ -548,7 +555,29 @@ public class UsuarioView extends javax.swing.JInternalFrame {
     }
 
     private void salvar() {
+        usuarioModel.setLoginUsuario(jtfLogin.getText());
+        usuarioModel.setNivelAcessoUsuario(jcbNivel.getSelectedItem().toString());
+        usuarioModel.setNomeUsuario(jtfNome.getText().toUpperCase());
+        usuarioModel.setSenhaUsuario((jtfSenha.getPassword()));
 
+        if (usuarioController.salvarUsuarioDAO(usuarioModel)) {
+            mensagemConfirmação.jlMensagem.setText("O USUÁRIO: " + usuarioModel.getNomeUsuario().toUpperCase() + " FOI SALVO COM SUCESSO!");
+            mensagemConfirmação.jlInfo.setText("POR " + SessaoUsuarioModel.nomeUsuario);
+            mensagemConfirmação.fechar();
+            mensagemConfirmação.setVisible(true);
+
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegistroComum();
+            new LogCatUtil().writeFile(String.valueOf("O usuário " + usuarioModel.getNomeUsuario().toUpperCase() + " foi salvo com sucesso!"));
+            limparCamposSalvar();
+            carregarDados();
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o usuário " + usuarioModel.getNomeUsuario().toUpperCase(), "Atenção", JOptionPane.WARNING_MESSAGE);
+
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.mensagemCadastro("usuário")));
+        }
     }
 
     private void alterar() {

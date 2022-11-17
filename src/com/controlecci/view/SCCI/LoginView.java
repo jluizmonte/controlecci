@@ -278,7 +278,7 @@ public class LoginView extends javax.swing.JDialog {
                 if (usuarioController.getValidarUsuarioDAO(usuarioModel)) {
                     usuarioModel = usuarioController.getUsuarioDAO(jtfLogin.getText());
                     setSessionUser();
-                   String sucesso = "Acesso concedido a " + usuarioModel.getNomeUsuario();
+                    String sucesso = "Acesso concedido a " + usuarioModel.getNomeUsuario();
                     JOptionPane.showMessageDialog(this, sucesso, "Sucesso", JOptionPane.WARNING_MESSAGE);
 
                     LocalUtil.logClass = this.getClass().getName();

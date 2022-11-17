@@ -55,7 +55,7 @@ public class LogCatUtil {
                 SessaoUsuarioModel.nomeUsuario = templateAlerts.erroUsuarioLogado();
             }
             FileWriter fileWriter = new FileWriter(logCat, true);
-            try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            try ( BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
                 bufferedWriter.newLine();
                 bufferedWriter.write("--------");
                 bufferedWriter.newLine();
