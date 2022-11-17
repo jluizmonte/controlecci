@@ -99,3 +99,101 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
 DATA E HORA: 17/11/22 08:58:24
 DESCRIÇÃO: Acesso concedido a: José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 10:30:03
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 10:46:15
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 10:53:06
+DESCRIÇÃO: Acesso concedido a null
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 10:54:15
+DESCRIÇÃO: Acesso concedido a null
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 10:55:41
+DESCRIÇÃO: Acesso concedido a null
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 10:56:26
+DESCRIÇÃO: Acesso concedido a null
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 10:58:15
+DESCRIÇÃO: Acesso concedido a null
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 10:59:26
+DESCRIÇÃO: Acesso concedido a 
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 11:01:15
+DESCRIÇÃO: Acesso concedido a null
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 11:01:38
+DESCRIÇÃO: Acesso concedido a null
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 11:02:02
+DESCRIÇÃO: Acesso concedido a null
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 11:06:59
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 11:10:06
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 11:17:07
+DESCRIÇÃO: Acesso concedido a José Luiz

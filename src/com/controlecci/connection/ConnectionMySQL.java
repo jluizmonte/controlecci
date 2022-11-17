@@ -24,12 +24,12 @@ public class ConnectionMySQL {
 //    private String senha = "Jos3@Luiz";
 //    private String servidor = "localhost";
     
-//    private String servidor = "192.168.0.211";
+//    private String servidor = "192.168.0.211"; //servidor novo
 //    private String usuario = "cci";
 //    private String senha = "@3325cci3333";
 
-    private String servidor = "192.168.0.253";
-    private String usuario = "cci";
+    private String servidor = "192.168.0.253"; //servidor2
+    private String usuario = "cci"; 
     private String senha = "@3325cci3333";
     /**
      *

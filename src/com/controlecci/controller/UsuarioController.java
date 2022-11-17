@@ -20,8 +20,22 @@ public class UsuarioController {
         return usuarioDao.getUsuarioDAO(pLogin);
     }
 
+    /**
+     * retorna o usuario pelo nome inserido
+     *
+     * @param pNome
+     * @return
+     */
+    public UsuarioModel getUsuarioNomeDAO(String pNome) {
+        return usuarioDao.getUsuarioNomeDAO(pNome);
+    }
+
     public ArrayList<UsuarioModel> getListaUsuarioDAO() {
         return usuarioDao.getListaUsuarioDAO();
+    }
+
+    public ArrayList getNomeApenas() {
+        return usuarioDao.getNomeApenas();
     }
 
     public boolean atualizarUsuarioDAO(UsuarioModel pUsuarioModel) {

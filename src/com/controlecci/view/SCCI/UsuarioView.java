@@ -1,6 +1,16 @@
 package com.controlecci.view.SCCI;
 
+import com.controlecci.controller.UsuarioController;
+import com.controlecci.model.UsuarioModel;
+import com.controlecci.util.LocalUtil;
+import com.controlecci.util.LogCatUtil;
+import com.controlecci.util.TemplateAlerts;
+import com.controlecci.view.utils.TelaCarregamento;
+import com.mxrck.autocompleter.AutoCompleter;
+import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -8,11 +18,26 @@ import java.awt.Dimension;
  */
 public class UsuarioView extends javax.swing.JInternalFrame {
 
+    UsuarioController usuarioController = new UsuarioController();
+    UsuarioModel usuarioModel = new UsuarioModel();
+    ArrayList<UsuarioModel> listaUsuarioModels = new ArrayList<>();
+
+    TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
+    TemplateAlerts templateAlerts = new TemplateAlerts();
+    private AutoCompleter ac;
+    public ArrayList lista = new ArrayList<>();
+
     /**
      * Creates new form UsuarioView
      */
     public UsuarioView() {
         initComponents();
+        autoCompletar();
+        carregarDados();
+        limparCamposAlterar();
+        limparCamposSalvar();
+        habilitarDesabilitarCamposAlterar(false);
+        habilitarDesabilitarCamposSalvar(false);
     }
 
     /**
@@ -32,32 +57,32 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jtfNome = new javax.swing.JTextField();
+        jtfLogin = new javax.swing.JTextField();
+        jtfSenha = new javax.swing.JPasswordField();
+        jcbNivel = new javax.swing.JComboBox<>();
+        jbCancelar = new javax.swing.JButton();
+        jbNovo = new javax.swing.JButton();
+        jbSalvar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jButton4 = new javax.swing.JButton();
+        jcbNivelAlterar = new javax.swing.JComboBox<>();
+        jbCancelarAlterar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        jtfLoginAlterar = new javax.swing.JTextField();
+        jbAlterar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jtfNomeAlterar = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
+        jtfPesquisa = new javax.swing.JTextField();
+        jbPesquisa = new javax.swing.JButton();
+        jtfSenhaAlterar = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtUsuario = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -89,27 +114,42 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("NÍVEL DE ACESSO");
 
-        jTextField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfNome.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfLogin.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jPasswordField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jComboBox1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INSTRUTOR", "COORDENAÇÃO", "CONVIDADO" }));
-        jComboBox1.setSelectedItem("INSTRUTOR");
+        jcbNivel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jcbNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INSTRUTOR", "COORDENAÇÃO", "CONVIDADO", "DESENVOLVEDOR" }));
+        jcbNivel.setSelectedItem("INSTRUTOR");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cancelar.png"))); // NOI18N
-        jButton1.setText("CANCELAR");
+        jbCancelar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jbCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cancelar.png"))); // NOI18N
+        jbCancelar.setText("CANCELAR");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/add.png"))); // NOI18N
-        jButton2.setText("NOVO");
+        jbNovo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jbNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/add.png"))); // NOI18N
+        jbNovo.setText("NOVO");
+        jbNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNovoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/salvar.png"))); // NOI18N
-        jButton3.setText("SALVAR");
+        jbSalvar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jbSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/salvar.png"))); // NOI18N
+        jbSalvar.setText("SALVAR");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -119,12 +159,12 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
+                    .addComponent(jtfNome)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jTextField2)
+                        .addComponent(jtfLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,15 +173,15 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox1, 0, 480, Short.MAX_VALUE)))
+                                    .addComponent(jcbNivel, 0, 480, Short.MAX_VALUE)))
                             .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jbCancelar)
                         .addGap(118, 118, 118)
-                        .addComponent(jButton2)
+                        .addComponent(jbNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(jbSalvar)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -151,24 +191,24 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jbCancelar)
+                    .addComponent(jbNovo)
+                    .addComponent(jbSalvar))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -191,31 +231,39 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("NOME DO USUÁRIO");
 
-        jComboBox2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INSTRUTOR", "COORDENAÇÃO", "CONVIDADO" }));
-        jComboBox2.setSelectedItem("INSTRUTOR");
+        jcbNivelAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jcbNivelAlterar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INSTRUTOR", "COORDENAÇÃO", "CONVIDADO", "DESENVOLVEDOR" }));
+        jcbNivelAlterar.setSelectedItem("INSTRUTOR");
 
-        jPasswordField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cancelar.png"))); // NOI18N
-        jButton4.setText("CANCELAR");
+        jbCancelarAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jbCancelarAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cancelar.png"))); // NOI18N
+        jbCancelarAlterar.setText("CANCELAR");
+        jbCancelarAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarAlterarActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("LOGIN DE ACESSO");
 
-        jTextField4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfLoginAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jButton6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/atualizar.png"))); // NOI18N
-        jButton6.setText("ALTERAR");
+        jbAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jbAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/atualizar.png"))); // NOI18N
+        jbAlterar.setText("ALTERAR");
+        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAlterarActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("NÍVEL DE ACESSO");
 
-        jTextField3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfNomeAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -225,10 +273,22 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("PESQUISA");
 
-        jTextField5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfPesquisa.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfPesquisaActionPerformed(evt);
+            }
+        });
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/pesquisar.png"))); // NOI18N
-        jButton7.setText("PESQUISAR");
+        jbPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/pesquisar.png"))); // NOI18N
+        jbPesquisa.setText("PESQUISAR");
+        jbPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPesquisaActionPerformed(evt);
+            }
+        });
+
+        jtfSenhaAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -237,39 +297,38 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3)
+                    .addComponent(jtfNomeAlterar)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5)
+                        .addComponent(jtfPesquisa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7))
+                        .addComponent(jbPesquisa))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(jbCancelarAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6))
+                        .addComponent(jbAlterar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 4, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jcbNivelAlterar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfSenhaAlterar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jTextField4)
+                            .addComponent(jtfLoginAlterar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(115, 115, 115))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8))
-                            .addGap(0, 490, Short.MAX_VALUE)))
-                    .addContainerGap()))
+                            .addContainerGap(508, Short.MAX_VALUE)))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,18 +336,20 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7))
+                    .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbPesquisa))
                 .addGap(17, 17, 17)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfNomeAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jtfSenhaAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jcbNivelAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton6))
+                    .addComponent(jbCancelarAlterar)
+                    .addComponent(jbAlterar))
                 .addGap(35, 35, 35))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
@@ -297,9 +358,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel8)
                         .addComponent(jLabel9))
                     .addGap(5, 5, 5)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfLoginAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(108, Short.MAX_VALUE)))
@@ -322,7 +381,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
         jPanel6.setBackground(new java.awt.Color(0, 84, 124));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -348,14 +407,14 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(20);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(20);
+        jtUsuario.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jtUsuario);
+        if (jtUsuario.getColumnModel().getColumnCount() > 0) {
+            jtUsuario.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jtUsuario.getColumnModel().getColumn(1).setResizable(false);
+            jtUsuario.getColumnModel().getColumn(1).setPreferredWidth(20);
+            jtUsuario.getColumnModel().getColumn(2).setResizable(false);
+            jtUsuario.getColumnModel().getColumn(2).setPreferredWidth(20);
         }
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -405,19 +464,87 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void habilitarCamposSalvar(boolean condicao) {
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        limparCamposSalvar();
+        habilitarDesabilitarCamposSalvar(false);
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
+        habilitarDesabilitarCamposSalvar(true);
+    }//GEN-LAST:event_jbNovoActionPerformed
+
+    private void jbCancelarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarAlterarActionPerformed
+        limparCamposAlterar();
+        habilitarDesabilitarCamposAlterar(false);
+    }//GEN-LAST:event_jbCancelarAlterarActionPerformed
+
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbAlterarActionPerformed
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbSalvarActionPerformed
+
+    private void jtfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPesquisaActionPerformed
+        habilitarDesabilitarCamposAlterar(true);
+        jtfNomeAlterar.requestFocus();
+        preencherDadosAlteracao();
+    }//GEN-LAST:event_jtfPesquisaActionPerformed
+
+    private void jbPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisaActionPerformed
+        habilitarDesabilitarCamposAlterar(true);
+    }//GEN-LAST:event_jbPesquisaActionPerformed
+
+    private void autoCompletar() {
+        ac = new TextAutoCompleter(jtfPesquisa);
+        lista = usuarioController.getNomeApenas();
+        ac.setItems(lista);
     }
 
-    private void habilitarCamposAlterar(boolean condicao) {
+    private void preencherDadosAlteracao() {
+        try {
+            usuarioModel = usuarioController.getUsuarioNomeDAO(jtfPesquisa.getText());
+            jtfNomeAlterar.setText(usuarioModel.getNomeUsuario());
+            jtfLoginAlterar.setText(usuarioModel.getLoginUsuario());
+            jtfSenhaAlterar.setText(usuarioModel.getSenhaUsuario());
+            jcbNivelAlterar.setSelectedItem(usuarioModel.getNivelAcessoUsuario());
+        } catch (Exception e) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf("Erro ao carregar os dados para preencher\n" + e.toString()));
+        }
+    }
 
+    private void habilitarDesabilitarCamposSalvar(boolean condicao) {
+        jtfLogin.setEnabled(condicao);
+        jtfNome.setEnabled(condicao);
+        jtfSenha.setEnabled(condicao);
+        jcbNivel.setEnabled(condicao);
+    }
+
+    private void habilitarDesabilitarCamposAlterar(boolean condicao) {
+        jtfLoginAlterar.setEnabled(condicao);
+        jtfNomeAlterar.setEnabled(condicao);
+        jtfSenhaAlterar.setEnabled(condicao);
+        jcbNivelAlterar.setEnabled(condicao);
     }
 
     private void limparCamposSalvar() {
-
+        jtfLogin.setText("");
+        jtfNome.setText("");
+        jtfSenha.setText("");
+        jcbNivel.setSelectedItem("INSTRUTOR");
+        jtfNome.requestFocus();
     }
 
     private void limparCamposAlterar() {
-
+        jtfLoginAlterar.setText("");
+        jtfNomeAlterar.setText("");
+        jtfSenhaAlterar.setText("");
+        jcbNivelAlterar.setSelectedItem("INSTRUTOR");
+        jtfPesquisa.setText("");
+        jtfPesquisa.requestFocus();
     }
 
     private void salvar() {
@@ -428,19 +555,37 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
     }
 
+    private void carregarDados() {
+        listaUsuarioModels = usuarioController.getListaUsuarioDAO();
+        DefaultTableModel modeloTabela = (DefaultTableModel) jtUsuario.getModel();
+        modeloTabela.setNumRows(0);
+        try {
+            int cont = listaUsuarioModels.size();
+            for (int i = 0; i < cont; i++) {
+                modeloTabela.addRow(new Object[]{
+                    listaUsuarioModels.get(i).getNomeUsuario(),
+                    listaUsuarioModels.get(i).getLoginUsuario(),
+                    listaUsuarioModels.get(i).getNivelAcessoUsuario()
+                });
+            }
+            chamarJDialog();
+        } catch (Exception e) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile("Erro ao carregar os registros!\n" + e.toString());
+        }
+    }
+
+    public void chamarJDialog() {
+        telaCarregamento.fechar();
+        telaCarregamento.setVisible(true);
+    }
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -458,15 +603,23 @@ public class UsuarioView extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton jbAlterar;
+    private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbCancelarAlterar;
+    private javax.swing.JButton jbNovo;
+    private javax.swing.JButton jbPesquisa;
+    private javax.swing.JButton jbSalvar;
+    private javax.swing.JComboBox<String> jcbNivel;
+    private javax.swing.JComboBox<String> jcbNivelAlterar;
+    private javax.swing.JTable jtUsuario;
+    private javax.swing.JTextField jtfLogin;
+    private javax.swing.JTextField jtfLoginAlterar;
+    private javax.swing.JTextField jtfNome;
+    private javax.swing.JTextField jtfNomeAlterar;
+    private javax.swing.JTextField jtfPesquisa;
+    private javax.swing.JPasswordField jtfSenha;
+    private javax.swing.JTextField jtfSenhaAlterar;
     // End of variables declaration//GEN-END:variables
 }
