@@ -5,6 +5,9 @@ import com.controlecci.controller.AulaController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.AulaModel;
 import com.controlecci.util.GetDateUtil;
+import com.controlecci.util.LocalUtil;
+import com.controlecci.util.LogCatUtil;
+import com.controlecci.util.TemplateAlerts;
 import com.controlecci.view.utils.MensagemConfirmação;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
@@ -28,6 +31,7 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
     public String nomeAluno;
     GetDateUtil getDateUtil = new GetDateUtil();
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(null, true);
+    TemplateAlerts templateAlerts = new TemplateAlerts();
 
     /**
      * Creates new form FrmAlunos
@@ -343,9 +347,18 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
             mensagemConfirmação.jlMensagem.setText("O REGISTRO DE: " + alunoModel.getNome() + " FOI INSERIDO COM SUCESSO!");
             mensagemConfirmação.fechar();
             mensagemConfirmação.setVisible(true);
+
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegistroComum();
+            new LogCatUtil().writeFile(String.valueOf("O REGISTRO DE: " + alunoModel.getNome() + " FOI INSERIDO COM SUCESSO!"));
+
             repetirAcao();
         } else {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao registrar horário do aluno: " + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao registrar horário do aluno " + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao registrar horário do aluno " + alunoModel.getNome()));
+
         }
 
     }

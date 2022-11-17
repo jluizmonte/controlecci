@@ -6,6 +6,9 @@ import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.AulaModel;
 import com.controlecci.model.SessaoUsuarioModel;
+import com.controlecci.util.LocalUtil;
+import com.controlecci.util.LogCatUtil;
+import com.controlecci.util.TemplateAlerts;
 import com.controlecci.view.utils.TelaCarregamento;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
@@ -31,6 +34,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     public ArrayList lista = new ArrayList<>();
 
     private AutoCompleter ac;
+    TemplateAlerts templateAlerts = new TemplateAlerts();
 
     /**
      * Creates new form NewJFrame
@@ -231,14 +235,17 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
 
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel14.setText("SUSPENDER CURSO:");
+        jLabel14.setEnabled(false);
 
         jbSuspender.setText("SUSPENDER");
         jbSuspender.setToolTipText("A CONTAGEM SERÁ INTERROMPIDA, AO FINAL DO PRAZO DO ALUNO REMOVA A SUSPENSÃO");
+        jbSuspender.setEnabled(false);
 
         jLabel15.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 0, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("A CONTAGEM SERÁ INTERROMPIDA, AO FINAL DO PRAZO DO ALUNO REMOVA A SUSPENSÃO");
+        jLabel15.setEnabled(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -541,7 +548,6 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     /**
      * exibe os dados do aluno que foi selecionado na tela de aluno
      *
-     * @param aluno
      */
     public void exibirDadosAluno() {
         jlNomeAluno.setText(AlunoModel.nomeAluno);
@@ -566,7 +572,9 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
             }
             chamarJDialog();
         } catch (Exception e) {
-            e.toString();
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf("Erro ao carregar os dados para preencger\n" + e.toString()));
         }
     }
 

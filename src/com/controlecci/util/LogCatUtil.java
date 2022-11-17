@@ -95,7 +95,7 @@ public class LogCatUtil {
             bufferedWriter.newLine();
             bufferedWriter.write("Licenciado para: " + new ObterInfoSistemaUtil().getNomeUsuario());
             bufferedWriter.newLine();
-            bufferedWriter.write("Versão atual do sistema:" + obterInfoSistema.getAcervoVersao() + " Final 2021");
+            bufferedWriter.write("Versão atual do sistema:" + obterInfoSistema.getAcervoVersao() + " Final 2022");
             bufferedWriter.newLine();
             bufferedWriter.write("<<<<< LOGCAT >>>>>\n");
             bufferedWriter.write("\n");
