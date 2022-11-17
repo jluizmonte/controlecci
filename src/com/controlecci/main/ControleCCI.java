@@ -1,6 +1,9 @@
 package com.controlecci.main;
 
+import com.controlecci.util.FolderCreatorUtil;
+import com.controlecci.util.LogCatUtil;
 import com.controlecci.view.SCCI.LoginView;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,6 +16,8 @@ public class ControleCCI {
      */
     public static void main(String[] args) {
         try {
+            new FolderCreatorUtil().createFolder();
+            new LogCatUtil().createFile();
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());

@@ -46,11 +46,13 @@ public class FolderCreatorUtil {
      * @return return
      */
     public String logFolderDirectory() {
-        if (nomeSistema.equals("Linux")) {
-            userDirectory = diretorioPadrao + "/controlecci/logs";
-        } else {
-            userDirectory = diretorioPadrao + "\\controlecci\\logs";
-        }
+//        if (nomeSistema.equals("Linux")) {
+//            //   userDirectory = diretorioPadrao + "/controlecci/logs";
+//            userDirectory = "logs";
+//        } else {
+//            userDirectory = diretorioPadrao + "\\controlecci\\logs";
+//        }
+        userDirectory = "logs";
         return userDirectory;
     }
 
@@ -88,14 +90,17 @@ public class FolderCreatorUtil {
      * @return return
      */
     public String logFile() {
-        if (nomeSistema.equals("Linux")) {
-            userDirectory = diretorioPadrao + "/controlecci/logs/";
-            logCat = userDirectory + LocalUtil.logLibrary + ".log";
-        } else {
-            userDirectory = diretorioPadrao + "\\controlecci\\logs\\";
-            String uri = userDirectory + LocalUtil.logLibrary + ".log";
-            logCat = uri;
-        }
+//        if (nomeSistema.equals("Linux")) {
+//            //  userDirectory = diretorioPadrao + "/controlecci/logs/";
+//            userDirectory = "logs/";
+//            //  logCat = userDirectory + LocalUtil.logLibrary + ".log";
+//            logCat = userDirectory + LocalUtil.logLibrary + ".log";
+//        } else {
+//            userDirectory = diretorioPadrao + "\\controlecci\\logs\\";
+//            String uri = userDirectory + LocalUtil.logLibrary + ".log";
+//            logCat = uri;
+//        }
+        logCat = "logs/" + LocalUtil.logLibrary + ".log";
         return logCat;
     }
 

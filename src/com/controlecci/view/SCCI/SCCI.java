@@ -1,5 +1,6 @@
 package com.controlecci.view.SCCI;
 
+import com.controlecci.view.utils.VisualizarLog;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.relatorio.RelatorioUtil;
 import com.controlecci.util.LocalUtil;

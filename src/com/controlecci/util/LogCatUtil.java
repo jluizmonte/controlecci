@@ -5,6 +5,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -22,16 +26,18 @@ public class LogCatUtil {
 
     /**
      * criação do aquivo
+     *
      */
     public void createFile() {
-
         logCat = new File(LocalUtil.logFile);
-
-        try {
-            logCat.createNewFile();
-        } catch (IOException e) {
-            LocalUtil.logClass = this.getClass().getName();
-            new LogCatUtil().writeFile(String.valueOf(e));
+        if (!logCat.exists()) {
+            try {
+                logCat.createNewFile();
+                this.firstWriteFile();
+            } catch (IOException e) {
+                LocalUtil.logClass = this.getClass().getName();
+                new LogCatUtil().writeFile(String.valueOf(e));
+            }
         }
 
     }
@@ -85,7 +91,6 @@ public class LogCatUtil {
             FileWriter fileWriter = new FileWriter(logCat);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write("<><>LOGS DO SISTEMA CONTROLE CCI<><>\n");
-            bufferedWriter.newLine();
             bufferedWriter.write("Instituição: " + LocalUtil.logLibrary);
             bufferedWriter.newLine();
             bufferedWriter.write("Data criação arquivo de log: " + new LocalUtil().logDateNow);
@@ -95,7 +100,6 @@ public class LogCatUtil {
             bufferedWriter.write("Licenciado para: " + new ObterInfoSistemaUtil().getNomeUsuario());
             bufferedWriter.newLine();
             bufferedWriter.write("Versão atual do sistema:" + obterInfoSistema.getAcervoVersao() + " Final 2021");
-            ;
             bufferedWriter.newLine();
             bufferedWriter.write("<<<<< LOGCAT >>>>>\n");
             bufferedWriter.write("\n");

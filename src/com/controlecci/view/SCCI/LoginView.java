@@ -1,6 +1,8 @@
 package com.controlecci.view.SCCI;
 
+import com.controlecci.controller.LogController;
 import com.controlecci.controller.UsuarioController;
+import com.controlecci.model.LogModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.model.UsuarioModel;
 import com.controlecci.util.LocalUtil;

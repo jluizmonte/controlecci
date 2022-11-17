@@ -1,0 +1,16 @@
+<><>LOGS DO SISTEMA CONTROLE CCI<><>
+Instituição: CCI - CENTRAL DE CURSOS
+Data criação arquivo de log: 16/11/22 21:46:23
+Sistema operacional: Windows 7
+Licenciado para: Luiz
+Versão atual do sistema: v. 1.0 Final 2021
+<<<<< LOGCAT >>>>>
+
+16/11/22 21:46:23: O SISTEMA FOI INSTALADO COM SUCESSO!
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.UsuarioDao
+DATA E HORA: 16/11/22 21:46:49
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
