@@ -413,6 +413,11 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             }
         });
         jtUsuario.getTableHeader().setReorderingAllowed(false);
+        jtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtUsuarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtUsuario);
         if (jtUsuario.getColumnModel().getColumnCount() > 0) {
             jtUsuario.getColumnModel().getColumn(0).setPreferredWidth(60);
@@ -502,6 +507,10 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         habilitarDesabilitarCamposAlterar(true);
     }//GEN-LAST:event_jbPesquisaActionPerformed
 
+    private void jtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuarioMouseClicked
+        excluir();
+    }//GEN-LAST:event_jtUsuarioMouseClicked
+
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfPesquisa);
         lista = usuarioController.getNomeApenas();
@@ -557,7 +566,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         usuarioModel.setLoginUsuario(jtfLogin.getText());
         usuarioModel.setNivelAcessoUsuario(jcbNivel.getSelectedItem().toString());
         usuarioModel.setNomeUsuario(jtfNome.getText().toUpperCase());
-        usuarioModel.setSenhaUsuario((jtfSenha.getPassword()));
+        usuarioModel.setSenhaUsuario(jtfSenha.getText());
 
         if (usuarioController.salvarUsuarioDAO(usuarioModel)) {
             mensagemConfirmação.jlMensagem.setText("O USUÁRIO: " + usuarioModel.getNomeUsuario().toUpperCase() + " FOI SALVO COM SUCESSO!");
@@ -576,6 +585,34 @@ public class UsuarioView extends javax.swing.JInternalFrame {
             LocalUtil.logClass = this.getClass().getName();
             LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
             new LogCatUtil().writeFile(String.valueOf(templateAlerts.mensagemCadastro("usuário")));
+        }
+    }
+
+    private void excluir() {
+        int linha = jtUsuario.getSelectedRow();
+        String usuario = (String) jtUsuario.getValueAt(linha, 0);
+        String loginUsuario = (String) jtUsuario.getValueAt(linha, 1);
+
+        int dialogResult = JOptionPane.showConfirmDialog(this, "O usuário " + usuario + " será excluído!\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
+        if (dialogResult == 0) {
+            if (usuarioController.excluirUsuarioDAO(loginUsuario)) {
+                mensagemConfirmação.jlMensagem.setText("O USUÁRIO: " + usuario + " FOI EXCLUÍDO COM SUCESSO!");
+                mensagemConfirmação.jlInfo.setText("VOCÊ PODE INSERI-LO NOVAMENTE");
+                mensagemConfirmação.fechar();
+                mensagemConfirmação.setVisible(true);
+
+                LocalUtil.logClass = this.getClass().getName();
+                LocalUtil.logType = templateAlerts.mensagemRegistroComum();
+                new LogCatUtil().writeFile(String.valueOf("O usuário " + usuario + " foi excluído com sucesso!"));
+
+                carregarDados();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao excluir o usuário!", "Erro", JOptionPane.ERROR_MESSAGE);
+
+                LocalUtil.logClass = this.getClass().getName();
+                LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+                new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroGeralExclusao("usuário")));
+            }
         }
     }
 

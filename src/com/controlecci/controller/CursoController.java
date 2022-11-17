@@ -125,6 +125,6 @@ public class CursoController {
      * @return
      */
     public boolean excluirLivro(String curso) {
-        return cursoDao.excluirLivro(curso);
+        return cursoDao.excluirCurso(curso);
     }
 }

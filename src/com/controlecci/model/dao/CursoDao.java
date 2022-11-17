@@ -255,7 +255,7 @@ public class CursoDao extends ConnectionMySQL {
      * @param pCurso
      * @return
      */
-    public boolean excluirLivro(String pCurso) {
+    public boolean excluirCurso(String pCurso) {
         try {
             this.conectar();
             return this.executarInsertUpdateSQL("DELETE FROM curso WHERE nome_curso='" + pCurso + "';");

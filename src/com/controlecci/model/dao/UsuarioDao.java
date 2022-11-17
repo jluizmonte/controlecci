@@ -162,14 +162,17 @@ public class UsuarioDao extends ConnectionMySQL {
     /**
      * exclui Usuario
      *
-     * @param pALuno
+     * @param pUsuario
      * @return
      */
-    public boolean excluirUsuarioDAO(String pALuno) {
+    public boolean excluirUsuarioDAO(String pUsuario) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("DELETE FROM usuario " + " WHERE " + "usu_login = '" + pALuno + "'" + ";");
-        } catch (Exception e) {
+            return this.executarInsertUpdateSQL("DELETE FROM usuario WHERE usu_login = '" + pUsuario + "';");
+        } catch (Exception ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroExclusao("usuário\n") + ex.toString()));
             return false;
         } finally {
             this.fecharConexao();

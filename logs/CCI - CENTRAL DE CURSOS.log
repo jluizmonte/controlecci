@@ -288,3 +288,31 @@ TIPO DE LOG: REGISTRO DE ERRO
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
 DATA E HORA: 17/11/22 11:46:21
 DESCRIÇÃO: ERRO AO EFETURAR O LOGIN, USUÁRIO OU SENHA INCORRETA!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 13:17:06
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 17/11/22 14:01:07
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.UsuarioView
+DATA E HORA: 17/11/22 14:01:26
+DESCRIÇÃO: O usuário JOÃO foi excluído com sucesso!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.UsuarioView
+DATA E HORA: 17/11/22 14:01:33
+DESCRIÇÃO: O usuário JOSÉ foi excluído com sucesso!

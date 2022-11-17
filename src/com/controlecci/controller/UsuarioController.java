@@ -42,8 +42,8 @@ public class UsuarioController {
         return usuarioDao.atualizarUsuarioDAO(pUsuarioModel);
     }
 
-    public boolean excluirUsuarioDAO(String pAluno) {
-        return usuarioDao.excluirUsuarioDAO(pAluno);
+    public boolean excluirUsuarioDAO(String pUsuario) {
+        return usuarioDao.excluirUsuarioDAO(pUsuario);
     }
 
     public boolean getValidarUsuarioDAO(UsuarioModel pUsuarioModel) {
