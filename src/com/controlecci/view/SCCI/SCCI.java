@@ -8,10 +8,13 @@ import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -335,10 +338,16 @@ public class SCCI extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiRelatorioActionPerformed
 
     private void jmiLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiLogActionPerformed
-        VisualizarLog visualizarLog = new VisualizarLog();
-        desktopPane.add(visualizarLog);
-        visualizarLog.setVisible(true);
-        visualizarLog.setPosicao();
+        VisualizarLog visualizarLog;
+        try {
+            visualizarLog = new VisualizarLog();
+            desktopPane.add(visualizarLog);
+            visualizarLog.setVisible(true);
+            visualizarLog.setPosicao();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SCCI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jmiLogActionPerformed
 
     public void gerarRelatorio(String titulo) {

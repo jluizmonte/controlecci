@@ -40,6 +40,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     TemplateAlerts templateAlerts = new TemplateAlerts();
 
     private AutoCompleter ac, ac2;
+    String curso;
 
     /**
      * Creates new form AlunoView
@@ -1277,7 +1278,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private void preencherCamposAlteracao() {
         alunoModel = alunoController.getAlunoDao(jtfPesquisa.getText());
         chamarJDialog();
-
+        
         jtfBairroAlterar.setText(alunoModel.getBairro());
         jtfCepAlterar.setText(alunoModel.getCep());
         jtfCelularAlterar.setText(alunoModel.getCelular());

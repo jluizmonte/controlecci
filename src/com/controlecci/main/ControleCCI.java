@@ -1,8 +1,10 @@
 package com.controlecci.main;
 
+import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.FolderCreatorUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.view.SCCI.LoginView;
+import com.controlecci.view.SCCI.SCCI;
 
 /**
  *
@@ -27,7 +29,12 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-            new LoginView(null, true).setVisible(true);
+            //  new LoginView(null, true).setVisible(true);
+            SessaoUsuarioModel.codigoUsuario = 10;
+            SessaoUsuarioModel.loginUsuario = "luiz";
+            SessaoUsuarioModel.nivelAcesso = "DESENVOLVEDOR";
+            SessaoUsuarioModel.nomeUsuario = "José Luiz";
+            new SCCI().setVisible(true);
         });
     }
 }

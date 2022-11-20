@@ -68,6 +68,7 @@ public class AlunoDao extends ConnectionMySQL {
                 lista.add(this.getResultSet().getString(1));
             }
         } catch (SQLException e) {
+            e.toString();
         } finally {
             this.fecharConexao();
         }
