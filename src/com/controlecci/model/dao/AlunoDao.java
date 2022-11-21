@@ -164,6 +164,21 @@ public class AlunoDao extends ConnectionMySQL {
         return pAluno;
     }
 
+    public String retornaStatusCertificado(String pAluno) {
+        String status = "";
+        try {
+            this.conectar();
+            this.executarSQL("SELECT situacao_certificado FROM aluno_cadastro WHERE nome='" + pAluno + "';");
+            while (this.getResultSet().next()) {
+                status = this.getResultSet().getString(1);
+            }
+        } catch (Exception e) {
+        } finally {
+            this.fecharConexao();
+        }
+        return status;
+    }
+
     /**
      *
      * @return

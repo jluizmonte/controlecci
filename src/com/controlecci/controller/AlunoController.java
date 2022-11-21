@@ -80,6 +80,15 @@ public class AlunoController {
     }
 
     /**
+     *
+     * @param pAluno
+     * @return
+     */
+    public String retornaStatusCertificado(String pAluno) {
+        return alunoDao.retornaStatusCertificado(pAluno);
+    }
+
+    /**
      * insere aluno com dados iguais a ficha
      *
      * @param alunoModel

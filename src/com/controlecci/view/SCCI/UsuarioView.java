@@ -92,7 +92,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("USUÁRIO");
+        setTitle("SCCI - USUÁRIO");
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 

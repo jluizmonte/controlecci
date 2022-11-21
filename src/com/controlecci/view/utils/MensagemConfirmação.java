@@ -46,12 +46,12 @@ public class MensagemConfirmação extends javax.swing.JDialog {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/icons8-check-mark-48.png"))); // NOI18N
         jLabel1.setText("SUCESSO!");
 
-        jlMensagem.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jlMensagem.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         jlMensagem.setForeground(new java.awt.Color(255, 255, 255));
         jlMensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlMensagem.setText("$MENSAGEM ");
 
-        jlInfo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jlInfo.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         jlInfo.setForeground(new java.awt.Color(255, 255, 255));
         jlInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlInfo.setText("$INFO");

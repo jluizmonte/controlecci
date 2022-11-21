@@ -40,7 +40,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
     TemplateAlerts templateAlerts = new TemplateAlerts();
 
     private AutoCompleter ac, ac2;
-    String curso;
 
     /**
      * Creates new form AlunoView
@@ -165,7 +164,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("ALUNOS - CADASTRO E CONSULTA");
+        setTitle("SCCI - ALUNO");
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
@@ -940,7 +939,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1278,7 +1277,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private void preencherCamposAlteracao() {
         alunoModel = alunoController.getAlunoDao(jtfPesquisa.getText());
         chamarJDialog();
-        
+
         jtfBairroAlterar.setText(alunoModel.getBairro());
         jtfCepAlterar.setText(alunoModel.getCep());
         jtfCelularAlterar.setText(alunoModel.getCelular());
@@ -1490,6 +1489,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         desktopPane.add(consultarRegistro);
         consultarRegistro.exibirDadosAluno();
         consultarRegistro.setVisible(true);
+        consultarRegistro.setPosicao();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

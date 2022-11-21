@@ -37,7 +37,7 @@ public class VisualizarLog extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("VISUALIAÇÃO DE LOG E CHANGELOG");
+        setTitle("SCCI - LOG");
 
         jtaLog.setEditable(false);
         jtaLog.setColumns(20);

@@ -4,7 +4,7 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="iconifiable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="VISUALIA&#xc7;&#xc3;O DE LOG E CHANGELOG"/>
+    <Property name="title" type="java.lang.String" value="SCCI - LOG"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>

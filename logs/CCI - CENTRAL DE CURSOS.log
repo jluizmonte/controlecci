@@ -330,3 +330,81 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
 DATA E HORA: 18/11/22 20:40:45
 DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AulaDao
+DATA E HORA: 20/11/22 19:50:02
+DESCRIÇÃO: Ocorreu um erro ao executar insert/update
+java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`controle`.`aula`, CONSTRAINT `id_aluno_aula` FOREIGN KEY (`id_aluno_fk`) REFERENCES `aluno` (`id_aluno`))
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 20/11/22 19:50:04
+DESCRIÇÃO: Ocorreu um erro ao registrar horário do aluno ALEF DA SILVA LOPES
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 20/11/22 19:51:59
+DESCRIÇÃO: O REGISTRO DE: ALEF DA SILVA LOPES FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 20/11/22 19:52:12
+DESCRIÇÃO: O REGISTRO DE: ALEF DA SILVA LOPES FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 20/11/22 19:52:27
+DESCRIÇÃO: O REGISTRO DE: ALEF DA SILVA LOPES FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 20/11/22 20:15:36
+DESCRIÇÃO: Aluno ALEXANDRE GOMES DE OLIVEIRA alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 20/11/22 20:38:58
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 20/11/22 20:53:11
+DESCRIÇÃO: O REGISTRO DE: ALEXANDRE GOMES DE OLIVEIRA FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 20/11/22 20:55:37
+DESCRIÇÃO: O REGISTRO DE: ALEXANDRE GOMES DE OLIVEIRA FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 20/11/22 20:55:50
+DESCRIÇÃO: O REGISTRO DE: ALEXANDRE GOMES DE OLIVEIRA FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 20/11/22 20:56:28
+DESCRIÇÃO: O REGISTRO DE: ALEF DA SILVA LOPES FOI INSERIDO COM SUCESSO!

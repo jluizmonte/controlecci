@@ -72,17 +72,18 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jbVoltar = new javax.swing.JButton();
 
+        setClosable(true);
         setIconifiable(true);
-        setTitle("BANCO DE HORAS - ALUNO CCI");
+        setTitle("SCCI - REGISTRO DE HORAS");
 
         jPanel1.setBackground(new java.awt.Color(0, 89, 124));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INSERÇÃO DAS HORAS CURSADAS DO ALUNO");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("INSIRA O NOME DO ALUNO PARA PESQUISAR:");
@@ -106,6 +107,7 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
         jlCursoAluno.setText("CURSO DO ALUNO");
 
         jtfNome.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfNome.setToolTipText("Aperte o enter duas vezes para selecionar o aluno");
         jtfNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfNomeActionPerformed(evt);
@@ -228,11 +230,11 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(3, 3, 3)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -264,7 +266,7 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
                         .addComponent(jbConsulta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbVoltar)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -340,27 +342,27 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
         aulaModel.setDataAula(getDateUtil.recuperaDataChooser(jtfData.getDate()));
         aulaModel.setChegada(jtfChegada.getText());
         aulaModel.setSaida(jtfSaida.getText());
+
         if (aulaController.registrarHoraAula(alunoModel, aulaModel)) {
             mensagemConfirmação.jlInfo.setText("CHEGADA: " + aulaModel.getChegada()
                     + "\n SAÍDA: " + aulaModel.getSaida()
                     + "\n Total dia: " + aulaController.retornaTotalCursadoDia(alunoModel.getNome()).toUpperCase());
-            mensagemConfirmação.jlMensagem.setText("O REGISTRO DE: " + alunoModel.getNome() + " FOI INSERIDO COM SUCESSO!");
+            mensagemConfirmação.jlMensagem.setText("O REGISTRO DE " + alunoModel.getNome() + " FOI INSERIDO COM SUCESSO!");
             mensagemConfirmação.fechar();
             mensagemConfirmação.setVisible(true);
 
             LocalUtil.logClass = this.getClass().getName();
             LocalUtil.logType = templateAlerts.mensagemRegistroComum();
-            new LogCatUtil().writeFile(String.valueOf("O REGISTRO DE: " + alunoModel.getNome() + " FOI INSERIDO COM SUCESSO!"));
+            new LogCatUtil().writeFile(String.valueOf("O REGISTRO DE " + alunoModel.getNome() + " FOI INSERIDO COM SUCESSO!"));
 
             repetirAcao();
         } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao registrar horário do aluno " + alunoModel.getNome(), "Atenção", JOptionPane.WARNING_MESSAGE);
             LocalUtil.logClass = this.getClass().getName();
             LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao registrar horário do aluno " + alunoModel.getNome()));
+            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao registrar horário de " + alunoModel.getNome()));
 
         }
-
     }
 
     public void setPosicao() {
@@ -369,6 +371,9 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
     }
 
     private void repetirAcao() {
+        jtfChegada.setText("");
+        jtfSaida.setText("");
+        
         int dialogResult = JOptionPane.showConfirmDialog(null, "Deseja registrar mais um horário deste aluno?\n Clique em Yes caso queira ou em No se deseja registrar outro", "Atenção", JOptionPane.YES_NO_OPTION);
         try {
             if (dialogResult == 0) {
