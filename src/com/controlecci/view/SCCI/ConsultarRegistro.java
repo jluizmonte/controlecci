@@ -22,17 +22,17 @@ import javax.swing.table.DefaultTableModel;
  * @author joseluiz
  */
 public class ConsultarRegistro extends javax.swing.JInternalFrame {
-    
+
     AlunoModel alunoModel = new AlunoModel();
     TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
-    
+
     AlunoController alunoController = new AlunoController();
     AulaController aulaController = new AulaController();
     CursoController cursoController = new CursoController();
-    
+
     ArrayList<AulaModel> listaAulaModels = new ArrayList<>();
     public ArrayList lista = new ArrayList<>();
-    
+
     private AutoCompleter ac;
     TemplateAlerts templateAlerts = new TemplateAlerts();
 
@@ -499,7 +499,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         jlNomeAluno.setText(jtfNomeAluno.getText().toUpperCase());
         alunoModel.setNome(jtfNomeAluno.getText());
         carregarRegistro();
-        infoCurso();
+      //  infoCurso();
     }//GEN-LAST:event_jtfNomeAlunoActionPerformed
 
     private void jlVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVoltarMouseClicked
@@ -521,7 +521,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         limparCampos();
     }//GEN-LAST:event_jbCancelarActionPerformed
-    
+
     public void setarAluno() {
         if (!"".equals(AlunoModel.nomeAluno)) {
             jtfNomeAluno.setText("");
@@ -532,18 +532,18 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
             infoCurso();
         }
     }
-    
+
     private void autoCompletar() {
         ac = new TextAutoCompleter(jtfNomeAluno);
         lista = alunoController.retornaAlunos();
         ac.setItems(lista);
     }
-    
+
     public void chamarJDialog() {
         telaCarregamento.fechar();
         telaCarregamento.setVisible(true);
     }
-    
+
     private void limparCampos() {
         jlCargaHoraria.setText("SELECIONE UM ALUNO");
         jlCurso.setText("SELECIONE UM ALUNO");
@@ -557,7 +557,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         jtfNomeAluno.setText("");
         jtfNomeAluno.requestFocus();
     }
-    
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -574,7 +574,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         carregarRegistro();
         infoCurso();
     }
-    
+
     public void carregarRegistro() {
         listaAulaModels = aulaController.getRegistroAula(alunoModel.getNome());
         DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
@@ -595,56 +595,64 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
             new LogCatUtil().writeFile(String.valueOf("Erro ao carregar os dados para preencher\n" + e.toString()));
         }
     }
-    
+
     public void infoCurso() {
-        jlCargaHoraria.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getCargaHoraria());
-        jlCurso.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getNomeCurso());
-        jlModulos.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getModulos());
-        jlDataInicio.setText(cursoController.retornaPrimeiraData(jtfNomeAluno.getText()));
-        jlDataEncerramento.setText(cursoController.retornaDataFinalCurso(jtfNomeAluno.getText()));
-        jlHorasRealizadas.setText(cursoController.retornaTotalCursado(jtfNomeAluno.getText()));
-        jlHorasRestantes.setText(aulaController.retornaTempoRestante(jtfNomeAluno.getText()));
-        jlSituacaoAluno.setText(cursoController.retornaStatusAluno(jtfNomeAluno.getText()));
-        jlSituacaoCertificado.setText(alunoController.retornaStatusCertificado(jtfNomeAluno.getText()));
-        /**/
-        if (jlDataInicio.getText() == null || jlDataInicio.getText().equals("")) {
-            jlDataInicio.setForeground(Color.red);
-            jlHorasRealizadas.setForeground(Color.red);
-            jlHorasRestantes.setForeground(Color.red);
-            jlDataEncerramento.setForeground(Color.red);
-            jlSituacaoAluno.setForeground(Color.red);
-            jlSituacaoCertificado.setForeground(Color.red);
-            jlDataInicio.setText("NÃO INICIOU O CURSO");
-            jlDataEncerramento.setText("NÃO INICIOU O CURSO");
-            jlHorasRealizadas.setText("NÃO INICIOU O CURSO");
-            jlHorasRestantes.setText("NÃO INICIOU O CURSO");
-            jlSituacaoAluno.setText("NÃO INICIOU O CURSO");
-            jlSituacaoCertificado.setText("NÃO INICIOU O CURSO");
-        } else {
-            jlDataInicio.setForeground(Color.black);
-            jlHorasRealizadas.setForeground(Color.black);
-            jlHorasRestantes.setForeground(Color.black);
-            jlDataEncerramento.setForeground(Color.black);
-            jlSituacaoAluno.setForeground(Color.black);
-            jlSituacaoCertificado.setForeground(Color.black);
+        try {
+            jlCargaHoraria.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getCargaHoraria());
+            jlCurso.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getNomeCurso());
+            jlModulos.setText(cursoController.retornaDadosCurso(jtfNomeAluno.getText()).getModulos());
+            jlDataInicio.setText(cursoController.retornaPrimeiraData(jtfNomeAluno.getText()));
+            jlDataEncerramento.setText(cursoController.retornaDataFinalCurso(jtfNomeAluno.getText()));
+            jlHorasRealizadas.setText(cursoController.retornaTotalCursado(jtfNomeAluno.getText()));
+            jlHorasRestantes.setText(aulaController.retornaTempoRestante(jtfNomeAluno.getText()));
+            jlSituacaoAluno.setText(cursoController.retornaStatusAluno(jtfNomeAluno.getText()));
+            jlSituacaoCertificado.setText(alunoController.retornaStatusCertificado(jtfNomeAluno.getText()));
+            /**/
+            if (jlDataInicio.getText() == null || jlDataInicio.getText().equals("")) {
+                jlDataInicio.setForeground(Color.red);
+                jlHorasRealizadas.setForeground(Color.red);
+                jlHorasRestantes.setForeground(Color.red);
+                jlDataEncerramento.setForeground(Color.red);
+                jlSituacaoAluno.setForeground(Color.red);
+                jlSituacaoCertificado.setForeground(Color.red);
+                jlDataInicio.setText("NÃO INICIOU O CURSO");
+                jlDataEncerramento.setText("NÃO INICIOU O CURSO");
+                jlHorasRealizadas.setText("NÃO INICIOU O CURSO");
+                jlHorasRestantes.setText("NÃO INICIOU O CURSO");
+                jlSituacaoAluno.setText("NÃO INICIOU O CURSO");
+                jlSituacaoCertificado.setText("NÃO INICIOU O CURSO");
+            } else {
+                jlDataInicio.setForeground(Color.black);
+                jlHorasRealizadas.setForeground(Color.black);
+                jlHorasRestantes.setForeground(Color.black);
+                jlDataEncerramento.setForeground(Color.black);
+                jlSituacaoAluno.setForeground(Color.black);
+                jlSituacaoCertificado.setForeground(Color.black);
+            }
+
+        } catch (Exception e) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf("Erro ao carregar os dados para preencher\n" + e.toString()));
+        } finally {
+            colorirLinha();
         }
-        colorirLinha();
     }
-    
+
     private void colorirLinha() {
         if (jlSituacaoAluno.getText().equals("ATIVO")) {
             jlSituacaoAluno.setForeground(new java.awt.Color(0, 79, 7));
         } else {
             jlSituacaoAluno.setForeground(Color.red);
         }
-        
+
         if (jlSituacaoCertificado.getText().equals("ENTREGUE")) {
             jlSituacaoCertificado.setForeground(new java.awt.Color(0, 79, 7));
         } else {
             jlSituacaoCertificado.setForeground(Color.red);
         }
     }
-    
+
     private void setarValores() {
         jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
     }

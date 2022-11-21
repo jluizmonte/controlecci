@@ -408,3 +408,137 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
 DATA E HORA: 20/11/22 20:56:28
 DESCRIÇÃO: O REGISTRO DE: ALEF DA SILVA LOPES FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 21/11/22 09:12:10
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 21/11/22 09:12:50
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 21/11/22 09:13:10
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 21/11/22 09:13:20
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 21/11/22 09:13:40
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AulaDao
+DATA E HORA: 21/11/22 09:13:54
+DESCRIÇÃO: Ocorreu um erro ao executar insert/update
+java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`controle`.`aula`, CONSTRAINT `id_aluno_aula` FOREIGN KEY (`id_aluno_fk`) REFERENCES `aluno` (`id_aluno`))
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 21/11/22 09:13:55
+DESCRIÇÃO: Ocorreu um erro ao registrar horário de ALEF DA SILVA LOPES
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 21/11/22 09:21:43
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 21/11/22 09:24:18
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 21/11/22 09:24:33
+DESCRIÇÃO: O REGISTRO DE ALEF DA SILVA LOPES FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 21/11/22 09:24:41
+DESCRIÇÃO: O REGISTRO DE ALEF DA SILVA LOPES FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 21/11/22 09:25:02
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 21/11/22 09:26:34
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 21/11/22 09:26:45
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 21/11/22 09:27:18
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 21/11/22 09:27:32
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 21/11/22 09:32:02
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 21/11/22 09:32:16
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 21/11/22 09:32:23
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql

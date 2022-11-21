@@ -153,7 +153,7 @@ public class AlunoDao extends ConnectionMySQL {
     public String retornarCursoPeloAluno(String pAluno) {
         try {
             this.conectar();
-            this.executarSQL("select nome_curso from curso join aluno_cadastro on curso_fk_cadastro = id_curso where nome= '" + pAluno + "'" + ";");
+            this.executarSQL("select nome_curso from curso join aluno_cadastro on curso_fk_cadastro = id_curso where nome= '" + pAluno + "';");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
@@ -172,7 +172,7 @@ public class AlunoDao extends ConnectionMySQL {
             while (this.getResultSet().next()) {
                 status = this.getResultSet().getString(1);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         } finally {
             this.fecharConexao();
         }
@@ -273,5 +273,4 @@ public class AlunoDao extends ConnectionMySQL {
         }
         return listaModel;
     }
-
 }

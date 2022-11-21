@@ -20,17 +20,16 @@ public class ConnectionMySQL {
     private boolean status = false;
     private String banco = "controle";
 
-    private String usuario = "root";
-    private String senha = "Jos3@Luiz";
-    private String servidor = "localhost";
-    
+//    private String usuario = "root";
+//    private String senha = "Jos3@Luiz";
+//    private String servidor = "localhost";
 //    private String servidor = "192.168.0.211"; //servidor novo
 //    private String usuario = "cci";
 //    private String senha = "@3325cci3333";
 //    
-//    private String servidor = "192.168.0.253"; //servidor2
-//    private String usuario = "cci";
-//    private String senha = "@3325cci3333";
+    private String servidor = "192.168.0.253"; //servidor2
+    private String usuario = "cci";
+    private String senha = "@3325cci3333";
 
     /**
      *
@@ -65,7 +64,7 @@ public class ConnectionMySQL {
             JOptionPane.showMessageDialog(null, "ERRO AO EXECUTAR A INSTRUÇÃO SQL\n ERRO AO CONECTAR AO BANCO DE DADOS", "ERRO", JOptionPane.ERROR_MESSAGE);
             LocalUtil.logClass = this.getClass().getName();
             LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao executar a instrução sql"));
+            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao executar a instrução sql\n" + e.toString()));
             return false;
         }
         return true;
