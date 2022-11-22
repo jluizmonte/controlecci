@@ -103,10 +103,10 @@ public class SelecionaAluno extends javax.swing.JDialog {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("SELECIONE QUAL CURSO DELE VOCÊ DESEJA VISUALIZAR OS DADOS");
 
-        jlAluno.setBackground(new java.awt.Color(0, 0, 0));
         jlAluno.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        jlAluno.setForeground(new java.awt.Color(0, 89, 124));
         jlAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAluno.setText("jLabel3");
+        jlAluno.setText("NOME DO ALUNO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
