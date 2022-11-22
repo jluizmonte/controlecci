@@ -22,7 +22,7 @@ public class AlunoDao extends ConnectionMySQL {
         try {
             this.conectar();
             this.executarSQL("SELECT id_cadastro,matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,DATE_FORMAT(data_nascimento, '%d-%m-%Y'),(select nome_curso where id_curso=curso_fk_cadastro),(select carga_horaria  where id_curso=curso_fk_cadastro),situacao,pendencia,data_matricula from aluno_cadastro join curso on id_curso = curso_fk_cadastro where nome ='" + pAluno + "';");
-
+            
             while (this.getResultSet().next()) {
                 alunoModel.setIdAluno(this.getResultSet().getInt(1));
                 alunoModel.setMatricula(this.getResultSet().getInt(2));
@@ -60,7 +60,7 @@ public class AlunoDao extends ConnectionMySQL {
      */
     public ArrayList retornaAlunos() {
         ArrayList lista = new ArrayList();
-
+        
         try {
             this.conectar();
             this.executarSQL("SELECT nome FROM aluno_cadastro;");
@@ -81,7 +81,7 @@ public class AlunoDao extends ConnectionMySQL {
      */
     public ArrayList retornaAlunoCadastro() {
         ArrayList lista = new ArrayList();
-
+        
         try {
             this.conectar();
             this.executarSQL("SELECT nome FROM aluno_cadastro;");
@@ -117,6 +117,33 @@ public class AlunoDao extends ConnectionMySQL {
             this.fecharConexao();
         }
         return listaAlunoModel;
+    }
+
+    /**
+     *
+     * @param pAluno
+     * @return
+     */
+    public ArrayList<AlunoModel> getListaPorAluno(String pAluno) {
+        ArrayList<AlunoModel> listaAlunoModels = new ArrayList<>();
+        AlunoModel alunoModel = new AlunoModel();
+        try {
+            this.conectar();
+            this.executarSQL("SELECT matricula,nome,nome_curso, situacao from aluno_cadastro JOIN curso ON id_curso=curso_fk_cadastro WHERE nome='" + pAluno + "';");
+            while (this.getResultSet().next()) {
+                alunoModel = new AlunoModel();
+                alunoModel.setMatricula(this.getResultSet().getInt(1));
+                alunoModel.setNome(this.getResultSet().getString(2));
+                alunoModel.setCurso(this.getResultSet().getString(3));
+                alunoModel.setSituacao(this.getResultSet().getString(4));
+                listaAlunoModels.add(alunoModel);
+            }
+        } catch (SQLException e) {
+            e.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return listaAlunoModels;
     }
 
     /**
@@ -164,6 +191,11 @@ public class AlunoDao extends ConnectionMySQL {
         return pAluno;
     }
 
+    /**
+     *
+     * @param pAluno
+     * @return
+     */
     public String retornaStatusCertificado(String pAluno) {
         String status = "";
         try {
@@ -188,7 +220,7 @@ public class AlunoDao extends ConnectionMySQL {
         try {
             this.conectar();
             this.executarSQL("select count(nome) from aluno_cadastro;");
-
+            
             while (this.getResultSet().next()) {
                 pQuantidade = this.getResultSet().getString(1);
             }
@@ -231,6 +263,28 @@ public class AlunoDao extends ConnectionMySQL {
         } finally {
             this.fecharConexao();
         }
+    }
+
+    /**
+     *
+     * @param pAluno
+     * @return
+     */
+    public int retornaQtdePorAluno(String pAluno) {
+        int qtde = 0;
+        try {
+            this.conectar();
+            this.executarSQL("select count(nome) from aluno_cadastro where nome='" + pAluno + "' group by nome");
+            while (this.getResultSet().next()) {
+                qtde = this.getResultSet().getInt(1);
+            }
+        } catch (Exception e) {
+            e.toString();
+            return 0;
+        } finally {
+            this.fecharConexao();
+        }
+        return qtde;
     }
 
     /**

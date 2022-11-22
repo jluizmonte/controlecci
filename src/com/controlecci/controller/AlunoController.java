@@ -31,6 +31,16 @@ public class AlunoController {
     }
 
     /**
+     * retorna uma lista com o nome e curso do aluno
+     *
+     * @param pAluno
+     * @return
+     */
+    public ArrayList<AlunoModel> getListaPorAluno(String pAluno) {
+        return alunoDao.getListaPorAluno(pAluno);
+    }
+
+    /**
      *
      * @return
      */
@@ -96,6 +106,16 @@ public class AlunoController {
      */
     public boolean inserirAluno(AlunoModel alunoModel) {
         return alunoDao.inserirAluno(alunoModel);
+    }
+
+    /**
+     * retorna a quantidade de cadastros que o aluno tem
+     *
+     * @param pAluno
+     * @return
+     */
+    public int retornaQtdePorAluno(String pAluno) {
+        return alunoDao.retornaQtdePorAluno(pAluno);
     }
 
     /**

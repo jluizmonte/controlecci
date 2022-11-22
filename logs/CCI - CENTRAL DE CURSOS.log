@@ -542,3 +542,10 @@ TIPO DE LOG: REGISTRO DE ERRO
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
 DATA E HORA: 21/11/22 09:32:23
 DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 21/11/22 21:48:27
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados

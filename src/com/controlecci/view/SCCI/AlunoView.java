@@ -9,6 +9,7 @@ import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
 import com.controlecci.view.utils.MensagemConfirmação;
+import com.controlecci.view.utils.SelecionaAluno;
 import com.controlecci.view.utils.TelaCarregamento;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
@@ -35,7 +36,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(null, true);
     TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
-
+    SelecionaAluno selecionaAluno = new SelecionaAluno(null, true);
     GetDateUtil getDateUtil = new GetDateUtil();
     TemplateAlerts templateAlerts = new TemplateAlerts();
 
@@ -1139,12 +1140,20 @@ public class AlunoView extends javax.swing.JInternalFrame {
         String aluno = (String) jtAlunos.getValueAt(linha, 1);
         // menu de opções para o usuario confirmar a exclusão
         AlunoModel.nomeAluno = aluno;
-
+        verificaQuantidadeALuno(aluno);
         int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + aluno + " ?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
         if (dialogResult == 0) {
             exibirDadosAluno();
         }
     }//GEN-LAST:event_jtAlunosMouseClicked
+    private void verificaQuantidadeALuno(String pAluno) {
+        int x = alunoController.retornaQtdePorAluno(pAluno);
+        if (x > 1) {
+            JOptionPane.showMessageDialog(null, "quantidade do aluno\n" + x);
+            selecionaAluno.carregarRegistro(pAluno);
+            selecionaAluno.setVisible(true);
+        }
+    }
 
     private void perguntaObservacoes() {
         String opcao = JOptionPane.showInputDialog(this, "O aluno possui alguma pendência?\n 1. Sim\n 2. Não", "2");
