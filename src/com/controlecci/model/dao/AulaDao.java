@@ -81,6 +81,35 @@ public class AulaDao extends ConnectionMySQL {
         return listaAulaModels;
     }
 
+    /**
+     * retorna lista da aula do aluno pelo nome e curso dele
+     *
+     * @param pAluno
+     * @return
+     */
+    public ArrayList<AulaModel> getRegistroAulaCurso(String pAluno, String pCurso) {
+        ArrayList<AulaModel> listaAulaModels = new ArrayList<>();
+        AulaModel aulaModel = new AulaModel();
+
+        try {
+            this.conectar();
+            this.executarSQL("select DATE_FORMAT(data_aula, '%d/%m/%Y'), hora_chegada, hora_saida, hora_de_aula from aula join aluno_cadastro on id_aluno_fk=id_cadastro join curso on id_curso=curso_fk_cadastro where nome ='" + pAluno + "' and nome_curso='" + pCurso + "';");
+            while (this.getResultSet().next()) {
+                aulaModel = new AulaModel();
+                aulaModel.setDataAula(this.getResultSet().getString(1));
+                aulaModel.setChegada(this.getResultSet().getString(2));
+                aulaModel.setSaida(this.getResultSet().getString(3));
+                aulaModel.setTotalHoraAula(this.getResultSet().getString(4));
+                listaAulaModels.add(aulaModel);
+            }
+        } catch (SQLException e) {
+            e.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return listaAulaModels;
+    }
+
     public ArrayList<AulaModel> getRegistroAulaId(int pId) {
         ArrayList<AulaModel> listaAulaModels = new ArrayList<>();
         AulaModel aulaModel = new AulaModel();

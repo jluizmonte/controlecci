@@ -8,10 +8,12 @@ import com.controlecci.util.GetDateUtil;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
+import com.controlecci.view.SCCI.AlunoView;
+import com.controlecci.view.SCCI.ConsultarRegistro;
 import com.mxrck.autocompleter.AutoCompleter;
 import java.util.ArrayList;
+import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -27,6 +29,7 @@ public class SelecionaAluno extends javax.swing.JDialog {
 
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(null, true);
     TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
+    AlunoView alunoView = new AlunoView();
 
     GetDateUtil getDateUtil = new GetDateUtil();
     TemplateAlerts templateAlerts = new TemplateAlerts();
@@ -35,11 +38,13 @@ public class SelecionaAluno extends javax.swing.JDialog {
 
     /**
      * Creates new form SelecionaALuno
+     *
+     * @param parent
+     * @param modal
      */
     public SelecionaAluno(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        //     carregarRegistro();
         setLocationRelativeTo(null);
     }
 
@@ -58,6 +63,7 @@ public class SelecionaAluno extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jlAluno = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SELEÇÃO DE FICHA");
@@ -91,7 +97,19 @@ public class SelecionaAluno extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        jtAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtAlunosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtAlunos);
+        if (jtAlunos.getColumnModel().getColumnCount() > 0) {
+            jtAlunos.getColumnModel().getColumn(0).setResizable(false);
+            jtAlunos.getColumnModel().getColumn(0).setPreferredWidth(10);
+            jtAlunos.getColumnModel().getColumn(1).setPreferredWidth(80);
+            jtAlunos.getColumnModel().getColumn(2).setResizable(false);
+            jtAlunos.getColumnModel().getColumn(2).setPreferredWidth(10);
+        }
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -104,26 +122,37 @@ public class SelecionaAluno extends javax.swing.JDialog {
         jLabel2.setText("SELECIONE QUAL CURSO DELE VOCÊ DESEJA VISUALIZAR OS DADOS");
 
         jlAluno.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jlAluno.setForeground(new java.awt.Color(0, 89, 124));
+        jlAluno.setForeground(new java.awt.Color(4, 60, 87));
         jlAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAluno.setText("NOME DO ALUNO");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel3.setText("VOLTAR");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jlAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlAluno)
@@ -131,7 +160,9 @@ public class SelecionaAluno extends javax.swing.JDialog {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,6 +181,14 @@ public class SelecionaAluno extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jtAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtAlunosMouseClicked
+        carregarDados();
+    }//GEN-LAST:event_jtAlunosMouseClicked
+
     private void colorirLinhas() {
         ColorirLinhaStatus colorirLinhas = new ColorirLinhaStatus(2);
         jtAlunos.getColumnModel().getColumn(2).setCellRenderer(colorirLinhas);
@@ -166,7 +205,7 @@ public class SelecionaAluno extends javax.swing.JDialog {
             for (int i = 0; i < cont; i++) {
                 modeloTabela.addRow(new Object[]{
                     listaAlunoModels.get(i).getMatricula(),
-            //        listaAlunoModels.get(i).getNome(),
+                    //        listaAlunoModels.get(i).getNome(),
                     listaAlunoModels.get(i).getCurso(),
                     listaAlunoModels.get(i).getSituacao()
                 });
@@ -180,10 +219,24 @@ public class SelecionaAluno extends javax.swing.JDialog {
         }
     }
 
+    private void carregarDados() {
+        int linha = jtAlunos.getSelectedRow();
+        String aluno = jlAluno.getText();
+        String curso = (String) jtAlunos.getValueAt(linha, 1);
+
+        ConsultarRegistro consultarRegistro = new ConsultarRegistro();
+        JDesktopPane desktopPane = alunoView.getDesktopPane();
+        desktopPane.add(consultarRegistro);
+        consultarRegistro.exibirDadosAluno();
+        consultarRegistro.carregarAlunoRegistro(aluno, curso);
+        consultarRegistro.setVisible(true);
+        consultarRegistro.setPosicao();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlAluno;

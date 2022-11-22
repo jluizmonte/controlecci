@@ -36,7 +36,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(null, true);
     TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
-    SelecionaAluno selecionaAluno = new SelecionaAluno(null, true);
+
     GetDateUtil getDateUtil = new GetDateUtil();
     TemplateAlerts templateAlerts = new TemplateAlerts();
 
@@ -1141,17 +1141,20 @@ public class AlunoView extends javax.swing.JInternalFrame {
         // menu de opções para o usuario confirmar a exclusão
         AlunoModel.nomeAluno = aluno;
         verificaQuantidadeALuno(aluno);
-        int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + aluno + " ?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
-        if (dialogResult == 0) {
-            exibirDadosAluno();
-        }
+
     }//GEN-LAST:event_jtAlunosMouseClicked
     private void verificaQuantidadeALuno(String pAluno) {
         int x = alunoController.retornaQtdePorAluno(pAluno);
         if (x > 1) {
             JOptionPane.showMessageDialog(null, "quantidade do aluno\n" + x);
+            SelecionaAluno selecionaAluno = new SelecionaAluno(null, true);
             selecionaAluno.carregarRegistro(pAluno);
             selecionaAluno.setVisible(true);
+        } else {
+            int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + AlunoModel.nomeAluno + " ?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
+            if (dialogResult == 0) {
+                exibirDadosAluno();
+            }
         }
     }
 

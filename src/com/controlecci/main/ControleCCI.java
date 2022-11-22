@@ -1,5 +1,6 @@
 package com.controlecci.main;
 
+import com.controlecci.model.AlunoModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.FolderCreatorUtil;
 import com.controlecci.util.LogCatUtil;
@@ -36,7 +37,6 @@ public class ControleCCI {
             SessaoUsuarioModel.nivelAcesso = "DESENVOLVEDOR";
             SessaoUsuarioModel.nomeUsuario = "José Luiz";
             new SCCI().setVisible(true);
-
         });
     }
 }

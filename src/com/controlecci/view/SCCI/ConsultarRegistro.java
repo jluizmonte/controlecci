@@ -499,7 +499,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         jlNomeAluno.setText(jtfNomeAluno.getText().toUpperCase());
         alunoModel.setNome(jtfNomeAluno.getText());
         carregarRegistro();
-      //  infoCurso();
+        //  infoCurso();
     }//GEN-LAST:event_jtfNomeAlunoActionPerformed
 
     private void jlVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVoltarMouseClicked
@@ -573,6 +573,27 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         alunoModel.setNome(AlunoModel.nomeAluno);
         carregarRegistro();
         infoCurso();
+    }
+
+    public void carregarAlunoRegistro(String pAluno, String pCurso) {
+        listaAulaModels = aulaController.getRegistroAulaCurso(pAluno, pCurso);
+        DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
+        modeloTabela.setNumRows(0);
+        try {
+            int cont = listaAulaModels.size();
+            for (int i = 0; i < cont; i++) {
+                modeloTabela.addRow(new Object[]{
+                    listaAulaModels.get(i).getDataAula(),
+                    listaAulaModels.get(i).getChegada(),
+                    listaAulaModels.get(i).getSaida(),
+                    listaAulaModels.get(i).getTotalHoraAula()});
+            }
+            chamarJDialog();
+        } catch (Exception e) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf("Erro ao carregar os dados para preencher\n" + e.toString()));
+        }
     }
 
     public void carregarRegistro() {

@@ -549,3 +549,10 @@ TIPO DE LOG: REGISTRO DE ERRO
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
 DATA E HORA: 21/11/22 21:48:27
 DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 22/11/22 11:47:29
+DESCRIÇÃO: Aluno ALEXANDRE GOMES DE OLIVEIRA alterado com sucesso! 

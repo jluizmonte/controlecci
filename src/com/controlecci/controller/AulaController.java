@@ -25,6 +25,17 @@ public class AulaController {
         return aulaDao.getRegistroAula(pAluno);
     }
 
+    /**
+     * retorna o registro pelo nome e curso do aluno
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public ArrayList getRegistroAulaCurso(String pAluno, String pCurso) {
+        return aulaDao.getRegistroAulaCurso(pAluno, pCurso);
+    }
+
     public ArrayList getRegistroAulaId(int pId) {
         return aulaDao.getRegistroAulaId(pId);
     }
