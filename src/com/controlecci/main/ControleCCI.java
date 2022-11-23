@@ -1,12 +1,10 @@
 package com.controlecci.main;
 
-import com.controlecci.model.AlunoModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.FolderCreatorUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.view.SCCI.LoginView;
 import com.controlecci.view.SCCI.SCCI;
-import com.controlecci.view.utils.SelecionaAluno;
 
 /**
  *

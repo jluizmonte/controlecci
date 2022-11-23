@@ -129,13 +129,14 @@ public class AlunoDao extends ConnectionMySQL {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("SELECT matricula,nome,nome_curso, situacao from aluno_cadastro JOIN curso ON id_curso=curso_fk_cadastro WHERE nome='" + pAluno + "';");
+            this.executarSQL("SELECT matricula,nome,nome_curso, situacao, carga_horaria from aluno_cadastro JOIN curso ON id_curso=curso_fk_cadastro WHERE nome='" + pAluno + "';");
             while (this.getResultSet().next()) {
                 alunoModel = new AlunoModel();
                 alunoModel.setMatricula(this.getResultSet().getInt(1));
                 alunoModel.setNome(this.getResultSet().getString(2));
                 alunoModel.setCurso(this.getResultSet().getString(3));
                 alunoModel.setSituacao(this.getResultSet().getString(4));
+                alunoModel.setCargaHoraria(this.getResultSet().getString(5));
                 listaAlunoModels.add(alunoModel);
             }
         } catch (SQLException e) {

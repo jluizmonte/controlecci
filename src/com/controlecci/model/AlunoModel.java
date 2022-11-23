@@ -31,6 +31,7 @@ public class AlunoModel {
     private String dataMatricula;
     private String situacaoCertificado;
     public static String nomeAluno;
+    public static String cursoAluno;
 
     public int getIdAluno() {
         return idAluno;

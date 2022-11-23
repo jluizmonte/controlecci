@@ -575,7 +575,13 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         infoCurso();
     }
 
-    public void carregarAlunoRegistro(String pAluno, String pCurso) {
+    public void exibirDadosAlunoCurso() {
+        jlNomeAluno.setText(AlunoModel.nomeAluno);
+        jtfNomeAluno.setText(AlunoModel.nomeAluno);
+        alunoModel.setNome(AlunoModel.nomeAluno);
+    }
+
+    public void carregarRegistroAlunoCurso(String pAluno, String pCurso) {
         listaAulaModels = aulaController.getRegistroAulaCurso(pAluno, pCurso);
         DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
         modeloTabela.setNumRows(0);

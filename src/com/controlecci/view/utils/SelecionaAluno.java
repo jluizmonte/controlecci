@@ -187,7 +187,10 @@ public class SelecionaAluno extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jtAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtAlunosMouseClicked
-        carregarDados();
+        int linha = jtAlunos.getSelectedRow();
+        String curso = (String) jtAlunos.getValueAt(linha, 1);
+        AlunoModel.cursoAluno = curso;
+        this.dispose();
     }//GEN-LAST:event_jtAlunosMouseClicked
 
     private void colorirLinhas() {
@@ -206,7 +209,6 @@ public class SelecionaAluno extends javax.swing.JDialog {
             for (int i = 0; i < cont; i++) {
                 modeloTabela.addRow(new Object[]{
                     listaAlunoModels.get(i).getMatricula(),
-                    //        listaAlunoModels.get(i).getNome(),
                     listaAlunoModels.get(i).getCurso(),
                     listaAlunoModels.get(i).getSituacao()
                 });
@@ -218,20 +220,6 @@ public class SelecionaAluno extends javax.swing.JDialog {
             LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
             new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("Aluno")));
         }
-    }
-
-    private void carregarDados() {
-        int linha = jtAlunos.getSelectedRow();
-        String aluno = jlAluno.getText();
-        String curso = (String) jtAlunos.getValueAt(linha, 1);
-
-        ConsultarRegistro consultarRegistro = new ConsultarRegistro();
-        JDesktopPane desktopPane = alunoView.getDesktopPane();
-        desktopPane.add(consultarRegistro);
-        consultarRegistro.exibirDadosAluno();
-        consultarRegistro.carregarAlunoRegistro(aluno, curso);
-        consultarRegistro.setVisible(true);
-        consultarRegistro.setPosicao();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

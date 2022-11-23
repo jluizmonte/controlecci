@@ -1146,10 +1146,18 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private void verificaQuantidadeALuno(String pAluno) {
         int x = alunoController.retornaQtdePorAluno(pAluno);
         if (x > 1) {
-            JOptionPane.showMessageDialog(null, "quantidade do aluno\n" + x);
             SelecionaAluno selecionaAluno = new SelecionaAluno(null, true);
             selecionaAluno.carregarRegistro(pAluno);
             selecionaAluno.setVisible(true);
+
+            ConsultarRegistro consultarRegistro = new ConsultarRegistro();
+            JDesktopPane desktopPane = this.getDesktopPane();
+            desktopPane.add(consultarRegistro);
+            //     consultarRegistro.exibirDadosAlunoCurso();
+            consultarRegistro.carregarRegistroAlunoCurso(AlunoModel.nomeAluno, AlunoModel.cursoAluno);
+            consultarRegistro.infoCurso();
+            consultarRegistro.setVisible(true);
+            //  consultarRegistro.setPosicao();
         } else {
             int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + AlunoModel.nomeAluno + " ?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
             if (dialogResult == 0) {
