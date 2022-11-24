@@ -676,10 +676,10 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
             jlModulos.setText(cursoController.retornaDadosAluno(pAluno, pCurso).getModulos());
             jlDataInicio.setText(cursoController.retornaPrimeiraDataAlunoCurso(pAluno, pCurso));
             jlDataEncerramento.setText(cursoController.retornaDataFinalAlunoCurso(pAluno, pCurso));
-//            jlHorasRealizadas.setText(cursoController.retornaTotalCursado(pAluno));
-//            jlHorasRestantes.setText(aulaController.retornaTempoRestante(pAluno));
-//            jlSituacaoAluno.setText(cursoController.retornaStatusAluno(pAluno));
-//            jlSituacaoCertificado.setText(alunoController.retornaStatusCertificado(pAluno));
+            jlHorasRealizadas.setText(cursoController.retornaTotalCursadoAlunoCurso(pAluno, pCurso));
+            jlHorasRestantes.setText(aulaController.retornaTempoRestanteAlunoCurso(pAluno, pCurso));
+            jlSituacaoAluno.setText(cursoController.retornaStatusAlunoCurso(pAluno, pCurso));
+            jlSituacaoCertificado.setText(alunoController.retornaStatusCertificadoAlunoCurso(pAluno, pCurso));
             /**/
             if (jlDataInicio.getText() == null || jlDataInicio.getText().equals("")) {
                 jlDataInicio.setForeground(Color.red);

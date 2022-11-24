@@ -154,4 +154,24 @@ public class AulaDao extends ConnectionMySQL {
         return pAluno;
     }
 
+    /**
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaTempoRestanteAlunoCurso(String pAluno, String pCurso) {
+        try {
+            this.conectar();
+            this.executarSQL("select distinct timediff((SELECT time_format( SEC_TO_TIME( min( TIME_TO_SEC( carga_horaria ) ) ),'%H:%i:%s')  from aula join aluno_cadastro on id_aluno_fk = id_cadastro join curso on curso_fk_cadastro = id_curso where nome ='" + pAluno + "' and nome_curso='" + pCurso + "'),(SELECT time_format( SEC_TO_TIME( SUM( TIME_TO_SEC( hora_de_aula ) ) ),'%H:%i:%s')  from aula join aluno_cadastro on id_aluno_fk = id_cadastro join curso on id_curso=curso_fk_cadastro where nome ='" + pAluno + "' and nome_curso='" + pCurso + "')) from aula join aluno_cadastro on id_aluno_fk = id_cadastro join curso on curso_fk_cadastro = id_curso;");
+            while (this.getResultSet().next()) {
+                pAluno = this.getResultSet().getString(1);
+            }
+        } catch (SQLException ex) {
+            ex.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return pAluno;
+    }
 }

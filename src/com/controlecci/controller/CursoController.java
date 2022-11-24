@@ -73,6 +73,17 @@ public class CursoController {
     }
 
     /**
+     * retorna tempo total pelo nome e curso do aluno
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaTotalCursadoAlunoCurso(String pAluno, String pCurso) {
+        return cursoDao.retornaTotalCursadoAlunoCurso(pAluno, pCurso);
+    }
+
+    /**
      *
      * @param pAluno
      * @return
@@ -144,6 +155,16 @@ public class CursoController {
      */
     public String retornaStatusAluno(String pAluno) {
         return cursoDao.retornaStatusAluno(pAluno);
+    }
+    
+    /**
+     * retorna o status do aluno pelo nome e curso dele
+     * @param pAluno
+     * @param pCurso
+     * @return 
+     */
+    public String retornaStatusAlunoCurso(String pAluno, String pCurso){
+        return cursoDao.retornaStatusAlunoCurso(pAluno, pCurso);
     }
 
     /**

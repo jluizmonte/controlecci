@@ -242,6 +242,30 @@ public class CursoDao extends ConnectionMySQL {
     }
 
     /**
+     * retorna o tempo cursado do aluno pelo nome e curso dele
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaTotalCursadoAlunoCurso(String pAluno, String pCurso) {
+        try {
+            this.conectar();
+            this.executarSQL("SELECT  SEC_TO_TIME( SUM( TIME_TO_SEC( hora_de_aula ) ) ) AS timeSum  FROM aula join aluno_cadastro on id_aluno_fk=id_cadastro join curso on id_curso=curso_fk_cadastro where nome='" + pAluno + "' and nome_curso='" + pCurso + "';");
+            while (this.getResultSet().next()) {
+                pAluno = this.getResultSet().getString(1);
+            }
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("total do curso do aluno\n") + ex.toString()));
+        } finally {
+            this.fecharConexao();
+        }
+        return pAluno;
+    }
+
+    /**
      *
      * @param pAluno
      * @return
@@ -250,6 +274,30 @@ public class CursoDao extends ConnectionMySQL {
         try {
             this.conectar();
             this.executarSQL("select situacao from aluno_cadastro where nome='" + pAluno + "';");
+            while (this.getResultSet().next()) {
+                pAluno = this.getResultSet().getString(1);
+            }
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("situação do aluno\n") + ex.toString()));
+        } finally {
+            this.fecharConexao();
+        }
+        return pAluno;
+    }
+
+    /**
+     * retorna o status do aluno pelo nome e curso
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaStatusAlunoCurso(String pAluno, String pCurso) {
+        try {
+            this.conectar();
+            this.executarSQL("select situacao from aluno_cadastro join curso on id_curso=curso_fk_cadastro where nome='" + pAluno + "' and nome_curso='" + pCurso + "';");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
@@ -310,6 +358,7 @@ public class CursoDao extends ConnectionMySQL {
      * altera um curso existente pelo nome dele
      *
      * @param cursoModel
+     * @param pCursoPesquisa
      * @return
      */
     public boolean alterarCurso(CursoModel cursoModel, String pCursoPesquisa) {

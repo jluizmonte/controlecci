@@ -22,7 +22,7 @@ public class AlunoDao extends ConnectionMySQL {
         try {
             this.conectar();
             this.executarSQL("SELECT id_cadastro,matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,DATE_FORMAT(data_nascimento, '%d-%m-%Y'),(select nome_curso where id_curso=curso_fk_cadastro),(select carga_horaria  where id_curso=curso_fk_cadastro),situacao,pendencia,data_matricula from aluno_cadastro join curso on id_curso = curso_fk_cadastro where nome ='" + pAluno + "';");
-            
+
             while (this.getResultSet().next()) {
                 alunoModel.setIdAluno(this.getResultSet().getInt(1));
                 alunoModel.setMatricula(this.getResultSet().getInt(2));
@@ -60,7 +60,7 @@ public class AlunoDao extends ConnectionMySQL {
      */
     public ArrayList retornaAlunos() {
         ArrayList lista = new ArrayList();
-        
+
         try {
             this.conectar();
             this.executarSQL("SELECT nome FROM aluno_cadastro;");
@@ -81,7 +81,7 @@ public class AlunoDao extends ConnectionMySQL {
      */
     public ArrayList retornaAlunoCadastro() {
         ArrayList lista = new ArrayList();
-        
+
         try {
             this.conectar();
             this.executarSQL("SELECT nome FROM aluno_cadastro;");
@@ -213,6 +213,28 @@ public class AlunoDao extends ConnectionMySQL {
     }
 
     /**
+     * retorna status do certificado pelo nome e curso do aluno
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaStatusCertificadoAlunoCurso(String pAluno, String pCurso) {
+        String status = "";
+        try {
+            this.conectar();
+            this.executarSQL("SELECT situacao_certificado FROM aluno_cadastro join curso on id_curso=curso_fk_cadastro WHERE nome='" + pAluno + "' and nome_curso='" + pCurso + "';");
+            while (this.getResultSet().next()) {
+                status = this.getResultSet().getString(1);
+            }
+        } catch (SQLException e) {
+        } finally {
+            this.fecharConexao();
+        }
+        return status;
+    }
+
+    /**
      *
      * @return
      */
@@ -221,7 +243,7 @@ public class AlunoDao extends ConnectionMySQL {
         try {
             this.conectar();
             this.executarSQL("select count(nome) from aluno_cadastro;");
-            
+
             while (this.getResultSet().next()) {
                 pQuantidade = this.getResultSet().getString(1);
             }

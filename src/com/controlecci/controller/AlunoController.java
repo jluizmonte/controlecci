@@ -90,12 +90,24 @@ public class AlunoController {
     }
 
     /**
+     * retorna status do certificado pelo nome do aluno
      *
      * @param pAluno
      * @return
      */
     public String retornaStatusCertificado(String pAluno) {
         return alunoDao.retornaStatusCertificado(pAluno);
+    }
+
+    /**
+     * retorna status do certificado pelo nome e curso do aluno
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaStatusCertificadoAlunoCurso(String pAluno, String pCurso) {
+        return alunoDao.retornaStatusCertificadoAlunoCurso(pAluno, pCurso);
     }
 
     /**

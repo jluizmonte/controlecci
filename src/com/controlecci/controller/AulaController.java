@@ -40,7 +40,24 @@ public class AulaController {
         return aulaDao.getRegistroAulaId(pId);
     }
 
+    /**
+     * retorna tempo restante pelo nome do aluno
+     *
+     * @param pAluno
+     * @return
+     */
     public String retornaTempoRestante(String pAluno) {
         return aulaDao.retornaTempoRestante(pAluno);
+    }
+
+    /**
+     * retorna tempo restante pelo nome e curso do aluno
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaTempoRestanteAlunoCurso(String pAluno, String pCurso) {
+        return aulaDao.retornaTempoRestanteAlunoCurso(pAluno, pCurso);
     }
 }

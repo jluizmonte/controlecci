@@ -571,3 +571,19 @@ TIPO DE LOG: REGISTRO DE ERRO
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
 DATA E HORA: 23/11/22 21:33:04
 DESCRIÇÃO: Ocorreu um erro ao registrar horário de ANDREIA BRASILEIRO MONTEIRO
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 24/11/22 11:06:56
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+java.sql.SQLSyntaxErrorException: Unknown column 'curso' in 'on clause'
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 24/11/22 11:06:56
+DESCRIÇÃO: Erro ao buscar situação do aluno
+java.sql.SQLException: Operation not allowed after ResultSet closed
