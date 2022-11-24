@@ -1143,6 +1143,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         verificaQuantidadeALuno(aluno);
 
     }//GEN-LAST:event_jtAlunosMouseClicked
+
     private void verificaQuantidadeALuno(String pAluno) {
         int x = alunoController.retornaQtdePorAluno(pAluno);
         if (x > 1) {
@@ -1153,11 +1154,11 @@ public class AlunoView extends javax.swing.JInternalFrame {
             ConsultarRegistro consultarRegistro = new ConsultarRegistro();
             JDesktopPane desktopPane = this.getDesktopPane();
             desktopPane.add(consultarRegistro);
-            //     consultarRegistro.exibirDadosAlunoCurso();
             consultarRegistro.carregarRegistroAlunoCurso(AlunoModel.nomeAluno, AlunoModel.cursoAluno);
-            consultarRegistro.infoCurso();
             consultarRegistro.setVisible(true);
-            //  consultarRegistro.setPosicao();
+            consultarRegistro.infoAlunoCurso(AlunoModel.nomeAluno, AlunoModel.cursoAluno);
+            consultarRegistro.exibirDadosAlunoCurso();
+            consultarRegistro.setPosicao();
         } else {
             int dialogResult = JOptionPane.showConfirmDialog(this, " Deseja ver os dados de\n " + AlunoModel.nomeAluno + " ?\n Clique em Yes para confirmar!", "Atenção", JOptionPane.YES_NO_OPTION);
             if (dialogResult == 0) {

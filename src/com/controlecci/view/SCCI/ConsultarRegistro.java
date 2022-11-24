@@ -666,6 +666,48 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         }
     }
 
+    public void infoAlunoCurso(String pAluno, String pCurso){
+        try {
+            jlCargaHoraria.setText(cursoController.retornaDadosCurso(pAluno).getCargaHoraria());
+            jlCurso.setText(cursoController.retornaDadosCurso(pAluno).getNomeCurso());
+            jlModulos.setText(cursoController.retornaDadosCurso(pAluno).getModulos());
+            jlDataInicio.setText(cursoController.retornaPrimeiraData(pAluno));
+            jlDataEncerramento.setText(cursoController.retornaDataFinalCurso(pAluno));
+            jlHorasRealizadas.setText(cursoController.retornaTotalCursado(pAluno));
+            jlHorasRestantes.setText(aulaController.retornaTempoRestante(pAluno));
+            jlSituacaoAluno.setText(cursoController.retornaStatusAluno(pAluno));
+            jlSituacaoCertificado.setText(alunoController.retornaStatusCertificado(pAluno));
+            /**/
+            if (jlDataInicio.getText() == null || jlDataInicio.getText().equals("")) {
+                jlDataInicio.setForeground(Color.red);
+                jlHorasRealizadas.setForeground(Color.red);
+                jlHorasRestantes.setForeground(Color.red);
+                jlDataEncerramento.setForeground(Color.red);
+                jlSituacaoAluno.setForeground(Color.red);
+                jlSituacaoCertificado.setForeground(Color.red);
+                jlDataInicio.setText("NÃO INICIOU O CURSO");
+                jlDataEncerramento.setText("NÃO INICIOU O CURSO");
+                jlHorasRealizadas.setText("NÃO INICIOU O CURSO");
+                jlHorasRestantes.setText("NÃO INICIOU O CURSO");
+                jlSituacaoAluno.setText("NÃO INICIOU O CURSO");
+                jlSituacaoCertificado.setText("NÃO INICIOU O CURSO");
+            } else {
+                jlDataInicio.setForeground(Color.black);
+                jlHorasRealizadas.setForeground(Color.black);
+                jlHorasRestantes.setForeground(Color.black);
+                jlDataEncerramento.setForeground(Color.black);
+                jlSituacaoAluno.setForeground(Color.black);
+                jlSituacaoCertificado.setForeground(Color.black);
+            }
+
+        } catch (Exception e) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf("Erro ao carregar os dados para preencher\n" + e.toString()));
+        } finally {
+            colorirLinha();
+        }
+    }
     private void colorirLinha() {
         if (jlSituacaoAluno.getText().equals("ATIVO")) {
             jlSituacaoAluno.setForeground(new java.awt.Color(0, 79, 7));
