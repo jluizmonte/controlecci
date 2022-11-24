@@ -13,12 +13,24 @@ public class CursoController {
     CursoDao cursoDao = new CursoDao();
 
     /**
+     * retorna dados do curso pelo nome do aluno
      *
      * @param pAluno
      * @return
      */
     public CursoModel retornaDadosCurso(String pAluno) {
         return cursoDao.retornaDadosCurso(pAluno);
+    }
+
+    /**
+     * retorna dados do curso pelo nome e curso do aluno
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public CursoModel retornaDadosAluno(String pAluno, String pCurso) {
+        return cursoDao.retornaDadosAlunoCurso(pAluno, pCurso);
     }
 
     /**
@@ -31,12 +43,24 @@ public class CursoController {
     }
 
     /**
+     * retorna a primeira data do aluno pelo nome dele
      *
      * @param pAluno
      * @return
      */
     public String retornaPrimeiraData(String pAluno) {
         return cursoDao.retornaPrimeiraData(pAluno);
+    }
+
+    /**
+     * retorna a primeira data do aluno pelo nome e curso dele
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaPrimeiraDataAlunoCurso(String pAluno, String pCurso) {
+        return cursoDao.retornaPrimeiraDataAlunoCurso(pAluno, pCurso);
     }
 
     /**
@@ -55,6 +79,17 @@ public class CursoController {
      */
     public String retornaDataFinalCurso(String pAluno) {
         return cursoDao.retornaDataFinalCurso(pAluno);
+    }
+
+    /**
+     * retorna a data final do curso pelo nome do aluno e seu curso
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaDataFinalAlunoCurso(String pAluno, String pCurso) {
+        return cursoDao.retornaDataFinalAlunoCurso(pAluno, pCurso);
     }
 
     /**

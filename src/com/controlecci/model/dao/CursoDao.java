@@ -17,7 +17,36 @@ public class CursoDao extends ConnectionMySQL {
     TemplateAlerts templateAlerts = new TemplateAlerts();
 
     /**
-     * retorna os dados do curso do aluno
+     * retorna os dados do curso do aluno pelo nome e curso
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public CursoModel retornaDadosAlunoCurso(String pAluno, String pCurso) {
+        CursoModel cursoModel = new CursoModel();
+        try {
+            this.conectar();
+            this.executarSQL("select nome_curso, modulo_curso, carga_horaria, valor from curso join aluno_cadastro on id_curso = curso_fk_cadastro where nome = '" + pAluno + "' and nome_curso='" + pCurso + "' and situacao='ATIVO';");
+            while (this.getResultSet().next()) {
+                cursoModel = new CursoModel();
+                cursoModel.setNomeCurso(this.getResultSet().getString(1));
+                cursoModel.setModulos(this.getResultSet().getString(2));
+                cursoModel.setCargaHoraria(this.getResultSet().getString(3));
+                cursoModel.setValor(this.getResultSet().getDouble(4));
+            }
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("dados do curso\n") + ex.toString()));
+        } finally {
+            this.fecharConexao();
+        }
+        return cursoModel;
+    }
+
+    /**
+     * retorna dados do curso pelo nome do aluno
      *
      * @param pAluno
      * @return
@@ -80,10 +109,34 @@ public class CursoDao extends ConnectionMySQL {
      * @return
      */
     public String retornaPrimeiraData(String pAluno) {
-
         try {
             this.conectar();
             this.executarSQL("select min(DATE_FORMAT(data_aula, '%d/%m/%Y')) from aula join aluno_cadastro on id_aluno_fk = id_cadastro where nome ='" + pAluno + "';");
+            while (this.getResultSet().next()) {
+                pAluno = this.getResultSet().getString(1);
+            }
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("primeira data do aluno\n") + ex.toString()));
+        } finally {
+            this.fecharConexao();
+        }
+        return pAluno;
+    }
+
+    /**
+     * retorna a primeira data como sendo a de inicio do curso pleo nome do
+     * aluno e curso
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaPrimeiraDataAlunoCurso(String pAluno, String pCurso) {
+        try {
+            this.conectar();
+            this.executarSQL("select min(DATE_FORMAT(data_aula, '%d/%m/%Y')) from aula join aluno_cadastro on id_aluno_fk = id_cadastro join curso on id_curso=curso_fk_cadastro where nome ='" + pAluno + "' and nome_curso='" + pCurso + "';");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }
@@ -106,6 +159,29 @@ public class CursoDao extends ConnectionMySQL {
         try {
             this.conectar();
             this.executarSQL("select date_add((select min(data_aula) from aula join aluno_cadastro on id_aluno_fk = id_cadastro where nome ='" + pAluno + "'), interval 90 day);");
+            while (this.getResultSet().next()) {
+                pAluno = this.getResultSet().getString(1);
+            }
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("data final do aluno\n") + ex.toString()));
+        } finally {
+            this.fecharConexao();
+        }
+        return pAluno;
+    }
+
+    /**
+     *
+     * @param pAluno
+     * @param pCurso
+     * @return
+     */
+    public String retornaDataFinalAlunoCurso(String pAluno, String pCurso) {
+        try {
+            this.conectar();
+            this.executarSQL("select date_add((select min(data_aula) from aula join aluno_cadastro on id_aluno_fk = id_cadastro join curso on id_curso=curso_fk_cadastro where nome ='" + pAluno + "' and nome_curso='" + pCurso + "'), interval 90 day);");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }

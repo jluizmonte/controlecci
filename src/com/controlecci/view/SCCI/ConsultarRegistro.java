@@ -499,7 +499,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         jlNomeAluno.setText(jtfNomeAluno.getText().toUpperCase());
         alunoModel.setNome(jtfNomeAluno.getText());
         carregarRegistro();
-        //  infoCurso();
+        infoCurso();
     }//GEN-LAST:event_jtfNomeAlunoActionPerformed
 
     private void jlVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVoltarMouseClicked
@@ -556,6 +556,8 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         jlSituacaoCertificado.setText("SELECIONE UM ALUNO");
         jtfNomeAluno.setText("");
         jtfNomeAluno.requestFocus();
+        DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
+        modeloTabela.setNumRows(0);
     }
 
     public void setPosicao() {
@@ -582,6 +584,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     }
 
     public void carregarRegistroAlunoCurso(String pAluno, String pCurso) {
+        listaAulaModels = new ArrayList<>();
         listaAulaModels = aulaController.getRegistroAulaCurso(pAluno, pCurso);
         DefaultTableModel modeloTabela = (DefaultTableModel) jtConsulta.getModel();
         modeloTabela.setNumRows(0);
@@ -666,17 +669,17 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         }
     }
 
-    public void infoAlunoCurso(String pAluno, String pCurso){
+    public void infoAlunoCurso(String pAluno, String pCurso) {
         try {
-            jlCargaHoraria.setText(cursoController.retornaDadosCurso(pAluno).getCargaHoraria());
-            jlCurso.setText(cursoController.retornaDadosCurso(pAluno).getNomeCurso());
-            jlModulos.setText(cursoController.retornaDadosCurso(pAluno).getModulos());
-            jlDataInicio.setText(cursoController.retornaPrimeiraData(pAluno));
-            jlDataEncerramento.setText(cursoController.retornaDataFinalCurso(pAluno));
-            jlHorasRealizadas.setText(cursoController.retornaTotalCursado(pAluno));
-            jlHorasRestantes.setText(aulaController.retornaTempoRestante(pAluno));
-            jlSituacaoAluno.setText(cursoController.retornaStatusAluno(pAluno));
-            jlSituacaoCertificado.setText(alunoController.retornaStatusCertificado(pAluno));
+            jlCargaHoraria.setText(cursoController.retornaDadosAluno(pAluno, pCurso).getCargaHoraria());
+            jlCurso.setText(cursoController.retornaDadosAluno(pAluno, pCurso).getNomeCurso());
+            jlModulos.setText(cursoController.retornaDadosAluno(pAluno, pCurso).getModulos());
+            jlDataInicio.setText(cursoController.retornaPrimeiraDataAlunoCurso(pAluno, pCurso));
+            jlDataEncerramento.setText(cursoController.retornaDataFinalAlunoCurso(pAluno, pCurso));
+//            jlHorasRealizadas.setText(cursoController.retornaTotalCursado(pAluno));
+//            jlHorasRestantes.setText(aulaController.retornaTempoRestante(pAluno));
+//            jlSituacaoAluno.setText(cursoController.retornaStatusAluno(pAluno));
+//            jlSituacaoCertificado.setText(alunoController.retornaStatusCertificado(pAluno));
             /**/
             if (jlDataInicio.getText() == null || jlDataInicio.getText().equals("")) {
                 jlDataInicio.setForeground(Color.red);
@@ -708,6 +711,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
             colorirLinha();
         }
     }
+
     private void colorirLinha() {
         if (jlSituacaoAluno.getText().equals("ATIVO")) {
             jlSituacaoAluno.setForeground(new java.awt.Color(0, 79, 7));

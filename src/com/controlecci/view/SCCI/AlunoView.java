@@ -1138,10 +1138,11 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private void jtAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtAlunosMouseClicked
         int linha = jtAlunos.getSelectedRow();
         String aluno = (String) jtAlunos.getValueAt(linha, 1);
-        // menu de opções para o usuario confirmar a exclusão
+        String curso = (String) jtAlunos.getValueAt(linha, 2);
         AlunoModel.nomeAluno = aluno;
-        verificaQuantidadeALuno(aluno);
+        AlunoModel.cursoAluno = curso;
 
+        verificaQuantidadeALuno(aluno);
     }//GEN-LAST:event_jtAlunosMouseClicked
 
     private void verificaQuantidadeALuno(String pAluno) {

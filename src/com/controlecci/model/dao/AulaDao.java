@@ -85,12 +85,12 @@ public class AulaDao extends ConnectionMySQL {
      * retorna lista da aula do aluno pelo nome e curso dele
      *
      * @param pAluno
+     * @param pCurso
      * @return
      */
     public ArrayList<AulaModel> getRegistroAulaCurso(String pAluno, String pCurso) {
         ArrayList<AulaModel> listaAulaModels = new ArrayList<>();
         AulaModel aulaModel = new AulaModel();
-
         try {
             this.conectar();
             this.executarSQL("select DATE_FORMAT(data_aula, '%d/%m/%Y'), hora_chegada, hora_saida, hora_de_aula from aula join aluno_cadastro on id_aluno_fk=id_cadastro join curso on id_curso=curso_fk_cadastro where nome ='" + pAluno + "' and nome_curso='" + pCurso + "';");

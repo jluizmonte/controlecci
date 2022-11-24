@@ -9,10 +9,8 @@ import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
 import com.controlecci.view.SCCI.AlunoView;
-import com.controlecci.view.SCCI.ConsultarRegistro;
 import com.mxrck.autocompleter.AutoCompleter;
 import java.util.ArrayList;
-import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,20 +19,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SelecionaAluno extends javax.swing.JDialog {
 
-    AlunoModel alunoModel = new AlunoModel();
     AlunoController alunoController = new AlunoController();
-    CursoController cursoController = new CursoController();
     public ArrayList lista = new ArrayList<>();
     public ArrayList<AlunoModel> listaAlunoModels = new ArrayList<>();
 
-    MensagemConfirmação mensagemConfirmação = new MensagemConfirmação(null, true);
-    TelaCarregamento telaCarregamento = new TelaCarregamento(null, true);
-    AlunoView alunoView = new AlunoView();
-
-    GetDateUtil getDateUtil = new GetDateUtil();
     TemplateAlerts templateAlerts = new TemplateAlerts();
-
-    private AutoCompleter ac, ac2;
 
     /**
      * Creates new form SelecionaALuno
@@ -189,6 +178,7 @@ public class SelecionaAluno extends javax.swing.JDialog {
     private void jtAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtAlunosMouseClicked
         int linha = jtAlunos.getSelectedRow();
         String curso = (String) jtAlunos.getValueAt(linha, 1);
+        AlunoModel.nomeAluno = jlAluno.getText();
         AlunoModel.cursoAluno = curso;
         this.dispose();
     }//GEN-LAST:event_jtAlunosMouseClicked
@@ -213,7 +203,6 @@ public class SelecionaAluno extends javax.swing.JDialog {
                     listaAlunoModels.get(i).getSituacao()
                 });
             }
-            //     chamarJDialog();
         } catch (Exception e) {
             e.toString();
             LocalUtil.logClass = this.getClass().getName();
