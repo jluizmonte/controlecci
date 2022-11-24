@@ -587,3 +587,18 @@ CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
 DATA E HORA: 24/11/22 11:06:56
 DESCRIÇÃO: Erro ao buscar situação do aluno
 java.sql.SQLException: Operation not allowed after ResultSet closed
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AulaDao
+DATA E HORA: 24/11/22 11:15:35
+DESCRIÇÃO: Ocorreu um erro ao executar insert/update
+java.sql.SQLException: Subquery returns more than 1 row
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 24/11/22 11:15:36
+DESCRIÇÃO: Ocorreu um erro ao registrar horário de ANDREIA BRASILEIRO MONTEIRO

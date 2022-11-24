@@ -11,6 +11,7 @@ public class CursoModel {
     private String modulos;
     private String cargaHoraria;
     private Double valor;
+    public static int aumentoPrazoCurso;
 
     public int getIdCurso() {
         return idCurso;

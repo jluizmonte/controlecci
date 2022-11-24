@@ -158,7 +158,7 @@ public class CursoDao extends ConnectionMySQL {
     public String retornaDataFinalCurso(String pAluno) {
         try {
             this.conectar();
-            this.executarSQL("select date_add((select min(data_aula) from aula join aluno_cadastro on id_aluno_fk = id_cadastro where nome ='" + pAluno + "'), interval 90 day);");
+            this.executarSQL("select date_add((select min(data_aula) from aula join aluno_cadastro on id_aluno_fk = id_cadastro where nome ='" + pAluno + "'), interval 90 + '" + CursoModel.aumentoPrazoCurso + "' day);");
             while (this.getResultSet().next()) {
                 pAluno = this.getResultSet().getString(1);
             }

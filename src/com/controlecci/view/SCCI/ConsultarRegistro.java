@@ -5,6 +5,7 @@ import com.controlecci.controller.AulaController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.AulaModel;
+import com.controlecci.model.CursoModel;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
@@ -15,6 +16,7 @@ import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,12 +31,12 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     AlunoController alunoController = new AlunoController();
     AulaController aulaController = new AulaController();
     CursoController cursoController = new CursoController();
+    TemplateAlerts templateAlerts = new TemplateAlerts();
 
     ArrayList<AulaModel> listaAulaModels = new ArrayList<>();
     public ArrayList lista = new ArrayList<>();
 
     private AutoCompleter ac;
-    TemplateAlerts templateAlerts = new TemplateAlerts();
 
     /**
      * Creates new form NewJFrame
@@ -42,10 +44,10 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     public ConsultarRegistro() {
         initComponents();
         autoCompletar();
-        setarValores();
         this.setClosable(true);
         this.setIconifiable(true);
         limparCampos();
+        CursoModel.aumentoPrazoCurso = 0;
     }
 
     /**
@@ -85,17 +87,13 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jlSituacaoAluno = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jbSuspender = new javax.swing.JToggleButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jlSituacaoCertificado = new javax.swing.JLabel();
+        jbEstender = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtConsulta = new javax.swing.JTable();
         jlVoltar = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jlUsuario = new javax.swing.JLabel();
-        jlData = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -239,10 +237,6 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         jLabel14.setText("SUSPENDER CURSO:");
         jLabel14.setEnabled(false);
 
-        jbSuspender.setText("SUSPENDER");
-        jbSuspender.setToolTipText("A CONTAGEM SERÁ INTERROMPIDA, AO FINAL DO PRAZO DO ALUNO REMOVA A SUSPENSÃO");
-        jbSuspender.setEnabled(false);
-
         jLabel15.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 0, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -255,6 +249,13 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         jlSituacaoCertificado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jlSituacaoCertificado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlSituacaoCertificado.setText("$SITUACAO");
+
+        jbEstender.setText("ESTENDER PRAZO");
+        jbEstender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEstenderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -282,11 +283,6 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
                             .addComponent(jlHorasRestantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbSuspender, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlModulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -308,7 +304,12 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jlSituacaoCertificado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbEstender)
+                        .addGap(142, 142, 142))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +355,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel14)
-                    .addComponent(jbSuspender))
+                    .addComponent(jbEstender))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(39, 39, 39))
@@ -403,41 +404,6 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(253, 253, 253));
-
-        jlUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jlUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlUsuario.setText("$usuario");
-
-        jlData.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlData.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlData.setText("$dd/mm/yyyy hh:mm:ss");
-
-        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(28, 89, 124));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("CCI CENTRAL DE CURSOS");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlData, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jlUsuario)
-                .addComponent(jlData)
-                .addComponent(jLabel17))
-        );
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -454,7 +420,6 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jlNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(424, 424, 424))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -477,8 +442,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -521,6 +485,11 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         limparCampos();
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbEstenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEstenderActionPerformed
+        CursoModel.aumentoPrazoCurso = 5;
+        infoCurso();
+    }//GEN-LAST:event_jbEstenderActionPerformed
 
     public void setarAluno() {
         if (!"".equals(AlunoModel.nomeAluno)) {
@@ -645,6 +614,9 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
                 jlDataEncerramento.setForeground(Color.red);
                 jlSituacaoAluno.setForeground(Color.red);
                 jlSituacaoCertificado.setForeground(Color.red);
+                jlCurso.setForeground(Color.red);
+                jlCargaHoraria.setForeground(Color.red);
+                jlModulos.setForeground(Color.red);
                 jlDataInicio.setText("NÃO INICIOU O CURSO");
                 jlDataEncerramento.setText("NÃO INICIOU O CURSO");
                 jlHorasRealizadas.setText("NÃO INICIOU O CURSO");
@@ -658,6 +630,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
                 jlDataEncerramento.setForeground(Color.black);
                 jlSituacaoAluno.setForeground(Color.black);
                 jlSituacaoCertificado.setForeground(Color.black);
+                jlCurso.setForeground(Color.black);
             }
 
         } catch (Exception e) {
@@ -670,6 +643,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     }
 
     public void infoAlunoCurso(String pAluno, String pCurso) {
+
         try {
             jlCargaHoraria.setText(cursoController.retornaDadosAluno(pAluno, pCurso).getCargaHoraria());
             jlCurso.setText(cursoController.retornaDadosAluno(pAluno, pCurso).getNomeCurso());
@@ -726,9 +700,6 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
         }
     }
 
-    private void setarValores() {
-        jlUsuario.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -737,7 +708,6 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -745,18 +715,16 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbEstender;
     private javax.swing.JButton jbPesquisar;
-    private javax.swing.JToggleButton jbSuspender;
     private javax.swing.JLabel jlCargaHoraria;
     public javax.swing.JLabel jlCurso;
-    private javax.swing.JLabel jlData;
     private javax.swing.JLabel jlDataEncerramento;
     private javax.swing.JLabel jlDataInicio;
     private javax.swing.JLabel jlHorasRealizadas;
@@ -765,7 +733,6 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlNomeAluno;
     private javax.swing.JLabel jlSituacaoAluno;
     private javax.swing.JLabel jlSituacaoCertificado;
-    private javax.swing.JLabel jlUsuario;
     private javax.swing.JLabel jlVoltar;
     private javax.swing.JTable jtConsulta;
     private javax.swing.JTextField jtfNomeAluno;
