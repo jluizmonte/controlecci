@@ -6,7 +6,6 @@ import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.model.AulaModel;
 import com.controlecci.model.CursoModel;
-import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
@@ -16,7 +15,6 @@ import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
