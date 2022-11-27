@@ -609,3 +609,17 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
 DATA E HORA: 27/11/22 15:23:49
 DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 27/11/22 16:08:46
+DESCRIÇÃO: Aluno ABIMAEL BARBOSA DE SOUZA alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 27/11/22 16:10:24
+DESCRIÇÃO: Aluno ANDRÉ LIMA DA SILVA DURVAL alterado com sucesso! 

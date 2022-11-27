@@ -9,6 +9,7 @@ import com.controlecci.model.CursoModel;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
+import com.controlecci.view.utils.SelecionaAluno;
 import com.controlecci.view.utils.TelaCarregamento;
 import com.mxrck.autocompleter.AutoCompleter;
 import com.mxrck.autocompleter.TextAutoCompleter;
@@ -458,10 +459,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfNomeAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeAlunoActionPerformed
-        jlNomeAluno.setText(jtfNomeAluno.getText().toUpperCase());
-        alunoModel.setNome(jtfNomeAluno.getText());
-        carregarRegistro();
-        infoCurso();
+        verificarQuantidade(jtfNomeAluno.getText());
     }//GEN-LAST:event_jtfNomeAlunoActionPerformed
 
     private void jlVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVoltarMouseClicked
@@ -509,6 +507,25 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
     public void chamarJDialog() {
         telaCarregamento.fechar();
         telaCarregamento.setVisible(true);
+    }
+
+    public void verificarQuantidade(String pAluno) {
+        int qtde = alunoController.retornaQtdePorAluno(pAluno);
+
+        if (qtde > 1) {
+            SelecionaAluno selecionaAluno = new SelecionaAluno(null, true);
+            selecionaAluno.carregarRegistro(pAluno);
+            selecionaAluno.setVisible(true);
+            jlNomeAluno.setText(jtfNomeAluno.getText().toUpperCase());
+            alunoModel.setNome(jtfNomeAluno.getText());
+            carregarRegistroAlunoCurso(AlunoModel.nomeAluno, AlunoModel.cursoAluno);
+            infoAlunoCurso(AlunoModel.nomeAluno, AlunoModel.cursoAluno);
+        } else {
+            jlNomeAluno.setText(jtfNomeAluno.getText().toUpperCase());
+            alunoModel.setNome(jtfNomeAluno.getText());
+            carregarRegistro();
+            infoCurso();
+        }
     }
 
     private void limparCampos() {

@@ -315,7 +315,6 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
         ConsultarRegistro consultarRegistro = new ConsultarRegistro();
         JDesktopPane desktopPane = this.getDesktopPane();
         desktopPane.add(consultarRegistro);
-  //      consultarRegistro.exibirDadosAluno();
         consultarRegistro.setVisible(true);
         consultarRegistro.setPosicao();
     }//GEN-LAST:event_jbConsultaActionPerformed
