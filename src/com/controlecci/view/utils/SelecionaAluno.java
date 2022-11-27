@@ -1,15 +1,11 @@
 package com.controlecci.view.utils;
 
 import com.controlecci.controller.AlunoController;
-import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
 import com.controlecci.util.ColorirLinhaStatus;
-import com.controlecci.util.GetDateUtil;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
-import com.controlecci.view.SCCI.AlunoView;
-import com.mxrck.autocompleter.AutoCompleter;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
