@@ -21,7 +21,7 @@ public class AlunoDao extends ConnectionMySQL {
         AlunoModel alunoModel = new AlunoModel();
         try {
             this.conectar();
-            this.executarSQL("SELECT id_cadastro,matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,DATE_FORMAT(data_nascimento, '%d-%m-%Y'),(select nome_curso where id_curso=curso_fk_cadastro),(select carga_horaria  where id_curso=curso_fk_cadastro),situacao,pendencia,data_matricula from aluno_cadastro join curso on id_curso = curso_fk_cadastro where nome ='" + pAluno + "';");
+            this.executarSQL("SELECT id_cadastro,matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,DATE_FORMAT(data_nascimento, '%d-%m-%Y'),(select nome_curso where id_curso=curso_fk_cadastro),(select carga_horaria  where id_curso=curso_fk_cadastro),situacao,pendencia,data_matricula, situacao_certificado from aluno_cadastro join curso on id_curso = curso_fk_cadastro where nome ='" + pAluno + "';");
 
             while (this.getResultSet().next()) {
                 alunoModel.setIdAluno(this.getResultSet().getInt(1));
@@ -45,6 +45,7 @@ public class AlunoDao extends ConnectionMySQL {
                 alunoModel.setSituacao(this.getResultSet().getString(19));
                 alunoModel.setPendencia(this.getResultSet().getString(20));
                 alunoModel.setDataMatricula(this.getResultSet().getString(21));
+                alunoModel.setSituacaoCertificado(this.getResultSet().getString(22));
             }
         } catch (SQLException e) {
             System.out.print(e.toString());
@@ -81,7 +82,6 @@ public class AlunoDao extends ConnectionMySQL {
      */
     public ArrayList retornaAlunoCadastro() {
         ArrayList lista = new ArrayList();
-
         try {
             this.conectar();
             this.executarSQL("SELECT nome FROM aluno_cadastro;");
@@ -163,6 +163,31 @@ public class AlunoDao extends ConnectionMySQL {
                 alunoModel.setNome(this.getResultSet().getString(1));
                 alunoModel.setCurso(this.getResultSet().getString(2));
                 alunoModel.setSituacao(this.getResultSet().getString(3));
+                listaModel.add(alunoModel);
+            }
+        } catch (NumberFormatException | SQLException e) {
+            e.toString();
+        } finally {
+            this.fecharConexao();
+        }
+        return listaModel;
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public ArrayList<AlunoModel> getListaStatusCertificado() {
+        ArrayList<AlunoModel> listaModel = new ArrayList<>();
+        AlunoModel alunoModel = new AlunoModel();
+        try {
+            this.conectar();
+            this.executarSQL("SELECT nome,(select nome_curso where id_curso=curso_fk_cadastro),situacao_certificado FROM aluno_cadastro JOIN curso ON id_curso=curso_fk_cadastro WHERE  situacao_certificado='NÃO ENTREGUE' ORDER BY nome ASC;");
+            while (this.getResultSet().next()) {
+                alunoModel = new AlunoModel();
+                alunoModel.setNome(this.getResultSet().getString(1));
+                alunoModel.setCurso(this.getResultSet().getString(2));
+                alunoModel.setSituacaoCertificado(this.getResultSet().getString(3));
                 listaModel.add(alunoModel);
             }
         } catch (NumberFormatException | SQLException e) {

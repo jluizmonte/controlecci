@@ -85,6 +85,14 @@ public class AlunoController {
      *
      * @return
      */
+    public ArrayList<AlunoModel> getListaStatusCertificado() {
+        return alunoDao.getListaStatusCertificado();
+    }
+
+    /**
+     *
+     * @return
+     */
     public String retornaQtdeAluno() {
         return alunoDao.retornaQtdeAluno();
     }

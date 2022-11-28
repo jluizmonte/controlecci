@@ -227,6 +227,11 @@ public class SCCI extends javax.swing.JFrame {
 
         jmiCertificadosEntregues.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/locatario.png"))); // NOI18N
         jmiCertificadosEntregues.setText("Ver Certificado Entregue");
+        jmiCertificadosEntregues.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCertificadosEntreguesActionPerformed(evt);
+            }
+        });
         jMenu2.add(jmiCertificadosEntregues);
 
         menuBar.add(jMenu2);
@@ -349,6 +354,13 @@ public class SCCI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jmiLogActionPerformed
+
+    private void jmiCertificadosEntreguesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCertificadosEntreguesActionPerformed
+        CertificadosEntregues certificadosEntregues = new CertificadosEntregues();
+        desktopPane.add(certificadosEntregues);
+        certificadosEntregues.setVisible(true);
+        certificadosEntregues.setPosicao();
+    }//GEN-LAST:event_jmiCertificadosEntreguesActionPerformed
 
     public void gerarRelatorio(String titulo) {
         try {

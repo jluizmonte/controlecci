@@ -623,3 +623,32 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
 DATA E HORA: 27/11/22 16:10:24
 DESCRIÇÃO: Aluno ANDRÉ LIMA DA SILVA DURVAL alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.CertificadosEntregues
+DATA E HORA: 27/11/22 19:13:46
+DESCRIÇÃO: Erro ao buscar Aluno
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 27/11/22 20:03:43
+DESCRIÇÃO: Aluno ALEXANDRE GOMES DE OLIVEIRA alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AulaDao
+DATA E HORA: 27/11/22 20:24:57
+DESCRIÇÃO: Ocorreu um erro ao executar insert/update
+java.sql.SQLException: Subquery returns more than 1 row
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 27/11/22 20:24:59
+DESCRIÇÃO: Ocorreu um erro ao registrar horário de CLARIANA RODRIGUES DE MORAIS JUSTINO

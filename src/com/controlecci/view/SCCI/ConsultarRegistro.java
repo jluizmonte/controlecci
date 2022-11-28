@@ -362,10 +362,7 @@ public class ConsultarRegistro extends javax.swing.JInternalFrame {
 
         jtConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Data", "Chegada", "Saída", "Total(Dia)"
