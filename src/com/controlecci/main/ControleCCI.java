@@ -29,12 +29,12 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-//            new LoginView(null, true).setVisible(true);
-            SessaoUsuarioModel.codigoUsuario = 10;
-            SessaoUsuarioModel.loginUsuario = "luiz";
-            SessaoUsuarioModel.nivelAcesso = "DESENVOLVEDOR";
-            SessaoUsuarioModel.nomeUsuario = "José Luiz";
-            new SCCI().setVisible(true);
+            new LoginView(null, true).setVisible(true);
+//            SessaoUsuarioModel.codigoUsuario = 10;
+//            SessaoUsuarioModel.loginUsuario = "luiz";
+//            SessaoUsuarioModel.nivelAcesso = "DESENVOLVEDOR";
+//            SessaoUsuarioModel.nomeUsuario = "José Luiz";
+//            new SCCI().setVisible(true);
         });
     }
 }
