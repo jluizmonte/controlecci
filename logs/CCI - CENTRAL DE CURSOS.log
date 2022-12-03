@@ -652,3 +652,46 @@ TIPO DE LOG: REGISTRO DE ERRO
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
 DATA E HORA: 27/11/22 20:24:59
 DESCRIÇÃO: Ocorreu um erro ao registrar horário de CLARIANA RODRIGUES DE MORAIS JUSTINO
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 03/12/22 09:58:22
+DESCRIÇÃO: O REGISTRO DE AMANDA DE SANTANA XAVIER FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AulaDao
+DATA E HORA: 03/12/22 09:59:22
+DESCRIÇÃO: Ocorreu um erro ao executar insert/update
+java.sql.SQLException: Subquery returns more than 1 row
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 03/12/22 09:59:23
+DESCRIÇÃO: Ocorreu um erro ao registrar horário de ANDREIA BRASILEIRO MONTEIRO
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 03/12/22 11:00:50
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 03/12/22 11:01:26
+DESCRIÇÃO: O REGISTRO DE ANDREIA BRASILEIRO MONTEIRO FOI INSERIDO COM SUCESSO!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.RegistroAluno
+DATA E HORA: 03/12/22 11:04:31
+DESCRIÇÃO: O REGISTRO DE ANDREIA BRASILEIRO MONTEIRO FOI INSERIDO COM SUCESSO!

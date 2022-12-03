@@ -354,7 +354,7 @@ public class RegistroAluno extends javax.swing.JInternalFrame {
             SelecionaAluno selecionaAluno = new SelecionaAluno(null, true);
             selecionaAluno.carregarRegistro(pAluno);
             selecionaAluno.setVisible(true);
-            
+
             jlNomeAluno.setText(AlunoModel.nomeAluno);
             nomeAluno = alunoController.retornarCursoPeloAluno(AlunoModel.nomeAluno);
             jlCursoAluno.setText(AlunoModel.cursoAluno);
