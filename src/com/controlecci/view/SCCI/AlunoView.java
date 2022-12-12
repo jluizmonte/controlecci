@@ -730,9 +730,8 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("CARGA HORÁRIA");
 
-        jtfDataMatriculaAlterar.setEditable(false);
         try {
-            jtfDataMatriculaAlterar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
+            jtfDataMatriculaAlterar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -1388,15 +1387,6 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     private void alterarAluno() {
         alunoModel = new AlunoModel();
-
-        String opcao1 = JOptionPane.showInputDialog(this, "O aluno possui alguma pendência?\n 1. Sim\n 2. Não", "2");
-        if (opcao1.equals("1")) {
-            String pendencia = JOptionPane.showInputDialog(this, "Insira a pendência do aluno!");
-            alunoModel.setPendencia(pendencia);
-            salvarAluno();
-        } else {
-            alunoModel.setPendencia("SEM PENDÊNCIAS");
-        }
 
         alunoModel.setMatricula(Integer.valueOf(jtfMatriculaAlterar.getText()));
         alunoModel.setBairro(jtfBairroAlterar.getText().toUpperCase());
