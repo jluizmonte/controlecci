@@ -730,7 +730,11 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("CARGA HORÁRIA");
 
-        jtfDataMatriculaAlterar.setEditable(false);
+        try {
+            jtfDataMatriculaAlterar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jtfDataMatriculaAlterar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfDataMatriculaAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -1037,7 +1041,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
@@ -1342,7 +1346,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         alunoModel.setCpf(jtfCpf.getText());
         alunoModel.setCurso(jtfCurso.getText().toUpperCase());
         alunoModel.setDataNascimento(jtfData.getText());
-        alunoModel.setDataMatricula(getDateUtil.getDateTimeUS());
+        alunoModel.setDataMatricula(jtfDataMatricula.getText());
         alunoModel.setEmail(jtfEmail.getText().toUpperCase());
         alunoModel.setEndereco(jtfEndereco.getText().toUpperCase());
         alunoModel.setNome(jtfNome.getText().toUpperCase());
@@ -1383,6 +1387,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     private void alterarAluno() {
         alunoModel = new AlunoModel();
+
         alunoModel.setMatricula(Integer.valueOf(jtfMatriculaAlterar.getText()));
         alunoModel.setBairro(jtfBairroAlterar.getText().toUpperCase());
         alunoModel.setCelular(jtfCelularAlterar.getText());
