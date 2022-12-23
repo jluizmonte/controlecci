@@ -3,7 +3,6 @@ package com.controlecci.view.SCCI;
 import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.model.AlunoModel;
-import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.GetDateUtil;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
@@ -16,7 +15,6 @@ import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 /**
  *
