@@ -1128,7 +1128,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         habilitarCamposAlterar(true);
         AlunoModel.nomeAluno = jtfPesquisa.getText();
         
-        selecionaAluno(AlunoModel.nomeAluno);
+        selecionaAluno(AlunoModel.nomeAluno, AlunoModel.cursoAluno);
     }//GEN-LAST:event_jtfPesquisaActionPerformed
 
     private void jbPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisaActionPerformed
@@ -1338,7 +1338,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }
 
     private void preencherCamposAlteracao(String pAluno, String pCurso) {
-        alunoModel = alunoController.getAlunoDao(pAluno, pCurso);
+       // alunoModel = alunoController.getAlunoDao(pAluno, pCurso);
         chamarJDialog();
 
         jtfBairroAlterar.setText(alunoModel.getBairro());
