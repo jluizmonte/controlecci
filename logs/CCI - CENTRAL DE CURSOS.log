@@ -924,3 +924,87 @@ CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
 DATA E HORA: 18/12/22 14:36:06
 DESCRIÇÃO: Aluno ALEXANDRE GOMES DE OLIVEIRA alterado com sucesso! 
 >>>>>>> origin/master
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:05:41
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:07:21
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:13:40
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:13:54
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:14:25
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:32:46
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:40:19
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.UsuarioDao
+DATA E HORA: 23/12/22 19:42:54
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:46:53
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.UsuarioDao
+DATA E HORA: 23/12/22 19:49:57
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:51:30
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 20:02:39
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados

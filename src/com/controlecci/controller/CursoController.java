@@ -156,14 +156,15 @@ public class CursoController {
     public String retornaStatusAluno(String pAluno) {
         return cursoDao.retornaStatusAluno(pAluno);
     }
-    
+
     /**
      * retorna o status do aluno pelo nome e curso dele
+     *
      * @param pAluno
      * @param pCurso
-     * @return 
+     * @return
      */
-    public String retornaStatusAlunoCurso(String pAluno, String pCurso){
+    public String retornaStatusAlunoCurso(String pAluno, String pCurso) {
         return cursoDao.retornaStatusAlunoCurso(pAluno, pCurso);
     }
 
