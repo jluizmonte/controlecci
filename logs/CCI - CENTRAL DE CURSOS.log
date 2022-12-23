@@ -765,3 +765,10 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
 DATA E HORA: 23/12/22 13:53:00
 DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.CursoView
+DATA E HORA: 23/12/22 14:35:45
+DESCRIÇÃO: O curso EXCEL AVANÇADO foi alterado com sucesso!

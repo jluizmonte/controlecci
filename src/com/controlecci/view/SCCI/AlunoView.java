@@ -1126,7 +1126,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     private void jtfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPesquisaActionPerformed
         habilitarCamposAlterar(true);
-        preencherCamposAlteracao();
+        AlunoModel.nomeAluno = jtfPesquisa.getText();
+        
+        selecionaAluno(AlunoModel.nomeAluno);
     }//GEN-LAST:event_jtfPesquisaActionPerformed
 
     private void jbPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisaActionPerformed
@@ -1147,6 +1149,18 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
         verificaQuantidadeALuno(aluno);
     }//GEN-LAST:event_jtAlunosMouseClicked
+
+    private void selecionaAluno(String pAluno, String pCurso) {
+        int x = alunoController.retornaQtdePorAluno(pAluno);
+        if (x > 1) {
+            SelecionaAluno selecionaAluno = new SelecionaAluno(null, true);
+            selecionaAluno.carregarRegistro(pAluno);
+            selecionaAluno.setVisible(true);
+            preencherCamposAlteracao(pAluno, pCurso);
+        } else {
+            preencherCamposAlteracao();
+        }
+    }
 
     private void verificaQuantidadeALuno(String pAluno) {
         int x = alunoController.retornaQtdePorAluno(pAluno);
@@ -1301,6 +1315,30 @@ public class AlunoView extends javax.swing.JInternalFrame {
 
     private void preencherCamposAlteracao() {
         alunoModel = alunoController.getAlunoDao(jtfPesquisa.getText());
+        chamarJDialog();
+
+        jtfBairroAlterar.setText(alunoModel.getBairro());
+        jtfCepAlterar.setText(alunoModel.getCep());
+        jtfCelularAlterar.setText(alunoModel.getCelular());
+        jtfCidadeAlterar.setText(alunoModel.getCidade());
+        jtfComplementoAlterar.setText(alunoModel.getComplemento());
+        jtfCpfAlterar.setText(alunoModel.getCpf());
+        jtfCursoAlterar.setText(alunoModel.getCurso());
+        jtfDataAlterar.setText(alunoModel.getDataNascimento());
+        jtfDataMatriculaAlterar.setText(alunoModel.getDataMatricula());
+        jtfEmailAlterar.setText(alunoModel.getEmail());
+        jtfEnderecoAlterar.setText(alunoModel.getEndereco());
+        jtfMatriculaAlterar.setText(String.valueOf(alunoModel.getMatricula()));
+        jtfNomeAlterar.setText(alunoModel.getNome());
+        jtfRgAlterar.setText(alunoModel.getRg());
+        jtfTelefoneAlterar.setText(alunoModel.getTelefone());
+        jtfNumeroAlterar.setText(String.valueOf(alunoModel.getNumero()));
+        jlCargaHorariaAlterar.setText(cursoController.retornaCargaHoraria(jtfCursoAlterar.getText()) + " HORAS");
+        jcbStatus.setSelectedItem(alunoModel.getSituacao());
+    }
+
+    private void preencherCamposAlteracao(String pAluno, String pCurso) {
+        alunoModel = alunoController.getAlunoDao(pAluno, pCurso);
         chamarJDialog();
 
         jtfBairroAlterar.setText(alunoModel.getBairro());
