@@ -14,11 +14,11 @@ import javax.swing.table.DefaultTableModel;
  * @author joseluiz
  */
 public class SelecionaAluno extends javax.swing.JDialog {
-    
+
     AlunoController alunoController = new AlunoController();
     public ArrayList lista = new ArrayList<>();
     public ArrayList<AlunoModel> listaAlunoModels = new ArrayList<>();
-    
+
     TemplateAlerts templateAlerts = new TemplateAlerts();
 
     /**
@@ -187,14 +187,15 @@ public class SelecionaAluno extends javax.swing.JDialog {
         String curso = (String) jtAlunos.getValueAt(linha, 1);
         AlunoModel.nomeAluno = jlAluno.getText();
         AlunoModel.cursoAluno = curso;
+        AlunoModel.matriculaAluno = (int) jtAlunos.getValueAt(linha, 0);
         this.dispose();
     }//GEN-LAST:event_jtAlunosMouseClicked
-    
+
     private void colorirLinhas() {
         ColorirLinhaStatus colorirLinhas = new ColorirLinhaStatus(2);
         jtAlunos.getColumnModel().getColumn(2).setCellRenderer(colorirLinhas);
     }
-    
+
     public void carregarRegistro(String pAluno) {
         colorirLinhas();
         jlAluno.setText(pAluno);

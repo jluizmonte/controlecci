@@ -23,6 +23,17 @@ public class AlunoController {
     }
 
     /**
+     * retorna lista com dados do aluno pelo nome e curso
+     *
+     * @param pAluno
+     * @param pMatricula
+     * @return
+     */
+    public AlunoModel getAlunoCursoDao(String pAluno, int pMatricula) {
+        return alunoDao.getAlunoCurso(pAluno, pMatricula);
+    }
+
+    /**
      *
      * @return
      */

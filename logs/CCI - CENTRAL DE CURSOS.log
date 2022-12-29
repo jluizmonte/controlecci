@@ -749,6 +749,31 @@ DESCRIÇÃO: Acesso concedido a José Luiz
 USUÁRIO: José Luiz
 TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+<<<<<<< HEAD
+DATA E HORA: 21/12/22 17:10:07
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 21/12/22 17:19:15
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.LoginView
+DATA E HORA: 23/12/22 13:53:00
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.CursoView
+DATA E HORA: 23/12/22 14:35:45
+DESCRIÇÃO: O curso EXCEL AVANÇADO foi alterado com sucesso!
+=======
 DATA E HORA: 12/12/22 11:44:03
 DESCRIÇÃO: Acesso concedido a José Luiz
 
@@ -898,3 +923,131 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
 DATA E HORA: 18/12/22 14:36:06
 DESCRIÇÃO: Aluno ALEXANDRE GOMES DE OLIVEIRA alterado com sucesso! 
+>>>>>>> origin/master
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:05:41
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:07:21
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:13:40
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:13:54
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:14:25
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:32:46
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:40:19
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: USUÁRIO NÃO LOGADO
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.UsuarioDao
+DATA E HORA: 23/12/22 19:42:54
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:46:53
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.UsuarioDao
+DATA E HORA: 23/12/22 19:49:57
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 19:51:30
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.CursoDao
+DATA E HORA: 23/12/22 20:02:39
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 24/12/22 02:58:43
+DESCRIÇÃO: Aluno PABLO BORGES TEIXEIRA alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 25/12/22 00:50:19
+DESCRIÇÃO: Ocorreu um erro ao executar insert/update
+java.sql.SQLException: Incorrect datetime value: '' for function str_to_date
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 25/12/22 00:50:20
+DESCRIÇÃO: Erro ao alterar o Aluno
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 25/12/22 00:58:42
+DESCRIÇÃO: Aluno KAMILLE SOUSA MORAES DO CARMO alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.CursoView
+DATA E HORA: 25/12/22 00:59:14
+DESCRIÇÃO: O curso EXCEL AVANÇADO foi alterado com sucesso!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 25/12/22 00:59:23
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 

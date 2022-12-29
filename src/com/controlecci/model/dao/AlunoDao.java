@@ -55,6 +55,44 @@ public class AlunoDao extends ConnectionMySQL {
         return alunoModel;
     }
 
+    public AlunoModel getAlunoCurso(String pAluno, int pMatricula) {
+        AlunoModel alunoModel = new AlunoModel();
+        try {
+            this.conectar();
+            this.executarSQL("SELECT id_cadastro,matricula,nome,endereco,numero,complemento,cidade,cep,uf,bairro,celular,telefone,email,rg,cpf,DATE_FORMAT(data_nascimento, '%d-%m-%Y'),(select nome_curso where id_curso=curso_fk_cadastro),(select carga_horaria  where id_curso=curso_fk_cadastro),situacao,pendencia,data_matricula, situacao_certificado from aluno_cadastro join curso on id_curso = curso_fk_cadastro where nome ='" + pAluno + "' and matricula='" + pMatricula + "';");
+
+            while (this.getResultSet().next()) {
+                alunoModel.setIdAluno(this.getResultSet().getInt(1));
+                alunoModel.setMatricula(this.getResultSet().getInt(2));
+                alunoModel.setNome(this.getResultSet().getString(3));
+                alunoModel.setEndereco(this.getResultSet().getString(4));
+                alunoModel.setNumero(this.getResultSet().getInt(5));
+                alunoModel.setComplemento(this.getResultSet().getString(6));
+                alunoModel.setCidade(this.getResultSet().getString(7));
+                alunoModel.setCep(this.getResultSet().getString(8));
+                alunoModel.setUf(this.getResultSet().getString(9));
+                alunoModel.setBairro(this.getResultSet().getString(10));
+                alunoModel.setCelular(this.getResultSet().getString(11));
+                alunoModel.setTelefone(this.getResultSet().getString(12));
+                alunoModel.setEmail(this.getResultSet().getString(13));
+                alunoModel.setRg(this.getResultSet().getString(14));
+                alunoModel.setCpf(this.getResultSet().getString(15));
+                alunoModel.setDataNascimento(this.getResultSet().getString(16));
+                alunoModel.setCurso(this.getResultSet().getString(17));
+                alunoModel.setCargaHoraria(this.getResultSet().getString(18));
+                alunoModel.setSituacao(this.getResultSet().getString(19));
+                alunoModel.setPendencia(this.getResultSet().getString(20));
+                alunoModel.setDataMatricula(this.getResultSet().getString(21));
+                alunoModel.setSituacaoCertificado(this.getResultSet().getString(22));
+            }
+        } catch (SQLException e) {
+            System.out.print(e.toString());
+        } finally {
+            this.fecharConexao();
+        }
+        return alunoModel;
+    }
+
     /**
      *
      * @return
@@ -174,8 +212,8 @@ public class AlunoDao extends ConnectionMySQL {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public ArrayList<AlunoModel> getListaStatusCertificado() {
         ArrayList<AlunoModel> listaModel = new ArrayList<>();
