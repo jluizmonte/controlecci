@@ -152,7 +152,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         jtfDataMatriculaAlterar = new javax.swing.JFormattedTextField();
         jLabel38 = new javax.swing.JLabel();
-        jtfDataAlterar = new javax.swing.JTextField();
+        jtfDataAlterar = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -378,7 +378,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
-                                .addGap(354, 577, Short.MAX_VALUE)))
+                                .addGap(354, 600, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jtfMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -444,7 +444,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                 .addGap(97, 97, 97)
                                 .addComponent(jLabel2))
                             .addComponent(jLabel12))
-                        .addGap(92, 389, Short.MAX_VALUE))
+                        .addGap(92, 410, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -742,7 +742,13 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("MATRÍCULA");
 
-        jtfDataAlterar.setEditable(false);
+        try {
+            jtfDataAlterar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jtfDataAlterar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfDataAlterar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -758,9 +764,11 @@ public class AlunoView extends javax.swing.JInternalFrame {
                         .addGap(366, 366, 366))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jtfCpfAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(75, 75, 75)
                         .addComponent(jtfRgAlterar)
-                        .addGap(248, 248, 248))
+                        .addGap(92, 92, 92)
+                        .addComponent(jtfDataAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
@@ -772,8 +780,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel24)
-                                    .addComponent(jtfComplementoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfDataAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jtfComplementoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addComponent(jtfCidadeAlterar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -823,12 +830,12 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel10))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jlCliente1)
-                                        .addGap(157, 157, 157)
+                                        .addGap(222, 222, 222)
                                         .addComponent(jLabel20))
                                     .addComponent(jLabel27))
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jtfEmailAlterar)
                                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -842,11 +849,10 @@ public class AlunoView extends javax.swing.JInternalFrame {
                                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(jcbStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                                .addGap(0, 0, Short.MAX_VALUE))))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(81, 81, 81)
-                                        .addComponent(jLabel21)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                                .addGap(0, 8, Short.MAX_VALUE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel21)))))
                         .addContainerGap())))
             .addComponent(jSeparator1)
         );
@@ -875,11 +881,10 @@ public class AlunoView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel20)
                         .addComponent(jLabel21)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfDataAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfCpfAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtfRgAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfCpfAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfRgAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDataAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -1638,7 +1643,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfCurso;
     private javax.swing.JTextField jtfCursoAlterar;
     private javax.swing.JFormattedTextField jtfData;
-    private javax.swing.JTextField jtfDataAlterar;
+    private javax.swing.JFormattedTextField jtfDataAlterar;
     private javax.swing.JFormattedTextField jtfDataMatricula;
     private javax.swing.JFormattedTextField jtfDataMatriculaAlterar;
     private javax.swing.JTextField jtfEmail;

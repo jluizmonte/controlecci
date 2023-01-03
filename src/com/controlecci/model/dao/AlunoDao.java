@@ -342,7 +342,27 @@ public class AlunoDao extends ConnectionMySQL {
     public boolean atualizarAluno(AlunoModel alunoModel, String pAlunoPesquisa) {
         try {
             this.conectar();
-            return this.executarInsertUpdateSQL("UPDATE aluno_cadastro SET matricula=" + alunoModel.getMatricula() + ",nome='" + alunoModel.getNome() + "',endereco='" + alunoModel.getEndereco() + "',numero=" + alunoModel.getNumero() + ",complemento='" + alunoModel.getComplemento() + "',cidade='" + alunoModel.getCidade() + "',cep='" + alunoModel.getCep() + "',uf='" + alunoModel.getUf() + "',bairro='" + alunoModel.getBairro() + "',celular='" + alunoModel.getCelular() + "',telefone='" + alunoModel.getTelefone() + "',email='" + alunoModel.getEmail() + "',rg='" + alunoModel.getRg() + "',cpf='" + alunoModel.getCpf() + "',data_nascimento=STR_TO_DATE('" + alunoModel.getDataNascimento() + "','%d-%m-%Y'),curso_fk_cadastro=(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "'),situacao='" + alunoModel.getSituacao() + "',pendencia='" + alunoModel.getPendencia() + "',data_matricula='" + alunoModel.getDataMatricula() + "' WHERE nome='" + pAlunoPesquisa + "';");
+            return this.executarInsertUpdateSQL("UPDATE aluno_cadastro SET "
+                    + "matricula=" + alunoModel.getMatricula()
+                    + ",nome='" + alunoModel.getNome()
+                    + "',endereco='" + alunoModel.getEndereco()
+                    + "',numero=" + alunoModel.getNumero()
+                    + ",complemento='" + alunoModel.getComplemento()
+                    + "',cidade='" + alunoModel.getCidade()
+                    + "',cep='" + alunoModel.getCep()
+                    + "',uf='" + alunoModel.getUf()
+                    + "',bairro='" + alunoModel.getBairro()
+                    + "',celular='" + alunoModel.getCelular()
+                    + "',telefone='" + alunoModel.getTelefone()
+                    + "',email='" + alunoModel.getEmail()
+                    + "',rg='" + alunoModel.getRg()
+                    + "',cpf='" + alunoModel.getCpf()
+                    + "',data_nascimento=STR_TO_DATE('" + alunoModel.getDataNascimento() + "','%d-%m-%Y')"
+                    + ",curso_fk_cadastro=(select id_curso from curso where nome_curso='" + alunoModel.getCurso() + "')"
+                    + ",situacao='" + alunoModel.getSituacao()
+                    + "',pendencia='" + alunoModel.getPendencia()
+                    + "',data_matricula='" + alunoModel.getDataMatricula()
+                    + "' WHERE nome='" + pAlunoPesquisa + "';");
         } catch (Exception e) {
             e.toString();
             return false;
