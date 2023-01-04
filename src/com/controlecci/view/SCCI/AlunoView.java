@@ -881,10 +881,11 @@ public class AlunoView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel20)
                         .addComponent(jLabel21)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfCpfAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfRgAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfDataAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtfDataAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jtfCpfAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfRgAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -1136,7 +1137,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private void jtfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPesquisaActionPerformed
         habilitarCamposAlterar(true);
         AlunoModel.nomeAluno = jtfPesquisa.getText();
-        AlunoModel.cursoAluno=alunoController.getAlunoDao(AlunoModel.nomeAluno).getCurso();
+        AlunoModel.cursoAluno = alunoController.getAlunoDao(AlunoModel.nomeAluno).getCurso();
         selecionaAluno(AlunoModel.nomeAluno);
     }//GEN-LAST:event_jtfPesquisaActionPerformed
 
@@ -1346,7 +1347,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }
 
     private void preencherCamposAlteracaoMatricula(String pAluno, int pMatricula) {
-       alunoModel = alunoController.getAlunoCursoDao(pAluno, pMatricula);
+        alunoModel = alunoController.getAlunoCursoDao(pAluno, pMatricula);
         chamarJDialog();
 
         jtfBairroAlterar.setText(alunoModel.getBairro());
@@ -1453,7 +1454,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
             alunoModel.setComplemento(jtfComplementoAlterar.getText());
         }
 
-        if (alunoController.atualizarAluno(alunoModel, jtfPesquisa.getText())) {
+        if (alunoController.atualizarAluno(alunoModel, jtfPesquisa.getText(), alunoModel.getCurso())) {
             mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI ATUALIZADO COM SUCESSO!");
             mensagemConfirmação.jlInfo.setText("NO CURSO: " + alunoModel.getCurso());
             mensagemConfirmação.fechar();
