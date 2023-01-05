@@ -154,6 +154,7 @@ public class AlunoController {
      *
      * @param alunoModel
      * @param pAlunoPesquisa
+     * @param pCurso
      * @return
      */
     public boolean atualizarAluno(AlunoModel alunoModel, String pAlunoPesquisa, String pCurso) {

@@ -1139,3 +1139,32 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
 DATA E HORA: 02/01/23 21:16:49
 DESCRIÇÃO: Aluno NAYDE MACHADO BATISTA alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 05/01/23 16:41:22
+DESCRIÇÃO: Ocorreu um erro ao executar insert/update
+java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 16:41:23
+DESCRIÇÃO: Erro ao alterar o Aluno
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 17:41:15
+DESCRIÇÃO: Aluno MANUELLA LUNA alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 17:42:33
+DESCRIÇÃO: Aluno MANUELLA LUNA alterado com sucesso! 

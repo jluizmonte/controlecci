@@ -942,11 +942,11 @@ public class AlunoView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel38)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfDataMatriculaAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCancelarAlterar)
                     .addComponent(jbAlterar))
-                .addContainerGap())
+                .addGap(37, 37, 37))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -1130,6 +1130,8 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbCancelarAlterarActionPerformed
 
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        AlunoModel.cursoAluno = jtfCurso.getText();
+        AlunoModel.nomeAluno = jtfPesquisa.getText();
         perguntaObservacoes();
         alterarAluno();
     }//GEN-LAST:event_jbAlterarActionPerformed
@@ -1454,7 +1456,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
             alunoModel.setComplemento(jtfComplementoAlterar.getText());
         }
 
-        if (alunoController.atualizarAluno(alunoModel, jtfPesquisa.getText(), alunoModel.getCurso())) {
+        if (alunoController.atualizarAluno(alunoModel, AlunoModel.nomeAluno, AlunoModel.cursoAluno)) {
             mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI ATUALIZADO COM SUCESSO!");
             mensagemConfirmação.jlInfo.setText("NO CURSO: " + alunoModel.getCurso());
             mensagemConfirmação.fechar();

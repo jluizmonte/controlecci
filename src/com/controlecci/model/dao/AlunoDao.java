@@ -337,6 +337,7 @@ public class AlunoDao extends ConnectionMySQL {
      *
      * @param alunoModel
      * @param pAlunoPesquisa
+     * @param pCurso
      * @return
      */
     public boolean atualizarAluno(AlunoModel alunoModel, String pAlunoPesquisa, String pCurso) {
@@ -362,7 +363,7 @@ public class AlunoDao extends ConnectionMySQL {
                     + ",situacao='" + alunoModel.getSituacao()
                     + "',pendencia='" + alunoModel.getPendencia()
                     + "',data_matricula='" + alunoModel.getDataMatricula()
-                    + "' WHERE nome='" + pAlunoPesquisa + "' and ;");
+                    + "' WHERE nome='" + pAlunoPesquisa + "' and curso_fk_cadastro=(select id_curso from curso where nome_curso='" + pCurso + "');");
         } catch (Exception e) {
             e.toString();
             return false;
