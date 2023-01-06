@@ -38,10 +38,10 @@ public class ControleCCI {
             SessaoUsuarioModel.loginUsuario = "luiz";
             SessaoUsuarioModel.nivelAcesso = "DESENVOLVEDOR";
             SessaoUsuarioModel.nomeUsuario = "José Luiz";
-                   new SCCI().setVisible(true);
+  //          new SCCI().setVisible(true);
             //  new SplashScreen().setVisible(true);
-//            new Login().setVisible(true);
-            
+            new Login().setVisible(true);
+
 //            ConnectionMySQL cmsql = new ConnectionMySQL();
 //            cmsql.conectar();
         });
