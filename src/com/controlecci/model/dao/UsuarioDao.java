@@ -188,7 +188,7 @@ public class UsuarioDao extends ConnectionMySQL {
     public boolean getValidarUsuarioDAO(UsuarioModel pUsuarioModel) {
         try {
             this.conectar();
-            this.executarSQL("SELECT * FROM tbl_usuario WHERE" + " usu_login = '"
+            this.executarSQL("SELECT * FROM controle.usuario WHERE" + " usu_login = '"
                     + pUsuarioModel.getLoginUsuario() + "' AND usu_senha = '" + pUsuarioModel.getSenhaUsuario() + "'" + ";");
 
             if (getResultSet().next()) {

@@ -1132,7 +1132,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
 //        AlunoModel.cursoAluno = jtfCursoAlterar.getText();
 //        AlunoModel.nomeAluno = jtfNomeAlterar.getText();
-       perguntaObservacoes();
+        perguntaObservacoes();
         alterarAluno();
     }//GEN-LAST:event_jbAlterarActionPerformed
 

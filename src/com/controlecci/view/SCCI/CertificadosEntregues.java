@@ -334,7 +334,6 @@ public class CertificadosEntregues extends javax.swing.JInternalFrame {
         }
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

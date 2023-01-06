@@ -30,7 +30,7 @@ public class SCCI extends javax.swing.JFrame {
      * Creates new form ScciPrincipal
      */
     public SCCI() {
-        setUndecorated(true);
+        //    setUndecorated(true);
         setarImagem();
         initComponents();
         setExtendedState(MAXIMIZED_BOTH); // seta o tamanho da janela (maximizado) ao iniciar
@@ -292,8 +292,11 @@ public class SCCI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
-        int dialogResult = JOptionPane.showConfirmDialog(this, "O sistema será encerrado!\n Clique em Yes para encerrar!", "Atenção", JOptionPane.YES_NO_OPTION);
-        if (dialogResult == 0) {
+        Object[] options = {"Sim", "Não"};
+        int n = JOptionPane.showOptionDialog(null,
+                "Deseja encerrar o sistema?", "Atenção", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if (n == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_jmiSairActionPerformed
