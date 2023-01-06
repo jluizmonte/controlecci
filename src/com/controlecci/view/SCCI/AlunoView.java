@@ -1130,9 +1130,9 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbCancelarAlterarActionPerformed
 
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
-        AlunoModel.cursoAluno = jtfCurso.getText();
-        AlunoModel.nomeAluno = jtfPesquisa.getText();
-        perguntaObservacoes();
+//        AlunoModel.cursoAluno = jtfCursoAlterar.getText();
+//        AlunoModel.nomeAluno = jtfNomeAlterar.getText();
+       perguntaObservacoes();
         alterarAluno();
     }//GEN-LAST:event_jbAlterarActionPerformed
 
@@ -1431,7 +1431,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
     }
 
     private void alterarAluno() {
-        alunoModel = new AlunoModel();
+//        alunoModel = new AlunoModel();
 
         alunoModel.setMatricula(Integer.valueOf(jtfMatriculaAlterar.getText()));
         alunoModel.setBairro(jtfBairroAlterar.getText().toUpperCase());
@@ -1456,7 +1456,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
             alunoModel.setComplemento(jtfComplementoAlterar.getText());
         }
 
-        if (alunoController.atualizarAluno(alunoModel, AlunoModel.nomeAluno, AlunoModel.cursoAluno)) {
+        if (alunoController.atualizarAluno(alunoModel, jtfNomeAlterar.getText(), jtfCursoAlterar.getText())) {
             mensagemConfirmação.jlMensagem.setText("ALUNO : " + alunoModel.getNome() + " FOI ATUALIZADO COM SUCESSO!");
             mensagemConfirmação.jlInfo.setText("NO CURSO: " + alunoModel.getCurso());
             mensagemConfirmação.fechar();

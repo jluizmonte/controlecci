@@ -1168,3 +1168,102 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
 DATA E HORA: 05/01/23 17:42:33
 DESCRIÇÃO: Aluno MANUELLA LUNA alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 20:42:05
+DESCRIÇÃO: Aluno MANUELLA LUNA alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 20:48:10
+DESCRIÇÃO: Aluno MANUELLA LUNA alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:04:48
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:15:24
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.UsuarioDao
+DATA E HORA: 05/01/23 21:16:30
+DESCRIÇÃO: Ocorreu um erro ao executar a instrução sql
+java.sql.SQLSyntaxErrorException: Table 'controle.tbl_usuario' doesn't exist
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:18:26
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:21:35
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:23:58
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:27:12
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:28:27
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:29:40
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:31:02
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:31:31
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.AlunoView
+DATA E HORA: 05/01/23 21:37:37
+DESCRIÇÃO: Aluno MARCELO DE SOUZA LUNA ALVES alterado com sucesso! 
