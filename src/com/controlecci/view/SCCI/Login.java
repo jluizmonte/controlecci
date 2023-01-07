@@ -359,8 +359,8 @@ public class Login extends javax.swing.JDialog {
                     LocalUtil.logType = templateAlerts.mensagemRegistroComum();
                     new LogCatUtil().writeFile(String.valueOf(sucesso));
 
-                    this.dispose();
                     telaFundoLogin.fechaTela();
+                    this.dispose();
                     new SCCI().setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, templateAlerts.erroLogar());
