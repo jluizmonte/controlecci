@@ -1,14 +1,10 @@
 package com.controlecci.main;
 
-import com.controlecci.connection.ConnectionMySQL;
 import com.controlecci.model.SessaoUsuarioModel;
-import com.controlecci.model.dao.AlunoDao;
 import com.controlecci.util.FolderCreatorUtil;
 import com.controlecci.util.LogCatUtil;
-import com.controlecci.view.SCCI.Login;
-import com.controlecci.view.SCCI.LoginView;
-import com.controlecci.view.SCCI.SCCI;
-import com.controlecci.view.SCCI.SplashScreen;
+import com.controlecci.view.utils.LoginView;
+import com.controlecci.view.utils.TelaFundoLogin;
 
 /**
  *
@@ -38,12 +34,13 @@ public class ControleCCI {
             SessaoUsuarioModel.loginUsuario = "luiz";
             SessaoUsuarioModel.nivelAcesso = "DESENVOLVEDOR";
             SessaoUsuarioModel.nomeUsuario = "José Luiz";
-  //          new SCCI().setVisible(true);
+            //          new SCCI().setVisible(true);
             //  new SplashScreen().setVisible(true);
-            new Login().setVisible(true);
+//            new Login(null, true).setVisible(true);
+            TelaFundoLogin telaFundoLogin = new TelaFundoLogin();
+            telaFundoLogin.setVisible(true);
+            telaFundoLogin.chamaLogin();
 
-//            ConnectionMySQL cmsql = new ConnectionMySQL();
-//            cmsql.conectar();
         });
     }
 }

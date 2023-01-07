@@ -1,5 +1,6 @@
 package com.controlecci.view.SCCI;
 
+import com.controlecci.view.utils.LoginView;
 import com.controlecci.view.utils.VisualizarLog;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.relatorio.RelatorioUtil;
@@ -30,7 +31,7 @@ public class SCCI extends javax.swing.JFrame {
      * Creates new form ScciPrincipal
      */
     public SCCI() {
-        //    setUndecorated(true);
+        setUndecorated(true);
         setarImagem();
         initComponents();
         setExtendedState(MAXIMIZED_BOTH); // seta o tamanho da janela (maximizado) ao iniciar

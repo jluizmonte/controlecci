@@ -6,6 +6,7 @@ import com.controlecci.model.UsuarioModel;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
+import com.controlecci.view.utils.TelaFundoLogin;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author proxc
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JDialog {
 
     /**
      * instancia do model, service e sessão do usuário criação de lista de
@@ -25,13 +26,17 @@ public class Login extends javax.swing.JFrame {
      */
     UsuarioModel usuarioModel = new UsuarioModel();
     UsuarioController usuarioController = new UsuarioController();
-    int x, y;
     TemplateAlerts templateAlerts = new TemplateAlerts();
+    TelaFundoLogin telaFundoLogin = new TelaFundoLogin();
+    int xy, xx;
 
     /**
-     * Creates new form Home17
+     *
+     * @param parent
+     * @param modal
      */
-    public Login() {
+    public Login(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         setarImagem();
         dispose();
@@ -113,9 +118,9 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/others/contacts_18px.png"))); // NOI18N
 
-        lbl_close.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        lbl_close.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         lbl_close.setForeground(new java.awt.Color(0, 112, 192));
-        lbl_close.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbl_close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_close.setText("X");
         lbl_close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -123,8 +128,11 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 112, 192));
         jLabel5.setText("Esqueceu a senha?");
+        jLabel5.setToolTipText("Função ainda não implementada!");
+        jLabel5.setEnabled(false);
 
         jtfSenha.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jtfSenha.setForeground(new java.awt.Color(102, 102, 102));
@@ -142,8 +150,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
-        jLabel6.setText("Login");
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 22)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Acesso ao sistema");
 
         jbEntrar.setFont(new java.awt.Font("DejaVu Sans", 0, 16)); // NOI18N
         jbEntrar.setText("Login");
@@ -164,7 +173,7 @@ public class Login extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 270, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
@@ -175,41 +184,38 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
                         .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(loginLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(loginLayout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(loginLayout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(loginLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(loginLayout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(loginLayout.createSequentialGroup()
-                                        .addGap(262, 262, 262)
-                                        .addComponent(jbEntrar))))
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(loginLayout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(jLabel6)))
-                        .addGap(1, 1, 1)
-                        .addComponent(lbl_close, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(36, 36, 36)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(loginLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(loginLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(loginLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel5)
+                                .addGap(135, 135, 135)
+                                .addComponent(jbEntrar))))
                     .addGroup(loginLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_close, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(loginLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addComponent(jLabel6)
                 .addGap(35, 35, 35)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,47 +229,40 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jbEntrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
-            .addGroup(loginLayout.createSequentialGroup()
-                .addComponent(lbl_close)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel5))
+                    .addComponent(jbEntrar)))
+            .addComponent(lbl_close)
         );
 
         jPanel1.add(login, "card2");
 
         loader.setBackground(new java.awt.Color(255, 255, 255));
 
+        img_loader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         img_loader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/gifs/spinnerLoad.gif"))); // NOI18N
 
         lbl_loader.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbl_loader.setForeground(new java.awt.Color(0, 112, 192));
+        lbl_loader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_loader.setText("Efetuando Login ...");
 
         javax.swing.GroupLayout loaderLayout = new javax.swing.GroupLayout(loader);
         loader.setLayout(loaderLayout);
         loaderLayout.setHorizontalGroup(
             loaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loaderLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(img_loader)
-                .addGap(133, 133, 133))
-            .addGroup(loaderLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(lbl_loader)
-                .addContainerGap(125, Short.MAX_VALUE))
+            .addComponent(img_loader, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+            .addComponent(lbl_loader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         loaderLayout.setVerticalGroup(
             loaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loaderLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(img_loader, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_loader)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addComponent(img_loader, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_loader, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel1.add(loader, "card3");
@@ -276,7 +275,9 @@ public class Login extends javax.swing.JFrame {
         );
         pnl_bgLayout.setVerticalGroup(
             pnl_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnl_bgLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -294,44 +295,38 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfLoginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLoginFocusGained
-        // TODO add your handling code here:
         jtfLogin.setText("");
     }//GEN-LAST:event_jtfLoginFocusGained
 
     private void jtfSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfSenhaFocusGained
-        // TODO add your handling code here:
         jtfSenha.setText("");
     }//GEN-LAST:event_jtfSenhaFocusGained
 
     private void lbl_closeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_closeMousePressed
-        // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_lbl_closeMousePressed
-    int xy, xx;
+
     private void loginMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseDragged
         // TODO add your handling code here:
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xx, y - xy);
-
     }//GEN-LAST:event_loginMouseDragged
 
     private void loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMousePressed
-        // TODO add your handling code here:
-
         xx = evt.getX();
         xy = evt.getY();
     }//GEN-LAST:event_loginMousePressed
 
     private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
-        loader.show();
-        login.hide();
+        loader.setVisible(true);
+        login.setVisible(false);
         new java.util.Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 realizarLogin();
             }
-        }, 1000 * 5);
+        }, 500);
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     private void jtfLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLoginActionPerformed
@@ -339,8 +334,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfLoginActionPerformed
 
     private void jtfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSenhaActionPerformed
-        loader.show();
-        login.hide();
+        loader.setVisible(true);
+        login.setVisible(false);
         new java.util.Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -357,15 +352,15 @@ public class Login extends javax.swing.JFrame {
                 if (usuarioController.getValidarUsuarioDAO(usuarioModel)) {
                     usuarioModel = usuarioController.getUsuarioDAO(jtfLogin.getText());
                     setSessionUser();
-                    
+
                     String sucesso = "Acesso concedido a " + usuarioModel.getNomeUsuario();
-                  //  JOptionPane.showMessageDialog(this, sucesso, "Sucesso", JOptionPane.WARNING_MESSAGE);
 
                     LocalUtil.logClass = this.getClass().getName();
                     LocalUtil.logType = templateAlerts.mensagemRegistroComum();
                     new LogCatUtil().writeFile(String.valueOf(sucesso));
 
                     this.dispose();
+                    telaFundoLogin.fechaTela();
                     new SCCI().setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, templateAlerts.erroLogar());

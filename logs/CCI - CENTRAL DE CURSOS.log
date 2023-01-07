@@ -1398,3 +1398,66 @@ TIPO DE LOG: REGISTRO DE ERRO
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
 DATA E HORA: 06/01/23 18:09:41
 DESCRIÇÃO: ERRO AO EFETURAR O LOGIN, USUÁRIO OU SENHA INCORRETA!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 06/01/23 20:57:39
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 06/01/23 21:18:44
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 06/01/23 21:21:43
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 06/01/23 21:22:33
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 06/01/23 21:23:44
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 06/01/23 21:28:31
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 06/01/23 21:28:44
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 06/01/23 21:29:01
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 06/01/23 21:29:11
+DESCRIÇÃO: Acesso concedido a José Luiz
