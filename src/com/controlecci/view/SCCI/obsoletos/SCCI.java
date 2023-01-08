@@ -1,12 +1,17 @@
-package com.controlecci.view.SCCI;
+package com.controlecci.view.SCCI.obsoletos;
 
-import com.controlecci.view.utils.LoginView;
 import com.controlecci.view.utils.VisualizarLog;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.relatorio.RelatorioUtil;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
+import com.controlecci.view.SCCI.AlunoView;
+import com.controlecci.view.SCCI.CertificadosEntregues;
+import com.controlecci.view.SCCI.ConsultarRegistro;
+import com.controlecci.view.SCCI.CursoView;
+import com.controlecci.view.SCCI.RegistroAluno;
+import com.controlecci.view.SCCI.UsuarioView;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.FileNotFoundException;

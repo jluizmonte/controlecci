@@ -1,6 +1,16 @@
 package com.controlecci.view.SCCI;
 
+import com.controlecci.controller.AlunoController;
+import com.controlecci.controller.CursoController;
+import com.controlecci.controller.UsuarioController;
+import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.ObterInfoSistemaUtil;
+import com.controlecci.view.SCCI.obsoletos.LoginView;
+import com.controlecci.view.utils.TelaFundoLogin;
+import java.awt.Color;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +25,8 @@ public class PrincipalSCCI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         chama();
+        setarData();
+        setarValores();
     }
 
     /**
@@ -31,8 +43,33 @@ public class PrincipalSCCI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         rSPanelImage1 = new rojerusan.RSPanelImage();
         jlInfo = new javax.swing.JLabel();
+        jpAluno = new javax.swing.JPanel();
+        rSPanelImage2 = new rojerusan.RSPanelImage();
+        jlQtdeAlunos = new javax.swing.JLabel();
+        jlAluno = new javax.swing.JLabel();
+        jpConsultaRegistro = new javax.swing.JPanel();
+        rSPanelImage3 = new rojerusan.RSPanelImage();
+        jlConsultarRegistro = new javax.swing.JLabel();
+        jpRegistroAluno = new javax.swing.JPanel();
+        rSPanelImage4 = new rojerusan.RSPanelImage();
+        jlRegistro = new javax.swing.JLabel();
+        jpUsuario = new javax.swing.JPanel();
+        jlUsuario = new javax.swing.JLabel();
+        rSPanelImage5 = new rojerusan.RSPanelImage();
+        jlQtdeUsuario = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jlUsuarioLogado = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jlData = new javax.swing.JLabel();
+        jpCurso = new javax.swing.JPanel();
+        rSPanelImage8 = new rojerusan.RSPanelImage();
+        jlQtdeCurso = new javax.swing.JLabel();
+        jlCurso = new javax.swing.JLabel();
+        jlLogout = new javax.swing.JLabel();
+        jlEncerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Gestão de Alunos - SCCI");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -42,19 +79,19 @@ public class PrincipalSCCI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sistema Gestão de Alunos");
+        jLabel1.setText("Sistema de Gestão de Alunos");
 
-        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/novo/icons8-gestão-de-desenvolvimento-comercial-64.png"))); // NOI18N
+        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/others/nova_logo.png"))); // NOI18N
 
         javax.swing.GroupLayout rSPanelImage1Layout = new javax.swing.GroupLayout(rSPanelImage1);
         rSPanelImage1.setLayout(rSPanelImage1Layout);
         rSPanelImage1Layout.setHorizontalGroup(
             rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 66, Short.MAX_VALUE)
+            .addGap(0, 161, Short.MAX_VALUE)
         );
         rSPanelImage1Layout.setVerticalGroup(
             rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 64, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jlInfo.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -65,48 +102,458 @@ public class PrincipalSCCI extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rSPanelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(11, 11, 11)))
+                .addGap(1, 1, 1)
+                .addComponent(rSPanelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(rSPanelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jlInfo))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rSPanelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        jpAluno.setBackground(new java.awt.Color(28, 89, 124));
+        jpAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpAlunoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpAlunoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpAlunoMouseExited(evt);
+            }
+        });
+
+        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/novo/icons8-student-64.png"))); // NOI18N
+
+        javax.swing.GroupLayout rSPanelImage2Layout = new javax.swing.GroupLayout(rSPanelImage2);
+        rSPanelImage2.setLayout(rSPanelImage2Layout);
+        rSPanelImage2Layout.setHorizontalGroup(
+            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 74, Short.MAX_VALUE)
+        );
+        rSPanelImage2Layout.setVerticalGroup(
+            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jlQtdeAlunos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jlQtdeAlunos.setForeground(new java.awt.Color(255, 255, 255));
+        jlQtdeAlunos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlQtdeAlunos.setText("$0");
+
+        jlAluno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlAluno.setForeground(new java.awt.Color(255, 255, 255));
+        jlAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlAluno.setText("Gerenciar Alunos");
+
+        javax.swing.GroupLayout jpAlunoLayout = new javax.swing.GroupLayout(jpAluno);
+        jpAluno.setLayout(jpAlunoLayout);
+        jpAlunoLayout.setHorizontalGroup(
+            jpAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAlunoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpAlunoLayout.createSequentialGroup()
+                        .addComponent(rSPanelImage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlQtdeAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlunoLayout.createSequentialGroup()
+                        .addComponent(jlAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        jpAlunoLayout.setVerticalGroup(
+            jpAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAlunoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlQtdeAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                    .addComponent(rSPanelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jpConsultaRegistro.setBackground(new java.awt.Color(28, 89, 124));
+        jpConsultaRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpConsultaRegistroMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpConsultaRegistroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpConsultaRegistroMouseExited(evt);
+            }
+        });
+
+        rSPanelImage3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/novo/icons8-letras-miúdas-96.png"))); // NOI18N
+
+        javax.swing.GroupLayout rSPanelImage3Layout = new javax.swing.GroupLayout(rSPanelImage3);
+        rSPanelImage3.setLayout(rSPanelImage3Layout);
+        rSPanelImage3Layout.setHorizontalGroup(
+            rSPanelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 93, Short.MAX_VALUE)
+        );
+        rSPanelImage3Layout.setVerticalGroup(
+            rSPanelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 96, Short.MAX_VALUE)
+        );
+
+        jlConsultarRegistro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlConsultarRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        jlConsultarRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlConsultarRegistro.setText("Consultar Registro");
+
+        javax.swing.GroupLayout jpConsultaRegistroLayout = new javax.swing.GroupLayout(jpConsultaRegistro);
+        jpConsultaRegistro.setLayout(jpConsultaRegistroLayout);
+        jpConsultaRegistroLayout.setHorizontalGroup(
+            jpConsultaRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpConsultaRegistroLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(rSPanelImage3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaRegistroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlConsultarRegistro)
+                .addGap(51, 51, 51))
+        );
+        jpConsultaRegistroLayout.setVerticalGroup(
+            jpConsultaRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpConsultaRegistroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rSPanelImage3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlConsultarRegistro))
+        );
+
+        jpRegistroAluno.setBackground(new java.awt.Color(28, 89, 124));
+        jpRegistroAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpRegistroAlunoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpRegistroAlunoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpRegistroAlunoMouseExited(evt);
+            }
+        });
+
+        rSPanelImage4.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/novo/icons8-agenda-96.png"))); // NOI18N
+
+        javax.swing.GroupLayout rSPanelImage4Layout = new javax.swing.GroupLayout(rSPanelImage4);
+        rSPanelImage4.setLayout(rSPanelImage4Layout);
+        rSPanelImage4Layout.setHorizontalGroup(
+            rSPanelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 88, Short.MAX_VALUE)
+        );
+        rSPanelImage4Layout.setVerticalGroup(
+            rSPanelImage4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 96, Short.MAX_VALUE)
+        );
+
+        jlRegistro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        jlRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlRegistro.setText("Registro de Horas");
+
+        javax.swing.GroupLayout jpRegistroAlunoLayout = new javax.swing.GroupLayout(jpRegistroAluno);
+        jpRegistroAluno.setLayout(jpRegistroAlunoLayout);
+        jpRegistroAlunoLayout.setHorizontalGroup(
+            jpRegistroAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpRegistroAlunoLayout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addComponent(rSPanelImage4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
+        );
+        jpRegistroAlunoLayout.setVerticalGroup(
+            jpRegistroAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpRegistroAlunoLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(rSPanelImage4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jpUsuario.setBackground(new java.awt.Color(28, 89, 124));
+        jpUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpUsuarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpUsuarioMouseExited(evt);
+            }
+        });
+
+        jlUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlUsuario.setText("Gerenciar Usuário");
+
+        rSPanelImage5.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/novo/icons8-user-64.png"))); // NOI18N
+
+        javax.swing.GroupLayout rSPanelImage5Layout = new javax.swing.GroupLayout(rSPanelImage5);
+        rSPanelImage5.setLayout(rSPanelImage5Layout);
+        rSPanelImage5Layout.setHorizontalGroup(
+            rSPanelImage5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 74, Short.MAX_VALUE)
+        );
+        rSPanelImage5Layout.setVerticalGroup(
+            rSPanelImage5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jlQtdeUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jlQtdeUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlQtdeUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlQtdeUsuario.setText("$0");
+
+        javax.swing.GroupLayout jpUsuarioLayout = new javax.swing.GroupLayout(jpUsuario);
+        jpUsuario.setLayout(jpUsuarioLayout);
+        jpUsuarioLayout.setHorizontalGroup(
+            jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpUsuarioLayout.createSequentialGroup()
+                        .addComponent(rSPanelImage5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlQtdeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpUsuarioLayout.createSequentialGroup()
+                        .addComponent(jlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        jpUsuarioLayout.setVerticalGroup(
+            jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpUsuarioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rSPanelImage5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlQtdeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jlUsuario)
+                .addGap(67, 67, 67))
+        );
+
+        jPanel9.setBackground(new java.awt.Color(0, 112, 192));
+
+        jlUsuarioLogado.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jlUsuarioLogado.setForeground(new java.awt.Color(255, 255, 255));
+        jlUsuarioLogado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlUsuarioLogado.setText("$USER");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Logado como");
+
+        jlData.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jlData.setForeground(new java.awt.Color(255, 255, 255));
+        jlData.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jlData.setText("dd/MM/yyyy HH:mm:ss");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlData, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                .addGap(6, 6, 6))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jlUsuarioLogado)
+                    .addComponent(jlData, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        jpCurso.setBackground(new java.awt.Color(28, 89, 124));
+        jpCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpCursoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpCursoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpCursoMouseExited(evt);
+            }
+        });
+
+        rSPanelImage8.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/novo/icons8-course-64.png"))); // NOI18N
+
+        javax.swing.GroupLayout rSPanelImage8Layout = new javax.swing.GroupLayout(rSPanelImage8);
+        rSPanelImage8.setLayout(rSPanelImage8Layout);
+        rSPanelImage8Layout.setHorizontalGroup(
+            rSPanelImage8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 74, Short.MAX_VALUE)
+        );
+        rSPanelImage8Layout.setVerticalGroup(
+            rSPanelImage8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jlQtdeCurso.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jlQtdeCurso.setForeground(new java.awt.Color(255, 255, 255));
+        jlQtdeCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlQtdeCurso.setText("$0");
+
+        jlCurso.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlCurso.setForeground(new java.awt.Color(255, 255, 255));
+        jlCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCurso.setText("Gerenciar Cursos");
+
+        javax.swing.GroupLayout jpCursoLayout = new javax.swing.GroupLayout(jpCurso);
+        jpCurso.setLayout(jpCursoLayout);
+        jpCursoLayout.setHorizontalGroup(
+            jpCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCursoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCursoLayout.createSequentialGroup()
+                        .addComponent(rSPanelImage8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlQtdeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCursoLayout.createSequentialGroup()
+                        .addComponent(jlCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))))
+        );
+        jpCursoLayout.setVerticalGroup(
+            jpCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCursoLayout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addGroup(jpCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rSPanelImage8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlQtdeCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jlLogout.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlLogout.setForeground(new java.awt.Color(0, 0, 0));
+        jlLogout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/restart.png"))); // NOI18N
+        jlLogout.setText("Logout");
+        jlLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlLogoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlLogoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlLogoutMouseExited(evt);
+            }
+        });
+
+        jlEncerrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlEncerrar.setForeground(new java.awt.Color(0, 0, 0));
+        jlEncerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlEncerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/exit.png"))); // NOI18N
+        jlEncerrar.setText("Encerrar o Sistema");
+        jlEncerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEncerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlEncerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlEncerrarMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpRegistroAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpConsultaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlLogout)
+                            .addComponent(jlEncerrar))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 403, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jpAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jpCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlLogout)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlEncerrar))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(16, 16, 16)
+                            .addComponent(jpRegistroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jpConsultaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,15 +563,153 @@ public class PrincipalSCCI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jlLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLogoutMouseEntered
+        jlLogout.setForeground(Color.red);
+    }//GEN-LAST:event_jlLogoutMouseEntered
+
+    private void jlLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLogoutMouseExited
+        jlLogout.setForeground(Color.black);
+    }//GEN-LAST:event_jlLogoutMouseExited
+
+    private void jlLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLogoutMouseClicked
+        Object[] options = {"Sim", "Não"};
+        int n = JOptionPane.showOptionDialog(null,
+                "Deseja fazer o logout?", "Atenção", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if (n == 0) {
+            this.dispose();
+            new Login(this, true).setVisible(true);
+        }
+    }//GEN-LAST:event_jlLogoutMouseClicked
+
+    private void jlEncerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEncerrarMouseEntered
+        jlEncerrar.setForeground(Color.red);
+    }//GEN-LAST:event_jlEncerrarMouseEntered
+
+    private void jlEncerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEncerrarMouseExited
+        jlEncerrar.setForeground(Color.black);
+    }//GEN-LAST:event_jlEncerrarMouseExited
+
+    private void jlEncerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEncerrarMouseClicked
+        Object[] options = {"Sim", "Não"};
+        int n = JOptionPane.showOptionDialog(null,
+                "Deseja encerrar o sistema?", "Atenção", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if (n == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jlEncerrarMouseClicked
+
+    private void jpAlunoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAlunoMouseEntered
+        jpAluno.setBackground(new java.awt.Color(238, 173, 47));
+    }//GEN-LAST:event_jpAlunoMouseEntered
+
+    private void jpAlunoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAlunoMouseExited
+        jpAluno.setBackground(new java.awt.Color(28, 89, 124));
+    }//GEN-LAST:event_jpAlunoMouseExited
+
+    private void jpAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAlunoMouseClicked
+        JOptionPane.showMessageDialog(this, "Aluno clicado");
+    }//GEN-LAST:event_jpAlunoMouseClicked
+
+    private void jpCursoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseEntered
+        jpCurso.setBackground(new java.awt.Color(238, 173, 47));
+    }//GEN-LAST:event_jpCursoMouseEntered
+
+    private void jpCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseClicked
+        JOptionPane.showMessageDialog(this, "curso clicado");    }//GEN-LAST:event_jpCursoMouseClicked
+
+    private void jpCursoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseExited
+        jpCurso.setBackground(new java.awt.Color(28, 89, 124));
+    }//GEN-LAST:event_jpCursoMouseExited
+
+    private void jpRegistroAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpRegistroAlunoMouseClicked
+        JOptionPane.showMessageDialog(this, "registro de hora clicado");    }//GEN-LAST:event_jpRegistroAlunoMouseClicked
+
+    private void jpRegistroAlunoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpRegistroAlunoMouseEntered
+        jpRegistroAluno.setBackground(new java.awt.Color(238, 173, 47));
+    }//GEN-LAST:event_jpRegistroAlunoMouseEntered
+
+    private void jpRegistroAlunoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpRegistroAlunoMouseExited
+        jpRegistroAluno.setBackground(new java.awt.Color(28, 89, 124));
+    }//GEN-LAST:event_jpRegistroAlunoMouseExited
+
+    private void jpConsultaRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpConsultaRegistroMouseClicked
+        JOptionPane.showMessageDialog(this, "consulta registro individual clicado");    }//GEN-LAST:event_jpConsultaRegistroMouseClicked
+
+    private void jpConsultaRegistroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpConsultaRegistroMouseEntered
+        jpConsultaRegistro.setBackground(new java.awt.Color(238, 173, 47));
+    }//GEN-LAST:event_jpConsultaRegistroMouseEntered
+
+    private void jpConsultaRegistroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpConsultaRegistroMouseExited
+        jpConsultaRegistro.setBackground(new java.awt.Color(28, 89, 124));
+    }//GEN-LAST:event_jpConsultaRegistroMouseExited
+
+    private void jpUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuarioMouseClicked
+        JOptionPane.showMessageDialog(this, "usuário clicado");    }//GEN-LAST:event_jpUsuarioMouseClicked
+
+    private void jpUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuarioMouseEntered
+        jpUsuario.setBackground(new java.awt.Color(238, 173, 47));
+    }//GEN-LAST:event_jpUsuarioMouseEntered
+
+    private void jpUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuarioMouseExited
+        jpUsuario.setBackground(new java.awt.Color(28, 89, 124));
+    }//GEN-LAST:event_jpUsuarioMouseExited
+
     public void chama() {
         jlInfo.setText(new ObterInfoSistemaUtil().getControlecciVersao());
+        jlQtdeAlunos.setText(new AlunoController().retornaQtdeAluno());
+        jlQtdeCurso.setText(new CursoController().retornaQtdeCurso());
+        jlQtdeUsuario.setText(new UsuarioController().retornaQtdeCurso());
+    }
+
+    private void setarData() {
+        Thread clock = new Thread() {
+            @Override
+            public void run() {
+                for (;;) {
+                    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                    LocalDateTime timepoint = LocalDateTime.now();
+                    jlData.setText(timepoint.format(fmt));
+                }
+            }
+        };
+        clock.start();
+    }
+
+    private void setarValores() {
+        jlUsuarioLogado.setText(SessaoUsuarioModel.codigoUsuario + " - " + SessaoUsuarioModel.nomeUsuario.toUpperCase() + " | " + SessaoUsuarioModel.nivelAcesso);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel jlAluno;
+    private javax.swing.JLabel jlConsultarRegistro;
+    private javax.swing.JLabel jlCurso;
+    private javax.swing.JLabel jlData;
+    private javax.swing.JLabel jlEncerrar;
     private javax.swing.JLabel jlInfo;
+    private javax.swing.JLabel jlLogout;
+    private javax.swing.JLabel jlQtdeAlunos;
+    private javax.swing.JLabel jlQtdeCurso;
+    private javax.swing.JLabel jlQtdeUsuario;
+    private javax.swing.JLabel jlRegistro;
+    private javax.swing.JLabel jlUsuario;
+    private javax.swing.JLabel jlUsuarioLogado;
+    private javax.swing.JPanel jpAluno;
+    private javax.swing.JPanel jpConsultaRegistro;
+    private javax.swing.JPanel jpCurso;
+    private javax.swing.JPanel jpRegistroAluno;
+    private javax.swing.JPanel jpUsuario;
     private rojerusan.RSPanelImage rSPanelImage1;
+    private rojerusan.RSPanelImage rSPanelImage2;
+    private rojerusan.RSPanelImage rSPanelImage3;
+    private rojerusan.RSPanelImage rSPanelImage4;
+    private rojerusan.RSPanelImage rSPanelImage5;
+    private rojerusan.RSPanelImage rSPanelImage8;
     // End of variables declaration//GEN-END:variables
 }

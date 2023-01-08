@@ -204,4 +204,24 @@ public class UsuarioDao extends ConnectionMySQL {
             this.fecharConexao();
         }
     }
+
+    public String retornaQtdeAluno() {
+        String pQuantidade = "";
+        try {
+            this.conectar();
+            this.executarSQL("select count(usu_nome) from usuario;");
+
+            while (this.getResultSet().next()) {
+                pQuantidade = this.getResultSet().getString(1);
+            }
+        } catch (SQLException ex) {
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroBuscarDados("quantidade total dos alunos\n") + ex.toString()));
+        } finally {
+            this.fecharConexao();
+        }
+        return pQuantidade;
+
+    }
 }

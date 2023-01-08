@@ -1,5 +1,6 @@
 package com.controlecci.view.SCCI;
 
+import com.controlecci.view.SCCI.obsoletos.SCCI;
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.model.UsuarioModel;
@@ -360,7 +361,7 @@ public class Login extends javax.swing.JDialog {
                     LocalUtil.logType = templateAlerts.mensagemRegistroComum();
                     new LogCatUtil().writeFile(String.valueOf(sucesso));
 
-                    new SCCI().setVisible(true);
+                    new PrincipalSCCI().setVisible(true);
                     telaFundoLogin.fechaTela();
                     this.dispose();
                 } else {

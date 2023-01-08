@@ -49,4 +49,8 @@ public class UsuarioController {
     public boolean getValidarUsuarioDAO(UsuarioModel pUsuarioModel) {
         return usuarioDao.getValidarUsuarioDAO(pUsuarioModel);
     }
+
+    public String retornaQtdeCurso() {
+        return usuarioDao.retornaQtdeAluno();
+    }
 }
