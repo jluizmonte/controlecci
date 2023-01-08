@@ -3,6 +3,7 @@ package com.controlecci.main;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.FolderCreatorUtil;
 import com.controlecci.util.LogCatUtil;
+import com.controlecci.view.SCCI.Login;
 import com.controlecci.view.utils.LoginView;
 import com.controlecci.view.utils.TelaFundoLogin;
 
@@ -36,11 +37,7 @@ public class ControleCCI {
             SessaoUsuarioModel.nomeUsuario = "José Luiz";
             //          new SCCI().setVisible(true);
             //  new SplashScreen().setVisible(true);
-//            new Login(null, true).setVisible(true);
-            TelaFundoLogin telaFundoLogin = new TelaFundoLogin();
-            telaFundoLogin.setVisible(true);
-            telaFundoLogin.chamaLogin();
-
+            new Login(null, true).setVisible(true);
         });
     }
 }

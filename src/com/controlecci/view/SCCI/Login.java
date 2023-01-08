@@ -37,6 +37,7 @@ public class Login extends javax.swing.JDialog {
      */
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        telaFundoLogin.setVisible(true);
         initComponents();
         setarImagem();
         dispose();
@@ -359,9 +360,9 @@ public class Login extends javax.swing.JDialog {
                     LocalUtil.logType = templateAlerts.mensagemRegistroComum();
                     new LogCatUtil().writeFile(String.valueOf(sucesso));
 
+                    new SCCI().setVisible(true);
                     telaFundoLogin.fechaTela();
                     this.dispose();
-                    new SCCI().setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, templateAlerts.erroLogar());
                     this.dispose();

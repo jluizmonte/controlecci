@@ -27,6 +27,12 @@ public class TelaFundoLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         rSPanelImage1 = new rojerusan.RSPanelImage();
+        menuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,8 +46,31 @@ public class TelaFundoLogin extends javax.swing.JFrame {
         );
         rSPanelImage1Layout.setVerticalGroup(
             rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
+            .addGap(0, 493, Short.MAX_VALUE)
         );
+
+        fileMenu.setMnemonic('f');
+        fileMenu.setText("Arquivo");
+        fileMenu.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        menuBar.add(fileMenu);
+
+        jMenu1.setText("Funções Básicas");
+        jMenu1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        menuBar.add(jMenu1);
+
+        jMenu2.setText("Funções Avançadas");
+        jMenu2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        menuBar.add(jMenu2);
+
+        jMenu3.setText("Configurações");
+        jMenu3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        menuBar.add(jMenu3);
+
+        jMenu5.setText("F7 CONSULTAR REGISTRO | F6 REGISTRAR HORÁRIO | F4 CONSULTAR ALUNO | F3 CONSULTAR CURSO | F2 ENCERRAR SISTEMA");
+        jMenu5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        menuBar.add(jMenu5);
+
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,11 +80,12 @@ public class TelaFundoLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSPanelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rSPanelImage1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
     public void chamaLogin() {
         new Login(this, true).setVisible(rootPaneCheckingEnabled);
@@ -65,6 +95,12 @@ public class TelaFundoLogin extends javax.swing.JFrame {
         this.dispose();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar menuBar;
     private rojerusan.RSPanelImage rSPanelImage1;
     // End of variables declaration//GEN-END:variables
 }
