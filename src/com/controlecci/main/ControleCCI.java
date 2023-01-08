@@ -4,6 +4,8 @@ import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.FolderCreatorUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.view.SCCI.Login;
+import com.controlecci.view.SCCI.PrincipalSCCI;
+import com.controlecci.view.SCCI.SCCI;
 import com.controlecci.view.utils.LoginView;
 import com.controlecci.view.utils.TelaFundoLogin;
 
@@ -30,14 +32,14 @@ public class ControleCCI {
             java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-            //          new LoginView(null, true).setVisible(true);
             SessaoUsuarioModel.codigoUsuario = 10;
             SessaoUsuarioModel.loginUsuario = "luiz";
             SessaoUsuarioModel.nivelAcesso = "DESENVOLVEDOR";
             SessaoUsuarioModel.nomeUsuario = "José Luiz";
-            //          new SCCI().setVisible(true);
+     //       new SCCI().setVisible(true);
+     new PrincipalSCCI().setVisible(true);
             //  new SplashScreen().setVisible(true);
-            new Login(null, true).setVisible(true);
+//            new Login(null, true).setVisible(true);
         });
     }
 }

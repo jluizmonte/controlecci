@@ -7,7 +7,7 @@ package com.controlecci.util;
  */
 public class ObterInfoSistemaUtil {
 
-    private final String controlecciVersao = " v. 1.1";
+    private final String controlecciVersao = "CCI - Central de Cursos v 1.2";
     private final String arquiteturaSistema = System.getProperty("os.arch");
     private final String nomeSistema = System.getProperty("os.name");
     private final String versaoSistema = System.getProperty("os.version");
@@ -16,6 +16,12 @@ public class ObterInfoSistemaUtil {
     private final String idiomaSistema = System.getProperty("user.language");
     private final String nomeUsuario = System.getProperty("user.name");
 
+    public String getControlecciVersao() {
+        return controlecciVersao;
+    }
+
+    
+    
     /**
      * @return the arquiteturaSistema
      */

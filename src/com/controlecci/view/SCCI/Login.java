@@ -365,7 +365,6 @@ public class Login extends javax.swing.JDialog {
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, templateAlerts.erroLogar());
-//                    this.dispose();
                     loader.setVisible(false);
                     login.setVisible(true);
                     limparCampos();
