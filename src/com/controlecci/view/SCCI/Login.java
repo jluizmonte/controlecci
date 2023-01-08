@@ -365,7 +365,10 @@ public class Login extends javax.swing.JDialog {
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, templateAlerts.erroLogar());
-                    this.dispose();
+//                    this.dispose();
+                    loader.setVisible(false);
+                    login.setVisible(true);
+                    limparCampos();
                     LocalUtil.logClass = this.getClass().getName();
                     LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
                     new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroLogar()));
@@ -373,6 +376,8 @@ public class Login extends javax.swing.JDialog {
                 }
             } else {
                 JOptionPane.showMessageDialog(this, templateAlerts.erroCamposEmBranco());
+                loader.setVisible(false);
+                login.setVisible(true);
                 LocalUtil.logClass = this.getClass().getName();
                 LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
 
