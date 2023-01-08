@@ -5,8 +5,6 @@ import com.controlecci.controller.CursoController;
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.ObterInfoSistemaUtil;
-import com.controlecci.view.SCCI.obsoletos.LoginView;
-import com.controlecci.view.utils.TelaFundoLogin;
 import java.awt.Color;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -601,7 +599,7 @@ public class PrincipalSCCI extends javax.swing.JFrame {
     }//GEN-LAST:event_jlEncerrarMouseClicked
 
     private void jpAlunoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAlunoMouseEntered
-        jpAluno.setBackground(new java.awt.Color(238, 173, 47));
+        jpAluno.setBackground(new java.awt.Color(0, 112, 192));
     }//GEN-LAST:event_jpAlunoMouseEntered
 
     private void jpAlunoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAlunoMouseExited
@@ -613,11 +611,12 @@ public class PrincipalSCCI extends javax.swing.JFrame {
     }//GEN-LAST:event_jpAlunoMouseClicked
 
     private void jpCursoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseEntered
-        jpCurso.setBackground(new java.awt.Color(238, 173, 47));
+        jpCurso.setBackground(new java.awt.Color(0, 112, 192));
     }//GEN-LAST:event_jpCursoMouseEntered
 
     private void jpCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseClicked
-        JOptionPane.showMessageDialog(this, "curso clicado");    }//GEN-LAST:event_jpCursoMouseClicked
+        new Curso(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_jpCursoMouseClicked
 
     private void jpCursoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseExited
         jpCurso.setBackground(new java.awt.Color(28, 89, 124));
@@ -627,7 +626,7 @@ public class PrincipalSCCI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "registro de hora clicado");    }//GEN-LAST:event_jpRegistroAlunoMouseClicked
 
     private void jpRegistroAlunoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpRegistroAlunoMouseEntered
-        jpRegistroAluno.setBackground(new java.awt.Color(238, 173, 47));
+        jpRegistroAluno.setBackground(new java.awt.Color(0, 112, 192));
     }//GEN-LAST:event_jpRegistroAlunoMouseEntered
 
     private void jpRegistroAlunoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpRegistroAlunoMouseExited
@@ -638,7 +637,7 @@ public class PrincipalSCCI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "consulta registro individual clicado");    }//GEN-LAST:event_jpConsultaRegistroMouseClicked
 
     private void jpConsultaRegistroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpConsultaRegistroMouseEntered
-        jpConsultaRegistro.setBackground(new java.awt.Color(238, 173, 47));
+        jpConsultaRegistro.setBackground(new java.awt.Color(0, 112, 192));
     }//GEN-LAST:event_jpConsultaRegistroMouseEntered
 
     private void jpConsultaRegistroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpConsultaRegistroMouseExited
@@ -649,7 +648,7 @@ public class PrincipalSCCI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "usuário clicado");    }//GEN-LAST:event_jpUsuarioMouseClicked
 
     private void jpUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuarioMouseEntered
-        jpUsuario.setBackground(new java.awt.Color(238, 173, 47));
+        jpUsuario.setBackground(new java.awt.Color(0, 112, 192));
     }//GEN-LAST:event_jpUsuarioMouseEntered
 
     private void jpUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuarioMouseExited
