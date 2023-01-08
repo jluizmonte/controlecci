@@ -41,11 +41,11 @@ public class TemplateAlerts {
     }
 
     public String erroLogar() {
-        return "ERRO AO EFETURAR O LOGIN\n USUÁRIO OU SENHA INCORRETA!";
+        return "Erro ao efetuar login\nRevise os campos e tente novamente";
     }
 
     public String erroCamposEmBranco() {
-        return "UM OU MAIS CAMPOS ESTÃO EM BRANCO\n REVISE E TENTE NOVAMENTE";
+        return "Esta operação não pode ter campos em branco!";
     }
 
     /**

@@ -1567,3 +1567,47 @@ CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
 DATA E HORA: 07/01/23 23:48:17
 DESCRIÇÃO: UM OU MAIS CAMPOS ESTÃO EM BRANCO
  REVISE E TENTE NOVAMENTE
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 07/01/23 23:50:02
+DESCRIÇÃO: Esta operação não pode ter campos em branco!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 07/01/23 23:50:05
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 07/01/23 23:50:17
+DESCRIÇÃO: Esta operação não pode ter campos em branco!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 07/01/23 23:50:20
+DESCRIÇÃO: Esta operação não pode ter campos em branco!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 07/01/23 23:50:24
+DESCRIÇÃO: Erro ao efetuar login
+ Revise os campos e tente novamente
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 07/01/23 23:50:40
+DESCRIÇÃO: Erro ao efetuar login
+Revise os campos e tente novamente
