@@ -1703,3 +1703,24 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Curso
 DATA E HORA: 08/01/23 20:33:37
 DESCRIÇÃO: O curso DESENVOLVIMENTO DE JOGOS 2D foi excluído com sucesso!
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO DE ERRO
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.model.dao.AlunoDao
+DATA E HORA: 09/01/23 08:33:51
+DESCRIÇÃO: Ocorreu um erro ao conectar ao banco de dados
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 09/01/23 08:38:08
+DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 09/01/23 12:58:11
+DESCRIÇÃO: Acesso concedido a José Luiz
