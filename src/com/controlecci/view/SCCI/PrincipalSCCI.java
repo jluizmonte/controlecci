@@ -615,7 +615,7 @@ public class PrincipalSCCI extends javax.swing.JFrame {
     }//GEN-LAST:event_jpCursoMouseEntered
 
     private void jpCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseClicked
-        new Cursos(this, rootPaneCheckingEnabled).setVisible(true);
+        new Curso(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_jpCursoMouseClicked
 
     private void jpCursoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseExited

@@ -10,6 +10,7 @@ import com.controlecci.view.utils.MensagemConfirmação;
 import com.controlecci.view.utils.TelaCarregamento;
 import com.mxrck.autocompleter.AutoCompleter;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,6 +31,7 @@ public class Cursos extends javax.swing.JDialog {
 
     /**
      * Creates new form Cursos
+     *
      * @param parent
      * @param modal
      */
@@ -85,15 +87,30 @@ public class Cursos extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        jtCurso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtCursoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtCurso);
 
         jbAdicionar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jbAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/add.png"))); // NOI18N
         jbAdicionar.setText("Adicionar");
+        jbAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAdicionarActionPerformed(evt);
+            }
+        });
 
         jbAtualizar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jbAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/atualizar.png"))); // NOI18N
         jbAtualizar.setText("Atualizar");
+        jbAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtualizarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,6 +124,11 @@ public class Cursos extends javax.swing.JDialog {
         jbPesquisa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jbPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/pesquisar.png"))); // NOI18N
         jbPesquisa.setText("Pesquisar");
+        jbPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPesquisaActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -200,9 +222,35 @@ public class Cursos extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- private void carregarRegistro() {
+
+    private void jbAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdicionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbAdicionarActionPerformed
+
+    private void jbAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarActionPerformed
+        new AtualizarCurso(null, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_jbAtualizarActionPerformed
+
+    private void jbPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbPesquisaActionPerformed
+
+    private void jtCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtCursoMouseClicked
+        int linha = jtCurso.getSelectedRow();
+        String curso = (String) jtCurso.getValueAt(linha, 0);
+        Object[] options = {"Sim", "Não"};
+        int n = JOptionPane.showOptionDialog(null,
+                "Deseja excluir o curso\n" + curso + " ?", "Atenção", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if (n == 0) {
+            excluirCurso();
+        } else {
+            JOptionPane.showMessageDialog(this, "A operação foi cancelada pelo usuário!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jtCursoMouseClicked
+    private void carregarRegistro() {
         listaCursoModels = cursoController.getListaCursos();
-            jlQtdeCursos.setText(cursoController.retornaQtdeCurso());
+        jlQtdeCursos.setText(cursoController.retornaQtdeCurso());
         DefaultTableModel modeloTabela = (DefaultTableModel) jtCurso.getModel();
         modeloTabela.setNumRows(0);
         try {
@@ -222,6 +270,33 @@ public class Cursos extends javax.swing.JDialog {
             new LogCatUtil().writeFile("Erro ao carregar os registros!\n" + e.toString());
         }
     }
+
+    private void excluirCurso() {
+        int linha = jtCurso.getSelectedRow();
+        String curso = (String) jtCurso.getValueAt(linha, 0);
+        // menu de opções para o usuario confirmar a exclusão
+
+        if (cursoController.excluirLivro(curso)) {
+            mensagemConfirmação.jlMensagem.setText("O CURSO: " + curso + " FOI EXCLUÍDO COM SUCESSO!");
+            mensagemConfirmação.jlInfo.setText("VOCÊ PODE INSERI-LO NOVAMENTE");
+            mensagemConfirmação.fechar();
+            mensagemConfirmação.setVisible(true);
+
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegistroComum();
+            new LogCatUtil().writeFile(String.valueOf("O curso " + curso + " foi excluído com sucesso!"));
+
+            carregarRegistro();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao excluir o curso!", "Erro", JOptionPane.ERROR_MESSAGE);
+
+            LocalUtil.logClass = this.getClass().getName();
+            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
+            new LogCatUtil().writeFile(String.valueOf(templateAlerts.erroGeralExclusao("curso")));
+        }
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
