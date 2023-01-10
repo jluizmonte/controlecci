@@ -1724,3 +1724,10 @@ TIPO DE LOG: REGISTRO COMUM
 CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
 DATA E HORA: 09/01/23 12:58:11
 DESCRIÇÃO: Acesso concedido a José Luiz
+
+--------
+USUÁRIO: José Luiz
+TIPO DE LOG: REGISTRO COMUM
+CLASSE ONDE OCORREU A EXCEÇÃO: com.controlecci.view.SCCI.Login
+DATA E HORA: 09/01/23 20:50:14
+DESCRIÇÃO: Acesso concedido a José Luiz
