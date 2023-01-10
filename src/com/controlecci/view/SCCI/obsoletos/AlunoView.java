@@ -1,4 +1,4 @@
-package com.controlecci.view.SCCI;
+package com.controlecci.view.SCCI.obsoletos;
 
 import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.CursoController;
@@ -8,6 +8,7 @@ import com.controlecci.util.GetDateUtil;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
+import com.controlecci.view.SCCI.ConsultarRegistro;
 import com.controlecci.view.utils.MensagemConfirmação;
 import com.controlecci.view.utils.SelecionaAluno;
 import com.controlecci.view.utils.TelaCarregamento;
@@ -1339,7 +1340,7 @@ public class AlunoView extends javax.swing.JInternalFrame {
         jtfDataMatriculaAlterar.setText(alunoModel.getDataMatricula());
         jtfEmailAlterar.setText(alunoModel.getEmail());
         jtfEnderecoAlterar.setText(alunoModel.getEndereco());
-        jtfMatriculaAlterar.setText(String.valueOf(alunoModel.getMatricula()));
+        jtfMatriculaAlterar.setText("23"+String.valueOf(alunoModel.getMatricula()));
         jtfNomeAlterar.setText(alunoModel.getNome());
         jtfRgAlterar.setText(alunoModel.getRg());
         jtfTelefoneAlterar.setText(alunoModel.getTelefone());

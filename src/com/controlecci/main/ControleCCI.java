@@ -3,10 +3,11 @@ package com.controlecci.main;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.FolderCreatorUtil;
 import com.controlecci.util.LogCatUtil;
+import com.controlecci.view.SCCI.FrmAluno;
 import com.controlecci.view.SCCI.Login;
-import com.controlecci.view.SCCI.PrincipalSCCI;
+import com.controlecci.view.SCCI.obsoletos.PrincipalSCCI;
 import com.controlecci.view.SCCI.obsoletos.LoginView;
-import com.controlecci.view.SCCI.obsoletos.SCCI;
+import com.controlecci.view.SCCI.SCCI;
 import java.awt.SplashScreen;
 
 /**
@@ -23,7 +24,7 @@ public class ControleCCI {
             new FolderCreatorUtil().createFolder();
             new LogCatUtil().createFile();
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -37,7 +38,8 @@ public class ControleCCI {
             SessaoUsuarioModel.nivelAcesso = "DESENVOLVEDOR";
             SessaoUsuarioModel.nomeUsuario = "José Luiz";
 //            new SCCI().setVisible(true);
-            new PrincipalSCCI().setVisible(true);
+new FrmAluno().setVisible(true);
+//            new PrincipalSCCI().setVisible(true);
 //            new SplashScreen().setVisible(true);
 //            new Login(null, true).setVisible(true);
         });

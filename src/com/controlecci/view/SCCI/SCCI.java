@@ -1,4 +1,4 @@
-package com.controlecci.view.SCCI.obsoletos;
+package com.controlecci.view.SCCI;
 
 import com.controlecci.view.utils.VisualizarLog;
 import com.controlecci.model.SessaoUsuarioModel;
@@ -6,12 +6,13 @@ import com.controlecci.relatorio.RelatorioUtil;
 import com.controlecci.util.LocalUtil;
 import com.controlecci.util.LogCatUtil;
 import com.controlecci.util.TemplateAlerts;
-import com.controlecci.view.SCCI.AlunoView;
+import com.controlecci.view.SCCI.obsoletos.AlunoView;
 import com.controlecci.view.SCCI.CertificadosEntregues;
 import com.controlecci.view.SCCI.ConsultarRegistro;
 import com.controlecci.view.SCCI.CursoView;
 import com.controlecci.view.SCCI.RegistroAluno;
 import com.controlecci.view.SCCI.UsuarioView;
+import com.controlecci.view.SCCI.obsoletos.LoginView;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.FileNotFoundException;
@@ -316,6 +317,7 @@ public class SCCI extends javax.swing.JFrame {
 
     private void jmiAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlunoActionPerformed
         AlunoView alunoView = new AlunoView();
+//FrmAluno alunoView=new FrmAluno();
         desktopPane.add(alunoView);
         alunoView.setVisible(true);
         alunoView.setPosicao();

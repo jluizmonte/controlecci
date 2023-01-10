@@ -1,10 +1,12 @@
-package com.controlecci.view.SCCI;
+package com.controlecci.view.SCCI.obsoletos;
 
 import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.CursoController;
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.ObterInfoSistemaUtil;
+import com.controlecci.view.SCCI.Curso;
+import com.controlecci.view.SCCI.Login;
 import java.awt.Color;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

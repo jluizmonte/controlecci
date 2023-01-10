@@ -1,6 +1,6 @@
 package com.controlecci.view.SCCI;
 
-import com.controlecci.view.SCCI.obsoletos.SCCI;
+import com.controlecci.view.SCCI.obsoletos.PrincipalSCCI;
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.model.UsuarioModel;
