@@ -5,7 +5,6 @@ import com.controlecci.controller.CursoController;
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.ObterInfoSistemaUtil;
-import com.controlecci.view.SCCI.Curso;
 import com.controlecci.view.SCCI.Login;
 import java.awt.Color;
 import java.time.LocalDateTime;
@@ -617,7 +616,7 @@ public class PrincipalSCCI extends javax.swing.JFrame {
     }//GEN-LAST:event_jpCursoMouseEntered
 
     private void jpCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseClicked
-        new Curso(this, rootPaneCheckingEnabled).setVisible(true);
+//        new Curso(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_jpCursoMouseClicked
 
     private void jpCursoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCursoMouseExited

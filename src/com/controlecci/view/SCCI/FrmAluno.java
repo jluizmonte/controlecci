@@ -1,17 +1,21 @@
 package com.controlecci.view.SCCI;
 
 import com.controlecci.util.GetDateUtil;
+import com.controlecci.view.SCCI.dialogos.MatriculaAluno;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.time.LocalDate;
 import java.time.Period;
+import javax.swing.JFrame;
 
 /**
  *
  * @author joseluiz
  */
-public class FrmAluno extends javax.swing.JFrame {
-
+public class FrmAluno extends javax.swing.JInternalFrame {
+    
     GetDateUtil getDateUtil = new GetDateUtil();
+    double valorCurso = 500.0;
 
     /**
      * Creates new form FrmAluno
@@ -19,7 +23,7 @@ public class FrmAluno extends javax.swing.JFrame {
     public FrmAluno() {
         initComponents();
         setarDados();
-        setLocationRelativeTo(null);
+//        setLocationRelativeTo(null);
     }
 
     /**
@@ -108,6 +112,7 @@ public class FrmAluno extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MATRICULA");
+        jLabel1.setToolTipText("CLIQUE PARA ALTERAR A MATRÍCULA, SE PRESICAR!");
 
         jcbUf.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jcbUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", " " }));
@@ -146,8 +151,9 @@ public class FrmAluno extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("CURSO");
 
-        jtfMatricula.setEditable(false);
         jtfMatricula.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfMatricula.setToolTipText("CLIQUE PARA ALTERAR A MATRÍCULA, SE PRESICAR!");
+        jtfMatricula.setEnabled(false);
 
         jtfNome.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -235,6 +241,7 @@ public class FrmAluno extends javax.swing.JFrame {
         jtfCargaHoraria.setEditable(false);
         jtfCargaHoraria.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jtfCargaHoraria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfCargaHoraria.setToolTipText("Clique na carga horária para alterá-la");
         jtfCargaHoraria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtfCargaHorariaMouseClicked(evt);
@@ -251,6 +258,11 @@ public class FrmAluno extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/atalho.png"))); // NOI18N
         jButton2.setText("CONTINUAR MATRICULA");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -436,18 +448,18 @@ public class FrmAluno extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,16 +480,23 @@ public class FrmAluno extends javax.swing.JFrame {
     private void jtfCargaHorariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfCargaHorariaMouseClicked
         jtfCargaHoraria.setEditable(true);
         jtfCargaHoraria.requestFocus();
-        
+
     }//GEN-LAST:event_jtfCargaHorariaMouseClicked
 
-//    public void setPosicao() {
-//        Dimension d = this.getDesktopPane().getSize();
-//        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
-//    }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+//        new MatriculaAluno(null, rootPaneCheckingEnabled).setVisible(true);
+        new MatriculaAluno((Frame) javax.swing.SwingUtilities.getWindowAncestor(this), rootPaneCheckingEnabled).chamardados(jtfCurso.getText(), jtfCargaHoraria.getText(), valorCurso);
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
 //    
+
     private void setarDados() {
         jtfMatricula.setText("000001");
+        jtfCurso.setText("POWER BI");
         jtfCargaHoraria.setText("12:00:00");
         jtfNome.requestFocus();
     }

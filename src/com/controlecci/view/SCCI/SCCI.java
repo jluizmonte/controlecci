@@ -126,7 +126,7 @@ public class SCCI extends javax.swing.JFrame {
         );
         rSPanelImage1Layout.setVerticalGroup(
             rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
+            .addGap(0, 425, Short.MAX_VALUE)
         );
 
         desktopPane.setLayer(rSPanelImage1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -139,9 +139,7 @@ public class SCCI extends javax.swing.JFrame {
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(desktopPaneLayout.createSequentialGroup()
-                .addComponent(rSPanelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+            .addComponent(rSPanelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         fileMenu.setMnemonic('f');
@@ -300,6 +298,7 @@ public class SCCI extends javax.swing.JFrame {
 
     private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
         Object[] options = {"Sim", "Não"};
+//        Object[] options = {"Não", "Sim"};
         int n = JOptionPane.showOptionDialog(null,
                 "Deseja encerrar o sistema?", "Atenção", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -316,8 +315,8 @@ public class SCCI extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiCursoActionPerformed
 
     private void jmiAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlunoActionPerformed
-        AlunoView alunoView = new AlunoView();
-//FrmAluno alunoView=new FrmAluno();
+//        AlunoView alunoView = new AlunoView();
+FrmAluno alunoView=new FrmAluno();
         desktopPane.add(alunoView);
         alunoView.setVisible(true);
         alunoView.setPosicao();
