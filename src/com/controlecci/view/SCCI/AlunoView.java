@@ -1,4 +1,4 @@
-package com.controlecci.view.SCCI.obsoletos;
+package com.controlecci.view.SCCI;
 
 import com.controlecci.controller.AlunoController;
 import com.controlecci.controller.CursoController;

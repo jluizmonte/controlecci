@@ -1,4 +1,4 @@
-package com.controlecci.view.SCCI;
+package com.controlecci.view.SCCI.novo;
 
 import com.controlecci.view.SCCI.obsoletos.PrincipalSCCI;
 import com.controlecci.controller.UsuarioController;
@@ -74,7 +74,6 @@ public class Login extends javax.swing.JDialog {
         lbl_loader = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocationByPlatform(true);
         setUndecorated(true);
 
         pnl_bg.setBackground(new java.awt.Color(255, 255, 255));
@@ -95,7 +94,6 @@ public class Login extends javax.swing.JDialog {
         });
 
         jtfLogin.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jtfLogin.setForeground(new java.awt.Color(0, 0, 0));
         jtfLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfLogin.setBorder(null);
         jtfLogin.addFocusListener(new java.awt.event.FocusAdapter() {

@@ -1,4 +1,4 @@
-package com.controlecci.view.SCCI.obsoletos;
+package com.controlecci.view.SCCI;
 
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;

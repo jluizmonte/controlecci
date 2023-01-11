@@ -5,7 +5,7 @@ import com.controlecci.controller.CursoController;
 import com.controlecci.controller.UsuarioController;
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.ObterInfoSistemaUtil;
-import com.controlecci.view.SCCI.Login;
+import com.controlecci.view.SCCI.novo.Login;
 import java.awt.Color;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

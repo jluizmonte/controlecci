@@ -1,4 +1,4 @@
-package com.controlecci.view.SCCI;
+package com.controlecci.view.SCCI.novo;
 
 import com.controlecci.util.GetDateUtil;
 import com.controlecci.view.SCCI.dialogos.MatriculaAluno;
@@ -77,7 +77,7 @@ public class FrmAluno extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SSCI - Cadastro e Gerenciamento de Alunos");
 
         jPanel1.setBackground(new java.awt.Color(28, 89, 124));

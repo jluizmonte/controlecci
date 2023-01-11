@@ -1,20 +1,20 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
 package com.controlecci.main;
 
 import com.controlecci.model.SessaoUsuarioModel;
 import com.controlecci.util.FolderCreatorUtil;
 import com.controlecci.util.LogCatUtil;
-import com.controlecci.view.SCCI.novo.FrmAluno;
-import com.controlecci.view.SCCI.novo.Login;
-import com.controlecci.view.SCCI.obsoletos.PrincipalSCCI;
 import com.controlecci.view.SCCI.LoginView;
 import com.controlecci.view.SCCI.SCCI;
-import java.awt.SplashScreen;
 
 /**
  *
  * @author Instrutores
  */
-public class ControleCCI {
+public class ControleCCI2 {
 
     /**
      * @param args the command line arguments
@@ -24,7 +24,7 @@ public class ControleCCI {
             new FolderCreatorUtil().createFolder();
             new LogCatUtil().createFile();
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -43,5 +43,7 @@ public class ControleCCI {
 //            new SplashScreen().setVisible(true);
 //            new Login(null, true).setVisible(true);
         });
+
     }
+
 }
