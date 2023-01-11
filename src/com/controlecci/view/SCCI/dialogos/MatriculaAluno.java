@@ -1,5 +1,6 @@
 package com.controlecci.view.SCCI.dialogos;
 
+import com.controlecci.util.MascarasUtil;
 import javax.swing.JOptionPane;
 
 /**
@@ -8,16 +9,20 @@ import javax.swing.JOptionPane;
  */
 public class MatriculaAluno extends javax.swing.JDialog {
 
+    MascarasUtil mascarasUtil = new MascarasUtil();
     double subtotal;
 
     /**
      * Creates new form MatriculaAluno
+     *
+     * @param parent
+     * @param modal
      */
     public MatriculaAluno(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        jtfDesconto.requestFocus();
+        chamardados();
     }
 
     /**
@@ -43,17 +48,17 @@ public class MatriculaAluno extends javax.swing.JDialog {
         jtfDesconto = new javax.swing.JTextField();
         jbPorcentagem = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jlCurso = new javax.swing.JLabel();
-        jlCargaHoraria = new javax.swing.JLabel();
         jbCancelar = new javax.swing.JButton();
         jbMatricular = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jlSubtotal = new javax.swing.JLabel();
         jlAlterarValor = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jlValorFinal = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jtfCurso = new javax.swing.JTextField();
+        jtfCargaHoraria = new javax.swing.JTextField();
+        jlValorCurso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -127,14 +132,6 @@ public class MatriculaAluno extends javax.swing.JDialog {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("PAGAMENTO");
 
-        jlCurso.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlCurso.setForeground(new java.awt.Color(255, 255, 255));
-        jlCurso.setText("$CURSO SELECIONADO");
-
-        jlCargaHoraria.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlCargaHoraria.setForeground(new java.awt.Color(255, 255, 255));
-        jlCargaHoraria.setText("$CARGA HORÁRIA SELECIONADA");
-
         jbCancelar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jbCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/cancelar.png"))); // NOI18N
         jbCancelar.setText("CANCELAR E VOLTAR");
@@ -155,14 +152,10 @@ public class MatriculaAluno extends javax.swing.JDialog {
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("SUBTOTAL");
-
-        jlSubtotal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlSubtotal.setForeground(new java.awt.Color(255, 255, 255));
-        jlSubtotal.setText("$VALOR DO CURSO SELECIONADO");
+        jLabel8.setText("VALOR");
 
         jlAlterarValor.setBackground(new java.awt.Color(51, 51, 0));
-        jlAlterarValor.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jlAlterarValor.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jlAlterarValor.setForeground(new java.awt.Color(255, 255, 0));
         jlAlterarValor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAlterarValor.setText("ALTERAR O VALOR");
@@ -184,62 +177,82 @@ public class MatriculaAluno extends javax.swing.JDialog {
 
         jlValorFinal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jlValorFinal.setForeground(new java.awt.Color(255, 255, 255));
-        jlValorFinal.setText("000,000");
+        jlValorFinal.setText("0.00");
+
+        jtfCurso.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jtfCurso.setToolTipText("DIGITE O NOME DO CURSO E APERTE ENTER PARA SELECIONÁ-LO");
+
+        jtfCargaHoraria.setEditable(false);
+        jtfCargaHoraria.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jtfCargaHoraria.setToolTipText("CLIQUE PARA ALTERAR A CARGA HORÁRIA");
+        jtfCargaHoraria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtfCargaHorariaMouseClicked(evt);
+            }
+        });
+
+        jlValorCurso.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlValorCurso.setForeground(new java.awt.Color(255, 255, 255));
+        jlValorCurso.setText("0.00");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
+            .addComponent(jSeparator2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 24, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(251, 251, 251)
+                        .addComponent(jbMatricular))
+                    .addComponent(jbCancelar))
+                .addGap(15, 15, 15))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel5))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jtfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jbPorcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jlAlterarValor, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jlSubtotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel3))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jlAlterarValor, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                                        .addComponent(jtfCargaHoraria)
+                                        .addComponent(jtfCurso))
+                                    .addComponent(jlValorCurso)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jtfDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbPorcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jlCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jlCargaHoraria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(251, 251, 251)
-                                        .addComponent(jbMatricular))
-                                    .addComponent(jbCancelar)))))
+                                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(134, 134, 134)
-                                .addComponent(jlValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel13))))
-                .addContainerGap(17, Short.MAX_VALUE))
-            .addComponent(jSeparator2)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,22 +260,23 @@ public class MatriculaAluno extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jlCurso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addComponent(jlCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jtfCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7))
+                    .addComponent(jtfCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jlSubtotal))
+                    .addComponent(jlValorCurso))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlAlterarValor)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -287,13 +301,13 @@ public class MatriculaAluno extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jlValorFinal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbCancelar)
                     .addComponent(jbMatricular))
-                .addGap(18, 18, 18))
+                .addGap(59, 59, 59))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -304,9 +318,7 @@ public class MatriculaAluno extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -326,7 +338,7 @@ public class MatriculaAluno extends javax.swing.JDialog {
 
     private void jlAlterarValorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAlterarValorMouseClicked
         double novoValor = Double.parseDouble(JOptionPane.showInputDialog(this, "Insira o valor para este curso!", "Atenção", JOptionPane.INFORMATION_MESSAGE));
-        jlSubtotal.setText(String.valueOf(novoValor));
+        jlValorFinal.setText(String.valueOf(novoValor));
         subtotal = novoValor;
     }//GEN-LAST:event_jlAlterarValorMouseClicked
 
@@ -346,17 +358,21 @@ public class MatriculaAluno extends javax.swing.JDialog {
     }//GEN-LAST:event_jtfDescontoActionPerformed
 
     private void jbPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPorcentagemActionPerformed
-        int p = Integer.parseInt(JOptionPane.showInputDialog(this, "Insira a porcentagem!", "Atenção"));
-
+        //    int p = Integer.parseInt(JOptionPane.showInputDialog(this, "Insira a porcentagem!", "Atenção"));
+        double porcentagem = Double.valueOf(JOptionPane.showInputDialog(this, "Insira a porcentagem!", "Atenção"));
+        //      Str
     }//GEN-LAST:event_jbPorcentagemActionPerformed
 
-    public void chamardados(String curso, String ch, double valor) {
-        jlCargaHoraria.setText(ch);
-        jlCurso.setText(curso);
-        jlSubtotal.setText(String.valueOf(valor));
-        this.subtotal = valor;
-        this.setVisible(true);
-        jtfDesconto.requestFocus();
+    private void jtfCargaHorariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfCargaHorariaMouseClicked
+        jtfCargaHoraria.setEditable(true);
+        jtfCargaHoraria.requestFocus();
+    }//GEN-LAST:event_jtfCargaHorariaMouseClicked
+
+    private void chamardados() {
+        //   this.subtotal = valor;
+        jtfCurso.setText("POWER BI");
+        jtfCargaHoraria.setText("12:00:00");
+        jlValorCurso.setText("800.00");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -380,10 +396,10 @@ public class MatriculaAluno extends javax.swing.JDialog {
     private javax.swing.JButton jbMatricular;
     private javax.swing.JButton jbPorcentagem;
     private javax.swing.JLabel jlAlterarValor;
-    private javax.swing.JLabel jlCargaHoraria;
-    private javax.swing.JLabel jlCurso;
-    private javax.swing.JLabel jlSubtotal;
+    private javax.swing.JLabel jlValorCurso;
     private javax.swing.JLabel jlValorFinal;
+    private javax.swing.JTextField jtfCargaHoraria;
+    private javax.swing.JTextField jtfCurso;
     private javax.swing.JTextField jtfDesconto;
     // End of variables declaration//GEN-END:variables
 }
