@@ -1,13 +1,18 @@
 package com.controlecci.view.SCCI.dialogos;
 
+import com.controlecci.util.GetDateUtil;
+
 /**
  *
  * @author Instrutores
  */
 public class Empresa extends javax.swing.JDialog {
 
+    GetDateUtil getDateUtil = new GetDateUtil();
+
     /**
      * Creates new form Empresa
+     *
      * @param parent
      * @param modal
      */
@@ -15,6 +20,7 @@ public class Empresa extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        exibirDados();
     }
 
     /**
@@ -164,6 +170,10 @@ public class Empresa extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exibirDados() {
+        jlDataCadastro.setText(getDateUtil.getDateTime());
+    }
 
     /**
      * @param args the command line arguments

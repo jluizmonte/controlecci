@@ -168,7 +168,7 @@ public class Responsavel extends javax.swing.JDialog {
 
         jbSalvar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jbSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/controlecci/image/actions/salvar.png"))); // NOI18N
-        jbSalvar.setText("CADASTRAR RESPONSAVÉL");
+        jbSalvar.setText("CADASTRAR RESPONSÁVEL");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

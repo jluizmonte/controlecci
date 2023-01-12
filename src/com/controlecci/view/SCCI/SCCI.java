@@ -297,7 +297,6 @@ public class SCCI extends javax.swing.JFrame {
 
     private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
         Object[] options = {"Sim", "Não"};
-//        Object[] options = {"Não", "Sim"};
         int n = JOptionPane.showOptionDialog(null,
                 "Deseja encerrar o sistema?", "Atenção", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
